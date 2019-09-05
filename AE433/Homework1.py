@@ -34,4 +34,5 @@ plt.show()
 y_up = 0.5 * x ^ 0.6532
 y_low = - y_up
 
+print
 
