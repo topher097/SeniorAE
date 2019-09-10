@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sympy import *
 import sympy
+from scipy.integrate import quad
+from scipy.misc import derivative
 
 '''PART A'''
 # Crete arrays from data
@@ -12,7 +14,7 @@ p = np.array([145.04, 145.04, 145.04, 145.04, 145.03, 145.00, 144.93, 144.77, 14
 # Create polynomial fit
 z = np.polyfit(x_loc, p, 6)
 # Create data points to plot
-x2 = np.linspace(0, 10, num=20000)
+x2 = np.linspace(0, 10, num=100000)
 f = np.poly1d(z)        # Interpolation of pressure at certain x
 p2 = f(x2)
 
@@ -20,7 +22,7 @@ p2 = f(x2)
 x = Symbol('x')
 poly = sum(S("{:6.2f}".format(v))*x**i for i, v in enumerate(z[::-1]))
 eq_latex = 'p =' + str(sympy.printing.latex(poly))
-#print(eq_latex)
+print(eq_latex)
 
 # Plot data and fitted polynomial
 plt.figure(0)
@@ -51,12 +53,27 @@ def d_fun(x):
     h = 1e-5
     return np.real((fun(x+h)-fun(x-h))/(2*h))
 
-
 # Plot vectors to make sure derivatives are computed correctly
 plt.figure(1)
 surface = lambdify(x, y_up, modules=['numpy'])
 y_vals = []
 
+def f(x):
+    theta = np.arctan(-1/(0.6532/x**0.3468))
+    unit_x = cos(theta)
+    p_eq = (-.03*x**5 + 0.34*x**4 - 1.54*x**3 + 3.19*x**2 - 2.36*x + 145.26) * 6894.76
+
+    return p_eq * unit_x * x/cos(np.pi/2 - theta)      # Returns the inner part of thrust integral with dl in terms of x
+
+thrust_2 = quad(f, 0, 10)
+
+print(thrust_2[0]*2/1000)
+
+
+
+
+
+'''
 for i in range(0, len(x2_list)):
     pressure = p2[i] * 6894.76                      # Pressure at location in N/m^2
 
@@ -84,3 +101,4 @@ print(thrust/1000)
 # Plots surface profile and shows both figures
 plt.plot(x2_list, y_vals)
 plt.show()
+'''
