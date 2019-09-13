@@ -1,5 +1,4 @@
 from numpy import *
-from scipy import *
 
 gamma = 1.4
 R = 287             # J/kg*K
@@ -28,7 +27,7 @@ v2_x = v2 * cos(deg2rad(20))
 
 # Part A
 ThrustA = (rho1 * v1**2 * A1) - (rho2 * v2_x**2 * A2) + (P1 * A1) - (P2 * A2)
-print(f'Axial Thrust (part a)= {ThrustA/1000} kN')              # 147.9703451259921 kN
+print(f'Axial Thrust (part a)= {ThrustA/1000} kN')              # Output = 147.9703451259921 kN
 
 # Part B
 L1 = 1.5 / cos(deg2rad(20))
