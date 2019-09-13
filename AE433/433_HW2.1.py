@@ -36,5 +36,3 @@ L2 = .5 / cos(deg2rad(20))
 
 ThrustB = (P2 * sin(deg2rad(20)) * L1) - (P2 * sin(deg2rad(20)) * L2)
 print(f'Axial Thrust (part b)= {ThrustB/1000} kN')              # Output = 140.62968571246572 kN
-
-
