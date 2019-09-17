@@ -39,3 +39,4 @@ plt.title('Experiment 2 - Velocity w.r.t. RPM')
 plt.ylabel('Velocity (m/s)')
 plt.xlabel('RPM')
 plt.show()
+
