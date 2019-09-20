@@ -13,6 +13,7 @@ import scipy.interpolate
 import numpy as np
 import pandas as pd
 from sympy import *
+init_printing(use_unicode=True)
 
 filenames = [r'C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE483\Lab 1\flying.csv']
 
@@ -38,6 +39,9 @@ class dataCalculations:
         self.mocap_pitch = []
         self.mocap_roll = []
         self.mocap_yaw = []
+        self.new_mocap_pitch = []
+        self.new_mocap_roll = []
+        self.new_mocap_yaw = []
 
         self.run_rate = 0
         self.R_1on0 = []
@@ -100,11 +104,18 @@ class dataCalculations:
                                [0, cos(t_r), -sin(t_r)],
                                [0, sin(t_r), cos(t_r)]])
 
-        print(R_0onyaw)
-        self.R_1on0 = R_0onyaw @ R_yawonpitch @ R_pitchon1
+
+        self.R_1on0 = np.ndarray.tolist(np.linalg.multi_dot([R_0onyaw, R_yawonpitch, R_pitchon1]))
         print(self.R_1on0)
+        print(Matrix(self.R_1on0))
+        # Transform the mocap to the drone frame with R0on1
         for i in range(0, len(self.time)):
-            pass
+            mocap_angles = Matrix[[self.mocap_yaw[i]], [self.mocap_pitch[i]], [self.mocap_roll[i]]]
+            R0on1 = Matrix(self.R_1on0).subs([(t_y, mocap_yaw), (t_p, mocap_pitch), (t_r, mocap_roll)])
+            new_mocap_angles = mocap_angles @ R0on1
+            new_mocap_yaw = new_mocap_angles[0]
+            new_mocap_pitch = new_mocap_angles[1]
+            new_mocap_roll = new_mocap_angles[2]
 
 
 
@@ -114,8 +125,8 @@ if __name__ == '__main__':
         # Parse the data
         obj.parse()
         # Calc onboard run rate
-        obj.calcRun()
-        print(f'On-board run rate = {round(obj.run_rate/1000, 2)} kHz')
+        #obj.calcRun()
+        #print(f'On-board run rate = {round(obj.run_rate/1000, 2)} kHz')
         # Calculate the agreeability in IMU and MOCAP yaw, pitch, and roll
         obj.calcAgree()
         print(f'Agreeability: \nYaw = {obj.agr_yaw} rad\nPitch = {obj.agr_pitch} rad\nRoll = {obj.agr_roll} rad\n')
