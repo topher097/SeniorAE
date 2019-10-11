@@ -1,6 +1,6 @@
 from sympy import *
-from AE483.Report_1 import dataCalculations
-import AE483.Report_1
+from AE483.AE483_lab1_report import dataCalculations
+
 
 class rotationMatrixCalc(self):
     def __init__(self):

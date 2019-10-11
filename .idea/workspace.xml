@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="126dce4b-fe0f-4237-a991-b4ae7139c367" name="Default Changelist" comment="finish AE433 HW2.1">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE416/AE416_hw1.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE416/AE416_hw1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE416/BL_hw1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/AE416/BL_hw1.dat" afterDir="false" />
+    <list default="true" id="126dce4b-fe0f-4237-a991-b4ae7139c367" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2_data_plot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_0.5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_0.5.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_1.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_2.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_3.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_5.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_0.5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2_kf_km.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/Report_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Lab 1/AE483_lab1_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/rotationMatrixCalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/rotationMatrixCalc.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,15 +46,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE416/AE416_hw1.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2_data.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\AE483\Lab 1" />
+      <recent name="C:\Python\SeniorAE\AE483\Lab 2" />
       <recent name="C:\Python\SeniorAE\AE416" />
       <recent name="C:\Python\SeniorAE\AE483" />
-      <recent name="C:\Python\SeniorAE\AE483\Lab 1" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -52,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.AE416_hw1">
+  <component name="RunManager" selected="Python.AE483_lab2_data_plot">
     <configuration name="433_HW1.1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,7 +134,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Report_1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="AE483_lab1_report" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -128,7 +146,28 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE483/Report_1.py" />
+      <option name="SCRIPT_NAME" value="C:\Python\SeniorAE\AE483\Lab 1\AE483_lab1_report.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AE483_lab2_data_plot" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483/Lab 2" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Python\SeniorAE\AE483\Lab 2\AE483_lab2_data_plot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,8 +178,9 @@
     </configuration>
     <list>
       <item itemvalue="Python.433_HW2.1" />
-      <item itemvalue="Python.Report_1" />
+      <item itemvalue="Python.AE483_lab1_report" />
       <item itemvalue="Python.AE416_hw1" />
+      <item itemvalue="Python.AE483_lab2_data_plot" />
       <item itemvalue="Python.433_HW1.1" />
     </list>
   </component>
@@ -190,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569042130854</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finish AE316 Hw1">
+      <created>1569389709615</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569389709615</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +258,7 @@
     <MESSAGE value="finish AE433 HW1.1" />
     <MESSAGE value="finish AE433 HW2.1" />
     <MESSAGE value="finish AE483 report 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish AE483 report 1" />
+    <MESSAGE value="finish AE316 Hw1" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish AE316 Hw1" />
   </component>
 </project>

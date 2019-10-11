@@ -18,7 +18,7 @@ import os
 curr_dir = os.getcwd()
 init_printing(use_unicode=True)
 
-filenames = [str(curr_dir) + i for i in [r'\Lab 1\flying.csv', r'\Lab 1\hand.csv']]
+filenames = [str(curr_dir) + i for i in [r'\flying.csv', r'\hand.csv']]
 
 
 # Get the data, make sure the data is in the correct format
@@ -42,9 +42,6 @@ class dataCalculations:
         self.mocap_pitch = []
         self.mocap_roll = []
         self.mocap_yaw = []
-        self.new_mocap_pitch = []
-        self.new_mocap_roll = []
-        self.new_mocap_yaw = []
 
         self.run_rate = 0
         self.R_1on0 = []
