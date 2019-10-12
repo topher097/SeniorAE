@@ -106,33 +106,6 @@ km_avg = km_total/counter
 print(f'K_m avg = {round(km_avg, 12)}')
 
 
-"""
-
-CALC A and B
-
-"""
-# spin = A * motor_command + B
-
-# First calculate A and B from the k_f data
-# Assume the first spin data block is a motor command of 10
-# Calculate kf
-force_data = []
-spin_data = []
-with open('Kf_data.csv', 'rt') as kf:
-    next(kf)        # skips first line of headers
-    for line in kf:
-        data = line.split(',')
-        if float(data[0]) > 27.5:
-            break
-        if not data[4] == '':       # stops getting spin data when there is no more data
-            spin_data.append([float(data[3]), float(data[5])])
-        force_data.append([float(data[0]), float(data[1]) + 0.442])
-
-
-
-
-
-
 
 """
 

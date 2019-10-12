@@ -15,7 +15,7 @@ init_printing(use_unicode=True)
 # Get list of filenames to run through the parser
 data_location = str(curr_dir) + '\\Lab 2 Data\\'
 filename_base = ['period', 'Simulation']
-commonator = ['_0.5', '_1', '_2', '_3', '_5']
+commonator = ['_1', '_2', '_3', '_5', '_50']
 filename_ext = '.csv'
 filenames = [(data_location + filename_base[0] + i + filename_ext, data_location + filename_base[1] + i + filename_ext) for i in commonator]
 
@@ -156,6 +156,8 @@ class dataParse:
 
         # Find the index of the time list where t=plot_time
         for time in dataParse.sim_time:
+            if '50' in dataParse.gs_file:
+                print(time)
             if time - plot_time >= 0:
                 dataParse.sim_time_cut = dataParse.sim_time.index(time)
                 break
@@ -202,14 +204,19 @@ class dataPlot(dataParse):
 
     # Plot the pitch angle, pitch desired, and simulation pitch
     def plotPitch(self):
+        if '50' in dataParse.gs_file:
+            dataParse.sim_pitch = [-i +.05 for i in dataParse.sim_pitch]
+        offset_plot = [80, 70, 55, 200, 0]      # Manual offset for plots to align mocap/imu data to simulation
+        offset = offset_plot[index-1]
+
         a1 = pitch_plot.add_subplot(len(filenames), 1, index)
         title_name = os.path.basename(dataParse.gs_file).replace('.csv', '').replace('period_', '')
         a1.set_title(f'Data for Period = {title_name} Seconds')
         a1.set_xlabel('Time [s]')
         a1.set_ylabel('Angle [rad]')
-        a1.plot(dataParse.gs_time[:dataParse.gs_time_cut], dataParse.imu_pitch[:dataParse.gs_time_cut], 'r', label='imu pitch [rad]')
-        a1.plot(dataParse.gs_time[:dataParse.gs_time_cut], dataParse.gs_pitch_desired[:dataParse.gs_time_cut], 'b', label='pitch desired [rad]')
-        a1.plot(dataParse.sim_time, dataParse.sim_pitch, 'orange', label='simulation pitch [rad]')
+        a1.plot(dataParse.gs_time[:dataParse.gs_time_cut], dataParse.imu_pitch[offset:offset + dataParse.gs_time_cut], 'r', label='imu pitch [rad]')
+        a1.plot(dataParse.gs_time[:dataParse.gs_time_cut], dataParse.gs_pitch_desired[offset:offset + dataParse.gs_time_cut], 'b', label='pitch desired [rad]')
+        a1.plot(dataParse.sim_time[:dataParse.sim_time_cut], dataParse.sim_pitch[:dataParse.sim_time_cut], 'orange', label='simulation pitch [rad]')
         a1.legend(loc='upper right')
 
 
@@ -220,10 +227,9 @@ if __name__ == '__main__':
 
     # Define figure for pitch plotting
     plot_time = 6        # Seconds
-    pitch_plot = plt.figure(figsize=(15, 8))
-    pitch_plot.subplots_adjust(hspace=1)
-    #pitch_plot.suptitle('Data for Pitch Angle')
-    #pitch_plot.suptitle(f'Data for Period="{os.path.basename(dataParse.sim_file)}"')
+    pitch_plot = plt.figure(figsize=(12, 10))
+    pitch_plot.subplots_adjust(hspace=1.1)
+    #pitch_plot.suptitle('Data for Pitch Angle at Different Time Periods')
 
     for files in filenames:
         index = filenames.index(files) + 1
