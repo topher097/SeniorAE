@@ -1,11 +1,9 @@
-"""
-Author: Christopher Endres
-AE416, HW1, 9/25/19
-"""
+import sympy
+import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-class homeworkOne1:
+class homeworkOne:
 
     def __init__(self):
         self.filename = os.getcwd() + r'/BL_hw1.dat'
@@ -17,8 +15,6 @@ class homeworkOne1:
         self.x_tr = 0
         self.cfx_tr = 0
         self.Rec = 3 * 10**6
-        self.theta_c_array = []
-        self.drag_coeff = 0
 
     # Parse the data from the dat file
     def parse(self):
@@ -42,48 +38,13 @@ class homeworkOne1:
                 self.x_tr = self.xc[i+1]
                 self.cfx_tr = self.cfx[i+1]
                 break
-        plt.figure()
-        plt.plot(self.xc, self.cfx, label='Cfx', color='b')
-        plt.scatter(self.x_tr, self.cfx_tr, color='r', label='Transition Point')
-        plt.title('Cfx vs. x/c')
-        plt.xlabel('x/c')
-        plt.ylabel('Cfx')
-        plt.legend()
-        plt.draw()
-
-    # Calculate dimensionless momentum thickness (theta/c)
-    def momentumThickCalc(self):
-        # Integrate through data points to calculate d_theta/d_c
-        for i in range(0, len(self.xc)):
-            xc = self.xc[i]
-            cfx = self.cfx[i]
-            u_frac = self.U_frac[i]
-            H = self.H[i]
-            theta_c = .5*cfx*xc/(u_frac**2 * (H+3))
-            self.theta_c_array.append(theta_c)
-        plt.figure()
-        plt.plot(self.xc, self.theta_c_array, label='theta/c', color='b')
-        plt.title('theta/c vs. x/c')
-        plt.xlabel('x/c')
-        plt.ylabel('theta/c')
-        plt.legend()
-        plt.draw()
-
-    # Using Squire-Young formula to calculate drag coefficient
-    def dragCoefficient(self):
-        # Multiply the theta/c from before
-        theta_c = 2 * self.theta_c_array[-1]
-        U_frac = self.U_frac[-1]
-        H = self.H[-1]
-        self.drag_coeff = 2 * theta_c * U_frac**((H+5)/2)
-        print(self.drag_coeff)
+        plt.scatter(self.xc, self.cfx)
+        plt.scatter(self.x_tr, self.cfx_tr, color='r')
+        plt.show()
 
 
 if __name__ == '__main__':
-    hw1 = homeworkOne1()
-    hw1.parse()
-    hw1.transitionOccur()
-    hw1.momentumThickCalc()
-    hw1.dragCoefficient()
-    plt.show()
+    hw = homeworkOne()
+    hw.parse()
+    hw.transitionOccur()
 

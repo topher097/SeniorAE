@@ -18,7 +18,7 @@ import os
 curr_dir = os.getcwd()
 init_printing(use_unicode=True)
 
-filenames = [str(curr_dir) + i for i in [r'\flying.csv', r'\hand.csv']]
+filenames = [str(curr_dir) + i for i in [r'\Lab 1\hand.csv']]
 
 
 # Get the data, make sure the data is in the correct format
@@ -51,6 +51,10 @@ class dataCalculations:
         self.m_p = []
         self.m_r = []
         self.m_y = []
+        self.pitch_offset = 0
+        self.roll_offset = 0
+        self.yaw_offset = 0
+        self.yaw_cos = []
 
     # Parse the data from the CSV file
     def parse(self):
@@ -94,40 +98,8 @@ class dataCalculations:
         # Average
         self.run_rate = tot_run_rate/amount
 
-    # Calculate the IMU and MOCAP agreeability (Q2)
-    def calcAgree(self):
-
-        # Flip flop pitch and roll values for mocap
-        self.mocap_pitch = [i * -1 for i in self.mocap_pitch]
-        self.mocap_roll = [i * -1 for i in self.mocap_roll]
-
-        # Determine which yaw to plot (find which offset to use)
-        err = 0
-        for i in range(0, 20):
-            err += self.imu_yaw[i] - self.mocap_yaw[i]
-        error = int(round((err/20)/np.pi))
-        self.mocap_yaw = [1 * (i + error*np.pi) for i in self.mocap_yaw]
-
-        # Find the offset of the pitch plots
-        err = 0
-        for i in range(200, 500):
-            err += self.imu_pitch[i] - self.mocap_pitch[i]
-        pitch_offset = round(err/300, 3)
-        self.m_p = [(i + pitch_offset) for i in self.mocap_pitch]
-
-        # Find the offset of the roll plots
-        err = 0
-        for i in range(200, 500):
-            err += self.imu_roll[i] - self.mocap_roll[i]
-        roll_offset = round(err/300, 3)
-        self.m_r = [(i + roll_offset) for i in self.mocap_roll]
-
-        # Find the offset of the yaw plots
-        err = 0
-        for i in range(200, 500):
-            err += self.imu_yaw[i] - self.mocap_yaw[i]
-        yaw_offset = round(err/300, 3)
-        self.m_y = [(i + yaw_offset) for i in self.mocap_yaw]
+    # plot the IMU and MOCAP agreeability (Q2)
+    def plotAngles(self):
 
         # Plot pitch, roll, yaw for IMU and mocap
         fig = plt.figure(figsize=(15, 8))
@@ -139,7 +111,7 @@ class dataCalculations:
         a1.set_xlabel('Time (s)')
         a1.set_ylabel('Angle (rad)')
         a1.plot(self.time, self.imu_pitch, 'r', label='imu_pitch')
-        a1.plot(self.time, self.m_p, 'b', label=f'mocap_pitch, offset={pitch_offset}rad')
+        a1.plot(self.time, self.m_p, 'b', label=f'mocap_pitch, offset={self.pitch_offset}rad')
         a1.legend(loc='upper left')
 
         a2 = fig.add_subplot(312)
@@ -147,7 +119,7 @@ class dataCalculations:
         a2.set_xlabel('Time (s)')
         a2.set_ylabel('Angle (rad)')
         a2.plot(self.time, self.imu_roll, 'y', label='imu_roll')
-        a2.plot(self.time, self.m_r, 'g', label=f'mocap_roll, offset={roll_offset}rad')
+        a2.plot(self.time, self.m_r, 'g', label=f'mocap_roll, offset={self.roll_offset}rad')
         a2.legend(loc='upper left')
 
         a3 = fig.add_subplot(313)
@@ -155,10 +127,13 @@ class dataCalculations:
         a3.set_xlabel('Time (s)')
         a3.set_ylabel('Angle (rad)')
         a3.plot(self.time, self.imu_yaw, 'k', label='imu_yaw')
-        a3.plot(self.time, self.m_y, 'r', label=f'mocap_yaw, offset={yaw_offset}rad')
+        a3.scatter(self.time, self.m_y)
+        a3.plot(self.time, self.m_y, 'r', label=f'mocap_yaw, offset={self.yaw_offset}rad')
+        a3.plot(self.time, np.ones(len(self.time))*2*np.pi, 'y', label='2pi')
+        a3.plot(self.time, self.yaw_cos, 'orange', label='cos')
         a3.legend(loc='upper left')
 
-        #plt.show()
+        plt.show()
 
     # Determine if gyro is measuring angular velocity or angular rates (Q3)
     def angVelPlt(self):
@@ -177,7 +152,8 @@ class dataCalculations:
                                [0, cos(t_r), -sin(t_r)],
                                [0, sin(t_r), cos(t_r)]])
         self.R_1on0 = np.ndarray.tolist(np.linalg.multi_dot([R_0onyaw, R_yawonpitch, R_pitchon1]))
-        angvel_matrix_i = np.linalg.multi_dot([np.matrix.transpose(R_yawonpitch @ R_pitchon1), np.array([[0], [0], [1]])])
+        i_1 = R_yawonpitch.dot(R_pitchon1)
+        angvel_matrix_i = np.linalg.multi_dot([np.matrix.transpose(i_1), np.array([[0], [0], [1]])])
         angvel_matrix_j = np.linalg.multi_dot([np.transpose(R_pitchon1), np.array([[0], [1], [0]])])
         angvel_matrix = np.ndarray.tolist(np.array([[np.ndarray.tolist(angvel_matrix_i[0])[0], np.ndarray.tolist(angvel_matrix_j[0])[0], 1],
                                                    [np.ndarray.tolist(angvel_matrix_i[1])[0], np.ndarray.tolist(angvel_matrix_j[1])[0], 0],
@@ -246,16 +222,73 @@ class dataCalculations:
 
         plt.show()
 
+    # Take the angles which we get from the mocap and filter the data to unwrap angles
+    def filterAngles(self):
+        """
+        Since we know that mocap and IMU agree, relatively, we can use the IMU data and simple math to unwrap the mocap
+        angles to smooth the plots and angular rates/velocity data. First align data, then fix data wrapping
+        """
+        # Flip flop pitch and roll values for mocap
+        self.mocap_pitch = [i * -1 for i in self.mocap_pitch]
+        self.mocap_roll = [i * -1 for i in self.mocap_roll]
+
+        # Determine which yaw to plot (find which offset to use)
+        err = 0
+        for i in range(0, 20):
+            err += self.imu_yaw[i] - self.mocap_yaw[i]
+        yaw_error = int(round((err / 20) / np.pi))
+        self.mocap_yaw = [1 * (i + yaw_error * np.pi) for i in self.mocap_yaw]
+
+        # Find the offset of the pitch angles
+        err = 0
+        for i in range(200, 500):
+            err += self.imu_pitch[i] - self.mocap_pitch[i]
+        self.pitch_offset = round(err / 300, 3)
+        self.m_p = [(i + self.pitch_offset) for i in self.mocap_pitch]
+
+        # Find the offset of the roll angles
+        err = 0
+        for i in range(200, 500):
+            err += self.imu_roll[i] - self.mocap_roll[i]
+        self.roll_offset = round(err / 300, 3)
+        self.m_r = [(i + self.roll_offset) for i in self.mocap_roll]
+
+        # Find the offset of the yaw angles
+        err = 0
+        for i in range(200, 500):
+            err += self.imu_yaw[i] - self.mocap_yaw[i]
+        self.yaw_offset = round(err / 300, 3)
+        self.m_y = [(i + self.yaw_offset) for i in self.mocap_yaw]
+
+        # Now, unwrap the angles (only yaw)
+        for i in range(1, len(self.time)-1):
+
+            # Yaw Angles
+            pre_i_y = self.imu_yaw[i-1]
+            pre_m_y = self.m_y[i-1]
+            i_y = self.imu_yaw[i]
+            m_y = self.m_y[i]
+            # Check if angle is wrapped, fix data
+            if m_y >= (np.pi-self.mocap_yaw[0]):
+                self.m_y[i] = m_y - 2*np.pi
+            if i_y >= (np.pi-self.imu_yaw[0]):
+                self.imu_yaw[i] = i_y - 2*np.pi
+
+        for i in range(0, len(self.time)):
+            self.yaw_cos.append(np.sin(self.mocap_yaw[i])+np.cos(self.mocap_yaw[i])-np.cos(self.mocap_yaw[0]))
+
+
 # Run the script
 if __name__ == '__main__':
     for filename in filenames:
         # Initialize class variables
         obj = dataCalculations(filename)
-        # Parse the data
+        # Parse the data, correct it
         obj.parse()
+        obj.filterAngles()
         # Calc on-board run rate (Q1)
         obj.calcRun()
         print(f'On-board run rate for {os.path.basename(filename)} = {round(obj.run_rate/1000, 2)} kHz')
         # Plot IMU and MOCAP yaw, pitch, and roll (Q2) to show agreeability
-        obj.calcAgree()
-        obj.angVelPlt()
+        obj.plotAngles()
+        #obj.angVelPlt()
