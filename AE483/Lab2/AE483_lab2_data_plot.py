@@ -13,7 +13,7 @@ curr_dir = os.getcwd()
 init_printing(use_unicode=True)
 
 # Get list of filenames to run through the parser
-data_location = str(curr_dir) + '\\Lab 2 Data\\'
+data_location = str(curr_dir) + '\\Lab2_Data\\'
 filename_base = ['period', 'Simulation']
 commonator = ['_1', '_2', '_3', '_5', '_50']
 filename_ext = '.csv'
@@ -22,44 +22,8 @@ filenames = [(data_location + filename_base[0] + i + filename_ext, data_location
 
 # Class to parse data from specific files, store to lists for analysis or plotting
 class dataParse:
-    # Initialise variables
-    gs_file = ''
-    sim_file = ''
-    parsedGS = {}
-    gs_time = []
-    gs_time_cut = 0
-    gyro_x = []
-    gyro_y = []
-    gyro_z = []
-    imu_pitch = []
-    imu_roll = []
-    imu_yaw = []
-    counter_list = []
-    x = []
-    y = []
-    z = []
-    mocap_pitch = []
-    mocap_roll = []
-    mocap_yaw = []
-    mocap_pitch_offset = 0
-    mocap_roll_offset = 0
-    mocap_yaw_offser = 0
-    mocap_pitch_filter = []
-    mocap_roll_filter = []
-    mocap_yaw_filter = []
-    gs_pitch_desired = []
-    mu1 = []
-    mu2 = []
 
-    # Simulation data
-    parsedSim = {}
-    sim_time = []
-    sim_time_cut = 0
-    sim_pitch_desired = []
-    sim_pitch = []
-    sim_angvel_pitch = []
-    sim_u2 = []
-
+    # Initialise class variables
     def __init__(self, file_inputs):
         dataParse.gs_file = file_inputs[0]
         dataParse.sim_file = file_inputs[1]
@@ -82,7 +46,7 @@ class dataParse:
         dataParse.mocap_yaw = []             # raw mocap yaw
         dataParse.mocap_pitch_offset = 0     # mocap pitch data offset
         dataParse.mocap_roll_offset = 0      # mocap roll data offset
-        dataParse.mocap_yaw_offser = 0       # mocap yaw data offset
+        dataParse.mocap_yaw_offset = 0       # mocap yaw data offset
         dataParse.mocap_pitch_filter = []    # filtered mocap pitch
         dataParse.mocap_roll_filter = []     # filtered mocap roll
         dataParse.mocap_yaw_filter = []      # filtered mocap yaw
@@ -135,8 +99,6 @@ class dataParse:
             if time - plot_time >= 0:
                 dataParse.gs_time_cut = dataParse.gs_time.index(time)
                 break
-
-
 
     # Parse the data from the CSV file from the simulation
     def parseSimuation(self):
@@ -197,7 +159,7 @@ class dataParse:
         dataParse.mocap_yaw_filter = [(i + dataParse.mocap_yaw_offset) for i in dataParse.mocap_yaw]
         
 
-# Class to plot the data
+# Class to plot the data (from dataParse)
 class dataPlot(dataParse):
     def __init__(self):
         pass
@@ -221,6 +183,7 @@ class dataPlot(dataParse):
 
 
 if __name__ == '__main__':
+    # Set global variables
     global index
     global pitch_plot
     global plot_time

@@ -1,12 +1,12 @@
 from sympy import *
-from AE483.AE483_lab1_report import dataCalculations
+from AE483.Lab1.AE483_lab1_report import dataCalculations
 
 
-class rotationMatrixCalc(self):
+class rotationMatrixCalc:
     def __init__(self):
         self.data = dataCalculations.parse(self)
 
-    def rotationCalc(selfs):
+    def rotationCalc(self):
         # Calculate the rotation matrix for the mocap values
         t_y = Symbol('t_yaw')
         t_p = Symbol('t_pitch')

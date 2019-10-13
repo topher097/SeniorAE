@@ -27,7 +27,7 @@ v_fit = v_function(rpm_space)
 # Create latex legend for polynomial
 x = Symbol('x')
 poly = sum(S("{:6.3f}".format(v))*x**i for i, v in enumerate(v_interp[::-1]))
-eq_latex = 'V =' + str(sympy.printing.latex(poly))
+eq_latex = 'V = ' + str(sympy.printing.latex(poly))
 print(eq_latex)
 
 # Plot data and fitted polynomial
