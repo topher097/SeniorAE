@@ -43,15 +43,14 @@ class homeworkOne:
         plt.figure()
         plt.plot(self.xc, self.cfx, label='Cfx')
         plt.scatter(self.x_tr, self.cfx_tr, color='r', label='Transition Point')
-        plt.title('Cfx vs. x/c')
-        plt.xlabel('x/c')
-        plt.ylabel('Cfx')
+        plt.title('$C_{f_x}$ vs. $\\frac{x}{c}$', fontsize=18)
+        plt.xlabel('$\\frac{x}{c}$', fontsize=18)
+        plt.ylabel('$C_{f_x}$', fontsize=18)
         plt.draw()
 
     # Calc dimensionless momentum thickness (corrected)
     def momThick(self):
         dUe = np.diff(self.Ue)/np.diff(self.xc)
-        print(dUe)
         dx = np.diff(self.xc)
         N = len(self.xc)
         self.dth = [0*i for i in range(0, N-1)]
@@ -64,16 +63,16 @@ class homeworkOne:
 
         plt.figure()
         plt.plot(self.xc, self.th, label='mom_thick')
-        plt.title('\u03B8/c vs. x/c')
-        plt.xlabel('x/c')
-        plt.ylabel('\u03B8/c')
+        plt.title('$\\frac{\\theta}{c}$ vs. $\\frac{x}{c}$', fontsize=18)
+        plt.xlabel('$\\frac{x}{c}$', fontsize=18)
+        plt.ylabel('$\\frac{\\theta}{c}$', fontsize=18)
         plt.draw()
 
     # Using Squire-young formula to calculate drag coeffcient
     def dragCoef(self):
         # Multiply the theta/c from before
         Cd = 2 * 2*self.th[-1] * self.Ue[-1]**((5 + self.H[-1])/2)
-        print(f'Draw Coefficient (Cd) = {Cd}')
+        print(f'Drag Coefficient (Cd) = {Cd}')
 
 
 if __name__ == '__main__':

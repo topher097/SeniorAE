@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="126dce4b-fe0f-4237-a991-b4ae7139c367" name="Default Changelist" comment="" />
+    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/AE416/HW_1/AE416_hw1.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE416/HW_1/AE416_hw1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE460/AE460_lab2.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE460/Lab2/AE460_lab2.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -15,31 +22,90 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>time</find>
+      <find>.m_r</find>
+      <find>self</find>
+      <find>data.</find>
+      <find>dataParse.</find>
+      <find>dataParse</find>
+      <find>fix</find>
+      <find>U_frac</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>.mocap_roll_filter</replace>
+      <replace>data</replace>
+      <replace>dataParse.</replace>
+      <replace>self</replace>
+      <replace>error</replace>
+      <replace>Ue</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/AE483/Report_1.py" />
+        <option value="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2.py" />
+        <option value="$PROJECT_DIR$/AE483/Lab 1/AE483_lab1_report.py" />
+        <option value="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2_data_plot.py" />
+        <option value="$PROJECT_DIR$/AE483/Lab2/AE483_lab2_data_plot.py" />
+        <option value="$PROJECT_DIR$/AE460/Lab4/force_data.csv" />
+        <option value="$PROJECT_DIR$/AE460/Lab4/AE460_lab4_plot.py" />
+        <option value="$PROJECT_DIR$/AE416/HW_1/AE416_hw1.py" />
+        <option value="$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectId" id="1QnkpQFwfjmn8QooYtXSEP5Y0zZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SeniorAE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SeniorAE" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE442/442_HW5.P2.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scratch/metadata" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\Scratch" />
-      <recent name="C:\Python\SeniorAE\AE460\Lab2" />
-      <recent name="C:\Python\SeniorAE\AE442\HW_2" />
-      <recent name="C:\Python\SeniorAE\AE442\HW_5" />
-      <recent name="C:\Python\SeniorAE\AE433\HW_2" />
+      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab2" />
+      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab4" />
+      <recent name="C:\Python\SeniorAE\AE416" />
+      <recent name="C:\Python\SeniorAE\AE483" />
+      <recent name="C:\Python\SeniorAE\AE483\Lab 1" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\AE442" />
-      <recent name="C:\Python\SeniorAE\AE483\Lab 2" />
+      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab4" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -54,7 +120,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.442_HW5.P2">
+  <component name="RunManager" selected="Python.AE416_hw1">
     <configuration name="433_HW1.1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,27 +163,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="442_HW5.P2" type="PythonConfigurationType" factoryName="Python">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE442" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE442/HW_5/442_HW5.P2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="AE416_hw1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,11 +171,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE416" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE416/HW_1" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Python\SeniorAE\AE416\HW_1\AE416_hw1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE416/HW_1/AE416_hw1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,7 +184,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AE416_hw2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="AE460_lab4_plot" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,11 +192,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE416/HW_2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE460/Lab4" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE460/Lab4/AE460_lab4_plot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -160,7 +205,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AE460_lab2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="AE483_lab2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -168,32 +213,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE460" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483/Lab 2" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Python\SeniorAE\AE460\Lab2\AE460_lab2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE483_lab1_report" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Python\SeniorAE\AE483\Lab 1\AE483_lab1_report.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -210,11 +234,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483/Lab2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483/Lab 2" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE483/Lab2/AE483_lab2_data_plot.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE483/Lab 2/AE483_lab2_data_plot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Report_1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE483/Report_1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -224,14 +269,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.AE460_lab2" />
-      <item itemvalue="Python.433_HW2.1" />
-      <item itemvalue="Python.AE483_lab1_report" />
-      <item itemvalue="Python.AE416_hw1" />
-      <item itemvalue="Python.AE483_lab2_data_plot" />
-      <item itemvalue="Python.AE416_hw2" />
-      <item itemvalue="Python.442_HW5.P2" />
       <item itemvalue="Python.433_HW1.1" />
+      <item itemvalue="Python.433_HW2.1" />
+      <item itemvalue="Python.AE416_hw1" />
+      <item itemvalue="Python.AE460_lab4_plot" />
+      <item itemvalue="Python.AE483_lab2" />
+      <item itemvalue="Python.AE483_lab2_data_plot" />
+      <item itemvalue="Python.Report_1" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -239,7 +283,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="126dce4b-fe0f-4237-a991-b4ae7139c367" name="Default Changelist" comment="" />
+      <changelist id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="" />
       <created>1567707283754</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -280,43 +324,44 @@
       <option name="project" value="LOCAL" />
       <updated>1569042130854</updated>
     </task>
-    <task id="LOCAL-00006" summary="finish AE316 Hw1">
-      <created>1569389709615</created>
+    <task id="LOCAL-00006" summary="finish AE483 report 2">
+      <created>1570844940162</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1569389709615</updated>
+      <updated>1570844940162</updated>
     </task>
-    <task id="LOCAL-00007" summary="AE483 lab2">
-      <created>1570835907997</created>
+    <task id="LOCAL-00007" summary="update">
+      <created>1571365572125</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1570835907997</updated>
+      <updated>1571365572125</updated>
     </task>
-    <task id="LOCAL-00008" summary="AE483 lab2 Final">
-      <created>1570907538571</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1570907538571</updated>
-    </task>
-    <task id="LOCAL-00009" summary="AE416 HW 2">
-      <created>1570981823714</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1570981823714</updated>
-    </task>
-    <task id="LOCAL-00010" summary="organize">
-      <created>1571435410790</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1571435410790</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2457265" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25820568" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32827735" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -324,8 +369,28 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
@@ -336,11 +401,71 @@
     <MESSAGE value="finish AE433 HW1.1" />
     <MESSAGE value="finish AE433 HW2.1" />
     <MESSAGE value="finish AE483 report 1" />
-    <MESSAGE value="finish AE316 Hw1" />
-    <MESSAGE value="AE483 lab2" />
-    <MESSAGE value="AE483 lab2 Final" />
-    <MESSAGE value="AE416 HW 2" />
-    <MESSAGE value="organize" />
-    <option name="LAST_COMMIT_MESSAGE" value="organize" />
+    <MESSAGE value="finish AE483 report 2" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/AE460/Lab 2.py" />
+    <entry file="file://$PROJECT_DIR$/AE483/Report_1.py" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/AE483_lab2.py" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Km_data.csv" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Kf_data.csv" />
+    <entry file="file://$PROJECT_DIR$/AE416/AE416_hw1.py" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_5.csv" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_1.csv" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_2.csv" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_3.csv" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/Simulation_0.5.csv" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 1/AE483_lab1_report.py" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/AE483_lab2_data_plot.py" />
+    <entry file="file://$PROJECT_DIR$/AE483/Lab 2/Lab 2 Data/period_0.5.csv" />
+    <entry file="file://$PROJECT_DIR$/AE460/Lab4/force_data.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AE483/Lab2/AE483_lab2_data_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="167" column="24" lean-forward="true" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AE460/Lab4/AE460_lab4_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="49" column="83" selection-start-line="49" selection-start-column="83" selection-end-line="49" selection-end-column="83" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AE416/HW_1/BL_hw1.dat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AE416/HW_1/AE416_hw1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="66" column="44" lean-forward="true" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2106">
+          <caret line="117" column="48" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

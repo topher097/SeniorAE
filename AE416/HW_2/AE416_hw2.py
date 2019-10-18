@@ -109,13 +109,13 @@ class problemOne:
 
     # Plot data
     def plotData(self):
-        mom_poly_text = r'\Theta_{polynomial_{x=l}}'
+        mom_poly_text = r'\theta_{polynomial_{x=l}}'
         disp_poly_text = r'\delta^{*}_{polynomial_{x=l}}'
-        mom_blasius_text = r'\Theta_{Blasius_{x=l}}'
+        mom_blasius_text = r'\theta_{Blasius_{x=l}}'
         disp_blasius_text = r'\delta^{*}_{Blasius_{x=l}}'
         disp_dif_text = r'\Delta\Theta'
         mom_dif_text = r'\Delta\delta^{*}'
-        avg_disp_dif_text = r'\overline{\Delta\Theta}'
+        avg_disp_dif_text = r'\overline{\Delta\theta}'
         avg_mom_dif_text = r'\overline{\Delta\delta^{*}}'
         bl_text = r'\delta_{x=l}'
 
