@@ -3,6 +3,7 @@ from sympy import *
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # Homework 2, Problem 1
 class problemOne:
     """
@@ -57,7 +58,6 @@ class problemOne:
 
         # Boundary layer thickness at x = l (laminar)
         self.bl_thick = (4.91 * self.length) / sqrt(self.re)        # m
-
 
     # Problem One
     def secA(self):
@@ -156,45 +156,6 @@ class problemOne:
         a2.legend(loc='upper right')
         plt.show()
 
-# Homework 2, Problem 3
-class problemThree:
-    """
-    (50%) You are an engineer in charge of the horizontal tail design of a general aviation
-    aircraft. In order to set the tail incidence you must first determine the apparent angle of
-    attack seen by the tail. Since the wing upstream of the tail is producing lift, you realize
-    that there will be a relative downwash created by the circulation produced by the wing.
-    a)  Given the geometry of the horseshoe vortex (below), show that the downwash
-        velocity along the aircraft centerline can be expressed (in terms of Γ, l, and d) as:
-            - w = rho/pi*l ( (l/4ad) + (d/a) + 1), where a = sqrt((l/d)^2 + d^2)
-    b)  Assume that your aircraft is similar to a Piper Cherokee. Using the data provided,
-        estimate the flow inclination angle, θ, between the freestream flow direction and
-        the direction of flow at the tail under cruise conditions at an altitude of 10,000 ft.
-        Ignore the circulation effects at the tail and assume a single horseshoe vortex.
-        (Hint: L = lρV∞Γ)
-            - Weight (W) = 2400 lb
-            - Flight Velocity (V∞) = 100 mph
-            - Wing span (b) = 30 ft
-            - Effective span (l) = 0.85b
-            - Distance from wing c/4 to LE of HSTAB (d) = 12.65 ft
-    """
-    # Initialize parameters
-    def __init__(self):
-        self.a = 0                  #
-        self.w = 0                  #
-        self.circulation = 0
-        self.l = 0
-        self.d = 0
-        self.v_inf = 0
-        self.weight = 0
-
-    # Calculate parameters
-    def paramCalc(self):
-        self.a = sqrt((self.l/2)**2 + self.d**2)
-
-    # Section B
-    def secB(self):
-        pass
-
 
 if __name__ == '__main__':
     hw2_1 = problemOne()        # Homework 2, Problem 1
@@ -204,6 +165,3 @@ if __name__ == '__main__':
     hw2_1.differenceCalc()      # Calculate Difference
     hw2_1.plotData()            # Plot data
 
-    hw2_3 = problemThree()      # Homework 2, Problem 3
-    hw2_3.paramCalc()           # Calculate parameters
-    hw2_3.secB()                # Run section B
