@@ -1,14 +1,20 @@
 import os
 import shutil
 import zipfile
+import lxml
+import csv
+import xlrd
+import pandas as pd
 
 
 class clearMetadata:
 
     # Initialize variables
     def __init__(self, directory_path):
+        self.excel_ext = ['.xlsx', '.xls']
+        self.word_ext = ['.docx', '.doc']
         self.dpath = directory_path
-        self.clear_ext = ['.docx', '.xlsx', '.pdf']
+        self.clear_ext = ['.pdf'] + self.excel_ext + self.word_ext
         self.clean_list = []
         self.current_dir = os.getcwd()
 
@@ -28,26 +34,39 @@ class clearMetadata:
     def findFiles(self):
         for root, dpath, files in os.walk(self.dpath):
             for file in files:
-                #print(os.path.join(root, file))
                 file_basename, file_extension = os.path.splitext(os.path.basename(file))
-                if file_extension in self.clear_ext:
-                    print(f'{file_basename} may have metadata')
+                if file_extension in self.clear_ext and '_COPY' not in file_basename:
+                    print(f'"{file}" may have metadata')
                     self.clean_list.append(file)
 
-    # Clear metadata by copying files (rename with '_COPY')
+    # Clear metadata by re-writing or printing as pdf
     def cleanFiles(self):
         for file in self.clean_list:
-            file_path = os.path.dirname(file)
             file_basename, file_ext = os.path.splitext(os.path.basename(file))
-            new_file_name = file_basename + r'_COPY' + file_ext
-            shutil.copyfile(file, os.path.join(file_path, new_file_name))
+
+            # Clean the excel file by converting to csv
+            if file_ext in self.excel_ext:
+                print(f'Converting "{file}" to a .csv file')
+                excel = pd.ExcelFile(file)
+                sheet_names = excel.sheet_names
+                for sheet in sheet_names:
+                    excel_data = excel.parse(sheet)
+                    if not excel_data.empty:
+                        csv_file = file_basename + '_' + sheet + '.csv'
+                        excel_data.to_csv(csv_file, sep=',', encoding='utf-8', index=False)
+
+            # Clean word file by printing to pdf
+            if file_ext in self.word_ext:
+                pdf_file = file_basename + '_wordconvert.PDF'
+
 
 
 # Run the cleaner
 if __name__ == '__main__':
     # Specify directory which you want to search
-    directory_path = r'C:\Users\TOPHER-LAPTOP\Desktop\Test_Scripts\AE483_Lab2_Materials'
+    directory_path = r'C:\Python\SeniorAE\scratch\metadata\AE483_Lab2_Materials'
 
+    # Clean files
     clean = clearMetadata(directory_path)
     clean.unZipFiles()
     clean.findFiles()
