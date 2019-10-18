@@ -10,11 +10,13 @@ class homeworkOne:
         self.parsed = {}
         self.xc = []
         self.cfx = []
-        self.U_frac = []
+        self.Ue = []
         self.H = []
         self.x_tr = 0
         self.cfx_tr = 0
         self.Rec = 3 * 10**6
+        self.th = []
+        self.dth = []
 
     # Parse the data from the dat file
     def parse(self):
@@ -28,7 +30,7 @@ class homeworkOne:
                 # Save data to class lists
                 self.xc.append(data[0])
                 self.cfx.append(data[1])
-                self.U_frac.append(data[2])
+                self.Ue.append(data[2])
                 self.H.append(data[3])
 
     # Find the chord location where the transition occurs
@@ -38,13 +40,47 @@ class homeworkOne:
                 self.x_tr = self.xc[i+1]
                 self.cfx_tr = self.cfx[i+1]
                 break
-        plt.scatter(self.xc, self.cfx)
-        plt.scatter(self.x_tr, self.cfx_tr, color='r')
-        plt.show()
+        plt.figure()
+        plt.plot(self.xc, self.cfx, label='Cfx')
+        plt.scatter(self.x_tr, self.cfx_tr, color='r', label='Transition Point')
+        plt.title('Cfx vs. x/c')
+        plt.xlabel('x/c')
+        plt.ylabel('Cfx')
+        plt.draw()
+
+    # Calc dimensionless momentum thickness (corrected)
+    def momThick(self):
+        dUe = np.diff(self.Ue)/np.diff(self.xc)
+        print(dUe)
+        dx = np.diff(self.xc)
+        N = len(self.xc)
+        self.dth = [0*i for i in range(0, N-1)]
+        self.th = [0*i for i in range(0, N)]
+        self.th[0] = 0
+
+        for i in range(1, N-1):
+            self.dth[i] = self.cfx[i]/2 - self.th[i]/self.Ue[i] * (self.H[i]+2)*dUe[i]
+            self.th[i+1] = self.th[i] + self.dth[i]*dx[i]
+
+        plt.figure()
+        plt.plot(self.xc, self.th, label='mom_thick')
+        plt.title('\u03B8/c vs. x/c')
+        plt.xlabel('x/c')
+        plt.ylabel('\u03B8/c')
+        plt.draw()
+
+    # Using Squire-young formula to calculate drag coeffcient
+    def dragCoef(self):
+        # Multiply the theta/c from before
+        Cd = 2 * 2*self.th[-1] * self.Ue[-1]**((5 + self.H[-1])/2)
+        print(f'Draw Coefficient (Cd) = {Cd}')
 
 
 if __name__ == '__main__':
     hw = homeworkOne()
     hw.parse()
     hw.transitionOccur()
+    hw.momThick()
+    hw.dragCoef()
+    plt.show()
 
