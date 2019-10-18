@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="126dce4b-fe0f-4237-a991-b4ae7139c367" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AE442/HW_5/442_HW5.P2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE416/HW_2/AE416_hw2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE433/433_HW1.1.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE433/HW_1/433_HW1.1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE433/433_HW2.1.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE433/HW_2/433_HW2.1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/442_HW2.380.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_2/442_HW2.380.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/442_HW2.747.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_2/442_HW2.747.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/442_HW2.777.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_2/442_HW2.777.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE460/AE460_lab2.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE460/Lab2/AE460_lab2.py" afterDir="false" />
-    </list>
+    <list default="true" id="126dce4b-fe0f-4237-a991-b4ae7139c367" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570981823714</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="organize">
+      <created>1571435410790</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571435410790</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,6 +340,7 @@
     <MESSAGE value="AE483 lab2" />
     <MESSAGE value="AE483 lab2 Final" />
     <MESSAGE value="AE416 HW 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="AE416 HW 2" />
+    <MESSAGE value="organize" />
+    <option name="LAST_COMMIT_MESSAGE" value="organize" />
   </component>
 </project>
