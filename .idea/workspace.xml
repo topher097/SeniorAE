@@ -2,58 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/AE483_lab2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/AE483_lab2_data_plot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/AE483_lab2_kf_km.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Kf_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Km_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Motor spin rate data.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Simulation_0.5.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Simulation_1.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Simulation_2.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Simulation_3.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/Simulation_5.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/ae483_01_findeoms.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/ae483_02_docontroldesign.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/ae483_03_simulate.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/ae483_04_experiment.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/ae483_test.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/alphabeta.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/lab1_visualize.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/period_0_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/period_1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/period_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/period_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/period_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/pitch_test_video.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/AE483_lab2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/AE483_lab2_data_plot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/AE483_lab2_kf_km.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Kf_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Km_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Motor spin rate data.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Simulation_0.5.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Simulation_1.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Simulation_2.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Simulation_3.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/Simulation_5.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/ae483_01_findeoms.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/ae483_02_docontroldesign.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/ae483_03_simulate.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/ae483_04_experiment.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/ae483_test.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/alphabeta.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/lab1_visualize.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/period_0_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/period_1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/period_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/period_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/period_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/pitch_test_video.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/test.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials/test.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY/test.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/metadata/clear_metadata.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/metadata/clear_metadata.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,22 +52,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scratch/metadata/AE483_Lab2_Materials_LEGACY" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\scratch\metadata\AE483_Lab2_Materials" />
-      <recent name="C:\Python\SeniorAE\scratch\metadata" />
-      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab4" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Python\SeniorAE\scratch\metadata" />
       <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab2" />
       <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab4" />
       <recent name="C:\Python\SeniorAE\AE416" />
       <recent name="C:\Python\SeniorAE\AE483" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\scratch\metadata\AE483_Lab2_Materials_LEGACY" />
+      <recent name="C:\Python\SeniorAE\scratch\metadata\AE483_Lab2_Materials" />
+      <recent name="C:\Python\SeniorAE\scratch\metadata" />
+      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE460\Lab4" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -380,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571365572125</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="metadata">
+      <created>1571439981238</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571439981238</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -417,6 +377,7 @@
     <MESSAGE value="finish AE483 report 1" />
     <MESSAGE value="finish AE483 report 2" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="metadata" />
+    <option name="LAST_COMMIT_MESSAGE" value="metadata" />
   </component>
 </project>
