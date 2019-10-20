@@ -1,0 +1,4 @@
+pandas
+comtypes
+zipfile
+pyPdf2
