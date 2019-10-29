@@ -5,6 +5,7 @@ import comtypes.client
 import time
 import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
+import docx
 
 
 class clearMetadata:
@@ -78,8 +79,46 @@ class clearMetadata:
                 clearMetadata.cleanExcel(self)
             # Clean the word file by saving as PDF
             if self.file_ext in self.word_ext:
-                clearMetadata.cleanWord(self, word)
+                #clearMetadata.cleanWord(self, word)
+                clearMetadata.cleanWord2(self)
         word.Quit()     # Quit Word Application
+
+    # Clean word files by converting to a txt file.
+    def cleanWord2(self):
+        try:
+            self.word_counter += 1
+            start_time = time.time()
+
+            # Save word file as a PDf
+            pdf_file_temp = 'temp.PDF'
+            pdf_file = self.file_basename + f'_wordconvert{self.word_counter}.PDF'      # New name for PDF file
+            # read word file
+            # save to a string
+            # write to a pdf
+
+            # Modify PDF metadata
+            with open(pdf_file_temp, 'rb') as p:
+                pdf = PdfFileReader(p)
+                writer = PdfFileWriter()
+                for page in range(pdf.getNumPages()):
+                    writer.addPage(pdf.getPage(page))
+                writer.addMetadata(self.new_pdf_metadata)
+                with open(pdf_file, 'wb') as f2:
+                    writer.write(f2)
+                p.close()
+
+            os.remove(pdf_file_temp)    # Remove temp pdf file
+            os.remove(self.file)
+            end_time = time.time()
+            total_time = end_time - start_time
+            print_string = f'Converted "{self.file_basename + self.file_ext}" to "{pdf_file}" ' \
+                           f'in {round(total_time * 1000, 4)} ms'
+            print(print_string)
+            self.info_text += str(print_string + '\n')
+        except Exception as e:
+            print_string = f'Cound not clean "{self.file_basename + self.file_ext}", error: {str(e)}'
+            print(print_string)
+            self.info_text += '*' + str(print_string) + '\n'
 
     # Clean word file by saving as pdf and changing metadata
     def cleanWord(self, word):
