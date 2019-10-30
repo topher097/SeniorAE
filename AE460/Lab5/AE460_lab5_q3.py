@@ -97,7 +97,7 @@ class dataParse:
         a3 = mol_plot.add_subplot(1, 1, 1)
         #a3.set_title(mol_title_name, fontsize=18)
         a3.set_xlabel('Molecular Weight $[\\frac{g}{mol}]$', fontsize=18)
-        a3.set_ylabel('Number of Emmission Lines', fontsize=18)
+        a3.set_ylabel('Number of Emission Lines', fontsize=18)
         a3.ticklabel_format(axis='y', style='sci', scilimits=(-2, 2))
         #a3.grid()
 

@@ -5,7 +5,7 @@ import comtypes.client
 import time
 import shutil
 from PyPDF2 import PdfFileReader, PdfFileWriter
-import docx
+import docx2txt
 
 
 class clearMetadata:
@@ -36,6 +36,7 @@ class clearMetadata:
         try:
             shutil.rmtree(self.dpath)
         except Exception:
+            print('cannot remove folder')
             pass
         with zipfile.ZipFile(self.legpath, 'r') as zip_ref:
             zip_ref.extractall(self.current_dir)
@@ -51,7 +52,9 @@ class clearMetadata:
                 zip_ref.extractall(self.dpath)          # extract file to dir
                 zip_ref.close()                         # close file
                 os.remove(file_name)                    # delete zipped file
-                print(f'Un-zipped {item}')
+                print_string = f'Un-zipped {item}'
+                self.info_text += str(print_string) + '\n'
+                print(print_string)
 
     # Find the files which may contain metadata, store path to file in a list
     def findFiles(self):
@@ -85,38 +88,49 @@ class clearMetadata:
 
     # Clean word files by converting to a txt file.
     def cleanWord2(self):
+        error_string = ''
         try:
             self.word_counter += 1
             start_time = time.time()
 
-            # Save word file as a PDf
-            pdf_file_temp = 'temp.PDF'
-            pdf_file = self.file_basename + f'_wordconvert{self.word_counter}.PDF'      # New name for PDF file
-            # read word file
-            # save to a string
-            # write to a pdf
+            # Create directory to save the docx stuff to (images, hyperlinks, etc.)
+            image_folder = os.path.join(self.root, self.file_basename + f'_images{self.word_counter}')
+            if os.path.exists(image_folder):
+                try:
+                    os.remove(image_folder)
+                except Exception as error:
+                    error_string = error_string + str(error)
+                    pass
+            else:
+                try:
+                    os.makedirs(image_folder)
+                except Exception as error:
+                    error_string = error_string + str(error)
+                    pass
+            try:
+                text = docx2txt.process(self.file, image_folder)          # Get the data from docx file
+            except Exception as error:
+                error_string = error_string + str(error)
+                text = ''
+                pass
 
-            # Modify PDF metadata
-            with open(pdf_file_temp, 'rb') as p:
-                pdf = PdfFileReader(p)
-                writer = PdfFileWriter()
-                for page in range(pdf.getNumPages()):
-                    writer.addPage(pdf.getPage(page))
-                writer.addMetadata(self.new_pdf_metadata)
-                with open(pdf_file, 'wb') as f2:
-                    writer.write(f2)
-                p.close()
+            # Create the text file
+            new_file_name = os.path.join(self.root, self.file_basename + f'_converted{self.word_counter}.txt')
 
-            os.remove(pdf_file_temp)    # Remove temp pdf file
+            with open(new_file_name, 'wt') as textfile:
+                textfile.write(text)
+
             os.remove(self.file)
             end_time = time.time()
             total_time = end_time - start_time
-            print_string = f'Converted "{self.file_basename + self.file_ext}" to "{pdf_file}" ' \
+            print_string = f'Converted "{self.file_basename + self.file_ext}" to "{os.path.basename(new_file_name)}" ' \
                            f'in {round(total_time * 1000, 4)} ms'
             print(print_string)
             self.info_text += str(print_string + '\n')
         except Exception as e:
-            print_string = f'Cound not clean "{self.file_basename + self.file_ext}", error: {str(e)}'
+            error_string = error_string + str(e)
+            print_string = f'Cound not clean "{self.file_basename + self.file_ext}", error: {str(error_string)}, removed file'
+            os.remove(self.file)
             print(print_string)
             self.info_text += '*' + str(print_string) + '\n'
 
@@ -178,7 +192,8 @@ class clearMetadata:
                     self.info_text += str(print_string + '\n')
             os.remove(self.file)
         except Exception as e:
-            print_string = f'Cound not clean "{self.file_basename + self.file_ext}", error: {str(e)}'
+            print_string = f'Cound not clean "{self.file_basename + self.file_ext}", error: {str(e)}, removed file'
+            os.remove(self.file)
             print(print_string)
             self.info_text += '*' + str(print_string) + '\n'
 
@@ -193,7 +208,7 @@ class clearMetadata:
 # Run the cleaner
 if __name__ == '__main__':
     # Specify directory which you want to search
-    directory_path = r'C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\scratch\metadata\AE483_Lab2_Materials_LEGACY'
+    directory_path = r'C:\Python\SeniorAE\scratch\metadata\AE483_Lab2_Materials'
     #directory_path = r'C:\\path\to\folder\of\files'
 
     # Clean files
