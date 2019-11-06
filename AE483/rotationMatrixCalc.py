@@ -1,4 +1,5 @@
 from sympy import *
+import numpy as np
 from AE483.Lab1.AE483_lab1_report import dataCalculations
 
 
@@ -24,7 +25,6 @@ class rotationMatrixCalc:
         self.R_1on0 = np.ndarray.tolist(np.linalg.multi_dot([R_0onyaw, R_yawonpitch, R_pitchon1]))
 
         # Transform the mocap to the drone frame with R0on1
-
         for i in range(0, len(self.time)):
             mocap_angles = Matrix([self.mocap_yaw[i], self.mocap_pitch[i], self.mocap_roll[i]])
             R_0on1 = Matrix(self.R_1on0).subs([(t_y, mocap_angles[0]), (t_p, mocap_angles[1]), (t_r, mocap_angles[2])])
