@@ -16,7 +16,7 @@ problem1:
     c. Assuming that Gamma = gamma * ds (gamma const across panel), compare gamma dist. produced by the four panel
        dists. from part a. Where are the dists. consistent and different b/w these panel distributions
 problem2:
-- Predict the lift and quarter chord pitching moment characteristics, as well as the zero lift aoa, for an NACA 23012
+- Predict the lift and quarter chord pitching moment characteristics, as well as the zero lift aoa, for a NACA 23012
   airfoil at aoa of 10 deg. The camberline dist. for this airfoil can be expressed as:
             yc = k/6(x^3 - 3mx^2 + m^2(3-m)x) for 0 < x < m
                = (km^3)/6 * (1-x) for m < x < 1
@@ -53,6 +53,7 @@ class vortexPanels():
         self.chord_length = params['chord']     # Chord length of airfoil (m)
         self.camber_plot = []                   # Sets of x and y to plot the camber line
         self.problem = params['problem']        # Sets name of problem
+        self.plot_colors = ['r', 'b', 'y', 'g', 'm', 'c', 'orange']
 
     # Solve the lumped vortex method to get the gammas for each panel and total gamma on airfoil
     def solvePanels(self):
@@ -67,32 +68,52 @@ class vortexPanels():
                 # Initialize matrices
                 A = np.empty((self.panel_num, self.panel_num))
                 B = np.empty((self.panel_num, 1))
-                for q in range(0, self.panel_num):
+                for q in range(1, self.panel_num+1):
                     x_vq = panel_dict[q]['v'][0]
                     y_vq = panel_dict[q]['v'][1]
                     theta_p = panel_dict[q]['theta_p']
                     v_inf_n_p = self.v_inf * sin(self.alpha - theta_p)
-                    for p in range(0, self.panel_num):
+                    for p in range(1, self.panel_num+1):
                         x_cp = panel_dict[p]['c'][0]
                         y_cp = panel_dict[p]['c'][1]
                         R = np.sqrt((x_cp - x_vq)**2 + (y_cp - y_vq)**2)
                         delta_2 = acos((x_cp - x_vq)/R)
                         delta_3 = delta_2 - theta_p
-
                         A[p-1][q-1] = cos(delta_3) / (2 * pi * R)
                     B[q-1] = v_inf_n_p
                     self.v_inf_n[panel_num][alpha]['v_inf_n_p'] = v_inf_n_p
+                G = [i for i in np.linalg.inv(A).dot(B).T.tolist()[0]]
+                total_gamma = sum(G)
+                self.gamma[panel_num][alpha] = {'gammas': G, 'total_gamma': total_gamma}
+        # Save gamma dict to msgpack file if problem 2
+        if self.problem == 'P2':
+            vortexPanels.saveDict(self, self.gamma, 'gammas')
 
-                G = np.linalg.inv(A).dot(B)
-                total_gamma = np.sum(G, 0)
-                self.gamma[panel_num][alpha] = {'gammas': G, 'total_gamma': total_gamma[0]}
-            # Save gamma dict to msgpack file if problem 2
-            if self.problem == 'P2':
-                vortexPanels.saveDict(self, self.gamma, f'gamma_{self.panel_num}panels')
+    # Plot the calculated gamma distributions
+    def plotGamma(self):
+        alpha = self.alpha_list[-1]
+        gamma_plot = plt.figure(figsize=(8, 8))
+        gamma_plot.subplots_adjust(hspace=.25)
+        gam = gamma_plot.add_subplot(1, 1, 1)
+        gam.set_title(f'{self.problem} - Gamma Distribution on Airfoil for Different Panel Densities, $\\alpha$ = {alpha} degrees')
+        gam.set_ylabel('$\gamma$ [$\\frac{m^2}{s}$]', fontdict={'fontsize': 13})
+        gam.set_xlabel('X Location on Airfoil [m]', fontdict={'fontsize': 13})
+        gam.grid(linewidth=0.5, linestyle='--', color='grey')
+        # Plot gamma for last alpha in alpha_list
+        for panel_num in self.panel_num_list:
+            x = []
+            for i in range(1, panel_num + 1):
+                x.append(self.master_panels[panel_num][i]['v'][0])
+            gammas = self.gamma[panel_num][alpha]['gammas']
+            color = self.plot_colors[self.panel_num_list.index(panel_num)]
+            gam.plot(x, gammas, color=color, label=f'{panel_num} panels')
+        gam.legend(loc='upper right', fontsize=12)
+        gamma_plot.savefig(os.path.join(os.getcwd(), f'plots\\{self.problem}_gammadist'))
+        plt.draw()
 
     # Calculate lift and moment coefficients of the airfoil given gamma dictionary and airfoil properties
     def calcCoefficients(self):
-        # L'_p = rho * v_inf * gamma_p
+        # Calc Cl and Cmc4 for panel densities at angle of attacks
         for panel_num in self.panel_num_list:
             panel_dict = self.master_panels[panel_num]
             self.coeffs[panel_num] = {}
@@ -102,48 +123,68 @@ class vortexPanels():
                 total_gamma = self.gamma[panel_num][alpha]['total_gamma']
                 c_l = (2 * total_gamma) / (self.v_inf * self.chord_length)
                 # Calc moment coefficient about the leading edge
-                gammas = self.gamma[panel_num][alpha]['gammas'].T.tolist()[0]
+                gammas = self.gamma[panel_num][alpha]['gammas']
                 c_mle = 0
                 for i in range(1, len(gammas) + 1):
-                    x_v_p = panel_dict[i-1]['v'][0]
+                    x_v_p = panel_dict[i]['v'][0]
                     c_mle += (-2 * cos(self.alpha) * gammas[i-1] * x_v_p) / (self.v_inf * self.chord_length**2)
                 # Calc moment coefficient about the quarter chord location
                 c_mc4 = .25 * c_l + c_mle
                 # Save coefficients to a dictionary
                 self.coeffs[panel_num][alpha] = {'C_l': c_l, 'C_mc4': c_mc4}
+        # Calc Cl and Cmc4 for a theoretical flat plate at angle of attacks
+        self.coeffs['theory'] = {}
+        for alpha in self.alpha_list:
+            c_l_t = 2 * pi * np.deg2rad(alpha)
+            c_mc4_t = 0
+            self.coeffs['theory'][alpha] = {'C_l': c_l_t, 'C_mc4': c_mc4_t}
+        # If problem 2, print the coefficient values
+        if self.problem == 'P2':
+            print('Problem 2 Coefficients:\n')
+            for panel_num in self.panel_num_list:
+                for alpha in self.alpha_list:
+                    print(f'{panel_num} panels at {alpha} degrees:\n' 
+                          f"C_l = {self.coeffs[panel_num][alpha]['C_l']}\n" 
+                          f"C_mc4 = {self.coeffs[panel_num][alpha]['C_mc4']}\n")
+        # Save gamma dict and normal induced velocity array to msgpack file if problem 2
+        if self.problem == 'P2':
+            vortexPanels.saveDict(self, self.gamma, 'coeffs')
+            vortexPanels.saveDict(self, self.v_inf_n, 'velocities')
 
-    # Plot Coefficients
+    # Plot Coefficients (theoretical flat plate and calculated)
     def plotCoefficients(self):
         coeff_plot = plt.figure(figsize=(8, 8))
         coeff_plot.subplots_adjust(hspace=.25)
         coeff_plot.suptitle('Aerodynamic Coefficient vs. Angle of Attack for Different Panel Densities')
         cl = coeff_plot.add_subplot(2, 1, 1)
-        cl.set_ylabel('Cl')
+        cl.set_ylabel('Cl', fontdict={'fontsize': 13})
         cl.grid(linewidth=0.5, linestyle='--', color='grey')
         cmc4 = coeff_plot.add_subplot(2, 1, 2)
-        cmc4.set_ylabel('Cm_c/4')
-        cmc4.set_xlabel('Angle of Attack [degrees]')
+        cmc4.set_ylabel('Cm_c/4', fontdict={'fontsize': 13})
+        cmc4.set_xlabel('Angle of Attack [degrees]', fontdict={'fontsize': 13})
         cmc4.grid(linewidth=0.5, linestyle='--', color='grey')
 
-        # Calc theoretical values for flat plate
+        # Plot theoretical coefficients
         c_l_t, c_mc4_t = [], []
         for alpha in self.alpha_list:
-            c_l_t.append(2 * pi * np.deg2rad(alpha))
-            c_mc4_t.append(0)
+            c_l_t.append(self.coeffs['theory'][alpha]['C_l'])
+            c_mc4_t.append(self.coeffs['theory'][alpha]['C_mc4'])
         cl.plot(self.alpha_list, c_l_t, color='k', label='Theoretical Value')
         cmc4.plot(self.alpha_list, c_mc4_t, color='k', label='Theoretical Value')
-        # Get coeff to plot
+        # Plot calculated coefficients for each panel density
         for panel_num in self.panel_num_list:
             c_l, c_mc4= [], []
             for alpha in self.alpha_list:
                 c_l.append(self.coeffs[panel_num][alpha]['C_l'])
                 c_mc4.append(self.coeffs[panel_num][alpha]['C_mc4'])
-            alpha_color = np.random.rand(3,)
-            cl.plot(self.alpha_list, c_l, color=alpha_color, label=f'{panel_num} panels')
-            cmc4.plot(self.alpha_list, c_mc4, color=alpha_color, label=f'{panel_num} panels')
+            color = self.plot_colors[self.panel_num_list.index(panel_num)]
+            cl.plot(self.alpha_list, c_l, color=color, label=f'{panel_num} panels')
+            cmc4.plot(self.alpha_list, c_mc4, color=color, label=f'{panel_num} panels')
 
         cl.legend(loc='upper right', fontsize=12)
         cmc4.legend(loc='upper right', fontsize=12)
+        # Save plot
+        coeff_plot.savefig(os.path.join(os.getcwd(), f'plots\\{self.problem}_coeffs'))
         plt.draw()
 
     # Compute problem 1
@@ -154,28 +195,24 @@ class vortexPanels():
             # Define the camber line in (x, y) point sets
             x = np.linspace(0, self.chord_length, self.panel_num + 1)
             y = np.zeros(len(x))
-
             # Save the camber plot points
             self.camber_plot = [x, y]
-
             # Get y coordinates of the panel nodes, length of panel, location of control points and vortex
             self.master_panels[self.panel_num] = {}
-            for i in range(self.panel_num):
-                x1 = x[i]
-                x2 = x[i + 1]
+            for i in range(1, self.panel_num + 1):
+                x1 = x[i-1]
+                x2 = x[i]
                 y1 = 0
                 y2 = 0
                 node1 = (x1, y1)
                 node2 = (x2, y2)
                 length = sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
                 theta_p = 0
-
                 # Get location of control points and vortex locations along panel
                 v = np.array([x2 - x1, y2 - y1])
                 u = v / length
                 vortex_point = np.array(node1) + 0.25 * length * u
                 control_point = np.array(node1) + 0.75 * length * u
-
                 # Write data to dictionary
                 self.master_panels[self.panel_num][i] = {'n1': node1,
                                                          'n2': node2,
@@ -192,6 +229,8 @@ class vortexPanels():
         vortexPanels.calcCoefficients(self)
         # Plot the aerodynamic coefficients
         vortexPanels.plotCoefficients(self)
+        # Plot gamma distribution
+        vortexPanels.plotGamma(self)
 
     # Compute problem 2
     def problemTwo(self):
@@ -210,45 +249,33 @@ class vortexPanels():
                 elif m < x < 1:
                     y = (k*m**3)/6 * (1-x)
                 y_i.append(y)
-
             x_i = [i * self.chord_length for i in x_i]
             y_i = [i * self.chord_length for i in y_i]
-
             # Create interpolation function and x-y pairs for plotting
             z = scipy.interpolate.CubicSpline(x_i, y_i)
             x = np.linspace(0, 1 * self.chord_length, 1000)
             y = z(x)
             self.camber_plot = (x, y)
-
             # Discretize points along the curve
             radius = x_i[0] - x_i[-1]            # Get radius of discretization circle
             x_center = x_i[-1]                   # Get center of circle (last node)
             x_circle = (x_center+radius*np.cos(np.linspace(0, np.pi/2, self.panel_num + 1))).tolist()  # X-coords of circle
-            #x_circle = [self.chord_length/2 * (1 - np.cos(i)) for i in np.linspace(0, np.pi, self.panel_num + 1)]
-
             # Get y coordinates of the panel nodes, length of panel, location of control points and vortex
             self.master_panels[self.panel_num] = {}
-            for i in range(self.panel_num):
-                x1 = x_circle[i]
-                x2 = x_circle[i+1]
+            for i in range(1, self.panel_num + 1):
+                x1 = x_circle[i-1]
+                x2 = x_circle[i]
                 y1 = float(z(x1))
                 y2 = float(z(x2))
                 node1 = (x1, y1)
                 node2 = (x2, y2)
                 length = sqrt((x2 - x1)**2 + (y2 - y1)**2)
-                theta_p = acos((x2 - x1) / (y2 - y1))
-                # Calculate Beta value (rad) for the panel
-                if x2 - x1 <= 0:
-                    beta = acos((y2 - y1) / length)
-                else:
-                    beta = np.pi + acos(-(y2 - y1) / length)
-
+                theta_p = acos((x2 - x1) / length)
                 # Get location of control points and vortex locations along panel
                 v = np.array([x2-x1, y2-y1])
                 u = v/length
                 vortex_point = np.array(node1) + 0.25*length*u
                 control_point = np.array(node1) + 0.75*length*u
-
                 # Write data to dictionary
                 self.master_panels[self.panel_num][i] = {'n1': node1,
                                                          'n2': node2,
@@ -256,27 +283,30 @@ class vortexPanels():
                                                          'c': control_point.tolist(),
                                                          'v': vortex_point.tolist(),
                                                          'theta_p': theta_p,
-                                                         'beta': beta
                                                          }
-
         # Run panel solver for all panel numbers
         vortexPanels.solvePanels(self)
         # Plot the camberline for all panel numbers
         vortexPanels.plotCamberline(self)
         # Save the master panel dict to a msgpack file to be used in problem 3
         vortexPanels.saveDict(self, self.master_panels, 'master')
+        # Calculate the aerodynamic coefficients
+        vortexPanels.calcCoefficients(self)
+        # Plot gamma distribution
+        vortexPanels.plotGamma(self)
 
     # Compute problem 3
     def problemThree(self):
         # Load the master panel dict from the second problem
         self.master_panels = vortexPanels.loadDict(self, 'master')
-
         # Load the gamma dict from second problem
-        self.gamma = vortexPanels.loadDict(self, 'gamma')
+        self.gamma = vortexPanels.loadDict(self, 'gammas')
+        # Load the induced normal velocity array from second problem
+        self.v_inf_n = vortexPanels.loadDict(self, 'velocities')
+        # Calculate the vector of the normal velocities
+        w = 3 * self.chord_length
+        Y, X = np.mgrid[-w:w:100*w, -w:w:100*w]
 
-        # Generate the linear system to solve for gamma for each panel
-        # Sum all gamma contributions
-        # Calculate the Cm_c4 and Cm_le of the airfoil
 
     # Save dictionary to a message pack file
     def saveDict(self, data, name):
@@ -305,14 +335,12 @@ class vortexPanels():
                 plot_y1.append(node1[1])
                 plot_x2.append(node2[0])
                 plot_y2.append(node2[1])
-
                 c_p = panel_info['c']
                 cp_plot_x.append(c_p[0])
                 cp_plot_y.append(c_p[1])
                 v_p = panel_info['v']
                 vp_plot_x.append(v_p[0])
                 vp_plot_y.append(v_p[1])
-
             camber_plot = plt.figure(figsize=(12, 6))
             camber_plot.subplots_adjust(hspace=.5, left=.07, right=.97, top=.95, bottom=.05)
             cp = camber_plot.add_subplot(1, 1, 1)
@@ -347,25 +375,24 @@ if __name__ == '__main__':
         print(f'Could not create plot folder, error: {str(e)}')
 
     # Run Problem1
-    params = {'v': 10,
-              'chord': 3,
+    params = {'v': 1,
+              'chord': 1,
               'aoa': np.arange(-10, 11, step=1).tolist(),
-              'panels': [20, 40, 60, 80],
+              'panels': [10, 40, 60, 80],
               'problem': 'P1'}
     panel = vortexPanels(params)
     panel.problemOne()
 
-    '''
     # Run Problem2
     params = {'v': 100,
               'chord': 3,
               'aoa': [10],
-              'panels': [20],
+              'panels': [80],
               'problem': 'P2'}
     panel = vortexPanels(params)
     panel.problemTwo()
 
-    # Run Problem2
+    # Run Problem3
     params = {'v': 100,
               'chord': 3,
               'aoa': [10],
@@ -373,5 +400,5 @@ if __name__ == '__main__':
               'problem': 'P3'}
     panel = vortexPanels(params)
     panel.problemThree()
-    '''
+
     plt.show()
