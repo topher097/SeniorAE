@@ -31,9 +31,7 @@ from math import sqrt, acos, cos, sin, pi
 import matplotlib.pyplot as plt
 import os
 import shutil
-import msgpack
 import scipy.interpolate
-from sympy import Symbol, Matrix
 
 
 class vortexPanels():
@@ -115,13 +113,35 @@ class vortexPanels():
                 # Save coefficients to a dictionary
                 self.coeffs[panel_num][alpha] = {'C_l': c_l, 'C_mc4': c_mc4}
         # If problem 2, print the coefficient values
+        text_st = ''
         if self.problem == 'P2':
-            print('Problem 2 Coefficients:\n')
+            str1 = 'Problem 2 Coefficients:\n'
+            text_st += str1
             for panel_num in self.panel_num_list:
                 alpha = 10
-                print(f'{panel_num} panels at {alpha} degrees:\n' 
-                      f"C_l = {round(self.coeffs[panel_num][alpha]['C_l'], 5)}\n" 
-                      f"C_mc4 = {round(self.coeffs[panel_num][alpha]['C_mc4'], 5)}\n")
+                str2 = f'{panel_num} panels at {alpha} degrees:\n' \
+                       f"C_l = {round(self.coeffs[panel_num][alpha]['C_l'], 5)}\n" \
+                       f"C_mc4 = {round(self.coeffs[panel_num][alpha]['C_mc4'], 5)}\n"
+                print(str2)
+                text_st += str2
+        # If problem 1, print to a csv the coeff vals and the percent error for analysis
+        elif self.problem == 'P1':
+            for panel_num in self.panel_num_list:
+                for alpha in self.alpha_list:
+                    c_l_actual = self.coeffs['theory'][alpha]['C_l']
+                    c_m_actual = self.coeffs['theory'][alpha]['C_mc4']
+                    c_l_text = f"{round(self.coeffs[panel_num][alpha]['C_l'], 5)}"
+                    c_m_text = f"{round(self.coeffs[panel_num][alpha]['C_mc4'], 5)}"
+                    c_l_error_text = f"{100*abs(c_l_actual - self.coeffs[panel_num][alpha]['C_l'])/c_l_actual}"
+                    c_m_error_text = f"{100*abs(c_m_actual - self.coeffs[panel_num][alpha]['C_mc4'])/.0001}"
+                    str2 = f"{panel_num}, {alpha}, {c_l_text}, {c_m_text}, {c_l_error_text}, {c_m_error_text}"
+                    str3 = f'{panel_num} panels at {alpha} degrees:\n' \
+                           f"C_l = {c_l_text}\n" \
+                           f"C_mc4 = {c_m_text}\n"
+                    print(str3)
+                    text_st += str2
+        with open(f'{self.problem}_Coeff_Summary.csv', 'wt') as txt:
+            txt.write(text_st)
 
     # Take coefficient data and find the zero lift angle of attack
     def findZeroLiftAOA(self):
@@ -143,15 +163,15 @@ class vortexPanels():
     def plotCoefficients(self):
         coeff_plot = plt.figure(figsize=(8, 8))
         coeff_plot.subplots_adjust(hspace=.25)
-        coeff_plot.suptitle(f'{self.problem} - Aerodynamic Coefficient vs. Angle of Attack for Different Panel Densities')
         cl = coeff_plot.add_subplot(2, 1, 1)
+        cl.set_title(f'{self.problem} - Aerodynamic Coefficient vs. Angle of Attack for Different Panel Densities')
+        #cl.set_title(f'{self.problem} - Aerodynamic Coefficient vs. Angle of Attack for 60 Panels')
         cl.set_ylabel('Cl', fontdict={'fontsize': 13})
         cl.grid(linewidth=0.5, linestyle='--', color='grey')
         cmc4 = coeff_plot.add_subplot(2, 1, 2)
         cmc4.set_ylabel('Cm_c/4', fontdict={'fontsize': 13})
         cmc4.set_xlabel('Angle of Attack [degrees]', fontdict={'fontsize': 13})
         cmc4.grid(linewidth=0.5, linestyle='--', color='grey')
-
         # Plot theoretical coefficients
         c_l_t, c_mc4_t = [], []
         for alpha in self.alpha_list:
@@ -160,7 +180,11 @@ class vortexPanels():
         cl.plot(self.alpha_list, c_l_t, color='k', label='Theoretical Value')
         cmc4.plot(self.alpha_list, c_mc4_t, color='k', label='Flat Plate')
         # Plot calculated coefficients for each panel density
-        for panel_num in self.panel_num_list:
+        if 'P1' == self.problem:
+            panel_num_list = [60]
+        else:
+            panel_num_list = self.panel_num_list
+        for panel_num in panel_num_list:
             c_l, c_mc4= [], []
             for alpha in self.alpha_list:
                 c_l.append(self.coeffs[panel_num][alpha]['C_l'])
@@ -172,6 +196,35 @@ class vortexPanels():
         cmc4.legend(loc='upper left', fontsize=12)
         # Save plot
         coeff_plot.savefig(os.path.join(os.getcwd(), f'plots\\{self.problem}_coeffs'))
+        plt.draw()
+        # Plot percent error of calc vs theoretical
+        coeff_plot_e = plt.figure(figsize=(8, 8))
+        coeff_plot_e.subplots_adjust(hspace=.25)
+        cle = coeff_plot_e.add_subplot(2, 1, 1)
+        cle.set_title(f'{self.problem} - Percent Error of Aerodynamic Coefficient vs. Angle of Attack\n'
+                      f'With Respect to Theoretical Flat Plate Coefficients')
+        cle.set_ylabel('Cl % Error', fontdict={'fontsize': 13})
+        cle.grid(linewidth=0.5, linestyle='--', color='grey')
+        cmc4e = coeff_plot_e.add_subplot(2, 1, 2)
+        cmc4e.set_ylabel('Cm_c/4 % Error', fontdict={'fontsize': 13})
+        cmc4e.set_xlabel('Angle of Attack [degrees]', fontdict={'fontsize': 13})
+        cmc4e.grid(linewidth=0.5, linestyle='--', color='grey')
+        for panel_num in self.panel_num_list:
+            c_l, c_mc4 = [], []
+            for alpha in self.alpha_list:
+                cl = self.coeffs[panel_num][alpha]['C_l']
+                cm = self.coeffs[panel_num][alpha]['C_mc4']
+                clt = self.coeffs['theory'][alpha]['C_l']
+                cmt = self.coeffs['theory'][alpha]['C_mc4']
+                c_l.append(100 * abs((clt-cl)/(clt+.00000001)))
+                c_mc4.append(100 * abs((cmt-cm)/(cmt+.00000001)))
+            color = self.plot_colors[self.panel_num_list.index(panel_num)]
+            cle.plot(self.alpha_list, c_l, color=color, label=f'{panel_num} panels')
+            cmc4e.plot(self.alpha_list, c_mc4, color=color, label=f'{panel_num} panels')
+        cle.legend(loc='upper left', fontsize=12)
+        cmc4e.legend(loc='upper left', fontsize=12)
+        # Save plot
+        coeff_plot_e.savefig(os.path.join(os.getcwd(), f'plots\\{self.problem}_coeffs_error'))
         plt.draw()
 
     # Plot the calculated gamma distributions
@@ -244,125 +297,65 @@ class vortexPanels():
     def plotStreamlines(self, alpha, panel_num):
         # Convert alpha from deg to rad
         alpha_rad = np.deg2rad(alpha)
-
+        gammas = self.gamma[panel_num][alpha]['gammas']
         # Create a mesh grid
         w = 3 * self.chord_length
-        density = 101
-        densityj = 101j
-        x_r = np.linspace(-w, w, density)
-        y_r = np.linspace(-w, w, density)
-        X, Y = np.meshgrid(x_r, y_r)
-        Y1, X1 = np.mgrid[-w:w:densityj, -w:w:densityj]
-        U = cos(alpha_rad) * self.v_inf * np.ones([len(x_r), len(x_r)])
-        V = sin(alpha_rad) * self.v_inf * np.ones([len(y_r), len(y_r)])
-
-        # Create interpolation function for the velocity of the airfoil in x direction
-        x_v, y_v = [], []
-        x, y, = [], []
-        theta, v_n = [], []
-        x_min = 0
-        x_max = self.chord_length
-        y_min = 0
-        y_max = 0   # Initialize variable, rewrite with actual value below
-        for i in range(1, panel_num + 1):
-            x_v_p = self.master_panels[panel_num][i]['v'][0]
-            y_v_p = self.master_panels[panel_num][i]['v'][1]
-            if y_v_p > y_max:
-                y_max = y_v_p
-            theta.append(self.master_panels[panel_num][i]['theta_p'] + np.pi)
-            v_n.append(self.v_inf_n[panel_num][alpha]['v_inf_n_p'])
-            x.append(x_v_p)
-            y.append(y_v_p)
-        vel_x = scipy.interpolate.CubicSpline(x, v_n)
-        theta_x = scipy.interpolate.CubicSpline(x, theta)
-        y_x = scipy.interpolate.CubicSpline(x, y)
-
-        # Create lists for y interpolation
-        y1, y2 = [], []
-        theta1, theta2 = [], []
-        v_n1, v_n2 = [], []
-        for i in range(panel_num):
-            y_o = y[i]
-            theta_o = theta[i]
-            v_n_o = v_n[0]
-            if y_o <= y_max:
-                y1.append(y_o)
-                theta1.append(theta_o)
-                v_n1.append(v_n_o)
-            else:
-                y2.append(y_o)
-                theta2.append(theta_o)
-                v_n2.append(v_n_o)
-
-        vel_y1 = scipy.interpolate.CubicSpline(y1, v_n1)
-        theta_y1 = scipy.interpolate.CubicSpline(y1, theta1)
-        v_n_y1 = scipy.interpolate.CubicSpline(y1, v_n1)
-        vel_y2 = scipy.interpolate.CubicSpline(y2, v_n2)
-        theta_y2 = scipy.interpolate.CubicSpline(y2, theta2)
-        v_n_y2 = scipy.interpolate.CubicSpline(y2, v_n2)
-
-        # Iterate through the meshgrid and add the velocity components to U
-        x_list = X1[0].tolist()
-        x_index = 0
-        for x_m in x_list:
-            # Check if x is in x_min and x_max range
-            if x_min <= x_m and x_m <= x_max:
-                y_i = y_x(x_m)
-                theta_i = theta_x(x_m)
-                vel_i = vel_x(x_m)
-            x_index += 1
-
-        # Iterate through the meshgrid and add the velocity components to U
-        y_list = Y1[:, 0].tolist()
-        y_index = 0
-        for y_m in y_list:
-            if y_min <= y_m and y_m <= y_max:
-
-                y_i = y_x(x_m)
-                theta_i = theta_x(x_m)
-                vel_i = vel_x(x_m)
-
-
-
-
-
-
-
-
-
-
-        x_index, y_index = 0, 0
-        print(y_list)
-        # Iterate through the meshgrid and add the velocity components to U and V
-        for x_m in x_list:
-            # Check if x is in x_min and x_max range
-            if x_min <= x_m and x_m <= x_max:
-                for y_m in y_list:
-                    # Check if value is in y_min and y_max range
-                    if y_min <= y_m and y_m <= y_max:
-                        U[x_index, y_index] = U[x_index, y_index] + zx(x_m)  # Adds interpolated velocity to U
-                        V[x_index, y_index] = V[x_index, y_index] + zy(y_m)  # Adds interpolated velocity to V
-            x_index += 1
-            y_index += 1
-
-
-
-
-
-        #print(X1, Y1)
-
-
-
+        densityj = 100j
+        Y1, X1 = np.mgrid[-1:1:densityj, -w:self.chord_length + w:densityj]
+        U = np.zeros([len(X1[0].tolist()), len(X1[0].tolist())])
+        V = np.zeros([len(Y1[:, 0].tolist()), len(Y1[:, 0].tolist())])
+        # Try and see if the data exists to save computing time, otherwise, redo calculations
+        fileU = f'streams\\{self.problem}_U_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c.npy'
+        fileV = f'streams\\{self.problem}_V_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c.npy'
+        fileU_exist = os.path.exists(os.path.join(os.getcwd(), fileU))
+        fileV_exist = os.path.exists(os.path.join(os.getcwd(), fileV))
+        if fileU_exist and fileV_exist:
+            U = np.load(os.path.join(os.getcwd(), fileU))
+            V = np.load(os.path.join(os.getcwd(), fileV))
+        else:
+            # Iterate through the meshgrid and calculate the u and v components at each point in the meshgrid
+            vinf_x = cos(alpha_rad) * self.v_inf
+            vinf_y = sin(alpha_rad) * self.v_inf
+            for i in range(len(X1[0].tolist())):
+                for j in range(len(Y1[:, 0].tolist())):
+                    # Calculate the induced velocity from each panel vortex
+                    x_m = X1[i][j]
+                    y_m = Y1[i][j]
+                    v_ix, v_iy = 0, 0
+                    for panel in range(panel_num):
+                        x_v = self.master_panels[panel_num][panel+1]['v'][0]
+                        y_v = self.master_panels[panel_num][panel+1]['v'][1]
+                        gamma = gammas[panel]
+                        dist = abs(sqrt((x_m - x_v)**2 + (y_m - y_v)**2))
+                        vel = (gamma/(4*pi*dist**3)) * \
+                              np.cross(np.array([[0], [0], [-1]]),
+                              np.array([[(x_m-x_v)], [y_m-y_v], [0]]), axis=0)
+                        v_ix += vel[0][0]
+                        v_iy += vel[1][0]
+                    # Add velocity from airfoil vortices and v_inf components to vector field
+                    U[i][j] = vinf_x + v_ix
+                    V[i][j] = vinf_y + v_iy
+            # Save the vector field arrays so iterations can be done faster for higher density fields
+            np.save(os.path.join(os.getcwd(), fileU), U, allow_pickle=True)
+            np.save(os.path.join(os.getcwd(), fileV), V, allow_pickle=True)
+        # Plot the streamline, save the plot
+        plot_info_text = f'Chord length = {self.chord_length} [m]\n' \
+                         f'Panel Number = {panel_num}\n' \
+                         f'Streamline mesh density = {str(densityj).replace("j","")}\n' \
+                         f'Angle of Attack = {alpha} [deg]'
         stream_plot = plt.figure(figsize=(12, 6))
-        stream_plot.subplots_adjust(hspace=.5, left=.07, right=.97, top=.95, bottom=.05)
+        stream_plot.subplots_adjust(hspace=.5, left=.02, right=.99, top=.95, bottom=.1)
         stream_plot.gca().set_aspect('equal', adjustable='box')
+        props = dict(boxstyle='round', facecolor='white', alpha=0.5)
         sp = stream_plot.add_subplot(1, 1, 1)
-        sp.set_title(f'{self.problem} - Airfoil in Streamlines at AOA = {np.rad2deg(alpha)} degrees')
+        sp.set_title(f'{self.problem} - Airfoil in Streamlines at AOA = {alpha} degrees')
         sp.set_xlabel('X Location [m]')
         sp.set_ylabel('Y Location [m]')
-        sp.grid(linewidth=.5, color='grey', linestyle='--')
-        sp.streamplot(X1, Y1, U, V, density=.75, arrowstyle='->')
-        #sp.scatter(X, Y, s=.5, color='k')
+        sp.set_ylim(-2, 2)
+        sp.plot(self.camber_plot[0], self.camber_plot[1], 'r', linewidth=3, label='camberline')
+        sp.streamplot(X1, Y1, U, V, density=1.75, arrowstyle='-', linewidth=.5, zorder=10)
+        sp.text(0.05, 0.95, plot_info_text, transform=sp.transAxes, fontsize=11, verticalalignment='top', bbox=props)
+        stream_plot.savefig(os.path.join(os.getcwd(), f'plots\\{self.problem}_stream_{panel_num}_panels'))
         plt.draw()
 
     # Run problem 1
@@ -402,7 +395,7 @@ class vortexPanels():
         # Run panel solver for all panel numbers and angle of attacks
         vortexPanels.solvePanels(self)
         # Plot the camberline for all panel numbers at first angle of attack
-        #vortexPanels.plotCamberline(self)
+        vortexPanels.plotCamberline(self)
         # Calculate the aerodynamic coefficients
         vortexPanels.calcCoefficients(self)
         # Plot the aerodynamic coefficients
@@ -439,7 +432,7 @@ class vortexPanels():
             # Discretize points along the curve
             radius = x_i[0] - x_i[-1]            # Get radius of discretization circle
             x_center = x_i[-1]                   # Get center of circle (last node)
-            x_circle = (x_center+radius*np.cos(np.linspace(0, np.pi/2, self.panel_num + 1))).tolist()  # X-coords of circle
+            x_circle = (x_center+radius*np.cos(np.linspace(0, np.pi/2, self.panel_num + 1))).tolist()  # X-cord of circ
             # Get y coordinates of the panel nodes, length of panel, location of control points and vortex
             self.master_panels[self.panel_num] = {}
             for i in range(1, self.panel_num + 1):
@@ -469,20 +462,18 @@ class vortexPanels():
         # Run panel solver for all panel numbers
         vortexPanels.solvePanels(self)
         # Plot the camberline for all panel numbers
-        #vortexPanels.plotCamberline(self)
+        vortexPanels.plotCamberline(self)
         # Calculate the aerodynamic coefficients
         vortexPanels.calcCoefficients(self)
         # Plot aerodynamic coefficients wrt angle of attack (if applicable)
-        if not len(self.alpha_list) == 1:
-            pass
-            #vortexPanels.plotCoefficients(self)
+        if len(self.alpha_list) >= 10:
+            vortexPanels.plotCoefficients(self)
         # Find the zero lift angle of attack
         vortexPanels.findZeroLiftAOA(self)
         # Plot gamma distribution
-        #vortexPanels.plotGamma(self)
+        vortexPanels.plotGamma(self)
         # Plot the airfoil in streamlines (problem 3)
         vortexPanels.plotStreamlines(self, alpha=10, panel_num=self.panel_num_list[-1])
-
 
 
 if __name__ == '__main__':
@@ -496,7 +487,7 @@ if __name__ == '__main__':
     except Exception as e:
         print(f'Could not create plot folder, error: {str(e)}')
 
-    run1 = False
+    run1 = True
     run23 = True
 
     # Run Problem1
@@ -504,15 +495,15 @@ if __name__ == '__main__':
         params = {'v': 1,
                   'chord': 1,
                   'aoa': np.arange(-10, 11, step=1).tolist(),
-                  'panels': [10, 40, 60, 80],
+                  'panels': [20, 40, 60, 80],
                   'problem': 'P1'}
         panel = vortexPanels(params)
         panel.problemOne()
 
     # Run Problem2 and Problem3
     if run23:
-        params = {'v': 100,
-                  'chord': 3,
+        params = {'v': 1,
+                  'chord': 1,
                   'aoa': np.arange(-10, 11, step=1).tolist(),
                   'panels': [80],
                   'problem': 'P2'}
