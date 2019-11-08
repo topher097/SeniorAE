@@ -278,8 +278,8 @@ class vortexPanels():
             plt.ylim(-.25 * self.chord_length, .25 * self.chord_length)
             plt.gca().set_aspect('equal', adjustable='box')
             cp.set_title(f'Panels, Control Points, and Vortex Locations - {self.panel_num} Panels')
-            cp.set_xlabel('x/c')
-            cp.set_ylabel('y/c')
+            cp.set_xlabel('x')
+            cp.set_ylabel('y')
             cp.grid(linewidth=0.5, linestyle='--', color='grey')  # Gridlines
             cp.plot(self.camber_plot[0], self.camber_plot[1], 'b', linewidth=1, label='camberline')  # Camberline
             cp.plot(plot_x1, plot_y1, color='k', label='panels', linewidth=.75)  # Panels
@@ -298,24 +298,29 @@ class vortexPanels():
         # Convert alpha from deg to rad
         alpha_rad = np.deg2rad(alpha)
         gammas = self.gamma[panel_num][alpha]['gammas']
+        d_crit = 0.01        # meters
         # Create a mesh grid
         w = 3 * self.chord_length
-        densityj = 100j
+        densityj = 50j
         Y1, X1 = np.mgrid[-1:1:densityj, -w:self.chord_length + w:densityj]
         U = np.zeros([len(X1[0].tolist()), len(X1[0].tolist())])
         V = np.zeros([len(Y1[:, 0].tolist()), len(Y1[:, 0].tolist())])
         # Try and see if the data exists to save computing time, otherwise, redo calculations
-        fileU = f'streams\\{self.problem}_U_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c.npy'
-        fileV = f'streams\\{self.problem}_V_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c.npy'
+        fileU = f'streams\\{self.problem}_U_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c_{d_crit}d.npy'
+        fileV = f'streams\\{self.problem}_V_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c_{d_crit}d.npy'
+        fileA = f'streams\\{self.problem}_A_{str(densityj)}_{panel_num}p_{alpha}a_{self.chord_length}c_{d_crit}d.npy'
         fileU_exist = os.path.exists(os.path.join(os.getcwd(), fileU))
         fileV_exist = os.path.exists(os.path.join(os.getcwd(), fileV))
-        if fileU_exist and fileV_exist:
+        fileA_exist = os.path.exists(os.path.join(os.getcwd(), fileA))
+        if fileU_exist and fileV_exist and fileA_exist:
             U = np.load(os.path.join(os.getcwd(), fileU))
             V = np.load(os.path.join(os.getcwd(), fileV))
+            airfoil_points = np.load(os.path.join(os.getcwd(), fileA))
         else:
             # Iterate through the meshgrid and calculate the u and v components at each point in the meshgrid
             vinf_x = cos(alpha_rad) * self.v_inf
             vinf_y = sin(alpha_rad) * self.v_inf
+            airfoil_points = np.array([[], []])
             for i in range(len(X1[0].tolist())):
                 for j in range(len(Y1[:, 0].tolist())):
                     # Calculate the induced velocity from each panel vortex
@@ -327,6 +332,13 @@ class vortexPanels():
                         y_v = self.master_panels[panel_num][panel+1]['v'][1]
                         gamma = gammas[panel]
                         dist = abs(sqrt((x_m - x_v)**2 + (y_m - y_v)**2))
+                        # Check if distance is less than d_crit, if so, point is in the airfoil, set V=0
+                        if dist <= d_crit:
+                            v_ix = -vinf_x
+                            v_iy = -vinf_y
+                            p = np.array([[x_m, y_m]])
+                            airfoil_points = np.concatenate((airfoil_points, p.T), axis=1)
+                            break
                         vel = (gamma/(4*pi*dist**3)) * \
                               np.cross(np.array([[0], [0], [-1]]),
                               np.array([[(x_m-x_v)], [y_m-y_v], [0]]), axis=0)
@@ -338,10 +350,11 @@ class vortexPanels():
             # Save the vector field arrays so iterations can be done faster for higher density fields
             np.save(os.path.join(os.getcwd(), fileU), U, allow_pickle=True)
             np.save(os.path.join(os.getcwd(), fileV), V, allow_pickle=True)
+            np.save(os.path.join(os.getcwd(), fileA), airfoil_points, allow_pickle=True)
         # Plot the streamline, save the plot
         plot_info_text = f'Chord length = {self.chord_length} [m]\n' \
                          f'Panel Number = {panel_num}\n' \
-                         f'Streamline mesh density = {str(densityj).replace("j","")}\n' \
+                         f'Streamline mesh density = ${str(densityj).replace("j","")}^2$\n' \
                          f'Angle of Attack = {alpha} [deg]'
         stream_plot = plt.figure(figsize=(12, 6))
         stream_plot.subplots_adjust(hspace=.5, left=.02, right=.99, top=.95, bottom=.1)
@@ -352,8 +365,9 @@ class vortexPanels():
         sp.set_xlabel('X Location [m]')
         sp.set_ylabel('Y Location [m]')
         sp.set_ylim(-2, 2)
-        sp.plot(self.camber_plot[0], self.camber_plot[1], 'r', linewidth=3, label='camberline')
-        sp.streamplot(X1, Y1, U, V, density=1.75, arrowstyle='-', linewidth=.5, zorder=10)
+        sp.plot(self.camber_plot[0], self.camber_plot[1], 'r', linewidth=1, label='camberline')
+        #sp.scatter(airfoil_points[0], airfoil_points[1], color='k', marker='.', label='airfoil mesh points')
+        sp.streamplot(X1, Y1, U, V, density=2, arrowstyle='-', linewidth=.75)
         sp.text(0.05, 0.95, plot_info_text, transform=sp.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         stream_plot.savefig(os.path.join(os.getcwd(), f'plots\\{self.problem}_stream_{panel_num}_panels'))
         plt.draw()
