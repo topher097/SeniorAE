@@ -2,10 +2,10 @@
 - Get flight data, parse
 - Compute sum squared error per time step
 - Compute mean and standard deviation of the sum squared error
-
 """
 
 import os
+import shutil
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -91,7 +91,6 @@ class dataParse():
 
         # Save data to class lists
         self.gs_time = self.parsedGS['time (s)'].tolist()
-
         # Determine where to cut data to shift the time
         offset_cut_location = 0
         if not self.offset_gs == 0:
@@ -104,9 +103,6 @@ class dataParse():
         self.gyro_x = self.parsedGS['gyro_x (rad/s)'].tolist()[offset_cut_location::]
         self.gyro_y = self.parsedGS['gyro_y (rad/s)'].tolist()[offset_cut_location::]
         self.gyro_z = self.parsedGS['gyro_y (rad/s)'].tolist()[offset_cut_location::]
-        #self.imu_pitch = self.parsedGS['imu_pitch (rad)'].tolist()[offset_cut_location::]
-        #self.imu_roll = self.parsedGS['imu_roll (rad)'].tolist()[offset_cut_location::]
-        #self.imu_yaw = self.parsedGS['imu_yaw (rad)'].tolist()[offset_cut_location::]
         self.counter_list = self.parsedGS['mocap_counter'].tolist()[offset_cut_location::]
         self.x = self.parsedGS['x (m)'].tolist()[offset_cut_location::]
         self.y = self.parsedGS['y (m)'].tolist()[offset_cut_location::]
@@ -114,14 +110,10 @@ class dataParse():
         self.mocap_pitch = self.parsedGS['pitch (rad)'].tolist()[offset_cut_location::]
         self.mocap_roll = self.parsedGS['roll (rad)'].tolist()[offset_cut_location::]
         self.mocap_yaw = self.parsedGS['yaw (rad)'].tolist()[offset_cut_location::]
-        #self.mu1 = self.parsedGS['mu1'].tolist()[offset_cut_location::]
-        #self.mu2 = self.parsedGS['mu2'].tolist()[offset_cut_location::]
         self.x_des = self.parsedGS['desired x'].tolist()[offset_cut_location::]
         self.y_des = self.parsedGS['desired y'].tolist()[offset_cut_location::]
         self.z_des = self.parsedGS['desired z'].tolist()[offset_cut_location::]
         self.yaw_des = self.parsedGS['desired yaw'].tolist()[offset_cut_location::]
-        #self.pitch_des = self.parsedGS['desired pitch'].tolist()[offset_cut_location::]
-        #self.roll_des = self.parsedGS['desired roll'].tolist()[offset_cut_location::]
 
         # Find the time where t=plot_time (for plotting)
         if self.gs_time[-1] < self.plot_time:
@@ -265,9 +257,9 @@ class labFour():
             x_des = self.x_des[index]
             y_des = self.y_des[index]
             z_des = self.z_des[index]
-            error_x = x - x_des           # Calc pos error x
-            error_y = y - y_des           # Calc pos error y
-            error_z = z - z_des           # Calc pos error z
+            error_x = x - x_des             # Calc pos error x
+            error_y = y - y_des             # Calc pos error y
+            error_z = z - z_des             # Calc pos error z
             self.position_error_x.append(error_x)
             self.position_error_y.append(error_y)
             self.position_error_z.append(error_z)
@@ -280,9 +272,9 @@ class labFour():
             x_des = self.x_des_sim[index]
             y_des = self.y_des_sim[index]
             z_des = self.z_des_sim[index]
-            error_x = x - x_des  # Calc pos error x
-            error_y = y - y_des  # Calc pos error y
-            error_z = z - z_des  # Calc pos error z
+            error_x = x - x_des             # Calc pos error x
+            error_y = y - y_des             # Calc pos error y
+            error_z = z - z_des             # Calc pos error z
             self.position_error_x_sim.append(error_x)
             self.position_error_y_sim.append(error_y)
             self.position_error_z_sim.append(error_z)
@@ -316,7 +308,7 @@ class plotData():
         self.angles.tight_layout()
 
         # Plot
-        plotData.plotMSE(self)
+        #plotData.plotMSE(self)
         plotData.plotPositionError(self)
         plotData.plotMocapPos(self)
         plotData.plotAngles(self)
@@ -324,17 +316,6 @@ class plotData():
         # Save and display
         plotData.savePlots(self)
         plt.draw()
-
-    # Plot the Mean Squared Error over time plot (histogram)
-    def plotMSE(self):
-        mse = self.mse_plot.add_subplot(1, 1, 1)
-        props = dict(boxstyle='round', facecolor='white', alpha=0.5)
-        error_text = f'Standard Deviation = {round(lab3.std_deviation, 5)}'
-        #mse.set_title(f'Frequency of Mean Squared Error - {self.flight}')
-        mse.set_ylabel('Frequency', fontdict={'fontsize': 13})
-        mse.set_xlabel('Mean Squared Error', fontdict={'fontsize': 13})
-        mse.text(0.7, 0.95, error_text, transform=mse.transAxes, fontsize=11, verticalalignment='top', bbox=props)
-        mse.hist(lab3.sum_squared_error, bins=45, density=True, rwidth=.9)
 
     # Plot the position error over time
     def plotPositionError(self):
@@ -345,33 +326,39 @@ class plotData():
 
         # Plot x position error
         perror_x = self.perror.add_subplot(3, 1, 1)
-        #perror_x.set_title(f'Position Error X vs Time - {self.flight}')
-        #perror_x.set_xlabel('Time [s]', fontdict={'fontsize': 18})
         perror_x.set_ylabel('X Pos. Error [m]', fontdict={'fontsize': 11})
-        perror_x.plot(time[:time_end], np.zeros(len(lab3.position_error_x[:time_end])), color='grey', linestyle='--')
-        perror_x.plot(time_sim[:time_sim_end], lab3.position_error_x_sim[:time_sim_end], 'y', label='sim error')
-        perror_x.plot(time[:time_end], lab3.position_error_x[:time_end], 'b', label='real error')
+        perror_x.plot(time[:time_end], np.zeros(len(lab4.position_error_x[:time_end])), color='grey', linestyle='--')
+        perror_x.plot(time_sim[:time_sim_end], lab4.position_error_x_sim[:time_sim_end], 'y', label='sim error')
+        perror_x.plot(time[:time_end], lab4.position_error_x[:time_end], 'b', label='real error')
         perror_x.legend(loc='upper right', fontsize=12)
 
         # Plot y position error
         perror_y = self.perror.add_subplot(3, 1, 2)
-        #perror_y.set_title(f'Position Error Y vs Time - {self.flight}')
-        #perror_y.set_xlabel('Time [s]')
         perror_y.set_ylabel('Y Pos. Error [m]', fontdict={'fontsize': 11})
-        perror_y.plot(time[:time_end], np.zeros(len(lab3.position_error_y[:time_end])), color='grey', linestyle='--')
-        perror_y.plot(time_sim[:time_sim_end], lab3.position_error_y_sim[:time_sim_end], 'y', label='sim error')
-        perror_y.plot(time[:time_end], lab3.position_error_y[:time_end], 'b', label='real error')
+        perror_y.plot(time[:time_end], np.zeros(len(lab4.position_error_y[:time_end])), color='grey', linestyle='--')
+        perror_y.plot(time_sim[:time_sim_end], lab4.position_error_y_sim[:time_sim_end], 'y', label='sim error')
+        perror_y.plot(time[:time_end], lab4.position_error_y[:time_end], 'b', label='real error')
         perror_y.legend(loc='upper right', fontsize=12)
 
         # Plot z position error
         perror_z = self.perror.add_subplot(3, 1, 3)
-        #perror_z.set_title(f'Position Error Z vs Time - {self.flight}')
         perror_z.set_xlabel('Time [s]', fontdict={'fontsize': 11})
         perror_z.set_ylabel('Z Pos. Error [m]', fontdict={'fontsize': 11})
-        perror_z.plot(time[:time_end], np.zeros(len(lab3.position_error_z[:time_end])), color='grey', linestyle='--')
-        perror_z.plot(time_sim[:time_sim_end], lab3.position_error_z_sim[:time_sim_end], 'y', label='sim error')
-        perror_z.plot(time[:time_end], lab3.position_error_z[:time_end], 'b', label='real error')
+        perror_z.plot(time[:time_end], np.zeros(len(lab4.position_error_z[:time_end])), color='grey', linestyle='--')
+        perror_z.plot(time_sim[:time_sim_end], lab4.position_error_z_sim[:time_sim_end], 'y', label='sim error')
+        perror_z.plot(time[:time_end], lab4.position_error_z[:time_end], 'b', label='real error')
         perror_z.legend(loc='upper right', fontsize=12)
+
+    # Plot the Mean Squared Error over time plot (histogram)
+    def plotMSE(self):
+        mse = self.mse_plot.add_subplot(1, 1, 1)
+        props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+        error_text = f'Standard Deviation = {round(lab4.std_deviation, 5)}'
+        #mse.set_title(f'Frequency of Mean Squared Error - {self.flight}')
+        mse.set_ylabel('Frequency', fontdict={'fontsize': 13})
+        mse.set_xlabel('Mean Squared Error', fontdict={'fontsize': 13})
+        mse.text(0.7, 0.95, error_text, transform=mse.transAxes, fontsize=11, verticalalignment='top', bbox=props)
+        mse.hist(lab4.sum_squared_error, bins=45, density=True, rwidth=.9)
 
     # Plot the mocap position and the desired position
     def plotMocapPos(self):
@@ -382,35 +369,30 @@ class plotData():
 
         # Plot x
         mp_x = self.mocap_pos_plot.add_subplot(3, 1, 1)
-        #mp_x.set_title(f'X Position vs Time - {self.flight}')
-        #mp_x.set_xlabel('Time [s]')
         mp_x.set_ylabel('X Pos. [m]', fontdict={'fontsize': 11})
         mp_x.plot(time[:time_end], np.zeros(len(parse.x[:time_end])), color='grey', linestyle='--')
         mp_x.plot(time[:time_end], parse.x_des[:time_end], 'b', label='x desired position')
         mp_x.plot(time[:time_end], parse.x[:time_end], 'r', label='x position')
-        mp_x.plot(time_sim[:time_sim_end], lab3.x_sim[:time_sim_end], 'y', label='x sim position')
+        mp_x.plot(time_sim[:time_sim_end], lab4.x_sim[:time_sim_end], 'y', label='x sim position')
         mp_x.legend(loc='upper right', fontsize=12)
 
         # Plot y
         mp_y = self.mocap_pos_plot.add_subplot(3, 1, 2)
-        #mp_y.set_title(f'Y Position vs Time - {self.flight}')
-        #mp_y.set_xlabel('Time [s]')
         mp_y.set_ylabel('Y Pos. [m]', fontdict={'fontsize': 11})
         mp_y.plot(time[:time_end], np.zeros(len(parse.y[:time_end])), color='grey', linestyle='--')
         mp_y.plot(time[:time_end], parse.y_des[:time_end], 'b', label='y desired position')
         mp_y.plot(time[:time_end], parse.y[:time_end], 'r', label='y position')
-        mp_y.plot(time_sim[:time_sim_end], lab3.y_sim[:time_sim_end], 'y', label='y sim position')
+        mp_y.plot(time_sim[:time_sim_end], lab4.y_sim[:time_sim_end], 'y', label='y sim position')
         mp_y.legend(loc='upper right', fontsize=12)
 
         # Plot z
         mp_z = self.mocap_pos_plot.add_subplot(3, 1, 3)
-        #mp_z.set_title(f'Z Position vs Time - {self.flight}')
         mp_z.set_xlabel('Time [s]', fontdict={'fontsize': 11})
         mp_z.set_ylabel('Z Pos. [m]', fontdict={'fontsize': 11})
         mp_z.plot(time[:time_end], np.zeros(len(parse.z[:time_end])), color='grey', linestyle='--')
         mp_z.plot(time[:time_end], parse.z_des[:time_end], 'b', label='z desired position')
         mp_z.plot(time[:time_end], parse.z[:time_end], 'r', label='z position')
-        mp_z.plot(time_sim[:time_sim_end], lab3.z_sim[:time_sim_end], 'y', label='z sim position')
+        mp_z.plot(time_sim[:time_sim_end], lab4.z_sim[:time_sim_end], 'y', label='z sim position')
         mp_z.legend(loc='upper right', fontsize=12)
 
     # Plot the mocap angle and desired angles over time
@@ -422,7 +404,6 @@ class plotData():
 
         # Plot yaw
         a_yaw = self.angles.add_subplot(1, 1, 1)
-        #a_yaw.set_title(f'Yaw Angle vs Time - {self.flight}')
         a_yaw.set_xlabel('Time [s]', fontdict={'fontsize': 13})
         a_yaw.set_ylabel('Yaw Angle [rad]', fontdict={'fontsize': 13})
         a_yaw.plot(time[:time_end], parse.yaw_des[:time_end], 'b', label='yaw desired')
@@ -432,12 +413,21 @@ class plotData():
 
     def savePlots(self):
         self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
-        self.mse_plot.savefig(os.path.join(os.getcwd(), f'plots\\mean_square_error_{self.flight}.png'))
         self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
         self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
 
 
 if __name__ == '__main__':
+    # Initialize plot folder
+    try:
+        shutil.rmtree(os.path.join(os.getcwd(), 'plots\\'))
+    except Exception as e:
+        print(f'Could not remove plot folder, error: {str(e)}')
+    try:
+        os.mkdir(os.path.join(os.getcwd(), 'plots\\'))
+    except Exception as e:
+        print(f'Could not create plot folder, error: {str(e)}')
+
     # Get the filenames to parse, calc, and plot
     data_location = os.path.join(os.getcwd() + r'\Lab4_Data')
     # Final flightplan is a copy of IDK.csv
@@ -449,9 +439,9 @@ if __name__ == '__main__':
     files = []
     for file_pair in filenames:
         files.append([os.path.join(data_location, i) for i in file_pair])
-    params = {}
 
     # Initialize classes, let them run
+    params = {}
     for flight_type in range(0, len(flight)):
         params['plot time'] = times[flight_type]  # Time in seconds of which to plot the data
         params['file inputs'] = files[flight_type]  # file inputs
@@ -459,7 +449,7 @@ if __name__ == '__main__':
         params['time_offset'] = time_offsets[flight_type]
         params['plot_bool'] = plot_bool[flight_type]
         parse = dataParse(params)
-        lab3 = labFour(params)
+        lab4 = labFour(params)
         if plot_bool[flight_type]:
             plot = plotData(params)
         plt.show()

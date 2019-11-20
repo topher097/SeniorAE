@@ -77,8 +77,8 @@ class dataAnalysis():
         # Constants
         self.wire_diam = .005       # millimeters
         self.cylinder_diam = 19.05  # millimeters
-        self.w = 0.3048             # meters (12 inches)
-        self.L = 0.120              # meters
+        self.w = 0.3000             # meters (~12 inches)
+        self.L = 0.060              # meters
         self.atm_press = 99600      # Pa
         self.atm_temp = 298.15      # Kelvin (25 C)
         self.atm_density = 1.165    # kg/m^3
@@ -86,12 +86,12 @@ class dataAnalysis():
         self.S = 110.4              # Kelvin (for visc calc)
 
         # Run problems
-        #dataAnalysis.problemOne(self)
-        #dataAnalysis.problemTwo(self)
+        dataAnalysis.problemOne(self)
+        dataAnalysis.problemTwo(self)
         dataAnalysis.problemThree(self)
         dataAnalysis.problemFour(self)
-        #dataAnalysis.problemFive(self)
-        plt.show()
+        dataAnalysis.problemFive(self)
+        #plt.show()
 
     # Problem 1
     def problemOne(self):
@@ -142,12 +142,13 @@ class dataAnalysis():
         velocity
         """
         # Initialize plot figure
-        plot_2 = plt.figure(figsize=(14, 10))
-        plot_2.subplots_adjust(left=.15, right=.95, top=.95, bottom=.15)
+        plot_2 = plt.figure(figsize=(18, 20 ))
+        plot_2.subplots_adjust(left=.08, right=.97, top=.97, bottom=.07)
         mv = plot_2.add_subplot(1, 1, 1)
-        mv.set_xlabel('$\\frac{(y-y_o)}{D}$', fontsize=18)
-        mv.set_ylabel('$\\frac{u(y)}{U_{\infty}}$', fontsize=18)
-        mv.grid(linewidth=0.5, color='gray', linestyle='--')
+        plt.tick_params(labelsize=20)
+        mv.set_xlabel('$\\frac{(y-y_o)}{D}$', fontsize=36)
+        mv.set_ylabel('$\\frac{u(y)}{U_{\infty}}$', fontsize=36)
+        mv.grid(linewidth=1, color='gray', linestyle='--')
         # Get plot data from each file
         for file_loc in self.filenames:
             file = os.path.basename(file_loc).replace('.csv', '')
@@ -157,8 +158,8 @@ class dataAnalysis():
                 self.pitot_vel = self.data[file]['pitot vel'].tolist()
                 self.y_pos = self.data[file]['y pos'].tolist()
                 # Calc the v_inf for the hotwire and pitot velocity profiles
-                v_inf_hot = sum(self.hot_vel[:6])/len(self.hot_vel[:6])
-                v_inf_pitot = sum(self.pitot_vel[:6])/len(self.pitot_vel[:6])
+                v_inf_hot = statistics.mean([sum(self.hot_vel[:6])/len(self.hot_vel[:6]), sum(self.hot_vel[-6:])/len(self.hot_vel[-6:])])
+                v_inf_pitot = statistics.mean([sum(self.pitot_vel[:6])/len(self.pitot_vel[:6]), sum(self.pitot_vel[-6:])/len(self.pitot_vel[-6:])])
                 # Normalize velocity to the freestream velocity
                 hot_nondim = [i/v_inf_hot for i in self.hot_vel]
                 pitot_nondim = [i/v_inf_pitot for i in self.pitot_vel]
@@ -168,9 +169,9 @@ class dataAnalysis():
                 y_pos_nondim_hot = [(i-y0_hot)/self.cylinder_diam for i in self.y_pos]
                 y_pos_nondim_pitot = [(i - y0_pitot) / self.cylinder_diam for i in self.y_pos]
                 # Plot the mean velocity
-                mv.plot(y_pos_nondim_hot, hot_nondim, color=self.plot_color[index], label=f'Hotwire @ {file}mm')
-                mv.plot(y_pos_nondim_pitot, pitot_nondim, color=self.plot_color[index], label=f'Pitot @ {file}mm', linestyle='--')
-        mv.legend(loc='lower right')
+                mv.plot(y_pos_nondim_hot, hot_nondim, color=self.plot_color[index], label=f'Hotwire @ {file}mm', linewidth=3)
+                mv.plot(y_pos_nondim_pitot, pitot_nondim, color=self.plot_color[index], label=f'Pitot @ {file}mm', linestyle='--', linewidth=2)
+        mv.legend(loc='lower right', fontsize=22)
         plot_2.savefig(os.path.join(os.getcwd(), r'plots\prob2'))
         plt.draw()
 
@@ -187,7 +188,6 @@ class dataAnalysis():
         data_text = 'Position (mm), F_D hotwire [N], C_D hotwire, Re hotwire, F_D pitot [N], C_D pitot, Re pitot'
         latex_text = f'\t\t\hline\n\t\tPosition [mm] & $F_D$ Hot [N] & $C_D$ Hot & $Re$ Hot & $F_D$ Pitot [N] & ' \
                      f'$C_D$ Pitot & $Re$ Pitot {dub_slash} \hline'
-
         for file_loc in self.filenames:
             file = os.path.basename(file_loc).replace('.csv', '')
             if 'calibration' not in file:
@@ -195,54 +195,42 @@ class dataAnalysis():
                 self.pitot_vel = self.data[file]['pitot vel'].tolist()
                 self.y_pos = self.data[file]['y pos'].tolist()
                 # Calc the v_inf for the hotwire and pitot velocity profiles
-                v_inf_hot = sum(self.hot_vel[:6])/len(self.hot_vel[:6])
-                v_inf_pitot = sum(self.pitot_vel[:6])/len(self.pitot_vel[:6])
-                #print(v_inf_hot, v_inf_pitot)
-                # Normalize velocity to the freestream velocity
-                hot_nondim = [i/v_inf_hot for i in self.hot_vel]
-                pitot_nondim = [i/v_inf_pitot for i in self.pitot_vel]
-                # Normalize the y position with cylinder diameter
-                y0_hot = self.y_pos[hot_nondim.index(min(hot_nondim))]
-                y0_pitot = self.y_pos[pitot_nondim.index(min(pitot_nondim))]
-                y_pos_nondim_hot = [(i - y0_hot) / self.cylinder_diam for i in self.y_pos]
-                y_pos_nondim_pitot = [(i - y0_pitot) / self.cylinder_diam for i in self.y_pos]
-                # Create interpolation function of the hot and pitot data for integration
-                hot_interp = np.poly1d(np.polyfit(y_pos_nondim_hot, self.hot_vel, 5))
-                pitot_interp = np.poly1d(np.polyfit(y_pos_nondim_pitot, self.pitot_vel, 5))
-                hot_integ = (hot_interp*(v_inf_hot - hot_interp)).integ()
-                pitot_integ = (pitot_interp*(v_inf_pitot - pitot_interp)).integ()
-                # Calculate drag force using momentum deficit method
-                F_D_hot = self.atm_density * self.w * (hot_integ(self.L) - hot_integ(-1 * self.L))
-                F_D_pitot = self.atm_density * self.w * (pitot_integ(self.L) - hot_integ(-1 * self.L))
-
-                # Calc numerically
-                F_D_hot2 = 0
-                F_D_pitot2 = 0
-                for i in range(0, len(self.y_pos)-1):
-                    dy_hot = y_pos_nondim_hot[i+1] - y_pos_nondim_hot[i]
-                    dy_pitot = y_pos_nondim_pitot[i+1] - y_pos_nondim_pitot[i]
-                    v_hot = hot_nondim[i]
-                    v_pitot = pitot_nondim[i]
-                    F_D_hot2 += self.atm_density * self.w * (v_hot * (v_inf_hot - v_hot)) * dy_hot
-                    F_D_pitot2 += self.atm_density * self.w * (v_pitot * (v_inf_pitot - v_pitot)) * dy_pitot
-                F_D_hot2 = F_D_hot2
-                F_D_pitot2 = F_D_pitot2
-                print(F_D_hot2, F_D_pitot2)
+                v_inf_hot2 = statistics.mean([sum(self.hot_vel[:6])/len(self.hot_vel[:6]), sum(self.hot_vel[-6:])/len(self.hot_vel[-6:])])
+                v_inf_pitot2 = statistics.mean([sum(self.pitot_vel[:6])/len(self.pitot_vel[:6]), sum(self.pitot_vel[-6:])/len(self.pitot_vel[-6:])])
+                print(f'{file} hotwire = {v_inf_hot2} m/s')
+                print(f'{file} pitot = {v_inf_pitot2} m/s')
+                #print(f'{file} {statistics.mean(self.hot_vel)} m/s')
+                # Calc integral using trapezoidal rule
+                F_D_hot = 0
+                F_D_pitot = 0
+                for i in range(0, len(self.y_pos)):
+                    v_hot = self.hot_vel[i]
+                    v_pitot = self.pitot_vel[i]
+                    F_h = v_hot * (v_inf_hot2 - v_hot)
+                    F_p = v_pitot * (v_inf_pitot2 - v_pitot)
+                    if i == 0 or i == len(self.y_pos)-1:
+                        F_D_hot += F_h
+                        F_D_pitot += F_p
+                    else:
+                        F_D_hot += 2*F_h
+                        F_D_pitot += 2*F_p
+                F_D_hot = F_D_hot*(.001) * self.atm_density * self.w
+                F_D_pitot = F_D_pitot*(.001) * self.atm_density * self.w
 
                 # Calculate the drag coefficient
-                C_D_hot = F_D_hot/(.5 * self.atm_density * v_inf_hot**2 * (self.w*self.cylinder_diam/1000))
-                C_D_pitot = F_D_pitot/(.5 * self.atm_density * v_inf_hot**2 * (self.w*self.cylinder_diam/1000))
+                C_D_hot = F_D_hot/(.5 * self.atm_density * v_inf_hot2**2 * (self.w*self.cylinder_diam/1000))
+                C_D_pitot = F_D_pitot/(.5 * self.atm_density * v_inf_pitot2**2 * (self.w*self.cylinder_diam/1000))
                 # Calculate Reynolds numbers
                 mu = (self.b * self.atm_temp ** (3 / 2)) / (self.atm_temp + self.S)
-                Re_hot = (self.atm_density * (self.cylinder_diam / 1000) * v_inf_hot) / mu
-                Re_pitot = (self.atm_density * (self.cylinder_diam / 1000) * v_inf_pitot) / mu
+                Re_hot = (self.atm_density * (self.cylinder_diam / 1000) * v_inf_hot2) / mu
+                Re_pitot = (self.atm_density * (self.cylinder_diam / 1000) * v_inf_pitot2) / mu
                 # Write values to data_text
                 data_text += f'\n{file}, {F_D_hot}, {C_D_hot}, {Re_hot}, {F_D_pitot}, {C_D_pitot}, {Re_pitot}'
-                # Write valeus to latex text
+                # Write values to latex text
                 latex_text += f'\n\t\t{file} & {round(F_D_hot, 4)} & {round(C_D_hot, 4)} & {int(Re_hot)} & ' \
-                              f'{round(F_D_pitot, 4)} & {round(C_D_pitot, 4)} & {int(Re_pitot)} {dub_slash} \hline'
+                               f'{round(F_D_pitot, 4)} & {round(C_D_pitot, 4)} & {int(Re_pitot)} {dub_slash} \hline'
         # Write data_text to csv file
-        with open('problem3_data.csv', 'wt') as f:
+        with open('problem3_data_trap.csv', 'wt') as f:
             f.write(data_text)
         print(latex_text)
 
@@ -253,18 +241,21 @@ class dataAnalysis():
         Make the plot large, one page. Y axis should be (y-y_0)/D
         """
         # Initialize plot figures
-        plot_41 = plt.figure(figsize=(8, 10))
-        plot_41.subplots_adjust(left=.15, right=.95, top=.95, bottom=.15)
+
+        plot_41 = plt.figure(figsize=(12, 15))
+        plot_41.subplots_adjust(left=.1, right=.98, top=.98, bottom=.08)
         pitot = plot_41.add_subplot(1, 1, 1)
-        pitot.set_xlabel('$\\frac{(y-y_o)}{D}$', fontsize=18)
-        pitot.set_ylabel('Turbulence Intensity', fontsize=18)
-        pitot.grid(linewidth=0.5, color='gray', linestyle='--')
-        plot_42 = plt.figure(figsize=(8, 10))
-        plot_42.subplots_adjust(left=.15, right=.95, top=.95, bottom=.15)
+        plt.tick_params(labelsize=16)
+        pitot.set_xlabel('$\\frac{(y-y_o)}{D}$', fontsize=24)
+        pitot.set_ylabel('Turbulence Intensity', fontsize=24)
+        pitot.grid(linewidth=1, color='gray', linestyle='--')
+        plot_42 = plt.figure(figsize=(12, 15))
+        plot_42.subplots_adjust(left=.09, right=.98, top=.98, bottom=.08)
         hot = plot_42.add_subplot(1, 1, 1)
-        hot.set_xlabel('$\\frac{(y-y_o)}{D}$', fontsize=18)
-        hot.set_ylabel('Turbulence Intensity', fontsize=18)
-        hot.grid(linewidth=0.5, color='gray', linestyle='--')
+        plt.tick_params(labelsize=16)
+        hot.set_xlabel('$\\frac{(y-y_o)}{D}$', fontsize=24)
+        hot.set_ylabel('Turbulence Intensity', fontsize=24)
+        hot.grid(linewidth=1, color='gray', linestyle='--')
         # Get plot data from each file
         for file_loc in self.filenames:
             file = os.path.basename(file_loc).replace('.csv', '')
@@ -272,10 +263,12 @@ class dataAnalysis():
             if 'calibration' not in file:
                 self.hot_vel = self.data[file]['hot vel'].tolist()
                 self.pitot_vel = self.data[file]['pitot vel'].tolist()
+                hot_std = self.data[file]['hot std'].tolist()
+                pitot_std = self.data[file]['pitot std'].tolist()
                 self.y_pos = self.data[file]['y pos'].tolist()
                 # Calc v_inf for hotwire and pitot velocity profiles
-                v_inf_hot = sum(self.hot_vel[:6])/len(self.hot_vel[:6])
-                v_inf_pitot = sum(self.pitot_vel[:6])/len(self.pitot_vel[:6])
+                v_inf_hot = statistics.mean([sum(self.hot_vel[:6])/len(self.hot_vel[:6]), sum(self.hot_vel[-6:])/len(self.hot_vel[-6:])])
+                v_inf_pitot = statistics.mean([sum(self.pitot_vel[:6])/len(self.pitot_vel[:6]), sum(self.pitot_vel[-6:])/len(self.pitot_vel[-6:])])
                 # Normalize velocity to the freestream velocity
                 hot_nondim = [i / v_inf_hot for i in self.hot_vel]
                 pitot_nondim = [i / v_inf_pitot for i in self.pitot_vel]
@@ -284,17 +277,22 @@ class dataAnalysis():
                 y0_pitot = self.y_pos[pitot_nondim.index(min(pitot_nondim))]
                 y_pos_nondim_hot = [(i - y0_hot) / self.cylinder_diam for i in self.y_pos]
                 y_pos_nondim_pitot = [(i - y0_pitot) / self.cylinder_diam for i in self.y_pos]
-                # Calculate the standard deviation, normalize hotwire and pitot std dev to v_inf
-                hot_std = statistics.stdev(self.hot_vel)/v_inf_hot
-                pitot_std = statistics.stdev(self.pitot_vel)/v_inf_pitot
                 # Get turbulence intensity
-                hot_turb = [i*hot_std for i in self.hot_vel]
-                pitot_turb = [i*pitot_std for i in self.pitot_vel]
+                hot_turb = [i / v_inf_hot for i in hot_std]
+                pitot_turb = [i / v_inf_pitot for i in pitot_std]
+                # Find peaks
+                peak1_h = y_pos_nondim_hot[hot_turb.index(max(hot_turb[:30]))]
+                peak2_h = y_pos_nondim_hot[hot_turb.index(max(hot_turb[-30:]))]
+                peak1_p = y_pos_nondim_pitot[pitot_turb.index(max(pitot_turb[:30]))]
+                peak2_p = y_pos_nondim_pitot[pitot_turb.index(max(pitot_turb[-30:]))]
+                print(file)
+                print(peak1_h, peak2_h)
+                print(peak1_p, peak2_p)
                 # Plot the turbulence intensity
-                pitot.plot(y_pos_nondim_pitot, pitot_turb, color=self.plot_color[index], label=f'{file}mm')
-                hot.plot(y_pos_nondim_hot, hot_turb, color=self.plot_color[index], label=f'{file}mm')
-        pitot.legend(loc='lower right')
-        hot.legend(loc='lower right')
+                pitot.plot(y_pos_nondim_pitot, pitot_turb, color=self.plot_color[index], label=f'{file}mm', linewidth=2)
+                hot.plot(y_pos_nondim_hot, hot_turb, color=self.plot_color[index], label=f'{file}mm', linewidth=2)
+        pitot.legend(loc='upper right', fontsize=18)
+        hot.legend(loc='upper right', fontsize=18)
         plot_41.savefig(os.path.join(os.getcwd(), r'plots\prob4_pitot'))
         plot_42.savefig(os.path.join(os.getcwd(), r'plots\prob4_hot'))
         plt.draw()
@@ -308,16 +306,20 @@ class dataAnalysis():
         Strouhal number = (shedding frequency * Diameter)/v_inf
         """
         # Initialize plot
-        plot_5 = plt.figure(figsize=(15, 10))
-        plot_5.subplots_adjust(left=.1, right=.95, top=.95, bottom=.1)
+        plot_5 = plt.figure(figsize=(15, 8))
+        plot_5.subplots_adjust(left=.06, right=.95, top=.95, bottom=.08)
         fft = plot_5.add_subplot(1, 1, 1)
-        fft.set_xlabel('Frequency [Hz]', fontsize=18)
-        fft.set_ylabel('FFT Amplitude [Vrms]', fontsize=18)
+        plt.tick_params(labelsize=14)
+        fft.set_xlabel('Frequency [Hz]', fontsize=20)
+        fft.set_ylabel('FFT Amplitude [Vrms]', fontsize=20)
         fft.set_xlim([0, 1000])
         fft.grid(linewidth=0.5, color='gray', linestyle='--')
         # Get data from files and plot
+        dub_slash = r'\\'
         data_text = 'V Infinity (m/s), Reynolds Number, Peak Vortex Amplitude (Vrms), ' \
                     'Frequency at Peak Amplitude (Hz), Strouhal Number'
+        latex_text = f'\t\hline\n\t$U_inf$ [m/s] & Peak Vortex Amp. [Vrms] & ' \
+                     f'Freq. at Peak Amp. [Hz] & $Re$ & $St$ {dub_slash} \hline'
         peak_a_list, peak_f_list = [], []
         for file_loc in self.fft_filenames:
             file = os.path.basename(file_loc).replace('.csv', '')
@@ -347,13 +349,15 @@ class dataAnalysis():
             strouhal = (peak_f * (self.cylinder_diam/1000))/v_inf
             # Save data to text
             data_text += f'\n{v_inf}, {round(Re, 5)}, {round(peak_a, 4)}, {round(peak_f, 5)}, {round(strouhal, 5)}'
+            latex_text += f'\n\t{v_inf} & {round(peak_a, 4)} & {round(peak_f, 5)} & {int(Re)} & {round(strouhal, 5)} {dub_slash} \hline'
         fft.scatter(peak_f_list, peak_a_list, edgecolors='k', facecolors='none', s=40, label='Peak Vortex Shedding Freq.')
         # Save data_text file
         with open('problem5_data.csv', 'wt') as f:
             f.write(data_text)
-        fft.legend(loc='upper right')
+        fft.legend(loc='upper right', fontsize=16)
         plot_5.savefig(os.path.join(os.getcwd(), r'plots\prob5'))
         plt.draw()
+        print(latex_text)
 
 
 if __name__ == '__main__':
@@ -368,7 +372,7 @@ if __name__ == '__main__':
         print(f'Could not create plot folder, error: {str(e)}')
 
     data_file_loc = os.path.join(os.getcwd(), 'lab6_data_cylinder')
-    data_filenames = [os.path.join(data_file_loc, i) for i in os.listdir(data_file_loc)]
+    data_filenames = [os.path.join(data_file_loc, f'{i}.csv') for i in ['calibration', '66.7', '104.8', '161.9', '238.1']]
     fft_file_loc = os.path.join(os.getcwd(), 'lab6_data_fft')
     fft_filenames = [os.path.join(fft_file_loc, i) for i in os.listdir(fft_file_loc)]
 
