@@ -8,6 +8,7 @@ import os
 import shutil
 import numpy as np
 import matplotlib.pyplot as plt
+import mpl_toolkits.mplot3d
 import pandas as pd
 
 
@@ -195,6 +196,7 @@ class labFour():
 
     # Initialize variables
     def __init__(self, params):
+        # Error and stdev variables
         self.sum_squared_error = []
         self.position_error_x = []
         self.position_error_y = []
@@ -207,6 +209,7 @@ class labFour():
         self.mean = 0
         self.N = 0
 
+        # Mocap data import
         self.x = parse.x
         self.y = parse.y
         self.z = parse.z
@@ -214,6 +217,7 @@ class labFour():
         self.y_des = parse.y_des
         self.z_des = parse.z_des
 
+        # Simulation data import
         self.x_sim = parse.sim_x
         self.y_sim = parse.sim_y
         self.z_sim = parse.sim_z
@@ -223,10 +227,23 @@ class labFour():
 
         self.flight = params['flight']
 
+        # Gradient Visualization
+        self.obs_x = 0
+        self.obs_y = 0
+        self.obs_z = 0
+        self.des_x = 0
+        self.des_y = 0
+        self.des_z = 0
+        self.grad_x = []
+        self.grad_y = []
+        self.grad_intensity = []
+
+
         # Run the calculations
-        labFour.calcSumSquaredError(self)
-        labFour.calcDeviation(self)
-        labFour.calcPositionError(self)
+        #labFour.calcSumSquaredError(self)
+        #labFour.calcDeviation(self)
+        #labFour.calcPositionError(self)
+        labFour.createGradientVisual(self)
 
     # Calculate the sum squared error of mocap position and desired position
     def calcSumSquaredError(self):
@@ -279,6 +296,39 @@ class labFour():
             self.position_error_y_sim.append(error_y)
             self.position_error_z_sim.append(error_z)
 
+    # Create a visualization of the gradient in a space
+    def createGradientVisual(self):
+        # Create object positions and radii
+        self.obs_x = 1
+        self.obs_y = 0
+        self.obs_z = 0.66
+        self.des_x = 2
+        self.des_y = 0
+        self.des_z = 1
+        self.obs_r = .25
+        self.goal_r = .5
+
+        # Initialize x, y, and z
+        x, y = np.mgrid[-4: 4: 75j, -2: 6: 75j]
+        z = np.empty([x.size, y.size])
+        # Iterate through x and y arrays, calculate the "gradient"
+        for i in range(len(x[0].tolist())):
+            for j in range(len(y[:, 0].tolist())):
+                # Calc distance to obstacle
+                desired_dist = abs(np.sqrt((i - self.obs_x)**2 + (j - self.obs_y)**2))
+                # Calc distance to desired goal (assume planar)
+                obstacle_dist = abs(np.sqrt((i - self.des_x)**2 + (j - self.des_y)**2))
+                # Calculate the repulsive component
+                repulsive = self.obs_r * obstacle_dist**3
+                attractive = self.goal_r * desired_dist**2
+
+                # Superpose attractive and repulsive gradients
+                z[i][j] = attractive - repulsive
+
+        self.grad_x = x
+        self.grad_y = y
+        self.grad_intensity = z
+
 
 # Plot the data
 class plotData():
@@ -307,14 +357,20 @@ class plotData():
         self.angles.subplots_adjust(hspace=.5)
         self.angles.tight_layout()
 
+        # Setting up gradient visualization plot
+        self.grad = plt.figure(figsize=(12, 5))
+        self.grad.subplots_adjust(hspace=.5)
+        self.grad.tight_layout()
+
         # Plot
         #plotData.plotMSE(self)
-        plotData.plotPositionError(self)
-        plotData.plotMocapPos(self)
-        plotData.plotAngles(self)
+        #plotData.plotPositionError(self)
+        #plotData.plotMocapPos(self)
+        #plotData.plotAngles(self)
+        plotData.plotGradientVisual(self)
 
         # Save and display
-        plotData.savePlots(self)
+        #plotData.savePlots(self)
         plt.draw()
 
     # Plot the position error over time
@@ -410,6 +466,15 @@ class plotData():
         a_yaw.plot(time[:time_end], parse.mocap_yaw[:time_end], 'r', label='mocap yaw')
         a_yaw.plot(time_sim[:time_sim_end], parse.sim_yaw[:time_sim_end], 'y', label='sim yaw')
         a_yaw.legend(loc='upper right', fontsize=12)
+
+    # Plot the gradient visualization
+    def plotGradientVisual(self):
+        gradient = self.grad.add_subplot(111, projection='3d')
+        gradient.set_xlabel('x [m]')
+        gradient.set_ylabel('y [m]')
+        gradient.set_zlabel('Gradient Intensity')
+        gradient.plot_surface(lab4.x, lab4.y, lab4.z, rstride=1, cstride=1, cmap=plt.cm.Blues_r)
+        plt.draw()
 
     def savePlots(self):
         self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
