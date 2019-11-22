@@ -8,7 +8,7 @@ import os
 import shutil
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d
+import mpl_toolkits.mplot3d as a3d
 import pandas as pd
 
 
@@ -50,10 +50,9 @@ class dataParse():
         self.mocap_pitch_filter = []   # filtered mocap pitch
         self.mocap_roll_filter = []    # filtered mocap roll
         self.mocap_yaw_filter = []     # filtered mocap yaw
-        self.mu1 = []                  # Motor command 1
-        self.mu2 = []                  # motor command 2
-        self.mu3 = []                  # motor command 3
-        self.mu4 = []                  # motor command 4
+        self.plan_x = []
+        self.plan_y = []
+        self.plan_z = []
         self.offset_gs = params['time_offset']  # offset the real data by a certain time (s)
 
         # Simulation data
@@ -87,7 +86,8 @@ class dataParse():
                                                              'gyro_z (rad/s)', 'x (m)', 'y (m)', 'z (m)',
                                                              'yaw (rad)', 'pitch (rad)', 'roll (rad)',
                                                              'mocap_counter', 'counter',
-                                                             'desired x', 'desired y', 'desired z', 'desired yaw']
+                                                             'desired x', 'desired y', 'desired z', 'desired yaw',
+                                                             'planner x', 'planner y', 'planner z', '1', '2', '3']
                                                       ))
 
         # Save data to class lists
@@ -115,6 +115,9 @@ class dataParse():
         self.y_des = self.parsedGS['desired y'].tolist()[offset_cut_location::]
         self.z_des = self.parsedGS['desired z'].tolist()[offset_cut_location::]
         self.yaw_des = self.parsedGS['desired yaw'].tolist()[offset_cut_location::]
+        self.plan_x = self.parsedGS['planner x'].tolist()[offset_cut_location::]
+        self.plan_y = self.parsedGS['planner y'].tolist()[offset_cut_location::]
+        self.plan_z = self.parsedGS['planner z'].tolist()[offset_cut_location::]
 
         # Find the time where t=plot_time (for plotting)
         if self.gs_time[-1] < self.plot_time:
@@ -228,16 +231,31 @@ class labFour():
         self.flight = params['flight']
 
         # Gradient Visualization
-        self.obs_x = 0
+        self.obs_x = 1
         self.obs_y = 0
-        self.obs_z = 0
-        self.des_x = 0
-        self.des_y = 0
-        self.des_z = 0
-        self.grad_x = []
-        self.grad_y = []
-        self.grad_intensity = []
-
+        self.x_des0 = 0
+        self.y_des0 = 0
+        self.x_des1 = .67
+        self.y_des1 = 0
+        self.x_des2 = 1.33
+        self.y_des2 = 0
+        self.x_des3 = 2
+        self.y_des3 = 0
+        self.obs_r = 0.25          # meters
+        self.goal_r = 0.5          # meters
+        self.drone_r = 0.5         # meters
+        self.grad_x0 = []
+        self.grad_y0 = []
+        self.grad_intensity0 = []
+        self.grad_x1 = []
+        self.grad_y1 = []
+        self.grad_intensity1 = []
+        self.grad_x2 = []
+        self.grad_y2 = []
+        self.grad_intensity2 = []
+        self.grad_x3 = []
+        self.grad_y3 = []
+        self.grad_intensity3 = []
 
         # Run the calculations
         #labFour.calcSumSquaredError(self)
@@ -296,38 +314,65 @@ class labFour():
             self.position_error_y_sim.append(error_y)
             self.position_error_z_sim.append(error_z)
 
-    # Create a visualization of the gradient in a space
+    # Create a visualization of the gradient in a space (2D)
     def createGradientVisual(self):
-        # Create object positions and radii
-        self.obs_x = 1
-        self.obs_y = 0
-        self.obs_z = 0.66
-        self.des_x = 2
-        self.des_y = 0
-        self.des_z = 1
-        self.obs_r = .25
-        self.goal_r = .5
-
-        # Initialize x, y, and z
-        x, y = np.mgrid[-4: 4: 75j, -2: 6: 75j]
-        z = np.empty([x.size, y.size])
-        # Iterate through x and y arrays, calculate the "gradient"
-        for i in range(len(x[0].tolist())):
-            for j in range(len(y[:, 0].tolist())):
-                # Calc distance to obstacle
-                desired_dist = abs(np.sqrt((i - self.obs_x)**2 + (j - self.obs_y)**2))
-                # Calc distance to desired goal (assume planar)
-                obstacle_dist = abs(np.sqrt((i - self.des_x)**2 + (j - self.des_y)**2))
-                # Calculate the repulsive component
-                repulsive = self.obs_r * obstacle_dist**3
-                attractive = self.goal_r * desired_dist**2
-
-                # Superpose attractive and repulsive gradients
-                z[i][j] = attractive - repulsive
-
-        self.grad_x = x
-        self.grad_y = y
-        self.grad_intensity = z
+        for k in [0, 1, 2, 3]:
+            # Set desired position variable
+            if k == 0:
+                x_des = self.x_des0
+                y_des = self.y_des0
+            elif k == 1:
+                x_des = self.x_des1
+                y_des = self.y_des1
+            elif k == 2:
+                x_des = self.x_des2
+                y_des = self.y_des2
+            else:
+                x_des = self.x_des3
+                y_des = self.y_des3
+            # Initialize x, y, and z
+            x = np.linspace(-1, 3, 100)
+            y = np.linspace(-2, 2, 100)
+            X, Y = np.meshgrid(x, y)
+            Z = np.zeros([len(X[0].tolist()), len(Y[:, 0].tolist())])
+            # Iterate through x and y arrays, calculate the "gradient"
+            for i in range(len(X[0].tolist())):
+                for j in range(len(Y[:, 0].tolist())):
+                    x = X[0][i]
+                    y = Y[j][0]
+                    # Calc distance to obstacle
+                    obstacle_dist = abs(np.sqrt((x - self.obs_x)**2 + (y - self.obs_y)**2))
+                    # Calc distance to desired goal (assume planar x-y)
+                    desired_dist = abs(np.sqrt((x - x_des)**2 + (y - y_des)**2))
+                    # Calculate the repulsive component
+                    if obstacle_dist <= self.obs_r*2:
+                        repulsive = (20/obstacle_dist)
+                    else:
+                        repulsive = 0
+                    # Calculate the attractive component
+                    if desired_dist >= self.goal_r*.2:
+                        attractive = 75 * desired_dist**2
+                    else:
+                        attractive = .2 * desired_dist**.5
+                    # Superpose attractive and repulsive gradients
+                    Z[j][i] = attractive + repulsive
+            # Save arrays to class variables for plotting
+            if k == 0:
+                self.grad_x0 = X
+                self.grad_y0 = Y
+                self.grad_intensity0 = Z
+            elif k == 1:
+                self.grad_x1 = X
+                self.grad_y1 = Y
+                self.grad_intensity1 = Z
+            elif k == 2:
+                self.grad_x2 = X
+                self.grad_y2 = Y
+                self.grad_intensity2 = Z
+            else:
+                self.grad_x3 = X
+                self.grad_y3 = Y
+                self.grad_intensity3 = Z
 
 
 # Plot the data
@@ -337,6 +382,7 @@ class plotData():
         self.flight = params['flight']
         self.plot_bool = params['plot_bool']
 
+        '''
         # Setting up mocap position plot
         self.mocap_pos_plot = plt.figure(figsize=(12, 6))
         self.mocap_pos_plot.subplots_adjust(hspace=.35)
@@ -356,11 +402,21 @@ class plotData():
         self.angles = plt.figure(figsize=(12, 4.5))
         self.angles.subplots_adjust(hspace=.5)
         self.angles.tight_layout()
-
+        '''
         # Setting up gradient visualization plot
-        self.grad = plt.figure(figsize=(12, 5))
-        self.grad.subplots_adjust(hspace=.5)
+        self.grad = plt.figure(figsize=(12.5, 10))
+        self.grad.subplots_adjust(hspace=.18, left=.25, right=.96, top=.97, bottom=.07)
         self.grad.tight_layout()
+
+        # Gradient variables
+        self.x_des0 = lab4.x_des0
+        self.y_des0 = lab4.y_des0
+        self.x_des1 = lab4.x_des1
+        self.y_des1 = lab4.y_des1
+        self.x_des2 = lab4.x_des2
+        self.y_des2 = lab4.y_des2
+        self.x_des3 = lab4.x_des3
+        self.y_des3 = lab4.y_des3
 
         # Plot
         #plotData.plotMSE(self)
@@ -370,7 +426,7 @@ class plotData():
         plotData.plotGradientVisual(self)
 
         # Save and display
-        #plotData.savePlots(self)
+        plotData.savePlots(self)
         plt.draw()
 
     # Plot the position error over time
@@ -469,17 +525,150 @@ class plotData():
 
     # Plot the gradient visualization
     def plotGradientVisual(self):
-        gradient = self.grad.add_subplot(111, projection='3d')
-        gradient.set_xlabel('x [m]')
-        gradient.set_ylabel('y [m]')
-        gradient.set_zlabel('Gradient Intensity')
-        gradient.plot_surface(lab4.x, lab4.y, lab4.z, rstride=1, cstride=1, cmap=plt.cm.Blues_r)
+        # Get drone flight path for both of the plots
+        skip = 10
+        skip2 = 30
+        list_point_break_1 = 0
+        list_point_break_2 = 0
+        list_point_break_3 = 0
+        for i in parse.plan_x:
+            if i-self.x_des1 >= 0 and list_point_break_1 == 0:
+                list_point_break_1 = parse.plan_x.index(i)
+                print(i)
+                print(list_point_break_1)
+            if i-self.x_des2 >= 0 and list_point_break_2 == 0:
+                list_point_break_2 = parse.plan_x.index(i)
+                print(i)
+                print(list_point_break_2)
+            if i-self.x_des3 >= 0 and list_point_break_3 == 0:
+                list_point_break_3 = parse.plan_x.index(i) + 50
+                print(i)
+                print(list_point_break_3)
+        x_1 = parse.x[:list_point_break_1][::skip]
+        y_1 = parse.y[:list_point_break_1][::skip]
+        xp_1 = parse.plan_x[:list_point_break_1][::skip2]
+        yp_1 = parse.plan_y[:list_point_break_1][::skip2]
+        x_2 = parse.x[:list_point_break_2][::skip]
+        y_2 = parse.y[:list_point_break_2][::skip]
+        xp_2 = parse.plan_x[:list_point_break_2][::skip2]
+        yp_2 = parse.plan_y[:list_point_break_2][::skip2]
+        x_3 = parse.x[:list_point_break_3][::skip]
+        y_3 = parse.y[:list_point_break_3][::skip]
+        xp_3 = parse.plan_x[:list_point_break_3][::skip2]
+        yp_3 = parse.plan_y[:list_point_break_3][::skip2]
+        # Get time of each desired position
+        t0 = 0
+        t1 = round(parse.gs_time[list_point_break_1], 4)
+        t2 = round(parse.gs_time[list_point_break_2], 4)
+        t3 = round(parse.gs_time[list_point_break_3], 4)
+        props = dict(boxstyle='round', facecolor='white', alpha=0.75)
+
+        # Plot the first gradient
+        gradient0 = self.grad.add_subplot(2, 2, 1)
+        gradient0.set_xlabel('x [m]')
+        gradient0.set_ylabel('y [m]')
+        gradient0.contourf(lab4.grad_x0, lab4.grad_y0, lab4.grad_intensity0, 50, cmap='coolwarm')
+        gradient0.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
+        gradient0.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
+        gradient0.scatter(x_1[0], y_1[0], s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
+        gradient0.scatter(xp_1[0], yp_1[0], s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
+        # Plot the obstacle, drone, and goal radii
+        circ1 = plt.Circle((x_1[-1], y_1[-1]), radius=lab4.drone_r, color='orange', fill=False, lw=.75, label='UAV radius [m]')
+        circ2 = plt.Circle((lab4.obs_x, lab4.obs_y), radius=lab4.obs_r, color='r', fill=False, lw=3, label='Obstacle radius [m]')
+        circ3 = plt.Circle((self.x_des3, self.y_des3), radius=lab4.goal_r, color='g', fill=False, lw=3, label='Goal radius [m]')
+        circ4 = plt.Circle((self.x_des0, self.y_des0), radius=lab4.drone_r, color='b', fill=False, lw=1, label='Des. Pos. radius [m]')
+        gradient0.add_patch(circ1)
+        gradient0.add_patch(circ2)
+        gradient0.add_patch(circ3)
+        gradient0.add_patch(circ4)
+        plot_info_text = f'Snapshot Time = {t0} [s]\n' \
+                         f'Des. Pos. = {xp_1[0], yp_1[0]} [m]\n' \
+                         f'Act.  Pos. = {x_1[0], x_1[0]} [m]'
+        gradient0.text(0.02, 0.98, plot_info_text, transform=gradient0.transAxes, fontsize=11, verticalalignment='top', bbox=props)
+        gradient0.legend(bbox_to_anchor=(-.1, .13), fontsize=12)
+        plt.draw()
+
+        # Plot the second gradient and path
+        gradient1 = self.grad.add_subplot(2, 2, 2)
+        gradient1.set_xlabel('x [m]')
+        gradient1.set_ylabel('y [m]')
+        gradient1.contourf(lab4.grad_x1, lab4.grad_y1, lab4.grad_intensity1, 50, cmap='coolwarm')
+        gradient1.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
+        gradient1.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
+        gradient1.scatter(x_1, y_1, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
+        gradient1.scatter(xp_1, yp_1, s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
+        # Plot the obstacle, drone, and goal radii
+        for point in range(len(x_1)):
+            circ = plt.Circle((x_1[point], y_1[point]), radius=lab4.drone_r, color='orange', fill=False, lw=.3)
+            gradient1.add_patch(circ)
+        circ2 = plt.Circle((lab4.obs_x, lab4.obs_y), radius=lab4.obs_r, color='r', fill=False, lw=3, label='Obstacle radius [m]')
+        circ3 = plt.Circle((self.x_des3, self.y_des3), radius=lab4.goal_r, color='g', fill=False, lw=3, label='Goal radius [m]')
+        circ4 = plt.Circle((xp_1[-1], yp_1[-1]), radius=lab4.drone_r, color='b', fill=False, lw=1, label='Pos. Desired Radius [m]')
+        gradient1.add_patch(circ2)
+        gradient1.add_patch(circ3)
+        gradient1.add_patch(circ4)
+        plot_info_text = f'Snapshot Time = {t1} [s]\n' \
+                         f'Des. Pos. = {xp_1[-1], yp_1[-1]} [m]\n' \
+                         f'Act.  Pos. = {x_1[-1], x_1[-1]} [m]'
+        gradient1.text(0.02, 0.98, plot_info_text, transform=gradient1.transAxes, fontsize=11, verticalalignment='top', bbox=props)
+        plt.draw()
+
+        # Plot the third gradient and path
+        gradient2 = self.grad.add_subplot(2, 2, 3)
+        gradient2.set_xlabel('x [m]')
+        gradient2.set_ylabel('y [m]')
+        gradient2.contourf(lab4.grad_x2, lab4.grad_y2, lab4.grad_intensity2, 50, cmap='coolwarm')
+        gradient2.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
+        gradient2.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
+        gradient2.scatter(x_2, y_2, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
+        gradient2.scatter(xp_2, yp_2, s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
+        # Plot the obstacle, drone, and goal radii
+        for point in range(len(x_2)):
+            circ = plt.Circle((x_2[point], y_2[point]), radius=lab4.drone_r, color='orange', fill=False, lw=.3)
+            gradient2.add_patch(circ)
+        circ2 = plt.Circle((lab4.obs_x, lab4.obs_y), radius=lab4.obs_r, color='r', fill=False, lw=3, label='Obstacle radius [m]')
+        circ3 = plt.Circle((self.x_des3, self.y_des3), radius=lab4.goal_r, color='g', fill=False, lw=3, label='Goal radius [m]')
+        circ4 = plt.Circle((xp_2[-1], yp_2[-1]), radius=lab4.drone_r, color='b', fill=False, lw=1, label='Des. Pos. Radius [m]')
+        gradient2.add_patch(circ2)
+        gradient2.add_patch(circ3)
+        gradient2.add_patch(circ4)
+        plot_info_text = f'Snapshot Time = {t2} [s]\n' \
+                         f'Des. Pos. = {xp_2[-1], yp_2[-1]} [m]\n' \
+                         f'Act.  Pos. = {x_2[-1], x_2[-1]} [m]'
+        gradient2.text(0.02, 0.98, plot_info_text, transform=gradient2.transAxes, fontsize=11, verticalalignment='top', bbox=props)
+        plt.draw()
+
+        # Plot the fourth gradient and path
+        gradient3 = self.grad.add_subplot(2, 2, 4)
+        gradient3.set_xlabel('x [m]')
+        gradient3.set_ylabel('y [m]')
+        gradient3.contourf(lab4.grad_x3, lab4.grad_y3, lab4.grad_intensity3, 50, cmap='coolwarm')
+        gradient3.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
+        gradient3.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
+        gradient3.scatter(x_3, y_3, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
+        gradient3.scatter(xp_3, yp_3, s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
+        # Plot the obstacle, drone, and goal radii
+        for point in range(len(x_3)):
+            circ = plt.Circle((x_3[point], y_3[point]), radius=lab4.drone_r, color='orange', fill=False, lw=.3)
+            gradient3.add_patch(circ)
+        circ2 = plt.Circle((1, 0), radius=lab4.obs_r, color='r', fill=False, lw=3, label='Obstacle radius')
+        circ3 = plt.Circle((2, 0), radius=lab4.goal_r, color='g', fill=False, lw=3, label='Goal radius')
+        circ4 = plt.Circle((xp_3[-1], yp_3[-1]), radius=lab4.drone_r, color='b', fill=False, lw=1, label='Pos. Desired Radius')
+        gradient3.add_patch(circ2)
+        gradient3.add_patch(circ3)
+        gradient3.add_patch(circ4)
+        plot_info_text = f'Snapshot Time = {t3} [s]\n' \
+                         f'Des. Pos. = {xp_3[-1], yp_3[-1]} [m]\n' \
+                         f'Act.  Pos. = {x_3[-1], x_3[-1]} [m]'
+        gradient3.text(0.02, 0.98, plot_info_text, transform=gradient3.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         plt.draw()
 
     def savePlots(self):
-        self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
-        self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
-        self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
+        #self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
+        #self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
+        #self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
+        self.grad.savefig(os.path.join(os.getcwd(), f'plots\\grad_{self.flight}.png'))
+
 
 
 if __name__ == '__main__':
