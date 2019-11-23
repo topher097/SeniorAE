@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
+import matplotlib.ticker as tick
 import os
-from scipy.interpolate import CubicSpline
 from collections import Counter
 import shutil
 
@@ -25,11 +24,11 @@ class parseData():
         parseData.parse(self)
 
         # Plot Data
-        parseData.plotColor(self, self.AR, self.S, self.MRW, 'Aspect Ratio', 'Reference Area [m^2]', 'MRW [lb]')
-        parseData.plotColor(self, self.AR, self.S, self.W_empty, 'Aspect Ratio', 'Reference Area [m^2]', 'Empty W [lb]')
-        parseData.plotColor(self, self.AR, self.S, self.W_fuel, 'Aspect Ratio', 'Reference Area [m^2]', 'Fuel W [lb]')
-        parseData.plotColor(self, self.AR, self.S, self.FN, 'Aspect Ratio', 'Reference Area [m^2]', 'FN [lb]')
-        parseData.plotColor(self, self.AR, self.S, self.BFL, 'Aspect Ratio', 'Reference Area [m^2]', 'BFL [ft]')
+        parseData.plotColor(self, self.AR, self.S, self.MRW, 'Aspect Ratio', 'Reference Area $[m^2]$', 'MRW [lb]')
+        parseData.plotColor(self, self.AR, self.S, self.W_empty, 'Aspect Ratio', 'Reference Area $[m^2]$', 'Empty W [lb]')
+        parseData.plotColor(self, self.AR, self.S, self.W_fuel, 'Aspect Ratio', 'Reference Area $[m^2]$', 'Fuel W [lb]')
+        parseData.plotColor(self, self.AR, self.S, self.FN, 'Aspect Ratio', 'Reference Area $[m^2]$', 'FN [lb]')
+        parseData.plotColor(self, self.AR, self.S, self.BFL, 'Aspect Ratio', 'Reference Area $[m^2]$', 'BFL [ft]')
         plt.show()
 
     def parse(self):
@@ -54,10 +53,13 @@ class parseData():
 
     def plotColor(self, x_axis, y_axis, z_axis, x_label, y_label, z_label):
         color_plot = plt.figure(figsize=(9, 7))
+        color_plot.subplots_adjust(hspace=.18, left=.12, right=.97, top=.97, bottom=.09)
         color_plot.tight_layout()
         cplot = color_plot.add_subplot(1, 1, 1)
-        cplot.set_xlabel(x_label)
-        cplot.set_ylabel(y_label)
+        cplot.set_xlabel(x_label, fontsize=18)
+        cplot.set_ylabel(y_label, fontsize=18)
+        cplot.tick_params(axis='both', which='major', labelsize=16)
+        cplot.tick_params(axis='both', which='minor', labelsize=16)
         x_unique = list(Counter(x_axis).keys())
         y_unique = list(Counter(y_axis).keys())
         x = np.linspace(min(x_unique), max(x_unique), len(x_unique))
@@ -79,8 +81,16 @@ class parseData():
                 Z[j][i] = z_val
 
         cont = cplot.contourf(X, Y, Z, cmap='coolwarm')
+        #ax1 = color_plot.add_axes([.92, 0.07, 0.02, 0.9])
         cbar = color_plot.colorbar(cont)
-        cbar.set_label(z_label, fontsize=12)
+        cbar.set_label(z_label, fontsize=18)
+        cbar.formatter.set_scientific(True)
+        cbar.formatter.set_powerlimits((0, 0))
+        cbar.ax.tick_params(labelsize=16)
+        cbar.ax.yaxis.get_offset_text().set_fontsize(16)
+
+        cbar.update_ticks()
+
         color_plot.savefig(os.path.join(os.getcwd(), f'plots\\{os.path.basename(self.filename).split("_")[0]}_{z_label.split()[0]}_{x_label.split()[0]}_{y_label.split()[0]}'))
         plt.draw()
 

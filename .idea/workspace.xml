@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/Data/747_parse.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/Data/747_parse2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/Data/777_parse.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_BFL_Aspect_Reference.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Empty_Aspect_Reference.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_FN_Aspect_Reference.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Fuel_Aspect_Reference.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_MRW_Aspect_Reference.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE483/Lab4/plots/grad_back_and_forth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AE483/Lab4/plots/mocap_position_back_and_forth.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AE442/HW_7/AE442_hw7.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/AE442_hw7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE483/Lab4/AE483_lab4.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Lab4/AE483_lab4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE483/Lab4/plots/grad_standard_flightpath.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_BFL_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_BFL_Aspect_Reference.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_Empty_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Empty_Aspect_Reference.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_FN_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_FN_Aspect_Reference.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_Fuel_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Fuel_Aspect_Reference.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_MRW_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_MRW_Aspect_Reference.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -281,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574358866439</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="AE483 Lab 4 - finish&#10;AE442 HW 7 - update">
+      <created>1574493862763</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1574493862763</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -326,6 +326,7 @@
     <MESSAGE value="AE416 hw3 - finish" />
     <MESSAGE value="AE460 Lab 6 - update" />
     <MESSAGE value="AE483 Lab 4 - update" />
-    <option name="LAST_COMMIT_MESSAGE" value="AE483 Lab 4 - update" />
+    <MESSAGE value="AE483 Lab 4 - finish&#10;AE442 HW 7 - update" />
+    <option name="LAST_COMMIT_MESSAGE" value="AE483 Lab 4 - finish&#10;AE442 HW 7 - update" />
   </component>
 </project>
