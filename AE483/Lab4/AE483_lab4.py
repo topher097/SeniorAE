@@ -235,9 +235,9 @@ class labFour():
         self.obs_y = 0
         self.x_des0 = 0
         self.y_des0 = 0
-        self.x_des1 = .67
+        self.x_des1 = .5
         self.y_des1 = 0
-        self.x_des2 = 1.33
+        self.x_des2 = 1.5
         self.y_des2 = 0
         self.x_des3 = 2
         self.y_des3 = 0
@@ -382,12 +382,12 @@ class plotData():
         self.flight = params['flight']
         self.plot_bool = params['plot_bool']
 
-        '''
+
         # Setting up mocap position plot
-        self.mocap_pos_plot = plt.figure(figsize=(12, 6))
+        self.mocap_pos_plot = plt.figure(figsize=(12, 8))
         self.mocap_pos_plot.subplots_adjust(hspace=.35)
         self.mocap_pos_plot.tight_layout()
-
+        '''
         # Setting up mean squared error plot
         self.mse_plot = plt.figure(figsize=(12, 5))
         self.mse_plot.subplots_adjust(hspace=.5)
@@ -404,8 +404,8 @@ class plotData():
         self.angles.tight_layout()
         '''
         # Setting up gradient visualization plot
-        self.grad = plt.figure(figsize=(12.5, 10))
-        self.grad.subplots_adjust(hspace=.18, left=.25, right=.96, top=.97, bottom=.07)
+        self.grad = plt.figure(figsize=(13, 10))
+        self.grad.subplots_adjust(hspace=.18, left=.23, right=.91, top=.97, bottom=.07)
         self.grad.tight_layout()
 
         # Gradient variables
@@ -421,7 +421,7 @@ class plotData():
         # Plot
         #plotData.plotMSE(self)
         #plotData.plotPositionError(self)
-        #plotData.plotMocapPos(self)
+        plotData.plotMocapPos(self)
         #plotData.plotAngles(self)
         plotData.plotGradientVisual(self)
 
@@ -477,7 +477,7 @@ class plotData():
         time = parse.gs_time
         time_end = time.index(parse.gs_time_cut)
         time_sim = parse.sim_time
-        time_sim_end = time_sim.index(parse.sim_time_cut)
+        #time_sim_end = time_sim.index(parse.sim_time_cut)
 
         # Plot x
         mp_x = self.mocap_pos_plot.add_subplot(3, 1, 1)
@@ -485,7 +485,8 @@ class plotData():
         mp_x.plot(time[:time_end], np.zeros(len(parse.x[:time_end])), color='grey', linestyle='--')
         mp_x.plot(time[:time_end], parse.x_des[:time_end], 'b', label='x desired position')
         mp_x.plot(time[:time_end], parse.x[:time_end], 'r', label='x position')
-        mp_x.plot(time_sim[:time_sim_end], lab4.x_sim[:time_sim_end], 'y', label='x sim position')
+        mp_x.plot(time[:time_end], parse.plan_x[:time_end], 'y', label='x planner position')
+        #mp_x.plot(time_sim[:time_sim_end], lab4.x_sim[:time_sim_end], 'y', label='x sim position')
         mp_x.legend(loc='upper right', fontsize=12)
 
         # Plot y
@@ -494,7 +495,8 @@ class plotData():
         mp_y.plot(time[:time_end], np.zeros(len(parse.y[:time_end])), color='grey', linestyle='--')
         mp_y.plot(time[:time_end], parse.y_des[:time_end], 'b', label='y desired position')
         mp_y.plot(time[:time_end], parse.y[:time_end], 'r', label='y position')
-        mp_y.plot(time_sim[:time_sim_end], lab4.y_sim[:time_sim_end], 'y', label='y sim position')
+        mp_y.plot(time[:time_end], parse.plan_y[:time_end], 'y', label='y planner position')
+        #mp_y.plot(time_sim[:time_sim_end], lab4.y_sim[:time_sim_end], 'y', label='y sim position')
         mp_y.legend(loc='upper right', fontsize=12)
 
         # Plot z
@@ -504,7 +506,8 @@ class plotData():
         mp_z.plot(time[:time_end], np.zeros(len(parse.z[:time_end])), color='grey', linestyle='--')
         mp_z.plot(time[:time_end], parse.z_des[:time_end], 'b', label='z desired position')
         mp_z.plot(time[:time_end], parse.z[:time_end], 'r', label='z position')
-        mp_z.plot(time_sim[:time_sim_end], lab4.z_sim[:time_sim_end], 'y', label='z sim position')
+        mp_z.plot(time[:time_end], parse.plan_z[:time_end], 'y', label='z planner position')
+        #mp_z.plot(time_sim[:time_sim_end], lab4.z_sim[:time_sim_end], 'y', label='z sim position')
         mp_z.legend(loc='upper right', fontsize=12)
 
     # Plot the mocap angle and desired angles over time
@@ -567,7 +570,9 @@ class plotData():
         gradient0 = self.grad.add_subplot(2, 2, 1)
         gradient0.set_xlabel('x [m]')
         gradient0.set_ylabel('y [m]')
-        gradient0.contourf(lab4.grad_x0, lab4.grad_y0, lab4.grad_intensity0, 50, cmap='coolwarm')
+        plt.gca().invert_yaxis()
+        norm = plt.cm.colors.Normalize(vmax=abs(lab4.grad_intensity0).max(), vmin=abs(lab4.grad_intensity0).min())
+        cont = gradient0.contourf(lab4.grad_x0, lab4.grad_y0, lab4.grad_intensity0, 50, cmap='coolwarm', norm=norm)
         gradient0.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
         gradient0.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
         gradient0.scatter(x_1[0], y_1[0], s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
@@ -583,16 +588,21 @@ class plotData():
         gradient0.add_patch(circ4)
         plot_info_text = f'Snapshot Time = {t0} [s]\n' \
                          f'Des. Pos. = {xp_1[0], yp_1[0]} [m]\n' \
-                         f'Act.  Pos. = {x_1[0], x_1[0]} [m]'
+                         f'Act.  Pos. = {x_1[0], y_1[0]} [m]'
         gradient0.text(0.02, 0.98, plot_info_text, transform=gradient0.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         gradient0.legend(bbox_to_anchor=(-.1, .13), fontsize=12)
+        cbaxes = self.grad.add_axes([.92, 0.07, 0.02, 0.9])
+        cbar = self.grad.colorbar(cont, cax=cbaxes, norm=norm)
+        cbar.set_label('Gradient Intensity', fontsize=12)
         plt.draw()
 
         # Plot the second gradient and path
         gradient1 = self.grad.add_subplot(2, 2, 2)
         gradient1.set_xlabel('x [m]')
         gradient1.set_ylabel('y [m]')
-        gradient1.contourf(lab4.grad_x1, lab4.grad_y1, lab4.grad_intensity1, 50, cmap='coolwarm')
+        plt.gca().invert_yaxis()
+        norm = plt.cm.colors.Normalize(vmax=abs(lab4.grad_intensity1).max(), vmin=abs(lab4.grad_intensity1).min())
+        gradient1.contourf(lab4.grad_x1, lab4.grad_y1, lab4.grad_intensity1, 50, cmap='coolwarm', norm=norm)
         gradient1.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
         gradient1.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
         gradient1.scatter(x_1, y_1, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
@@ -609,7 +619,7 @@ class plotData():
         gradient1.add_patch(circ4)
         plot_info_text = f'Snapshot Time = {t1} [s]\n' \
                          f'Des. Pos. = {xp_1[-1], yp_1[-1]} [m]\n' \
-                         f'Act.  Pos. = {x_1[-1], x_1[-1]} [m]'
+                         f'Act.  Pos. = {x_1[-1], y_1[-1]} [m]'
         gradient1.text(0.02, 0.98, plot_info_text, transform=gradient1.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         plt.draw()
 
@@ -617,7 +627,9 @@ class plotData():
         gradient2 = self.grad.add_subplot(2, 2, 3)
         gradient2.set_xlabel('x [m]')
         gradient2.set_ylabel('y [m]')
-        gradient2.contourf(lab4.grad_x2, lab4.grad_y2, lab4.grad_intensity2, 50, cmap='coolwarm')
+        plt.gca().invert_yaxis()
+        norm = plt.cm.colors.Normalize(vmax=abs(lab4.grad_intensity2).max(), vmin=abs(lab4.grad_intensity2).min())
+        gradient2.contourf(lab4.grad_x2, lab4.grad_y2, lab4.grad_intensity2, 50, cmap='coolwarm', norm=norm)
         gradient2.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
         gradient2.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
         gradient2.scatter(x_2, y_2, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
@@ -634,7 +646,7 @@ class plotData():
         gradient2.add_patch(circ4)
         plot_info_text = f'Snapshot Time = {t2} [s]\n' \
                          f'Des. Pos. = {xp_2[-1], yp_2[-1]} [m]\n' \
-                         f'Act.  Pos. = {x_2[-1], x_2[-1]} [m]'
+                         f'Act.  Pos. = {x_2[-1], y_2[-1]} [m]'
         gradient2.text(0.02, 0.98, plot_info_text, transform=gradient2.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         plt.draw()
 
@@ -642,7 +654,9 @@ class plotData():
         gradient3 = self.grad.add_subplot(2, 2, 4)
         gradient3.set_xlabel('x [m]')
         gradient3.set_ylabel('y [m]')
-        gradient3.contourf(lab4.grad_x3, lab4.grad_y3, lab4.grad_intensity3, 50, cmap='coolwarm')
+        plt.gca().invert_yaxis()
+        norm = plt.cm.colors.Normalize(vmax=abs(lab4.grad_intensity3).max(), vmin=abs(lab4.grad_intensity3).min())
+        gradient3.contourf(lab4.grad_x3, lab4.grad_y3, lab4.grad_intensity3, 50, cmap='coolwarm', norm=norm)
         gradient3.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
         gradient3.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
         gradient3.scatter(x_3, y_3, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
@@ -659,12 +673,12 @@ class plotData():
         gradient3.add_patch(circ4)
         plot_info_text = f'Snapshot Time = {t3} [s]\n' \
                          f'Des. Pos. = {xp_3[-1], yp_3[-1]} [m]\n' \
-                         f'Act.  Pos. = {x_3[-1], x_3[-1]} [m]'
+                         f'Act.  Pos. = {x_3[-1], y_3[-1]} [m]'
         gradient3.text(0.02, 0.98, plot_info_text, transform=gradient3.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         plt.draw()
 
     def savePlots(self):
-        #self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
+        self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
         #self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
         #self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
         self.grad.savefig(os.path.join(os.getcwd(), f'plots\\grad_{self.flight}.png'))
@@ -686,7 +700,7 @@ if __name__ == '__main__':
     data_location = os.path.join(os.getcwd() + r'\Lab4_Data')
     # Final flightplan is a copy of IDK.csv
     filenames = [['Back_&_forth_0_66.csv', 'simulation_flightplan.csv']]
-    flight = ['standard_flightpath']
+    flight = ['back_and_forth']
     times = [95, 15]
     time_offsets = [0, 2.35]
     plot_bool = [True, True]
