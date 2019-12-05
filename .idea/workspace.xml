@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/442_HW5_AVLEC.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/Data/Straight Wing.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/Data/Swept Wing.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/Data/Tapered Wing.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/Data/Twisted Wing.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/plots/cd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_5/plots/slope.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_7/Data/747_parse3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Constraint.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AE442/HW_7/AE442_hw7.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/AE442_hw7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_BFL_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_BFL_Aspect_Reference.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_Empty_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Empty_Aspect_Reference.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_FN_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_FN_Aspect_Reference.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_Fuel_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_Fuel_Aspect_Reference.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_MRW_Aspect_Reference.png" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/plots/747_MRW_Aspect_Reference.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/Data/747_parse2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/AE442/HW_7/Data/747_parse2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_BFL_Aspect_Reference.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_Empty_Aspect_Reference.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_FN_Aspect_Reference.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_Fuel_Aspect_Reference.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE442/HW_7/plots/747_MRW_Aspect_Reference.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,24 +44,24 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE442/HW_7/AE442_hw7.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE442/HW_5/442_HW5_AVLEC.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
       <recent name="D:\Python\SeniorAE\AE483\Lab4" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6\lab6_data_cylinder" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6\lab6_data_fft" />
       <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE483\Lab3\Lab3_Data2" />
-      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE483\Lab3\Lab3_Data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
       <recent name="D:\Python\SeniorAE\AE483\Lab4\Lab4_Data" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6\lab6_data_cylinder" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6" />
       <recent name="C:\Python\SeniorAE\AE416\HW_3\streams" />
-      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE483\Lab3\Lab3_Data2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -66,7 +76,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.AE442_hw7">
+  <component name="RunManager" selected="Python.442_HW5_AVLEC">
+    <configuration name="442_HW5_AVLEC" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE442/HW_5" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE442/HW_5/442_HW5_AVLEC.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="AE442_hw7" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,6 +186,7 @@
       <item itemvalue="Python.AE460_lab4_plot" />
       <item itemvalue="Python.AE483_lab4" />
       <item itemvalue="Python.AE442_hw7" />
+      <item itemvalue="Python.442_HW5_AVLEC" />
       <item itemvalue="Python.gradient_descent" />
     </list>
   </component>
