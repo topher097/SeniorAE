@@ -19,6 +19,9 @@ e. Commend on the difference or similarities between b. and d. Do the wings prod
 import numpy as np
 from sympy import Symbol, sqrt
 import matplotlib.pyplot as plt
+import shutil
+import os
+
 
 class homeworkFive():
     # Initialize
@@ -93,7 +96,6 @@ class homeworkFive():
                 self.A[i][j] = K + c/(4*(y_c - y_v))
         for i in range(self.N):
             self.A[self.N-1][i] = 1
-        #print(self.A)
 
         # Define the b matrix
         for i in range(self.N-1):
@@ -101,24 +103,23 @@ class homeworkFive():
             self.b[i] = np.pi*self.v_inf*c*self.alpha
         self.b[self.N-1][0] = 0
 
-        # Calc x matrix
-        self.x = np.linalg.inv(self.A) @ self.b
+        # Calc x matrix, convert to list for calculations
+        self.x = np.transpose(np.linalg.inv(self.A) @ self.b)[0].tolist()
 
         # Calc Gammas distribution
-        x = np.transpose(self.x)[0].tolist()
-        for i in range(0, self.N-1):
-            gam = sum(x[0:i+1])
-            self.Gamma.append(gam)
+        for i in range(0, self.N):
+            Gam = sum(self.x[0:i+1])
+            self.Gamma.append(Gam)
 
         # Calc downwash distribution
         for i in range(0, self.N-1):
             y_c = y_cp[i]
-            w = 0
+            dw = 0
             for j in range(0, self.N):
-                gam = x[j]
+                gam = self.x[j]
                 y_v = y_vp[j]
-                w += gam/(4 * np.pi) * 1/(y_c - y_v)
-            self.w.append(w)
+                dw += gam/(4 * np.pi) * 1/(y_c - y_v)
+            self.w.append(dw)
 
         # Calc lift and drag
         bp = abs(y_cp[1] - y_cp[0])
@@ -134,32 +135,45 @@ class homeworkFive():
 
         cl_text = '$C_{L}$'
         cd_text = '$C_{D_{i}}$'
-        ld_text = '\\frac{L}{D_{i}}'
-        plot_text = f'{cl_text} = {self.C_L}\n' \
-                    f'{cd_text} = {self.C_Di}\n' \
-                    f'{ld_text} = {self.LD}'
-        print_text = f'C_L  = {self.C_L}\n' \
+        ld_text = '$\\frac{L}{D_{i}}$'
+        plot_text = f'{cl_text} = {round(self.C_L,5)}\n' \
+                    f'{cd_text} = {round(self.C_Di,5)}\n' \
+                    f'{ld_text} = {round(self.LD,5)}'
+        print_text = f'{self.wing_type}:\n' \
+                     f'C_L  = {self.C_L}\n' \
                      f'C_Di = {self.C_Di}\n' \
                      f'L/D  = {self.LD}'
         print(print_text)
 
         # Plot downwash distribution
-        plt.figure()
+        props = dict(boxstyle='round', facecolor='white', alpha=0.25)
+        f = plt.figure()
+        ax = f.add_subplot(111)
         plt.gca().invert_yaxis()
-        plt.ylim([max(self.w)+1, -1])
-        plt.plot(y_cp, self.w, color='b', lw=1.25)
-        plt.plot(np.linspace(-self.span/2, self.span/2, 200), np.zeros(200), c='k', ls='--', lw=1.5)
-        plt.fill_between(y_cp, self.w, color='b', alpha=0.25)
-        plt.title(f'Downwash Distribution for {self.wing_type} Wing')
-        plt.xlabel('y [ft]')
-        plt.ylabel('w [ft/s]')
+        ax.set_ylim([max(self.w)+.4*max(self.w), -1])
+        ax.plot(y_cp, self.w, color='b', lw=1.25, label='Downwash Profile')
+        ax.plot(np.linspace(-self.span/2, self.span/2, 200), np.zeros(200), c='k', ls='--', lw=1.5)
+        ax.fill_between(y_cp, self.w, color='b', alpha=0.25)
+        ax.text(0.38, 0.03, plot_text, transform=ax.transAxes, fontsize=10, verticalalignment='bottom', bbox=props)
+        ax.set_title(f'Downwash Distribution for {self.wing_type} Wing (N={self.N})', fontsize=14)
+        ax.set_xlabel('y [ft]', fontsize=14)
+        ax.set_ylabel('w [ft/s]', fontsize=14)
+        ax.legend(loc='lower left', fontsize=10)
+        f.savefig(os.path.join(os.getcwd(), f'plots\\{self.wing_type}Wing_Downwash'))
         plt.draw()
 
 
-
-
-
 if __name__ == '__main__':
+    # Initialize plot folder
+    try:
+        shutil.rmtree(os.path.join(os.getcwd(), 'plots\\'))
+    except Exception as e:
+        print(f'Could not remove plot folder, error: {str(e)}')
+    try:
+        os.mkdir(os.path.join(os.getcwd(), 'plots\\'))
+    except Exception as e:
+        print(f'Could not create plot folder, error: {str(e)}')
+
     # Run HW5
     hw5 = homeworkFive()
     plt.show()
