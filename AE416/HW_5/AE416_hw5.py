@@ -29,7 +29,7 @@ class homeworkFive():
         self.span = 36              # wingspan (ft)
         self.S = 174                # wing area (ft^2)
         self.c_0 = 0                # root chord length (ft)
-        self.N = 50                 # number of vortices along wing
+        self.N = 500                # number of vortices along wing
         self.offset = 1*10**-6      # offset from wingtip (ft)
         self.alpha = np.deg2rad(8)  # alpha_g - alpha_zl
         self.wing_type = ''
@@ -52,7 +52,7 @@ class homeworkFive():
 
     def rectangularWing(self):
         self.wing_type = 'Rectangular'
-        self.c_0 = 4.83
+        self.c_0 = self.S/self.span
         y = Symbol('y')
         self.c_y = self.c_0 + 0*y          # Constant chord distribution along y
         homeworkFive.calcDownwash(self)
@@ -61,13 +61,14 @@ class homeworkFive():
         self.wing_type = 'Elliptical'
         self.c_0 = (self.S * 4)/(np.pi * self.span)           # Root chord of wing
         y = Symbol('y')
-        self.c_y = self.c_0 * sqrt(1 - 4*(y/self.span)**2)    # Equation of elliptical chord distribution
+        self.c_y = self.c_0 * sqrt(1 - (y/(self.span/2))**2)    # Equation of elliptical chord distribution
         homeworkFive.calcDownwash(self)
 
     def calcDownwash(self):
         self.c_p = []
         self.Gamma = []
         self.w = []
+
         # Discretize the wingspan by N panels
         y = Symbol('y')
         y_vp = (np.linspace(-self.span/2 + self.offset, self.span/2 - self.offset, self.N)).tolist()
@@ -76,7 +77,9 @@ class homeworkFive():
             y_cp.append((y_vp[i+1] + y_vp[i])/2)
         self.c_p = []
         for y_c in y_cp:
-            self.c_p.append(self.c_y.subs(y, y_c))
+            c = self.c_y.subs(y, y_c)
+            self.c_p.append(c)
+
         # Define A matrix
         for i in range(0, self.N-1):
             c = self.c_p[i]
@@ -99,7 +102,7 @@ class homeworkFive():
         self.b[self.N-1][0] = 0
 
         # Calc x matrix
-        self.x = np.dot(np.linalg.inv(self.A), self.b)
+        self.x = np.linalg.inv(self.A) @ self.b
 
         # Calc Gammas distribution
         x = np.transpose(self.x)[0].tolist()
@@ -109,10 +112,13 @@ class homeworkFive():
 
         # Calc downwash distribution
         for i in range(0, self.N-1):
-            Gamma = self.Gamma[i]
-            c = self.c_p[i]
-            self.w.append((-Gamma/(c*np.pi))*(self.v_inf*self.alpha))
-        print(self.w)
+            y_c = y_cp[i]
+            w = 0
+            for j in range(0, self.N):
+                gam = x[j]
+                y_v = y_vp[j]
+                w += gam/(4 * np.pi) * 1/(y_c - y_v)
+            self.w.append(w)
 
         # Calc lift and drag
         bp = abs(y_cp[1] - y_cp[0])
@@ -120,16 +126,30 @@ class homeworkFive():
         for i in range(0, self.N-1):
             Gamma = self.Gamma[i]
             w = self.w[i]
-            self.C_L += (Gamma*bp)/(0.5*self.v_inf*self.S)
-            self.C_Di += (Gamma*bp*w)/(0.5*self.v_inf**2*self.S)
+            C_L = (Gamma*bp)/(0.5*self.v_inf*self.S)
+            C_Di = (Gamma*bp*w)/(0.5*self.v_inf**2*self.S)
+            self.C_L += C_L
+            self.C_Di += C_Di
         self.LD = self.C_L/self.C_Di
-        print(self.C_L)
-        print(self.C_Di)
-        print(self.LD)
+
+        cl_text = '$C_{L}$'
+        cd_text = '$C_{D_{i}}$'
+        ld_text = '\\frac{L}{D_{i}}'
+        plot_text = f'{cl_text} = {self.C_L}\n' \
+                    f'{cd_text} = {self.C_Di}\n' \
+                    f'{ld_text} = {self.LD}'
+        print_text = f'C_L  = {self.C_L}\n' \
+                     f'C_Di = {self.C_Di}\n' \
+                     f'L/D  = {self.LD}'
+        print(print_text)
 
         # Plot downwash distribution
         plt.figure()
-        plt.plot(y_cp, self.w, color='k')
+        plt.gca().invert_yaxis()
+        plt.ylim([max(self.w)+1, -1])
+        plt.plot(y_cp, self.w, color='b', lw=1.25)
+        plt.plot(np.linspace(-self.span/2, self.span/2, 200), np.zeros(200), c='k', ls='--', lw=1.5)
+        plt.fill_between(y_cp, self.w, color='b', alpha=0.25)
         plt.title(f'Downwash Distribution for {self.wing_type} Wing')
         plt.xlabel('y [ft]')
         plt.ylabel('w [ft/s]')
