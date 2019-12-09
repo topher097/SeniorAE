@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Christopher.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE416/HW_5/AE416_A5_Template.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE416/HW_5/AE416_hw5.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE416/HW_5/AE416_hw5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE460/Lab7/AE460_lab7.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE460/Lab7/AE460_lab7.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,30 +33,29 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE416/HW_5/AE416_hw5.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AE460/Lab7/AE460_lab7.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Python\SeniorAE\AE483\Project\Project_Data" />
+      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
+      <recent name="C:\Python\SeniorAE\AE416\HW_5" />
+      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
       <recent name="D:\Python\SeniorAE\AE483\Lab4\Lab4_Data" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6\lab6_data_cylinder" />
-      <recent name="D:\Python\SeniorAE\AE460\Lab6" />
-      <recent name="C:\Python\SeniorAE\AE416\HW_3\streams" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Python\SeniorAE\AE483\Project" />
+      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
+      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
       <recent name="D:\Python\SeniorAE\AE483\Lab4" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6\lab6_data_cylinder" />
       <recent name="D:\Python\SeniorAE\AE460\Lab6\lab6_data_fft" />
-      <recent name="C:\Users\TOPHER-LAPTOP\Desktop\SeniorAE\AE483\Lab3\Lab3_Data2" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.AE416_hw5">
-    <configuration name="AE416_hw4" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.AE460_lab7">
+    <configuration name="442_HW5_AVLEC" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -64,11 +63,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE416/HW_4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE442/HW_5" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE416/HW_4/AE416_hw4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE442/HW_5/442_HW5_AVLEC.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,7 +139,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AE483_Project" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="AE460_lab7" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -148,11 +147,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE483/Project" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AE460/Lab7" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE483/Project/AE483_Project.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AE460/Lab7/AE460_lab7.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -204,11 +203,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.442_HW5_AVLEC" />
+      <item itemvalue="Python.AE416_hw5" />
+      <item itemvalue="Python.AE460_lab7" />
       <item itemvalue="Python.AE442_hw7" />
       <item itemvalue="Python.AE460_lab4_plot" />
-      <item itemvalue="Python.AE483_Project" />
-      <item itemvalue="Python.AE416_hw4" />
-      <item itemvalue="Python.AE416_hw5" />
       <item itemvalue="Python.AE483_lab4" />
       <item itemvalue="Python.gradient_descent" />
     </list>
@@ -348,26 +347,26 @@
       <option name="project" value="LOCAL" />
       <updated>1574493862763</updated>
     </task>
-    <task id="LOCAL-00017" summary="AE442 HW 7 - update">
-      <created>1574545079698</created>
+    <task id="LOCAL-00017" summary="AE483 Project - update&#10;AE442 HW 5 EC - finish">
+      <created>1575515456434</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1574545079698</updated>
+      <updated>1575515456434</updated>
     </task>
-    <task id="LOCAL-00018" summary="AE416 HW 4 - fix&#10;AE483 Project - update">
-      <created>1575661764521</created>
+    <task id="LOCAL-00018" summary="AE416 HW5 - update&#10;AE460 Lab7 - update">
+      <created>1575789630079</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1575661764521</updated>
+      <updated>1575789630079</updated>
     </task>
-    <task id="LOCAL-00019" summary="AE416 HW5 - update">
-      <created>1575673330543</created>
+    <task id="LOCAL-00019" summary="AE416 HW5 - finish">
+      <created>1575848908318</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1575673330543</updated>
+      <updated>1575848908318</updated>
     </task>
     <option name="localTasksCounter" value="20" />
     <servers />
@@ -415,67 +414,83 @@
     <MESSAGE value="AE460 Lab 6 - update" />
     <MESSAGE value="AE483 Lab 4 - update" />
     <MESSAGE value="AE483 Lab 4 - finish&#10;AE442 HW 7 - update" />
-    <MESSAGE value="AE442 HW 7 - update" />
-    <MESSAGE value="AE416 HW 4 - fix&#10;AE483 Project - update" />
-    <MESSAGE value="AE416 HW5 - update" />
-    <option name="LAST_COMMIT_MESSAGE" value="AE416 HW5 - update" />
+    <MESSAGE value="AE483 Project - update&#10;AE442 HW 5 EC - finish" />
+    <MESSAGE value="AE416 HW5 - update&#10;AE460 Lab7 - update" />
+    <MESSAGE value="AE416 HW5 - finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="AE416 HW5 - finish" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575835690096">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575868820284">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575835690096" />
-    <state x="1094" y="117" key="CommitChangelistDialog2" timestamp="1575673329264">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575868820284" />
+    <state x="1669" y="359" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1575848434294">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1094" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1575673329264" />
-    <state x="1154" y="278" key="FileChooserDialogImpl" timestamp="1575835687193">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1669" y="359" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848434294" />
+    <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575752295884">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1154" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1575835687193" />
-    <state width="936" height="249" key="GridCell.Tab.0.bottom" timestamp="1575838423807">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752295884" />
+    <state x="1574" y="104" key="CommitChangelistDialog2" timestamp="1575848907644">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="249" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575838423807" />
-    <state width="936" height="249" key="GridCell.Tab.0.center" timestamp="1575838423807">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848907644" />
+    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1575868817829">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="249" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575838423807" />
-    <state width="936" height="249" key="GridCell.Tab.0.left" timestamp="1575838423807">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575868817829" />
+    <state width="1256" height="179" key="GridCell.Tab.0.bottom" timestamp="1575870090806">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="249" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575838423807" />
-    <state width="936" height="249" key="GridCell.Tab.0.right" timestamp="1575838423807">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575870090806" />
+    <state width="1256" height="179" key="GridCell.Tab.0.center" timestamp="1575870090806">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="249" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575838423807" />
-    <state width="936" height="347" key="GridCell.Tab.1.bottom" timestamp="1575838011324">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575870090806" />
+    <state width="1256" height="179" key="GridCell.Tab.0.left" timestamp="1575870090806">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575838011324" />
-    <state width="936" height="347" key="GridCell.Tab.1.center" timestamp="1575838011324">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575870090806" />
+    <state width="1256" height="179" key="GridCell.Tab.0.right" timestamp="1575870090806">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575838011324" />
-    <state width="936" height="347" key="GridCell.Tab.1.left" timestamp="1575838011324">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575870090806" />
+    <state width="1256" height="347" key="GridCell.Tab.1.bottom" timestamp="1575848916861">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575838011324" />
-    <state width="936" height="347" key="GridCell.Tab.1.right" timestamp="1575838011324">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="347" key="GridCell.Tab.1.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848916861" />
+    <state width="1256" height="347" key="GridCell.Tab.1.center" timestamp="1575848916861">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="936" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575838011324" />
-    <state x="1152" y="239" key="MultipleFileMergeDialog" timestamp="1575835025614">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="347" key="GridCell.Tab.1.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848916861" />
+    <state width="1256" height="347" key="GridCell.Tab.1.left" timestamp="1575848916861">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1152" y="239" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575835025614" />
-    <state x="1032" y="256" key="Vcs.Push.Dialog.v2" timestamp="1575673332705">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="347" key="GridCell.Tab.1.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848916861" />
+    <state width="1256" height="347" key="GridCell.Tab.1.right" timestamp="1575848916861">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1032" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1575673332705" />
-    <state x="1249" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575835005187">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="347" key="GridCell.Tab.1.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848916861" />
+    <state x="1500" y="258" key="IDE.errors.dialog" timestamp="1575752342525">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1249" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1575835005187" />
+    <state x="1500" y="258" key="IDE.errors.dialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752342525" />
+    <state x="1632" y="239" key="MultipleFileMergeDialog" timestamp="1575844836156">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1632" y="239" key="MultipleFileMergeDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575844836156" />
+    <state x="1512" y="252" key="Vcs.Push.Dialog.v2" timestamp="1575848910047">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848910047" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575844827320">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575844827320" />
+    <state x="1273" y="0" width="1294" height="1047" key="dock-window-1" timestamp="1575865510003">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1273" y="0" width="1294" height="1047" key="dock-window-1/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575865510003" />
   </component>
 </project>
