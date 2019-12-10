@@ -187,11 +187,11 @@ class labSeven():
 
         for file in self.non_dry_files:
             c = ''
-            if '50' in file or '15.2' in file:
+            if '50' in file:
                 c = 'r'
-            elif '75' in file or '22.9' in file:
+            elif '75' in file:
                 c = 'b'
-            elif '100' in file or '30.5' in file:
+            elif '100' in file:
                 c = 'orange'
 
             if 'xflr' not in file:
@@ -224,7 +224,6 @@ class labSeven():
                 plot_CL12.plot(LD12, alpha_mod2, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
                                   label=f'Exp. Re = {Re}')
             else:
-                print(file, 'hi')
                 alpha = self.alpha[file]
                 C_L = self.C_L[file]
                 C_D = self.C_D[file]
@@ -238,8 +237,8 @@ class labSeven():
                     if np.real(C_L[i] ** (1 / 2) / C_D[i]) >= 0:
                         alpha_mod2.append(alpha[i])
                         LD12.append(np.real(C_L[i] ** (1 / 2) / C_D[i]))
-                print(LD32)
-                airspeed = int(float(os.path.basename(file).replace('.csv', '').replace('xflr_', '').replace('ms', '')) * 3.28084)
+                #airspeed = int(float(os.path.basename(file).replace('.csv', '').replace('xflr_', '').replace('ms', '')) * 3.28084)
+                airspeed = int(os.path.basename(file).replace('.csv', '').replace('xflr', ''))
                 rho = self.density
                 l = self.length_scale/12
                 mu = self.viscocity
@@ -282,7 +281,7 @@ if __name__ == '__main__':
     data_location = os.path.join(os.getcwd() + r'\Lab7_Data')
     # Create file location paths for parser
     files = []
-    filenames = [['Dry', '50', '75', '100', 'xflr_15.2ms', 'xflr_22.9ms', 'xflr_30.5ms']]    # , ['Side_Dry', 'Side_75']
+    filenames = [['Dry', '100', '75', '50', 'xflr100', 'xflr75', 'xflr50']]    # , ['Side_Dry', 'Side_75']
     for file in filenames:
         files = [os.path.join(data_location, i + '.csv') for i in file]
         lab7 = labSeven(files)
