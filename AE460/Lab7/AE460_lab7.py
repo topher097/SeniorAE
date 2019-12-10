@@ -1,14 +1,16 @@
 import os
 import shutil
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate
+from math import cos, sin
+import statistics
 
 
 class labSeven():
     def __init__(self, filenames):
         # Stuff
-        print(filenames)
         self.filenames = filenames
         self.non_dry_files = []
         self.parsed = {}
@@ -17,41 +19,54 @@ class labSeven():
 
         # Variables
         self.corr_factor = 0.94
-        self.length_scale = 1.3125
-        self.amb_press = 14.5331285
-        self.amb_temp = 531.27
-        self.density = 0.002295562
-        self.viscocity = 3.8073E-07
+        self.length_scale = 1.3125      # in
+        self.amb_press = 14.5331285     # psia
+        self.amb_temp = 531.27          # R
+        self.density = 0.002295562      # slug/ft^3
+        self.viscocity = 3.8073E-07     # slug/ft-s
+        self.S = 10.87                  # in^2
+        self.LE_to_M_distance = 5.32    # in
 
-        # Dictionary
-        self.motor_speed = {}
-        self.alpha = {}
-        self.q = {}
-        self.v_avg = {}
-        self.re = {}
-        self.F_a = {}
-        self.F_n = {}
-        self.M = {}
+        # Dictionary (lab data)
+        self.motor_speed = {}           # RPM
+        self.alpha = {}                 # deg
+        self.q = {}                     # dpsi
+        self.v_avg = {}                 # ft/s
+        self.re = {}                    # Reynolds
+        self.F_a = {}                   # lbf
+        self.F_n = {}                   # lbf
+        self.M = {}                     # in-lbf
+
+        # Dictionary (xflr)
+        self.xflr_alpha = {}
+        self.xflr_C_L = {}
+        self.xflr_C_D = {}
+        self.xflr_C_MLE = {}
 
         # Calculated
-        self.lift = {}
-        self.drag = {}
+        self.C_L = {}
+        self.C_D = {}
         self.l_d = {}
-        self.moment = {}
+        self.C_M_LE = {}
+        self.F_n_corrected = {}
+        self.F_a_corrected = {}
+        self.M_corrected = {}
 
         for i in self.filenames:
             self.file = i
-            labSeven.parse(self)
+            if 'xflr' not in self.file:
+                labSeven.parse(self)
+            else:
+                labSeven.parseXFLR(self)
 
-        # Calculate lift, drag, moment
+        # Calculate C_L, C_D, C_M_LE
         labSeven.calc(self)
 
         # Plot data
-        labSeven.plot(self)
+        labSeven.plotC(self)
 
     def parse(self):
         # Load CSV file into a DataFrame
-        print(self.file)
         self.parsed = pd.DataFrame(pd.read_csv(self.file,
                                                delimiter=',',
                                                na_values='.',
@@ -68,6 +83,21 @@ class labSeven():
         self.F_a[self.file] = self.parsed['F_a'].tolist()
         self.F_n[self.file] = self.parsed['F_n'].tolist()
         self.M[self.file] = self.parsed['M'].tolist()
+        
+    def parseXFLR(self):
+        # Load CSV file into a DataFrame
+        self.parsed = pd.DataFrame(pd.read_csv(self.file,
+                                               delimiter=',',
+                                               na_values='.',
+                                               header=0,
+                                               names=['alpha', 'beta', 'CL', 'CDi', 'CDv', 'CD', 'CY',
+                                                      'Cl', 'Cm', 'Cn', 'Cni', 'q', 'x_cp']
+                                               ))
+
+        self.alpha[self.file] = self.parsed['alpha'].tolist()
+        self.C_L[self.file] = self.parsed['CL'].tolist()
+        self.C_D[self.file] = self.parsed['CD'].tolist()
+        self.C_M_LE[self.file] = self.parsed['Cm'].tolist()
 
     def calc(self):
         # Get dry run data, make interpolation functions for corrections wrt alpha
@@ -85,73 +115,156 @@ class labSeven():
                 corr_M = scipy.interpolate.CubicSpline(dry_alpha, dry_M)
                 break
 
-        # Calc corrected F_a and F_n, store in lift and drag dicts
+        # Calc corrected F_a, F_n, M, calc C_L, C_D, C_MLE and store in dicts
         for file in self.filenames:
             if 'Dry' not in file:
                 self.non_dry_files.append(file)
-                lift = []
-                drag = []
-                moment = []
-                for i in range(len(self.alpha[file])):
-                    alpha = self.alpha[file][i]
-                    F_n = self.F_n[file][i]
-                    F_a = self.F_a[file][i]
-                    M = self.M[file][i]
-                    lift.append(F_n - corr_F_n(alpha))
-                    drag.append(F_a - corr_F_a(alpha))
-                    moment.append(M - corr_M(alpha))
-                self.lift[file] = lift
-                self.drag[file] = drag
-                self.moment[file] = moment
-                self.l_d[file] = [x/y for x, y in zip(lift, drag)]
+                if 'xflr' not in file:
+                    C_L = []
+                    C_D = []
+                    C_M_LE = []
+                    F_n_list = []
+                    F_a_list = []
+                    M_list = []
+                    # Go through each angle of attack
+                    for i in range(len(self.alpha[file])):
+                        alpha = self.alpha[file][i]
+                        q = self.q[file][i]
+                        F_n = self.F_n[file][i] - corr_F_n(alpha)
+                        F_a = self.F_a[file][i] - corr_F_a(alpha)
+                        M = self.M[file][i] - corr_M(alpha)
+                        a = np.deg2rad(alpha)
+                        F_n_list.append(F_n)
+                        F_a_list.append(F_a)
+                        M_list.append(M)
+                        D = F_a*cos(a) + F_n*sin(a)     # lbs
+                        L = F_a*sin(a) + F_n*cos(a)     # lba
+                        M_LE = -1*((M - corr_M(alpha)) + L*cos(a)*self.LE_to_M_distance)        # in-lbf
+                        C_L.append(L/((q)*self.S))
+                        C_D.append(D/((q)*self.S))
+                        C_M_LE.append(M_LE/(q*self.S**2))
+                    self.C_L[file] = C_L
+                    self.C_D[file] = C_D
+                    self.C_M_LE[file] = C_M_LE
+                    self.F_n_corrected[file] = F_n_list
+                    self.F_a_corrected[file] = F_a_list
+                    self.M_corrected[file] = M_list
 
-    def plot(self):
+    def plotC(self):
         s = 3
-        w = 1
-        f = 10
+        w = 1.5
+        f = 14
         fig1 = plt.figure()
         fig2 = plt.figure()
         fig3 = plt.figure()
         fig4 = plt.figure()
-        plot_lift = fig1.add_subplot(111)
-        plot_drag = fig2.add_subplot(111)
-        plot_moment = fig3.add_subplot(111)
+        fig5 = plt.figure()
+        fig6 = plt.figure()
+        plot_C_L = fig1.add_subplot(111)
+        plot_C_L.grid(color='grey', ls='--', lw=0.5)
+        plot_C_L.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_C_L.set_ylabel('$C_{L}$', fontsize=f)
+        plot_C_D = fig2.add_subplot(111)
+        plot_C_D.grid(color='grey', ls='--', lw=0.5)
+        plot_C_D.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_C_D.set_ylabel('$C_{D}$', fontsize=f)
+        plot_C_M_LE = fig3.add_subplot(111)
+        plot_C_M_LE.grid(color='grey', ls='--', lw=0.5)
+        plot_C_M_LE.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_C_M_LE.set_ylabel('$C_{M_{LE}}$', fontsize=f)
         plot_l_d = fig4.add_subplot(111)
-        plot_lift.grid(color='grey', ls='--', lw=0.5)
-        plot_drag.grid(color='grey', ls='--', lw=0.5)
-        plot_moment.grid(color='grey', ls='--', lw=0.5)
         plot_l_d.grid(color='grey', ls='--', lw=0.5)
-        plot_lift.set_xlabel('Angle of Attack [deg]', fontsize=f)
-        plot_drag.set_xlabel('Angle of Attack [deg]', fontsize=f)
-        plot_moment.set_xlabel('Angle of Attack [deg]', fontsize=f)
-        plot_l_d.set_xlabel('Angle of Attack [deg]', fontsize=f)
-        plot_lift.set_ylabel('Lift Force [lbs]', fontsize=f)
-        plot_drag.set_ylabel('Drag Force [lbs]', fontsize=f)
-        plot_moment.set_ylabel('Pitching Moment [lbs/in]', fontsize=f)
-        plot_l_d.set_ylabel('L/D', fontsize=f)
+        plot_l_d.set_xlabel('$C_{D}$', fontsize=f)
+        plot_l_d.set_ylabel('$C_{L}$', fontsize=f)
+        plot_CL32 = fig5.add_subplot(111)
+        plot_CL32.grid(color='grey', ls='--', lw=0.5)
+        plot_CL32.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_CL32.set_ylabel('$C^{3/2}_{L}$/$C_{D}$', fontsize=f)
+        plot_CL12 = fig6.add_subplot(111)
+        plot_CL12.grid(color='grey', ls='--', lw=0.5)
+        plot_CL12.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_CL12.set_ylabel('$C^{1/2}_{L}$/$C_{D}$', fontsize=f)
 
         for file in self.non_dry_files:
-            alpha = self.alpha[file]
-            lift = self.lift[file]
-            drag = self.drag[file]
-            moment = self.moment[file]
-            l_d = self.l_d[file]
-            airspeed = os.path.basename(file).replace('.csv', '')
-            c = self.colors[self.non_dry_files.index(file)]
+            c = ''
+            if '50' in file or '15.2' in file:
+                c = 'r'
+            elif '75' in file or '22.9' in file:
+                c = 'b'
+            elif '100' in file or '30.5' in file:
+                c = 'orange'
 
-            plot_lift.plot(alpha, lift, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
-                           label=f'{airspeed} ft/s')
-            plot_drag.plot(alpha, drag, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
-                           label=f'{airspeed} ft/s')
-            plot_moment.plot(alpha, moment, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
-                             label=f'{airspeed} ft/s')
-            plot_l_d.plot(alpha, l_d, marker='o', markerfacecolor=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
-                          label=f'{airspeed} ft/s')
-        plot_lift.legend(loc='lower right', fontsize=12)
-        plot_drag.legend(loc='lower right', fontsize=12)
-        plot_moment.legend(loc='lower right', fontsize=12)
-        plot_l_d.legend(loc='lower right', fontsize=12)
+            if 'xflr' not in file:
+                alpha = self.alpha[file]
+                C_L = self.C_L[file]
+                C_D = self.C_D[file]
+                C_M_LE = self.C_M_LE[file]
+                alpha_mod1, alpha_mod2 = [], []
+                LD32, LD12 = [], []
+                for i in range(len(C_L)):
+                    if np.real(C_L[i] ** (3 / 2) / C_D[i]) >= 0:
+                        alpha_mod1.append(alpha[i])
+                        LD32.append(np.real(C_L[i] ** (3 / 2) / C_D[i]))
+                    if np.real(C_L[i] ** (1 / 2) / C_D[i]) >= 0:
+                        alpha_mod2.append(alpha[i])
+                        LD12.append(np.real(C_L[i] ** (1 / 2) / C_D[i]))
+
+                Re = int(statistics.mean(self.re[file]))
+
+                plot_C_L.plot(alpha, C_L, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                               label=f'Exp. Re = {Re}')
+                plot_C_D.plot(alpha, C_D, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                               label=f'Exp. Re = {Re}')
+                plot_C_M_LE.plot(alpha, C_M_LE, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                                 label=f'Exp. Re = {Re}')
+                plot_l_d.plot(C_D, C_L, marker='o', markerfacecolor=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                              label=f'Exp. Re = {Re}')
+                plot_CL32.plot(LD32, alpha_mod1, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                               label=f'Exp. Re = {Re}')
+                plot_CL12.plot(LD12, alpha_mod2, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                                  label=f'Exp. Re = {Re}')
+            else:
+                print(file, 'hi')
+                alpha = self.alpha[file]
+                C_L = self.C_L[file]
+                C_D = self.C_D[file]
+                C_M_LE = self.C_M_LE[file]
+                alpha_mod1, alpha_mod2 = [], []
+                LD32, LD12 = [], []
+                for i in range(len(C_L)):
+                    if np.real(C_L[i] ** (3 / 2) / C_D[i]) >= 0:
+                        alpha_mod1.append(alpha[i])
+                        LD32.append(np.real(C_L[i] ** (3 / 2) / C_D[i]))
+                    if np.real(C_L[i] ** (1 / 2) / C_D[i]) >= 0:
+                        alpha_mod2.append(alpha[i])
+                        LD12.append(np.real(C_L[i] ** (1 / 2) / C_D[i]))
+                print(LD32)
+                airspeed = int(float(os.path.basename(file).replace('.csv', '').replace('xflr_', '').replace('ms', '')) * 3.28084)
+                rho = self.density
+                l = self.length_scale/12
+                mu = self.viscocity
+                Re = int((rho*airspeed*l)/mu)
+
+                plot_C_L.plot(alpha, C_L, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_C_D.plot(alpha, C_D, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_C_M_LE.plot(alpha, C_M_LE, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_l_d.plot(C_D, C_L, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_CL32.plot(LD32, alpha_mod1, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_CL12.plot(LD12, alpha_mod2, color=c, lw=w, label=f'Theory Re = {Re}')
+
+        plot_C_L.legend(loc='lower right', fontsize=10)
+        plot_C_D.legend(loc='upper left', fontsize=10)
+        plot_C_M_LE.legend(loc='upper right', fontsize=10)
+        plot_l_d.legend(loc='lower right', fontsize=10)
+        plot_CL12.legend(loc='upper left', fontsize=10)
+        plot_CL32.legend(loc='upper left', fontsize=10)
         plt.draw()
+        fig1.savefig(os.path.join(os.getcwd(), r'plots\CL_alpha'))
+        fig2.savefig(os.path.join(os.getcwd(), r'plots\CD_alpha'))
+        fig3.savefig(os.path.join(os.getcwd(), r'plots\CM_alpha'))
+        fig4.savefig(os.path.join(os.getcwd(), r'plots\LD'))
+        fig5.savefig(os.path.join(os.getcwd(), r'plots\L32D_alpha'))
+        fig6.savefig(os.path.join(os.getcwd(), r'plots\L12D_alpha'))
 
 
 if __name__ == '__main__':
@@ -169,9 +282,8 @@ if __name__ == '__main__':
     data_location = os.path.join(os.getcwd() + r'\Lab7_Data')
     # Create file location paths for parser
     files = []
-    filenames = [['Dry', '50', '75', '100'], ['Side_Dry', 'Side_75']]
+    filenames = [['Dry', '50', '75', '100', 'xflr_15.2ms', 'xflr_22.9ms', 'xflr_30.5ms']]    # , ['Side_Dry', 'Side_75']
     for file in filenames:
         files = [os.path.join(data_location, i + '.csv') for i in file]
-        print(files)
         lab7 = labSeven(files)
     plt.show()

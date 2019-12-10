@@ -21,6 +21,7 @@ from sympy import Symbol, sqrt
 import matplotlib.pyplot as plt
 import shutil
 import os
+import statistics
 
 
 class homeworkFive():
