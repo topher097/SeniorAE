@@ -24,8 +24,11 @@ class labSeven():
         self.amb_temp = 531.27          # R
         self.density = 0.002295562      # slug/ft^3
         self.viscocity = 3.8073E-07     # slug/ft-s
-        self.S = 10.87                  # in^2
+        self.S = 10.84                  # in^2
         self.LE_to_M_distance = 5.32    # in
+        self.dist_np = {'50': 3.97,
+                        '75': 3.87,
+                        '100': 3.90}
 
         # Dictionary (lab data)
         self.motor_speed = {}           # RPM
@@ -51,6 +54,7 @@ class labSeven():
         self.F_n_corrected = {}
         self.F_a_corrected = {}
         self.M_corrected = {}
+        self.M_np = {}
 
         for i in self.filenames:
             self.file = i
@@ -150,16 +154,42 @@ class labSeven():
                     self.F_a_corrected[file] = F_a_list
                     self.M_corrected[file] = M_list
 
+        # Calc the moment about the neutral point
+        for file in self.filenames:
+            if 'Dry' not in file and 'xflr' not in file:
+                M_np = []
+                # Go through each angle of attack
+                for i in range(len(self.alpha[file])):
+                    # Find speed of freestream for x_np
+                    airspeed = str(os.path.basename(file).replace('.csv', ''))
+                    alpha = self.alpha[file][i]
+                    F_n = self.F_n_corrected[file][i]
+                    F_a = self.F_a_corrected[file][i]
+                    M = self.M_corrected[file][i]
+                    x = self.dist_np[airspeed]
+                    y = 0       # estimation of y location (in) of neutral point with respect to the axis of measurement
+
+                    # Calc the moment at the neutral point (only consider the x position)
+                    M_np_val = M - (F_n*x+F_a*y)
+                    M_np.append(M_np_val)
+                self.M_np[file] = M_np
+
     def plotC(self):
-        s = 3
-        w = 1.5
-        f = 14
-        fig1 = plt.figure()
-        fig2 = plt.figure()
-        fig3 = plt.figure()
-        fig4 = plt.figure()
-        fig5 = plt.figure()
-        fig6 = plt.figure()
+        s = 3           # Marker size
+        w = 1.5         # Linewidth
+        f = 14          # Fontsize
+        wp = 7          # width of plot size
+        hp = 5.5          # height of plot figure
+        fig1 = plt.figure(figsize=(wp, hp))     # C_L vs alpha
+        fig2 = plt.figure(figsize=(wp, hp))     # C_D vs alpha
+        fig3 = plt.figure(figsize=(wp, hp))     # C_Mle vs alpha
+        fig4 = plt.figure(figsize=(wp, hp))     # C_L vs C_D
+        fig5 = plt.figure(figsize=(wp, hp))     # C_L^3/2 vs alpha
+        fig6 = plt.figure(figsize=(wp, hp))     # LD vs alpha
+        fig7 = plt.figure(figsize=(wp, hp))     # M_np vs alpha (neutral points)
+        fig8 = plt.figure(figsize=(wp, hp))     # Fn vs alpha
+        fig9 = plt.figure(figsize=(wp, hp))     # Fa vs alpha
+        fig10 = plt.figure(figsize=(wp, hp))    # M vs alpha
         plot_C_L = fig1.add_subplot(111)
         plot_C_L.grid(color='grey', ls='--', lw=0.5)
         plot_C_L.set_xlabel('$\\alpha$ [deg]', fontsize=f)
@@ -180,10 +210,26 @@ class labSeven():
         plot_CL32.grid(color='grey', ls='--', lw=0.5)
         plot_CL32.set_xlabel('$\\alpha$ [deg]', fontsize=f)
         plot_CL32.set_ylabel('$C^{3/2}_{L}$/$C_{D}$', fontsize=f)
-        plot_CL12 = fig6.add_subplot(111)
-        plot_CL12.grid(color='grey', ls='--', lw=0.5)
-        plot_CL12.set_xlabel('$\\alpha$ [deg]', fontsize=f)
-        plot_CL12.set_ylabel('$C^{1/2}_{L}$/$C_{D}$', fontsize=f)
+        plot_LD = fig6.add_subplot(111)
+        plot_LD.grid(color='grey', ls='--', lw=0.5)
+        plot_LD.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_LD.set_ylabel('L/D', fontsize=f)
+        plot_Mnp = fig7.add_subplot(111)
+        plot_Mnp.grid(color='grey', ls='--', lw=0.5)
+        plot_Mnp.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_Mnp.set_ylabel('$M_{neutral point}$ [in-lbf]', fontsize=f)
+        plot_Fn = fig8.add_subplot(111)
+        plot_Fn.grid(color='grey', ls='--', lw=0.5)
+        plot_Fn.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_Fn.set_ylabel('$F_{n}$ [lbf]', fontsize=f)
+        plot_Fa = fig9.add_subplot(111)
+        plot_Fa.grid(color='grey', ls='--', lw=0.5)
+        plot_Fa.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_Fa.set_ylabel('$F_{a}$ [lbf]', fontsize=f)
+        plot_M = fig10.add_subplot(111)
+        plot_M.grid(color='grey', ls='--', lw=0.5)
+        plot_M.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_M.set_ylabel('$M_{sting}$ [lbf]', fontsize=f)
 
         for file in self.non_dry_files:
             c = ''
@@ -196,18 +242,20 @@ class labSeven():
 
             if 'xflr' not in file:
                 alpha = self.alpha[file]
+                F_n = self.F_n_corrected[file]
+                F_a = self.F_a_corrected[file]
+                M = self.M_corrected[file]
                 C_L = self.C_L[file]
                 C_D = self.C_D[file]
                 C_M_LE = self.C_M_LE[file]
+                M_np = self.M_np[file]
                 alpha_mod1, alpha_mod2 = [], []
-                LD32, LD12 = [], []
+                LD32, LD = [], []
                 for i in range(len(C_L)):
                     if np.real(C_L[i] ** (3 / 2) / C_D[i]) >= 0:
                         alpha_mod1.append(alpha[i])
                         LD32.append(np.real(C_L[i] ** (3 / 2) / C_D[i]))
-                    if np.real(C_L[i] ** (1 / 2) / C_D[i]) >= 0:
-                        alpha_mod2.append(alpha[i])
-                        LD12.append(np.real(C_L[i] ** (1 / 2) / C_D[i]))
+                    LD.append((C_L[i] / C_D[i]))
 
                 Re = int(statistics.mean(self.re[file]))
 
@@ -219,25 +267,30 @@ class labSeven():
                                  label=f'Exp. Re = {Re}')
                 plot_l_d.plot(C_D, C_L, marker='o', markerfacecolor=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
                               label=f'Exp. Re = {Re}')
-                plot_CL32.plot(LD32, alpha_mod1, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                plot_CL32.plot(alpha_mod1, LD32, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
                                label=f'Exp. Re = {Re}')
-                plot_CL12.plot(LD12, alpha_mod2, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                plot_LD.plot(alpha, LD, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
                                   label=f'Exp. Re = {Re}')
+                plot_Mnp.plot(alpha, M_np, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                               label=f'Exp. Re = {Re}')
+                plot_Fn.plot(alpha, F_n, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                              label=f'Exp. Re = {Re}')
+                plot_Fa.plot(alpha, F_a, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                              label=f'Exp. Re = {Re}')
+                plot_M.plot(alpha, M, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                              label=f'Exp. Re = {Re}')
             else:
                 alpha = self.alpha[file]
                 C_L = self.C_L[file]
                 C_D = self.C_D[file]
                 C_M_LE = self.C_M_LE[file]
                 alpha_mod1, alpha_mod2 = [], []
-                LD32, LD12 = [], []
+                LD32, LD = [], []
                 for i in range(len(C_L)):
                     if np.real(C_L[i] ** (3 / 2) / C_D[i]) >= 0:
                         alpha_mod1.append(alpha[i])
                         LD32.append(np.real(C_L[i] ** (3 / 2) / C_D[i]))
-                    if np.real(C_L[i] ** (1 / 2) / C_D[i]) >= 0:
-                        alpha_mod2.append(alpha[i])
-                        LD12.append(np.real(C_L[i] ** (1 / 2) / C_D[i]))
-                #airspeed = int(float(os.path.basename(file).replace('.csv', '').replace('xflr_', '').replace('ms', '')) * 3.28084)
+                    LD.append((C_L[i] / C_D[i]))
                 airspeed = int(os.path.basename(file).replace('.csv', '').replace('xflr', ''))
                 rho = self.density
                 l = self.length_scale/12
@@ -248,22 +301,30 @@ class labSeven():
                 plot_C_D.plot(alpha, C_D, color=c, lw=w, label=f'Theory Re = {Re}')
                 plot_C_M_LE.plot(alpha, C_M_LE, color=c, lw=w, label=f'Theory Re = {Re}')
                 plot_l_d.plot(C_D, C_L, color=c, lw=w, label=f'Theory Re = {Re}')
-                plot_CL32.plot(LD32, alpha_mod1, color=c, lw=w, label=f'Theory Re = {Re}')
-                plot_CL12.plot(LD12, alpha_mod2, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_CL32.plot(alpha_mod1, LD32, color=c, lw=w, label=f'Theory Re = {Re}')
+                plot_LD.plot(alpha, LD, color=c, lw=w, label=f'Theory Re = {Re}')
 
         plot_C_L.legend(loc='lower right', fontsize=10)
         plot_C_D.legend(loc='upper left', fontsize=10)
         plot_C_M_LE.legend(loc='upper right', fontsize=10)
         plot_l_d.legend(loc='lower right', fontsize=10)
-        plot_CL12.legend(loc='upper left', fontsize=10)
+        plot_LD.legend(loc='lower right', fontsize=10)
         plot_CL32.legend(loc='upper left', fontsize=10)
+        plot_Mnp.legend(loc='lower left', fontsize=10)
+        plot_Fn.legend(loc='upper left', fontsize=10)
+        plot_Fa.legend(loc='lower left', fontsize=10)
+        plot_M.legend(loc='upper left', fontsize=10)
         plt.draw()
         fig1.savefig(os.path.join(os.getcwd(), r'plots\CL_alpha'))
         fig2.savefig(os.path.join(os.getcwd(), r'plots\CD_alpha'))
         fig3.savefig(os.path.join(os.getcwd(), r'plots\CM_alpha'))
-        fig4.savefig(os.path.join(os.getcwd(), r'plots\LD'))
+        fig4.savefig(os.path.join(os.getcwd(), r'plots\CL_CD'))
         fig5.savefig(os.path.join(os.getcwd(), r'plots\L32D_alpha'))
-        fig6.savefig(os.path.join(os.getcwd(), r'plots\L12D_alpha'))
+        fig6.savefig(os.path.join(os.getcwd(), r'plots\LD_alpha'))
+        fig7.savefig(os.path.join(os.getcwd(), r'plots\Mnp_alpha'))
+        fig8.savefig(os.path.join(os.getcwd(), r'plots\Fn_alpha'))
+        fig9.savefig(os.path.join(os.getcwd(), r'plots\Fa_alpha'))
+        fig10.savefig(os.path.join(os.getcwd(), r'plots\M_alpha'))
 
 
 if __name__ == '__main__':
