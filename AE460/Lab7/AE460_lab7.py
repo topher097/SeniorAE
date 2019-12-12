@@ -55,6 +55,7 @@ class labSeven():
         self.F_a_corrected = {}
         self.M_corrected = {}
         self.M_np = {}
+        self.Lift = {}
 
         for i in self.filenames:
             self.file = i
@@ -130,6 +131,7 @@ class labSeven():
                     F_n_list = []
                     F_a_list = []
                     M_list = []
+                    Lift = []
                     # Go through each angle of attack
                     for i in range(len(self.alpha[file])):
                         alpha = self.alpha[file][i]
@@ -141,18 +143,20 @@ class labSeven():
                         F_n_list.append(F_n)
                         F_a_list.append(F_a)
                         M_list.append(M)
-                        D = F_a*cos(a) + F_n*sin(a)     # lbs
-                        L = F_a*sin(a) + F_n*cos(a)     # lba
+                        D = F_a*cos(a) - F_n*sin(a)     # lbs
+                        L = F_a*sin(a) - F_n*cos(a)     # lbs
                         M_LE = -1*((M - corr_M(alpha)) + L*cos(a)*self.LE_to_M_distance)        # in-lbf
                         C_L.append(L/((q)*self.S))
                         C_D.append(D/((q)*self.S))
                         C_M_LE.append(M_LE/(q*self.S**2))
+                        Lift.append(L)
                     self.C_L[file] = C_L
                     self.C_D[file] = C_D
                     self.C_M_LE[file] = C_M_LE
                     self.F_n_corrected[file] = F_n_list
                     self.F_a_corrected[file] = F_a_list
                     self.M_corrected[file] = M_list
+                    self.Lift[file] = Lift
 
         # Calc the moment about the neutral point
         for file in self.filenames:
@@ -169,6 +173,10 @@ class labSeven():
                     x = self.dist_np[airspeed]
                     y = 0       # estimation of y location (in) of neutral point with respect to the axis of measurement
 
+                    if '100' in file:
+                        a = np.deg2rad(alpha)
+                        #print(alpha)
+                        #print(F_n*cos(a) + F_a*sin(a))
                     # Calc the moment at the neutral point (only consider the x position)
                     M_np_val = M - (F_n*x+F_a*y)
                     M_np.append(M_np_val)
@@ -177,7 +185,7 @@ class labSeven():
     def plotC(self):
         s = 3           # Marker size
         w = 1.5         # Linewidth
-        f = 14          # Fontsize
+        f = 16          # Fontsize
         wp = 7          # width of plot size
         hp = 5.5          # height of plot figure
         fig1 = plt.figure(figsize=(wp, hp))     # C_L vs alpha
@@ -190,6 +198,7 @@ class labSeven():
         fig8 = plt.figure(figsize=(wp, hp))     # Fn vs alpha
         fig9 = plt.figure(figsize=(wp, hp))     # Fa vs alpha
         fig10 = plt.figure(figsize=(wp, hp))    # M vs alpha
+        fig11 = plt.figure(figsize=(wp, hp))    # L vs alpha
         plot_C_L = fig1.add_subplot(111)
         plot_C_L.grid(color='grey', ls='--', lw=0.5)
         plot_C_L.set_xlabel('$\\alpha$ [deg]', fontsize=f)
@@ -217,7 +226,7 @@ class labSeven():
         plot_Mnp = fig7.add_subplot(111)
         plot_Mnp.grid(color='grey', ls='--', lw=0.5)
         plot_Mnp.set_xlabel('$\\alpha$ [deg]', fontsize=f)
-        plot_Mnp.set_ylabel('$M_{neutral point}$ [in-lbf]', fontsize=f)
+        plot_Mnp.set_ylabel('$M_{NP}$ [in-lbf]', fontsize=f)
         plot_Fn = fig8.add_subplot(111)
         plot_Fn.grid(color='grey', ls='--', lw=0.5)
         plot_Fn.set_xlabel('$\\alpha$ [deg]', fontsize=f)
@@ -229,7 +238,11 @@ class labSeven():
         plot_M = fig10.add_subplot(111)
         plot_M.grid(color='grey', ls='--', lw=0.5)
         plot_M.set_xlabel('$\\alpha$ [deg]', fontsize=f)
-        plot_M.set_ylabel('$M_{sting}$ [lbf]', fontsize=f)
+        plot_M.set_ylabel('$M_{sting}$ [in-lbf]', fontsize=f)
+        plot_L = fig11.add_subplot(111)
+        plot_L.grid(color='grey', ls='--', lw=0.5)
+        plot_L.set_xlabel('$\\alpha$ [deg]', fontsize=f)
+        plot_L.set_ylabel('$L$ [lbf]', fontsize=f)
 
         for file in self.non_dry_files:
             c = ''
@@ -245,6 +258,7 @@ class labSeven():
                 F_n = self.F_n_corrected[file]
                 F_a = self.F_a_corrected[file]
                 M = self.M_corrected[file]
+                L = self.Lift[file]
                 C_L = self.C_L[file]
                 C_D = self.C_D[file]
                 C_M_LE = self.C_M_LE[file]
@@ -279,6 +293,8 @@ class labSeven():
                               label=f'Exp. Re = {Re}')
                 plot_M.plot(alpha, M, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
                               label=f'Exp. Re = {Re}')
+                plot_L.plot(alpha, L, marker='o', mfc=None, markeredgecolor=c, color=c, ls='--', lw=w, ms=s,
+                            label=f'Exp. Re = {Re}')
             else:
                 alpha = self.alpha[file]
                 C_L = self.C_L[file]
@@ -303,17 +319,18 @@ class labSeven():
                 plot_l_d.plot(C_D, C_L, color=c, lw=w, label=f'Theory Re = {Re}')
                 plot_CL32.plot(alpha_mod1, LD32, color=c, lw=w, label=f'Theory Re = {Re}')
                 plot_LD.plot(alpha, LD, color=c, lw=w, label=f'Theory Re = {Re}')
-
-        plot_C_L.legend(loc='lower right', fontsize=10)
-        plot_C_D.legend(loc='upper left', fontsize=10)
-        plot_C_M_LE.legend(loc='upper right', fontsize=10)
-        plot_l_d.legend(loc='lower right', fontsize=10)
-        plot_LD.legend(loc='lower right', fontsize=10)
-        plot_CL32.legend(loc='upper left', fontsize=10)
-        plot_Mnp.legend(loc='lower left', fontsize=10)
-        plot_Fn.legend(loc='upper left', fontsize=10)
-        plot_Fa.legend(loc='lower left', fontsize=10)
-        plot_M.legend(loc='upper left', fontsize=10)
+        f2 = 12     # legend fontsize
+        plot_C_L.legend(loc='lower right', fontsize=f2)
+        plot_C_D.legend(loc='upper left', fontsize=f2)
+        plot_C_M_LE.legend(loc='upper right', fontsize=f2)
+        plot_l_d.legend(loc='lower right', fontsize=f2)
+        plot_LD.legend(loc='lower right', fontsize=f2)
+        plot_CL32.legend(loc='upper left', fontsize=f2)
+        plot_Mnp.legend(loc='lower left', fontsize=f2)
+        plot_Fn.legend(loc='upper left', fontsize=f2)
+        plot_Fa.legend(loc='lower left', fontsize=f2)
+        plot_M.legend(loc='upper left', fontsize=f2)
+        plot_L.legend(loc='upper left', fontsize=f2)
         plt.draw()
         fig1.savefig(os.path.join(os.getcwd(), r'plots\CL_alpha'))
         fig2.savefig(os.path.join(os.getcwd(), r'plots\CD_alpha'))
@@ -325,6 +342,7 @@ class labSeven():
         fig8.savefig(os.path.join(os.getcwd(), r'plots\Fn_alpha'))
         fig9.savefig(os.path.join(os.getcwd(), r'plots\Fa_alpha'))
         fig10.savefig(os.path.join(os.getcwd(), r'plots\M_alpha'))
+        fig11.savefig(os.path.join(os.getcwd(), r'plots\L_alpha'))
 
 
 if __name__ == '__main__':
