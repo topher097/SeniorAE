@@ -35,7 +35,7 @@ class clearMetadata:
 
     # Convert to PDF using libra office and command line
     def clearWordLibre(self):
-        librewriter = r'C://"Program Files"/LibreOffice/program/swriter.exe'
+        librewriter = r'C://"Program Input Files"/LibreOffice/program/swriter.exe'
         args = [librewriter, '--headless', '--convert-to', 'pdf', '--outdir', self.currdir, self.infile_path]
         sub_string = f'{args} --convert-to pdf --outdir "{self.currdir}" "{self.infile_path}"'
         process = subprocess.run(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

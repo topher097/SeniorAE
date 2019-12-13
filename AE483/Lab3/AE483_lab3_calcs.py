@@ -15,7 +15,7 @@ import pandas as pd
 class dataParse():
     # Initialise class variables
     def __init__(self, params):
-        self.file_inputs = params['file inputs']        # Files to parse, in list
+        self.file_inputs = params['file inputs']        # Input Files to parse, in list
         self.plot_time = params['plot time']            # Time to plot
         self.gs_file = self.file_inputs[0]              # file path of ground station data
         self.sim_file = self.file_inputs[1]             # file path of simulation data
