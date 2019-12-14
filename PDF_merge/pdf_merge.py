@@ -7,7 +7,7 @@ import sys
 class pdfMerger():
     def __init__(self):
         self.merger = PdfFileMerger()
-        self.input_dir = os.path.join(os.getcwd(), 'Input Files\\')
+        self.input_dir = os.path.join(os.getcwd(), 'Input\\')
         self.input_names = []
         self.input_names_sorted = []
         self.input_locs_sorted = []

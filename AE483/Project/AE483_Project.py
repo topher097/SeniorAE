@@ -19,9 +19,9 @@ class dataParse():
         self.file_inputs = params['file inputs']        # Input Files to parse, in list
         self.plot_time = params['plot time']            # Time to plot
         self.gs_file = self.file_inputs[0]              # file path of ground station data (Leader)
-        self.f_gs_file = self.file_inputs[1]             # file path of ground station data (Follower)
+        self.follower_gs_file = self.file_inputs[1]     # file path of ground station data (Follower)
         try:
-            self.sim_file = self.file_inputs[2]             # file path of simulation file
+            self.sim_file = self.file_inputs[2]         # file path of simulation file
         except Exception:
             self.sim_file = 'none'
 
@@ -58,7 +58,7 @@ class dataParse():
         self.plan_y = []
         self.plan_z = []
         self.offset_gs = params['time_offset']  # offset the real data by a certain time (s)
-
+        
         # Simulation data
         self.parsedSim = {}
         self.sim_time = []             # Simulation time
@@ -74,8 +74,8 @@ class dataParse():
         self.sim_roll = []             # Simulation measured roll
 
         # Run parser and filter
-        self.parseGroundStation()
-        #self.parseFollowerGroundStation()       # parse ground station data
+        self.parseGroundStation()               # parse ground station data for leader drone
+        #self.parseFollowerGroundStation()       # parse ground station data for follower drone
         if self.sim_file == 'none':
             self.createSimData()
         else:
@@ -139,7 +139,7 @@ class dataParse():
     # Parse follower file
     def parseFollowerGroundStation(self):
         # Load CSV file into a DataFrame
-        self.parsedGS = pd.DataFrame(pd.read_csv(self.gs_file,
+        self.parsedGS = pd.DataFrame(pd.read_csv(self.follower_gs_file,
                                                  delimiter=',',
                                                  na_values='.',
                                                  header=0,
@@ -194,8 +194,8 @@ class dataParse():
         self.parsedSim = pd.DataFrame(pd.read_csv(self.sim_file,
                                                        delimiter=',',
                                                        na_values='.',
-                                                       names=['time (s)', 'x_desired (m)', 'y_desired (m)', 'z_desired (m)',
-                                                              'x (m)', 'y (m)', 'z (m)',
+                                                       names=['time (s)', 'x_desired (m)', 'y_desired (m)', 
+                                                              'z_desired (m)', 'x (m)', 'y (m)', 'z (m)',
                                                               'yaw (rad)', 'pitch (rad)', 'roll (rad)']
                                                        ))
 
@@ -274,7 +274,6 @@ class dataParse():
 
 # Complete calculations specific to lab 3
 class project():
-
     # Initialize variables
     def __init__(self, params):
         # Error and stdev variables
@@ -308,38 +307,10 @@ class project():
 
         self.flight = params['flight']
 
-        # Gradient Visualization
-        self.obs_x = 1
-        self.obs_y = 0
-        self.x_des0 = 0
-        self.y_des0 = 0
-        self.x_des1 = .5
-        self.y_des1 = 0
-        self.x_des2 = 1.5
-        self.y_des2 = 0
-        self.x_des3 = 2
-        self.y_des3 = 0
-        self.obs_r = 0.25          # meters
-        self.goal_r = 0.5          # meters
-        self.drone_r = 0.5         # meters
-        self.grad_x0 = []
-        self.grad_y0 = []
-        self.grad_intensity0 = []
-        self.grad_x1 = []
-        self.grad_y1 = []
-        self.grad_intensity1 = []
-        self.grad_x2 = []
-        self.grad_y2 = []
-        self.grad_intensity2 = []
-        self.grad_x3 = []
-        self.grad_y3 = []
-        self.grad_intensity3 = []
-
         # Run the calculations
         project.calcSumSquaredError(self)
         project.calcDeviation(self)
         project.calcPositionError(self)
-        #project.createGradientVisual(self)
 
     # Calculate the sum squared error of mocap position and desired position
     def calcSumSquaredError(self):
@@ -392,66 +363,6 @@ class project():
             self.position_error_y_sim.append(error_y)
             self.position_error_z_sim.append(error_z)
 
-    # Create a visualization of the gradient in a space (2D)
-    def createGradientVisual(self):
-        for k in [0, 1, 2, 3]:
-            # Set desired position variable
-            if k == 0:
-                x_des = self.x_des0
-                y_des = self.y_des0
-            elif k == 1:
-                x_des = self.x_des1
-                y_des = self.y_des1
-            elif k == 2:
-                x_des = self.x_des2
-                y_des = self.y_des2
-            else:
-                x_des = self.x_des3
-                y_des = self.y_des3
-            # Initialize x, y, and z
-            x = np.linspace(-1, 3, 100)
-            y = np.linspace(-2, 2, 100)
-            X, Y = np.meshgrid(x, y)
-            Z = np.zeros([len(X[0].tolist()), len(Y[:, 0].tolist())])
-            # Iterate through x and y arrays, calculate the "gradient"
-            for i in range(len(X[0].tolist())):
-                for j in range(len(Y[:, 0].tolist())):
-                    x = X[0][i]
-                    y = Y[j][0]
-                    # Calc distance to obstacle
-                    obstacle_dist = abs(np.sqrt((x - self.obs_x)**2 + (y - self.obs_y)**2))
-                    # Calc distance to desired goal (assume planar x-y)
-                    desired_dist = abs(np.sqrt((x - x_des)**2 + (y - y_des)**2))
-                    # Calculate the repulsive component
-                    if obstacle_dist <= self.obs_r*2:
-                        repulsive = (20/obstacle_dist)
-                    else:
-                        repulsive = 0
-                    # Calculate the attractive component
-                    if desired_dist >= self.goal_r*.2:
-                        attractive = 75 * desired_dist**2
-                    else:
-                        attractive = .2 * desired_dist**.5
-                    # Superpose attractive and repulsive gradients
-                    Z[j][i] = attractive + repulsive
-            # Save arrays to class variables for plotting
-            if k == 0:
-                self.grad_x0 = X
-                self.grad_y0 = Y
-                self.grad_intensity0 = Z
-            elif k == 1:
-                self.grad_x1 = X
-                self.grad_y1 = Y
-                self.grad_intensity1 = Z
-            elif k == 2:
-                self.grad_x2 = X
-                self.grad_y2 = Y
-                self.grad_intensity2 = Z
-            else:
-                self.grad_x3 = X
-                self.grad_y3 = Y
-                self.grad_intensity3 = Z
-
 
 # Plot the data
 class plotData():
@@ -484,29 +395,12 @@ class plotData():
         self.angles = plt.figure(figsize=(12, 4.5))
         self.angles.subplots_adjust(hspace=.5)
         self.angles.tight_layout()
-        '''
-        # Setting up gradient visualization plot
-        self.grad = plt.figure(figsize=(13, 10))
-        self.grad.subplots_adjust(hspace=.18, left=.23, right=.91, top=.97, bottom=.07)
-        self.grad.tight_layout()
-
-        # Gradient variables
-        self.x_des0 = proj.x_des0
-        self.y_des0 = proj.y_des0
-        self.x_des1 = proj.x_des1
-        self.y_des1 = proj.y_des1
-        self.x_des2 = proj.x_des2
-        self.y_des2 = proj.y_des2
-        self.x_des3 = proj.x_des3
-        self.y_des3 = proj.y_des3
-        '''
 
         # Plot
         plotData.plotMSE(self)
         plotData.plotPositionError(self)
         plotData.plotMocapPos(self)
         plotData.plotAngles(self)
-        #plotData.plotGradientVisual(self)
 
         # Save and display
         plotData.savePlots(self)
@@ -558,7 +452,7 @@ class plotData():
         mse.text(0.7, 0.95, error_text, transform=mse.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         mse.hist(proj.sum_squared_error, bins=45, density=True, rwidth=.9)
 
-    # Plot the mocap position and the desired position
+    # Plot the mocap position and the desired position 
     def plotMocapPos(self):
         time = parse.gs_time
         time_end = time.index(parse.gs_time_cut)
@@ -575,8 +469,8 @@ class plotData():
         mp_x.plot(time[:time_end], np.zeros(len(parse.x[:time_end])), color='grey', linestyle='--')
         mp_x.plot(time[:time_end], parse.x_des[:time_end], 'b', label='x desired position')
         mp_x.plot(time[:time_end], parse.x[:time_end], 'r', label='x position')
-        #mp_x.plot(time[:time_end], parse.plan_x[:time_end], 'y', label='x planner position')
-        #mp_x.plot(time_sim[:time_sim_end], proj.x_sim[:time_sim_end], 'y', label='x sim position')
+        mp_x.plot(time[:time_end], parse.plan_x[:time_end], 'y', label='x planner position')
+        mp_x.plot(time_sim[:time_sim_end], proj.x_sim[:time_sim_end], 'y', label='x sim position')
         mp_x.legend(loc='upper right', fontsize=12)
 
         # Plot y
@@ -585,8 +479,8 @@ class plotData():
         mp_y.plot(time[:time_end], np.zeros(len(parse.y[:time_end])), color='grey', linestyle='--')
         mp_y.plot(time[:time_end], parse.y_des[:time_end], 'b', label='y desired position')
         mp_y.plot(time[:time_end], parse.y[:time_end], 'r', label='y position')
-        #mp_y.plot(time[:time_end], parse.plan_y[:time_end], 'y', label='y planner position')
-        #mp_y.plot(time_sim[:time_sim_end], proj.y_sim[:time_sim_end], 'y', label='y sim position')
+        mp_y.plot(time[:time_end], parse.plan_y[:time_end], 'y', label='y planner position')
+        mp_y.plot(time_sim[:time_sim_end], proj.y_sim[:time_sim_end], 'y', label='y sim position')
         mp_y.legend(loc='upper right', fontsize=12)
 
         # Plot z
@@ -596,8 +490,8 @@ class plotData():
         mp_z.plot(time[:time_end], np.zeros(len(parse.z[:time_end])), color='grey', linestyle='--')
         mp_z.plot(time[:time_end], parse.z_des[:time_end], 'b', label='z desired position')
         mp_z.plot(time[:time_end], parse.z[:time_end], 'r', label='z position')
-        #mp_z.plot(time[:time_end], parse.plan_z[:time_end], 'y', label='z planner position')
-        #mp_z.plot(time_sim[:time_sim_end], proj.z_sim[:time_sim_end], 'y', label='z sim position')
+        mp_z.plot(time[:time_end], parse.plan_z[:time_end], 'y', label='z planner position')
+        mp_z.plot(time_sim[:time_sim_end], proj.z_sim[:time_sim_end], 'y', label='z sim position')
         mp_z.legend(loc='upper right', fontsize=12)
 
     # Plot the mocap angle and desired angles over time
@@ -619,163 +513,10 @@ class plotData():
         a_yaw.plot(time_sim[:time_sim_end], parse.sim_yaw[:time_sim_end], 'y', label='sim yaw')
         a_yaw.legend(loc='upper right', fontsize=12)
 
-    # Plot the gradient visualization
-    def plotGradientVisual(self):
-        # Get drone flight path for both of the plots
-        skip = 10
-        skip2 = 30
-        list_point_break_1 = 0
-        list_point_break_2 = 0
-        list_point_break_3 = 0
-        for i in parse.plan_x:
-            if i-self.x_des1 >= 0 and list_point_break_1 == 0:
-                list_point_break_1 = parse.plan_x.index(i)
-                print(i)
-                print(list_point_break_1)
-            if i-self.x_des2 >= 0 and list_point_break_2 == 0:
-                list_point_break_2 = parse.plan_x.index(i)
-                print(i)
-                print(list_point_break_2)
-            if i-self.x_des3 >= 0 and list_point_break_3 == 0:
-                list_point_break_3 = parse.plan_x.index(i) + 50
-                print(i)
-                print(list_point_break_3)
-        x_1 = parse.x[:list_point_break_1][::skip]
-        y_1 = parse.y[:list_point_break_1][::skip]
-        xp_1 = parse.plan_x[:list_point_break_1][::skip2]
-        yp_1 = parse.plan_y[:list_point_break_1][::skip2]
-        x_2 = parse.x[:list_point_break_2][::skip]
-        y_2 = parse.y[:list_point_break_2][::skip]
-        xp_2 = parse.plan_x[:list_point_break_2][::skip2]
-        yp_2 = parse.plan_y[:list_point_break_2][::skip2]
-        x_3 = parse.x[:list_point_break_3][::skip]
-        y_3 = parse.y[:list_point_break_3][::skip]
-        xp_3 = parse.plan_x[:list_point_break_3][::skip2]
-        yp_3 = parse.plan_y[:list_point_break_3][::skip2]
-        # Get time of each desired position
-        t0 = 0
-        t1 = round(parse.gs_time[list_point_break_1], 4)
-        t2 = round(parse.gs_time[list_point_break_2], 4)
-        t3 = round(parse.gs_time[list_point_break_3], 4)
-        props = dict(boxstyle='round', facecolor='white', alpha=0.75)
-
-        # Plot the first gradient
-        gradient0 = self.grad.add_subplot(2, 2, 1)
-        gradient0.set_xlabel('x [m]')
-        gradient0.set_ylabel('y [m]')
-        plt.gca().invert_yaxis()
-        norm = plt.cm.colors.Normalize(vmax=abs(proj.grad_intensity0).max(), vmin=abs(proj.grad_intensity0).min())
-        cont = gradient0.contourf(proj.grad_x0, proj.grad_y0, proj.grad_intensity0, 50, cmap='coolwarm', norm=norm)
-        gradient0.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
-        gradient0.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
-        gradient0.scatter(x_1[0], y_1[0], s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
-        gradient0.scatter(xp_1[0], yp_1[0], s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
-        # Plot the obstacle, drone, and goal radii
-        circ1 = plt.Circle((x_1[-1], y_1[-1]), radius=proj.drone_r, color='orange', fill=False, lw=.75, label='UAV radius [m]')
-        circ2 = plt.Circle((proj.obs_x, proj.obs_y), radius=proj.obs_r, color='r', fill=False, lw=3, label='Obstacle radius [m]')
-        circ3 = plt.Circle((self.x_des3, self.y_des3), radius=proj.goal_r, color='g', fill=False, lw=3, label='Goal radius [m]')
-        circ4 = plt.Circle((self.x_des0, self.y_des0), radius=proj.drone_r, color='b', fill=False, lw=1, label='Des. Pos. radius [m]')
-        gradient0.add_patch(circ1)
-        gradient0.add_patch(circ2)
-        gradient0.add_patch(circ3)
-        gradient0.add_patch(circ4)
-        plot_info_text = f'Snapshot Time = {t0} [s]\n' \
-                         f'Des. Pos. = {xp_1[0], yp_1[0]} [m]\n' \
-                         f'Act.  Pos. = {x_1[0], y_1[0]} [m]'
-        gradient0.text(0.02, 0.98, plot_info_text, transform=gradient0.transAxes, fontsize=11, verticalalignment='top', bbox=props)
-        gradient0.legend(bbox_to_anchor=(-.1, .13), fontsize=12)
-        cbaxes = self.grad.add_axes([.92, 0.07, 0.02, 0.9])
-        cbar = self.grad.colorbar(cont, cax=cbaxes, norm=norm)
-        cbar.set_label('Gradient Intensity', fontsize=12)
-        plt.draw()
-
-        # Plot the second gradient and path
-        gradient1 = self.grad.add_subplot(2, 2, 2)
-        gradient1.set_xlabel('x [m]')
-        gradient1.set_ylabel('y [m]')
-        plt.gca().invert_yaxis()
-        norm = plt.cm.colors.Normalize(vmax=abs(proj.grad_intensity1).max(), vmin=abs(proj.grad_intensity1).min())
-        gradient1.contourf(proj.grad_x1, proj.grad_y1, proj.grad_intensity1, 50, cmap='coolwarm', norm=norm)
-        gradient1.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
-        gradient1.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
-        gradient1.scatter(x_1, y_1, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
-        gradient1.scatter(xp_1, yp_1, s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
-        # Plot the obstacle, drone, and goal radii
-        for point in range(len(x_1)):
-            circ = plt.Circle((x_1[point], y_1[point]), radius=proj.drone_r, color='orange', fill=False, lw=.3)
-            gradient1.add_patch(circ)
-        circ2 = plt.Circle((proj.obs_x, proj.obs_y), radius=proj.obs_r, color='r', fill=False, lw=3, label='Obstacle radius [m]')
-        circ3 = plt.Circle((self.x_des3, self.y_des3), radius=proj.goal_r, color='g', fill=False, lw=3, label='Goal radius [m]')
-        circ4 = plt.Circle((xp_1[-1], yp_1[-1]), radius=proj.drone_r, color='b', fill=False, lw=1, label='Pos. Desired Radius [m]')
-        gradient1.add_patch(circ2)
-        gradient1.add_patch(circ3)
-        gradient1.add_patch(circ4)
-        plot_info_text = f'Snapshot Time = {t1} [s]\n' \
-                         f'Des. Pos. = {xp_1[-1], yp_1[-1]} [m]\n' \
-                         f'Act.  Pos. = {x_1[-1], y_1[-1]} [m]'
-        gradient1.text(0.02, 0.98, plot_info_text, transform=gradient1.transAxes, fontsize=11, verticalalignment='top', bbox=props)
-        plt.draw()
-
-        # Plot the third gradient and path
-        gradient2 = self.grad.add_subplot(2, 2, 3)
-        gradient2.set_xlabel('x [m]')
-        gradient2.set_ylabel('y [m]')
-        plt.gca().invert_yaxis()
-        norm = plt.cm.colors.Normalize(vmax=abs(proj.grad_intensity2).max(), vmin=abs(proj.grad_intensity2).min())
-        gradient2.contourf(proj.grad_x2, proj.grad_y2, proj.grad_intensity2, 50, cmap='coolwarm', norm=norm)
-        gradient2.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
-        gradient2.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
-        gradient2.scatter(x_2, y_2, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
-        gradient2.scatter(xp_2, yp_2, s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
-        # Plot the obstacle, drone, and goal radii
-        for point in range(len(x_2)):
-            circ = plt.Circle((x_2[point], y_2[point]), radius=proj.drone_r, color='orange', fill=False, lw=.3)
-            gradient2.add_patch(circ)
-        circ2 = plt.Circle((proj.obs_x, proj.obs_y), radius=proj.obs_r, color='r', fill=False, lw=3, label='Obstacle radius [m]')
-        circ3 = plt.Circle((self.x_des3, self.y_des3), radius=proj.goal_r, color='g', fill=False, lw=3, label='Goal radius [m]')
-        circ4 = plt.Circle((xp_2[-1], yp_2[-1]), radius=proj.drone_r, color='b', fill=False, lw=1, label='Des. Pos. Radius [m]')
-        gradient2.add_patch(circ2)
-        gradient2.add_patch(circ3)
-        gradient2.add_patch(circ4)
-        plot_info_text = f'Snapshot Time = {t2} [s]\n' \
-                         f'Des. Pos. = {xp_2[-1], yp_2[-1]} [m]\n' \
-                         f'Act.  Pos. = {x_2[-1], y_2[-1]} [m]'
-        gradient2.text(0.02, 0.98, plot_info_text, transform=gradient2.transAxes, fontsize=11, verticalalignment='top', bbox=props)
-        plt.draw()
-
-        # Plot the fourth gradient and path
-        gradient3 = self.grad.add_subplot(2, 2, 4)
-        gradient3.set_xlabel('x [m]')
-        gradient3.set_ylabel('y [m]')
-        plt.gca().invert_yaxis()
-        norm = plt.cm.colors.Normalize(vmax=abs(proj.grad_intensity3).max(), vmin=abs(proj.grad_intensity3).min())
-        gradient3.contourf(proj.grad_x3, proj.grad_y3, proj.grad_intensity3, 50, cmap='coolwarm', norm=norm)
-        gradient3.scatter(self.x_des0, self.y_des0, s=100, color='y', label='Start position')  # Start point
-        gradient3.scatter(self.x_des3, self.y_des3, s=100, color='g', label='End position')    # Endpoint
-        gradient3.scatter(x_3, y_3, s=20, facecolor='cyan', edgecolor='k', label='Drone path')      # Path
-        gradient3.scatter(xp_3, yp_3, s=20, facecolor='gray', edgecolor='k', label='Planner path')  # Planner path
-        # Plot the obstacle, drone, and goal radii
-        for point in range(len(x_3)):
-            circ = plt.Circle((x_3[point], y_3[point]), radius=proj.drone_r, color='orange', fill=False, lw=.3)
-            gradient3.add_patch(circ)
-        circ2 = plt.Circle((1, 0), radius=proj.obs_r, color='r', fill=False, lw=3, label='Obstacle radius')
-        circ3 = plt.Circle((2, 0), radius=proj.goal_r, color='g', fill=False, lw=3, label='Goal radius')
-        circ4 = plt.Circle((xp_3[-1], yp_3[-1]), radius=proj.drone_r, color='b', fill=False, lw=1, label='Pos. Desired Radius')
-        gradient3.add_patch(circ2)
-        gradient3.add_patch(circ3)
-        gradient3.add_patch(circ4)
-        plot_info_text = f'Snapshot Time = {t3} [s]\n' \
-                         f'Des. Pos. = {xp_3[-1], yp_3[-1]} [m]\n' \
-                         f'Act.  Pos. = {x_3[-1], y_3[-1]} [m]'
-        gradient3.text(0.02, 0.98, plot_info_text, transform=gradient3.transAxes, fontsize=11, verticalalignment='top', bbox=props)
-        plt.draw()
-
     def savePlots(self):
         self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
         self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
         self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
-        #self.grad.savefig(os.path.join(os.getcwd(), f'plots\\grad_{self.flight}.png'))
-
 
 
 if __name__ == '__main__':
@@ -791,13 +532,14 @@ if __name__ == '__main__':
 
     # Get the filenames to parse, calc, and plot
     data_location = os.path.join(os.getcwd() + r'\Project_Data')
-    # Filenames are [['Leader', 'Follower', 'Simulation']]
+    # Filenames are [['Leader', 'Follower', 'Simulation'], [flight 2 files], etc], 
+    # if no simulation, leave it blank and fake data will be created
     filenames = [['Leader-Box1', 'Follower-Box1']]
     # Flight is ['type of flight 1', type of flight 2', ...]
     flight = ['box_test']
-    # End times for data plotting [flight 1, flight 2, ...]
-    times = [45]
-    # Start time for data plotting [flight 1, flight 2, ...]
+    # End times for data plotting [flight 1, flight 2, ...] seconds
+    end_time = [45]
+    # Start time for data plotting [flight 1, flight 2, ...] seconds
     time_offsets = [0]
     # Should plots for flight be created?
     plot_bool = [True, True]
@@ -809,7 +551,7 @@ if __name__ == '__main__':
     # Initialize classes, run each flight
     params = {}
     for flight_type in range(0, len(flight)):
-        params['plot time'] = times[flight_type]  # Time in seconds of which to plot the data
+        params['plot time'] = end_time[flight_type]  # Time in seconds of which to plot the data
         params['file inputs'] = files[flight_type]  # file inputs
         params['flight'] = flight[flight_type]
         params['time_offset'] = time_offsets[flight_type]
@@ -818,4 +560,4 @@ if __name__ == '__main__':
         proj = project(params)
         if plot_bool[flight_type]:
             plot = plotData(params)
-        plt.show()
+            plt.show()
