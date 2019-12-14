@@ -10,6 +10,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d as a3d
 import pandas as pd
+import matplotlib
+import matplotlib.animation as animation
+import seaborn as sns
 
 
 # Class to parse data from specific files, store to lists for analysis or plotting
@@ -19,9 +22,9 @@ class dataParse():
         self.file_inputs = params['file inputs']        # Input Files to parse, in list
         self.plot_time = params['plot time']            # Time to plot
         self.gs_file = self.file_inputs[0]              # file path of ground station data (Leader)
-        self.follower_gs_file = self.file_inputs[1]     # file path of ground station data (Follower)
+        self.f_gs_file = self.file_inputs[1]             # file path of ground station data (Follower)
         try:
-            self.sim_file = self.file_inputs[2]         # file path of simulation file
+            self.sim_file = self.file_inputs[2]             # file path of simulation file
         except Exception:
             self.sim_file = 'none'
 
@@ -58,7 +61,7 @@ class dataParse():
         self.plan_y = []
         self.plan_z = []
         self.offset_gs = params['time_offset']  # offset the real data by a certain time (s)
-        
+
         # Simulation data
         self.parsedSim = {}
         self.sim_time = []             # Simulation time
@@ -74,8 +77,8 @@ class dataParse():
         self.sim_roll = []             # Simulation measured roll
 
         # Run parser and filter
-        self.parseGroundStation()               # parse ground station data for leader drone
-        #self.parseFollowerGroundStation()       # parse ground station data for follower drone
+        #self.parseGroundStation()
+        self.parseFollowerGroundStation()       # parse ground station data
         if self.sim_file == 'none':
             self.createSimData()
         else:
@@ -139,7 +142,7 @@ class dataParse():
     # Parse follower file
     def parseFollowerGroundStation(self):
         # Load CSV file into a DataFrame
-        self.parsedGS = pd.DataFrame(pd.read_csv(self.follower_gs_file,
+        self.parsedGS = pd.DataFrame(pd.read_csv(self.gs_file,
                                                  delimiter=',',
                                                  na_values='.',
                                                  header=0,
@@ -194,8 +197,8 @@ class dataParse():
         self.parsedSim = pd.DataFrame(pd.read_csv(self.sim_file,
                                                        delimiter=',',
                                                        na_values='.',
-                                                       names=['time (s)', 'x_desired (m)', 'y_desired (m)', 
-                                                              'z_desired (m)', 'x (m)', 'y (m)', 'z (m)',
+                                                       names=['time (s)', 'x_desired (m)', 'y_desired (m)', 'z_desired (m)',
+                                                              'x (m)', 'y (m)', 'z (m)',
                                                               'yaw (rad)', 'pitch (rad)', 'roll (rad)']
                                                        ))
 
@@ -274,6 +277,7 @@ class dataParse():
 
 # Complete calculations specific to lab 3
 class project():
+
     # Initialize variables
     def __init__(self, params):
         # Error and stdev variables
@@ -396,11 +400,13 @@ class plotData():
         self.angles.subplots_adjust(hspace=.5)
         self.angles.tight_layout()
 
+
         # Plot
         plotData.plotMSE(self)
         plotData.plotPositionError(self)
         plotData.plotMocapPos(self)
         plotData.plotAngles(self)
+        plotData.animationMSE(self)
 
         # Save and display
         plotData.savePlots(self)
@@ -452,7 +458,7 @@ class plotData():
         mse.text(0.7, 0.95, error_text, transform=mse.transAxes, fontsize=11, verticalalignment='top', bbox=props)
         mse.hist(proj.sum_squared_error, bins=45, density=True, rwidth=.9)
 
-    # Plot the mocap position and the desired position 
+    # Plot the mocap position and the desired position
     def plotMocapPos(self):
         time = parse.gs_time
         time_end = time.index(parse.gs_time_cut)
@@ -513,10 +519,40 @@ class plotData():
         a_yaw.plot(time_sim[:time_sim_end], parse.sim_yaw[:time_sim_end], 'y', label='sim yaw')
         a_yaw.legend(loc='upper right', fontsize=12)
 
+    # Animate the plot of MSE over time
+    def animationMSE(self):
+        time_end = parse.gs_time.index(parse.gs_time_cut)
+        time = np.array(parse.gs_time[:time_end])
+        time_sim = np.array(parse.sim_time)
+        mse_list = np.array(proj.sum_squared_error[:time_end])
+
+        animation_mse = plt.figure(figsize=(12, 2))
+        animation_mse.subplots_adjust(hspace=.35, bottom=.25, left=.075, right=.97)
+        plt.tight_layout()
+        ax = plt.axes()
+        ax.grid(color='grey', lw=0.5, ls='--')
+        ax.set_title('Sum Squared Error over Time', fontsize=12)
+        ax.set_ylabel('Sum Squared Error', fontsize=12)
+        ax.set_xlabel('Time [s]', fontsize=12)
+
+        line, = ax.plot([], [], color='b', lw=1.5)
+        ani = animation.FuncAnimation(animation_mse, update, fargs=[time, mse_list, line],
+                                      frames=time.size, interval=20, blit=True)
+        ani.save(os.path.join(os.getcwd(), f'plots\\animation_mse_{self.flight}.gif'), writer = "pillow", fps=25)
+
+    # Save the plots
     def savePlots(self):
+        pass
+        # plots
         self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
         self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
         self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
+
+
+def update(num, x, y, line):
+    line.set_data(x[:num], y[:num])
+    line.axes.axis([0, max(x), -1*(abs(min(y))+abs(min(y)*.1)), max(y)+max(y)*.1])
+    return line,
 
 
 if __name__ == '__main__':
@@ -532,14 +568,13 @@ if __name__ == '__main__':
 
     # Get the filenames to parse, calc, and plot
     data_location = os.path.join(os.getcwd() + r'\Project_Data')
-    # Filenames are [['Leader', 'Follower', 'Simulation'], [flight 2 files], etc], 
-    # if no simulation, leave it blank and fake data will be created
-    filenames = [['Leader-Box1', 'Follower-Box1']]
+    # Filenames are [['Leader', 'Follower', 'Simulation']]
+    filenames = [['Leader-Hover', 'Follower-Hover']]
     # Flight is ['type of flight 1', type of flight 2', ...]
-    flight = ['box_test']
-    # End times for data plotting [flight 1, flight 2, ...] seconds
-    end_time = [45]
-    # Start time for data plotting [flight 1, flight 2, ...] seconds
+    flight = ['hover']
+    # End times for data plotting [flight 1, flight 2, ...]
+    end_times = [25]
+    # Start time for data plotting [flight 1, flight 2, ...]
     time_offsets = [0]
     # Should plots for flight be created?
     plot_bool = [True, True]
@@ -551,7 +586,7 @@ if __name__ == '__main__':
     # Initialize classes, run each flight
     params = {}
     for flight_type in range(0, len(flight)):
-        params['plot time'] = end_time[flight_type]  # Time in seconds of which to plot the data
+        params['plot time'] = end_times[flight_type]  # Time in seconds of which to plot the data
         params['file inputs'] = files[flight_type]  # file inputs
         params['flight'] = flight[flight_type]
         params['time_offset'] = time_offsets[flight_type]
@@ -560,4 +595,4 @@ if __name__ == '__main__':
         proj = project(params)
         if plot_bool[flight_type]:
             plot = plotData(params)
-            plt.show()
+        plt.show()
