@@ -57,9 +57,6 @@ class dataParse():
         self.mocap_pitch_filter = []   # filtered mocap pitch
         self.mocap_roll_filter = []    # filtered mocap roll
         self.mocap_yaw_filter = []     # filtered mocap yaw
-        self.plan_x = []
-        self.plan_y = []
-        self.plan_z = []
         self.offset_gs = params['time_offset']  # offset the real data by a certain time (s)
 
         # Simulation data
@@ -97,8 +94,7 @@ class dataParse():
                                                              'gyro_z (rad/s)', 'x (m)', 'y (m)', 'z (m)',
                                                              'yaw (rad)', 'pitch (rad)', 'roll (rad)',
                                                              'mocap_counter', 'counter',
-                                                             'desired x', 'desired y', 'desired z', 'desired yaw',
-                                                             'planner x', 'planner y', 'planner z', '1', '2', '3']
+                                                             'desired x', 'desired y', 'desired z', 'desired yaw']
                                                       ))
 
         # Save data to class lists
@@ -126,9 +122,6 @@ class dataParse():
         self.y_des = self.parsedGS['desired y'].tolist()[offset_cut_location::]
         self.z_des = self.parsedGS['desired z'].tolist()[offset_cut_location::]
         self.yaw_des = self.parsedGS['desired yaw'].tolist()[offset_cut_location::]
-        self.plan_x = self.parsedGS['planner x'].tolist()[offset_cut_location::]
-        self.plan_y = self.parsedGS['planner y'].tolist()[offset_cut_location::]
-        self.plan_z = self.parsedGS['planner z'].tolist()[offset_cut_location::]
 
         # Find the time where t=plot_time (for plotting)
         if self.gs_time[-1] < self.plot_time:
@@ -142,7 +135,7 @@ class dataParse():
     # Parse follower file
     def parseFollowerGroundStation(self):
         # Load CSV file into a DataFrame
-        self.parsedGS = pd.DataFrame(pd.read_csv(self.gs_file,
+        self.parsedGS = pd.DataFrame(pd.read_csv(self.f_gs_file,
                                                  delimiter=',',
                                                  na_values='.',
                                                  header=0,
@@ -151,7 +144,8 @@ class dataParse():
                                                         'gyro_z (rad/s)', 'x (m)', 'y (m)', 'z (m)',
                                                         'yaw (rad)', 'pitch (rad)', 'roll (rad)',
                                                         'mocap_counter', 'counter',
-                                                        'desired x', 'desired y', 'desired z', 'desired yaw']
+                                                        'desired x', 'desired y', 'desired z', 'desired yaw',
+                                                        'lead_x', 'lead_y', 'lead_z', '4', '5', '6']
                                                  ))
 
         # Save data to class lists
@@ -179,9 +173,6 @@ class dataParse():
         self.y_des = self.parsedGS['desired y'].tolist()[offset_cut_location::]
         self.z_des = self.parsedGS['desired z'].tolist()[offset_cut_location::]
         self.yaw_des = self.parsedGS['desired yaw'].tolist()[offset_cut_location::]
-        self.plan_x = self.x
-        self.plan_y = self.y
-        self.plan_z = self.z
 
         # Find the time where t=plot_time (for plotting)
         if self.gs_time[-1] < self.plot_time:
@@ -396,10 +387,9 @@ class plotData():
         self.perror.tight_layout()
 
         # Setting up angle plot
-        self.angles = plt.figure(figsize=(12, 4.5))
+        self.angles = plt.figure(figsize=(12, 4))
         self.angles.subplots_adjust(hspace=.5)
         self.angles.tight_layout()
-
 
         # Plot
         plotData.plotMSE(self)
@@ -411,6 +401,7 @@ class plotData():
         # Save and display
         plotData.savePlots(self)
         plt.draw()
+
 
     # Plot the position error over time
     def plotPositionError(self):
@@ -426,7 +417,7 @@ class plotData():
         perror_x = self.perror.add_subplot(3, 1, 1)
         perror_x.set_ylabel('X Pos. Error [m]', fontdict={'fontsize': 11})
         perror_x.plot(time[:time_end], np.zeros(len(proj.position_error_x[:time_end])), color='grey', linestyle='--')
-        perror_x.plot(time_sim[:time_sim_end], proj.position_error_x_sim[:time_sim_end], 'y', label='sim error')
+        if self.sim_file != 'none': perror_x.plot(time_sim[:time_sim_end], proj.position_error_x_sim[:time_sim_end], 'y', label='sim error')
         perror_x.plot(time[:time_end], proj.position_error_x[:time_end], 'b', label='real error')
         perror_x.legend(loc='upper right', fontsize=12)
 
@@ -434,7 +425,7 @@ class plotData():
         perror_y = self.perror.add_subplot(3, 1, 2)
         perror_y.set_ylabel('Y Pos. Error [m]', fontdict={'fontsize': 11})
         perror_y.plot(time[:time_end], np.zeros(len(proj.position_error_y[:time_end])), color='grey', linestyle='--')
-        perror_y.plot(time_sim[:time_sim_end], proj.position_error_y_sim[:time_sim_end], 'y', label='sim error')
+        if self.sim_file != 'none': perror_y.plot(time_sim[:time_sim_end], proj.position_error_y_sim[:time_sim_end], 'y', label='sim error')
         perror_y.plot(time[:time_end], proj.position_error_y[:time_end], 'b', label='real error')
         perror_y.legend(loc='upper right', fontsize=12)
 
@@ -443,7 +434,7 @@ class plotData():
         perror_z.set_xlabel('Time [s]', fontdict={'fontsize': 11})
         perror_z.set_ylabel('Z Pos. Error [m]', fontdict={'fontsize': 11})
         perror_z.plot(time[:time_end], np.zeros(len(proj.position_error_z[:time_end])), color='grey', linestyle='--')
-        perror_z.plot(time_sim[:time_sim_end], proj.position_error_z_sim[:time_sim_end], 'y', label='sim error')
+        if self.sim_file != 'none': perror_z.plot(time_sim[:time_sim_end], proj.position_error_z_sim[:time_sim_end], 'y', label='sim error')
         perror_z.plot(time[:time_end], proj.position_error_z[:time_end], 'b', label='real error')
         perror_z.legend(loc='upper right', fontsize=12)
 
@@ -475,8 +466,7 @@ class plotData():
         mp_x.plot(time[:time_end], np.zeros(len(parse.x[:time_end])), color='grey', linestyle='--')
         mp_x.plot(time[:time_end], parse.x_des[:time_end], 'b', label='x desired position')
         mp_x.plot(time[:time_end], parse.x[:time_end], 'r', label='x position')
-        mp_x.plot(time[:time_end], parse.plan_x[:time_end], 'y', label='x planner position')
-        mp_x.plot(time_sim[:time_sim_end], proj.x_sim[:time_sim_end], 'y', label='x sim position')
+        if self.sim_file != 'none': mp_x.plot(time_sim[:time_sim_end], proj.x_sim[:time_sim_end], 'y', label='x sim position')
         mp_x.legend(loc='upper right', fontsize=12)
 
         # Plot y
@@ -485,8 +475,7 @@ class plotData():
         mp_y.plot(time[:time_end], np.zeros(len(parse.y[:time_end])), color='grey', linestyle='--')
         mp_y.plot(time[:time_end], parse.y_des[:time_end], 'b', label='y desired position')
         mp_y.plot(time[:time_end], parse.y[:time_end], 'r', label='y position')
-        mp_y.plot(time[:time_end], parse.plan_y[:time_end], 'y', label='y planner position')
-        mp_y.plot(time_sim[:time_sim_end], proj.y_sim[:time_sim_end], 'y', label='y sim position')
+        if self.sim_file != 'none': mp_y.plot(time_sim[:time_sim_end], proj.y_sim[:time_sim_end], 'y', label='y sim position')
         mp_y.legend(loc='upper right', fontsize=12)
 
         # Plot z
@@ -496,8 +485,7 @@ class plotData():
         mp_z.plot(time[:time_end], np.zeros(len(parse.z[:time_end])), color='grey', linestyle='--')
         mp_z.plot(time[:time_end], parse.z_des[:time_end], 'b', label='z desired position')
         mp_z.plot(time[:time_end], parse.z[:time_end], 'r', label='z position')
-        mp_z.plot(time[:time_end], parse.plan_z[:time_end], 'y', label='z planner position')
-        mp_z.plot(time_sim[:time_sim_end], proj.z_sim[:time_sim_end], 'y', label='z sim position')
+        if self.sim_file != 'none': mp_z.plot(time_sim[:time_sim_end], proj.z_sim[:time_sim_end], 'y', label='z sim position')
         mp_z.legend(loc='upper right', fontsize=12)
 
     # Plot the mocap angle and desired angles over time
@@ -516,14 +504,13 @@ class plotData():
         a_yaw.set_ylabel('Yaw Angle [rad]', fontdict={'fontsize': 13})
         a_yaw.plot(time[:time_end], parse.yaw_des[:time_end], 'b', label='yaw desired')
         a_yaw.plot(time[:time_end], parse.mocap_yaw[:time_end], 'r', label='mocap yaw')
-        a_yaw.plot(time_sim[:time_sim_end], parse.sim_yaw[:time_sim_end], 'y', label='sim yaw')
+        if self.sim_file != 'none': a_yaw.plot(time_sim[:time_sim_end], parse.sim_yaw[:time_sim_end], 'y', label='sim yaw')
         a_yaw.legend(loc='upper right', fontsize=12)
 
     # Animate the plot of MSE over time
     def animationMSE(self):
         time_end = parse.gs_time.index(parse.gs_time_cut)
         time = np.array(parse.gs_time[:time_end])
-        time_sim = np.array(parse.sim_time)
         mse_list = np.array(proj.sum_squared_error[:time_end])
 
         animation_mse = plt.figure(figsize=(12, 2))
@@ -537,8 +524,8 @@ class plotData():
 
         line, = ax.plot([], [], color='b', lw=1.5)
         ani = animation.FuncAnimation(animation_mse, update, fargs=[time, mse_list, line],
-                                      frames=time.size, interval=20, blit=True)
-        ani.save(os.path.join(os.getcwd(), f'plots\\animation_mse_{self.flight}.gif'), writer = "pillow", fps=25)
+                                      frames=time.size, interval=20, blit=True, repeat=True)
+        ani.save(os.path.join(os.getcwd(), f'plots\\animation_mse_{self.flight}.mp4'), writer="ffmpeg")
 
     # Save the plots
     def savePlots(self):
@@ -569,15 +556,15 @@ if __name__ == '__main__':
     # Get the filenames to parse, calc, and plot
     data_location = os.path.join(os.getcwd() + r'\Project_Data')
     # Filenames are [['Leader', 'Follower', 'Simulation']]
-    filenames = [['Leader-Hover', 'Follower-Hover']]
+    filenames = [['Leader-Hover', 'Follower-Hover'], ['Leader-Box1', 'Follower-Box1'], ['Leader-Box2', 'Follower-Box2']]
     # Flight is ['type of flight 1', type of flight 2', ...]
-    flight = ['hover']
+    flight = ['hover', 'box1', 'box2']
     # End times for data plotting [flight 1, flight 2, ...]
-    end_times = [25]
+    end_times = [100, 100, 100]
     # Start time for data plotting [flight 1, flight 2, ...]
-    time_offsets = [0]
+    time_offsets = [0, 0, 0]
     # Should plots for flight be created?
-    plot_bool = [True, True]
+    plot_bool = [True, True, True]
     # Create file location paths for parser
     files = []
     for file_pair in filenames:
@@ -595,4 +582,4 @@ if __name__ == '__main__':
         proj = project(params)
         if plot_bool[flight_type]:
             plot = plotData(params)
-        plt.show()
+    plt.show()

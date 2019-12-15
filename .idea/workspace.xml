@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="pdf merge - finish">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Christopher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Christopher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/angles_box1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/angles_box2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/angles_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/animation_mse_box1.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/animation_mse_box2.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/animation_mse_hover.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/mocap_position_box1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/mocap_position_box2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/mocap_position_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/position_error_box1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/position_error_box2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AE483/Project/plots/position_error_hover.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AE483/Project/AE483_Project.py" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Project/AE483_Project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE483/Project/plots/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE483/Project/plots/angles_box_test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE483/Project/plots/mocap_position_box_test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AE483/Project/plots/position_error_box_test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/Project/Project_Data/Follower-Box1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Project/Project_Data/Follower-Box1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/Project/Project_Data/Follower-Hover.csv" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Project/Project_Data/Follower-Hover.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/Project/Project_Data/Leader-Box1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Project/Project_Data/Leader-Box1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AE483/Project/Project_Data/Leader-Hover.csv" beforeDir="false" afterPath="$PROJECT_DIR$/AE483/Project/Project_Data/Leader-Hover.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -527,6 +538,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576271975478" />
+    <state x="1633" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576376118370">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1633" y="326" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576376118370" />
     <state x="1669" y="359" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1575848434294">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -535,35 +550,35 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752295884" />
-    <state x="1574" y="104" key="CommitChangelistDialog2" timestamp="1576271748926">
+    <state x="1574" y="104" key="CommitChangelistDialog2" timestamp="1576349883065">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576271748926" />
+    <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576349883065" />
     <state x="4134" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995065124" />
     <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1576271969677">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576271969677" />
-    <state width="1256" height="180" key="GridCell.Tab.0.bottom" timestamp="1576301441427">
+    <state width="1256" height="178" key="GridCell.Tab.0.bottom" timestamp="1576376152104">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1256" height="180" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576301441427" />
-    <state width="1256" height="177" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575970749066" />
-    <state width="1256" height="180" key="GridCell.Tab.0.center" timestamp="1576301441427">
+    <state width="1256" height="178" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576376152104" />
+    <state width="1256" height="178" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
+    <state width="1256" height="178" key="GridCell.Tab.0.center" timestamp="1576376152104">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1256" height="180" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576301441427" />
-    <state width="1256" height="177" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575970749066" />
-    <state width="1256" height="180" key="GridCell.Tab.0.left" timestamp="1576301441427">
+    <state width="1256" height="178" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576376152104" />
+    <state width="1256" height="178" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
+    <state width="1256" height="178" key="GridCell.Tab.0.left" timestamp="1576376152104">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1256" height="180" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576301441427" />
-    <state width="1256" height="177" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575970749066" />
-    <state width="1256" height="180" key="GridCell.Tab.0.right" timestamp="1576301441427">
+    <state width="1256" height="178" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576376152104" />
+    <state width="1256" height="178" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852914" />
+    <state width="1256" height="178" key="GridCell.Tab.0.right" timestamp="1576376152104">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="1256" height="180" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576301441427" />
-    <state width="1256" height="177" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575970749066" />
+    <state width="1256" height="178" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576376152104" />
+    <state width="1256" height="178" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
     <state width="1256" height="347" key="GridCell.Tab.1.bottom" timestamp="1575848916861">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -592,19 +607,19 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1632" y="239" key="MultipleFileMergeDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576289701749" />
-    <state x="1512" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576271718508">
+    <state x="1512" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576349885420">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576271718508" />
+    <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576349885420" />
     <state x="4072" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995067887" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576289681416">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576289681416" />
     <state x="4289" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576172371411" />
-    <state x="1273" y="0" width="1294" height="1047" key="dock-window-1" timestamp="1575865510003">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="2553" y="0" width="1294" height="1047" key="dock-window-1" timestamp="1576374370752">
+      <screen x="2560" y="0" width="2560" height="1040" />
     </state>
-    <state x="1273" y="0" width="1294" height="1047" key="dock-window-1/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575865510003" />
+    <state x="2553" y="0" width="1294" height="1047" key="dock-window-1/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576374370752" />
   </component>
 </project>
