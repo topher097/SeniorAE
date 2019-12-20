@@ -1,6 +1,6 @@
 from sympy import *
 import numpy as np
-from AE483.Lab1.AE483_lab1_report import dataCalculations
+from Fall2019.AE483.Lab1.AE483_lab1_report import dataCalculations
 
 
 class rotationMatrixCalc:
