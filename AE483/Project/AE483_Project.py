@@ -372,13 +372,13 @@ class plotData():
             self.sim_file = 'none'
 
         # Setting up mocap position plot
-        self.mocap_pos_plot = plt.figure(figsize=(12, 8))
+        self.mocap_pos_plot = plt.figure(figsize=(12, 6))
         self.mocap_pos_plot.subplots_adjust(hspace=.35)
         self.mocap_pos_plot.tight_layout()
 
         # Setting up mean squared error plot
-        self.mse_plot = plt.figure(figsize=(12, 5))
-        self.mse_plot.subplots_adjust(hspace=.5)
+        self.mse_plot = plt.figure(figsize=(12, 3.5))
+        self.mse_plot.subplots_adjust(hspace=.5, bottom=.15)
         self.mse_plot.tight_layout()
 
         # Setting up position error plot
@@ -396,12 +396,11 @@ class plotData():
         plotData.plotPositionError(self)
         plotData.plotMocapPos(self)
         plotData.plotAngles(self)
-        plotData.animationMSE(self)
+        #plotData.animationMSE(self)
 
         # Save and display
         plotData.savePlots(self)
         plt.draw()
-
 
     # Plot the position error over time
     def plotPositionError(self):
@@ -418,7 +417,7 @@ class plotData():
         perror_x.set_ylabel('X Pos. Error [m]', fontdict={'fontsize': 11})
         perror_x.plot(time[:time_end], np.zeros(len(proj.position_error_x[:time_end])), color='grey', linestyle='--')
         if self.sim_file != 'none': perror_x.plot(time_sim[:time_sim_end], proj.position_error_x_sim[:time_sim_end], 'y', label='sim error')
-        perror_x.plot(time[:time_end], proj.position_error_x[:time_end], 'b', label='real error')
+        perror_x.plot(time[:time_end], proj.position_error_x[:time_end], 'b', label='error')
         perror_x.legend(loc='upper right', fontsize=12)
 
         # Plot y position error
@@ -426,7 +425,7 @@ class plotData():
         perror_y.set_ylabel('Y Pos. Error [m]', fontdict={'fontsize': 11})
         perror_y.plot(time[:time_end], np.zeros(len(proj.position_error_y[:time_end])), color='grey', linestyle='--')
         if self.sim_file != 'none': perror_y.plot(time_sim[:time_sim_end], proj.position_error_y_sim[:time_sim_end], 'y', label='sim error')
-        perror_y.plot(time[:time_end], proj.position_error_y[:time_end], 'b', label='real error')
+        perror_y.plot(time[:time_end], proj.position_error_y[:time_end], 'b', label='error')
         perror_y.legend(loc='upper right', fontsize=12)
 
         # Plot z position error
@@ -435,7 +434,7 @@ class plotData():
         perror_z.set_ylabel('Z Pos. Error [m]', fontdict={'fontsize': 11})
         perror_z.plot(time[:time_end], np.zeros(len(proj.position_error_z[:time_end])), color='grey', linestyle='--')
         if self.sim_file != 'none': perror_z.plot(time_sim[:time_sim_end], proj.position_error_z_sim[:time_sim_end], 'y', label='sim error')
-        perror_z.plot(time[:time_end], proj.position_error_z[:time_end], 'b', label='real error')
+        perror_z.plot(time[:time_end], proj.position_error_z[:time_end], 'b', label='error')
         perror_z.legend(loc='upper right', fontsize=12)
 
     # Plot the Mean Squared Error over time plot (histogram)
@@ -443,7 +442,7 @@ class plotData():
         mse = self.mse_plot.add_subplot(1, 1, 1)
         props = dict(boxstyle='round', facecolor='white', alpha=0.5)
         error_text = f'Standard Deviation = {round(proj.std_deviation, 5)}'
-        mse.set_title(f'Frequency of Mean Squared Error - {self.flight}')
+        #mse.set_title(f'Frequency of Mean Squared Error - {self.flight}')
         mse.set_ylabel('Frequency', fontdict={'fontsize': 13})
         mse.set_xlabel('Mean Squared Error', fontdict={'fontsize': 13})
         mse.text(0.7, 0.95, error_text, transform=mse.transAxes, fontsize=11, verticalalignment='top', bbox=props)
@@ -459,7 +458,7 @@ class plotData():
         else:
             time_sim_end = time_sim.index(parse.sim_time_cut)
 
-        self.mocap_pos_plot.suptitle('Position of Follower Drone (desired and actual)', fontsize=20)
+        #self.mocap_pos_plot.suptitle('Position of Follower Drone (desired and actual)', fontsize=20)
         # Plot x
         mp_x = self.mocap_pos_plot.add_subplot(3, 1, 1)
         mp_x.set_ylabel('X Pos. [m]', fontdict={'fontsize': 11})
@@ -529,11 +528,11 @@ class plotData():
 
     # Save the plots
     def savePlots(self):
-        pass
         # plots
         self.mocap_pos_plot.savefig(os.path.join(os.getcwd(), f'plots\\mocap_position_{self.flight}.png'))
         self.perror.savefig(os.path.join(os.getcwd(), f'plots\\position_error_{self.flight}.png'))
         self.angles.savefig(os.path.join(os.getcwd(), f'plots\\angles_{self.flight}.png'))
+        self.mse_plot.savefig(os.path.join(os.getcwd(), f'plots\\mean_square_error_{self.flight}.png'))
 
 
 def update(num, x, y, line):
@@ -560,11 +559,12 @@ if __name__ == '__main__':
     # Flight is ['type of flight 1', type of flight 2', ...]
     flight = ['hover', 'box1', 'box2']
     # End times for data plotting [flight 1, flight 2, ...]
-    end_times = [100, 100, 100]
+    end_times = [18, 50, 100]
     # Start time for data plotting [flight 1, flight 2, ...]
-    time_offsets = [0, 0, 0]
+    time_offsets = [5, 0, 0]
     # Should plots for flight be created?
     plot_bool = [True, True, True]
+    #plot_bool = [False, False, False]
     # Create file location paths for parser
     files = []
     for file_pair in filenames:
