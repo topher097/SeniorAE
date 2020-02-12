@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE353_HW3_1.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE535_HW3.1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/CustomerSummary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_Lab01.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_Lab01.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
       <recent name="C:\Python\SeniorAE\AE416\HW_5" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.AE535_HW3.1">
+  <component name="RunManager" selected="Python.IE300_Lab01">
     <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -246,15 +246,15 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.pdf_merge" />
       <item itemvalue="Python.AE353_HW1.2" />
       <item itemvalue="Python.AE353_HW2.1" />
       <item itemvalue="Python.AE353_HW2.2" />
+      <item itemvalue="Python.IE300_Lab01" />
       <item itemvalue="Python.AE353_HW2.3" />
       <item itemvalue="Python.AE535_HW3.1" />
-      <item itemvalue="Python.IE300_Lab01" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
-      <item itemvalue="Python.pdf_merge" />
     </list>
     <recent_temporary>
       <list>
@@ -489,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581095638778</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="AE353 HW3.1">
+      <created>1581520506472</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1581520506472</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +528,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="finish AE433 HW1.1" />
     <MESSAGE value="finish AE433 HW2.1" />
     <MESSAGE value="finish AE483 report 1" />
     <MESSAGE value="finish AE483 report 2" />
@@ -546,7 +552,8 @@
     <MESSAGE value="AE353 HW2.1" />
     <MESSAGE value="AE353 HW2.2 and 3" />
     <MESSAGE value="AE353 HW2.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="AE353 HW2.3" />
+    <MESSAGE value="AE353 HW3.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="AE353 HW3.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581456991961">
@@ -566,10 +573,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752295884" />
-    <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1581095637496">
+    <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1581520505290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581095637496" />
+    <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581520505290" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580787871414" />
     <state x="4134" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995065124" />
     <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1581456988878">
@@ -577,28 +584,28 @@
     </state>
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581456988878" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580788121007" />
-    <state width="842" height="246" key="GridCell.Tab.0.bottom" timestamp="1581462036094">
+    <state width="842" height="243" key="GridCell.Tab.0.bottom" timestamp="1581527739671">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="842" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581462036094" />
+    <state width="842" height="243" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581527739671" />
     <state width="1256" height="186" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580790093424" />
     <state width="1256" height="178" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="842" height="246" key="GridCell.Tab.0.center" timestamp="1581462036094">
+    <state width="842" height="243" key="GridCell.Tab.0.center" timestamp="1581527739671">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="842" height="246" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581462036094" />
+    <state width="842" height="243" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581527739671" />
     <state width="1256" height="186" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580790093424" />
     <state width="1256" height="178" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="842" height="246" key="GridCell.Tab.0.left" timestamp="1581462036094">
+    <state width="842" height="243" key="GridCell.Tab.0.left" timestamp="1581527739670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="842" height="246" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581462036094" />
+    <state width="842" height="243" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581527739670" />
     <state width="1256" height="186" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580790093423" />
     <state width="1256" height="178" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852914" />
-    <state width="842" height="246" key="GridCell.Tab.0.right" timestamp="1581462036094">
+    <state width="842" height="243" key="GridCell.Tab.0.right" timestamp="1581527739671">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="842" height="246" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581462036094" />
+    <state width="842" height="243" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581527739671" />
     <state width="1256" height="186" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580790093424" />
     <state width="1256" height="178" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
     <state width="1256" height="347" key="GridCell.Tab.1.bottom" timestamp="1575848916861">
@@ -633,10 +640,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1581095641983">
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1581520509651">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581095641983" />
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581520509651" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1580787895013" />
     <state x="4072" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995067887" />
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581096059740">

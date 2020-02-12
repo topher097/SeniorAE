@@ -1,0 +1,42 @@
+Customer: JH
+Average price for N: $3.44
+Average price for Q: $2.83
+Average price for T: $3.19
+Average price for E: $2.58
+Average price for A: $3.37
+
+Customer: RY
+Average price for N: $2.6
+Average price for Q: $2.98
+Average price for T: $3.65
+Average price for E: $3.35
+Average price for A: $2.52
+
+Customer: WX
+Average price for N: $3.56
+Average price for Q: $2.93
+Average price for T: $2.71
+Average price for E: $3.04
+Average price for A: $2.79
+
+Customer: WW
+Average price for N: $3.14
+Average price for Q: $3.19
+Average price for T: $2.87
+Average price for E: $2.56
+Average price for A: $3.35
+
+Customer: LV
+Average price for N: $2.94
+Average price for Q: $3.28
+Average price for T: $3.1
+Average price for E: $3.37
+Average price for A: $3.75
+
+Customer: FA
+Average price for N: $3.1
+Average price for Q: $3.06
+Average price for T: $3.13
+Average price for E: $3.24
+Average price for A: $3.27
+
