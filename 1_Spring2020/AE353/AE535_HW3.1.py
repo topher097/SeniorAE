@@ -71,8 +71,9 @@ def probSix():
 
 
     y = []
+    x = []
     for time in t:
-        x_t = 
+        x_t = 9
         y = G*x + np.dot(B, kRef)*r
         print(time)
 
