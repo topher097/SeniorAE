@@ -1,0 +1,144 @@
+\documentclass[conf]{new-aiaa}
+%\documentclass[journal]{new-aiaa} for journal papers
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\usepackage{longtable,tabularx}
+\setlength\LTleft{0pt} 
+
+% Two more packages that make it easy to show MATLAB code
+\usepackage[T1]{fontenc}
+\usepackage[framed,numbered]{matlab-prettifier}
+\lstset{
+	style = Matlab-editor,
+	basicstyle=\mlttfamily\small,
+}
+
+\title{AE353: Design Problem 01\\ (Control of a 2D Quad-Rotor)}
+
+\author{T. Bretl}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper describes the first design problem that you will complete in AE353 (Spring 2020). It asks you to design, implement, and test a controller for a 2D quad-rotor. It also asks you to submit a report that describes both your method of approach and your results.
+\end{abstract}
+
+
+\section{Nomenclature}
+
+{\renewcommand\arraystretch{1.0}
+\noindent\begin{longtable*}{@{}l @{\quad=\quad} l@{}}
+$q_{1}$ & horizontal position of robot \\
+$q_{2}$ & vertical position of robot \\
+$q_{3}$ & angle of robot in radians with respect to the horizontal \\
+$f_{R}$ & thrust of right-hand rotor \\
+$f_{L}$ & thrust of left-hand rotor \\
+$m$ & mass \\
+$J$ & moment of inertia \\
+$r$ & spar length \\
+$g$ & acceleration of gravity \\
+$f_{\text{max}}$ & maximum thrust
+\end{longtable*}}
+
+
+\section{Goal}
+
+The code provided in \lstinline!DesignProblem01.m! simulates the motion of a 2D quadrotor (a ``bi-rotor'') in MATLAB. For simplicity, we will call this 2D quadrotor ``the robot.'' This robot has two actuators, a right and left rotor, which can each apply a net thrust. This robot also has sensors---an inertial measurement unit (IMU), a motion capture system, or GPS, for example---that can measure its position, orientation, linear velocity, and angular velocity. The robot starts with some random position and orientation. The goal is to achieve a stable hover at some particular position and orientation that you get to choose.
+
+
+\section{Model}
+
+The motion of the robot is governed by the ordinary differential equations
+\begin{align*}
+m \ddot{q}_{1} &= -(f_{R} + f_{L}) \sin q_{3} \\
+m \ddot{q}_{2} &= (f_{R} + f_{L}) \cos q_{3} - mg \\
+J \ddot{q}_{3} &= r (f_{R} - f_{L})
+\end{align*}
+where $q_{1}$ is the horizontal position, $q_{2}$ is the vertical position, $q_{3}$ is the angle of the robot from the horizontal (in radians), $m$ is the mass, $J$ is the moment of inertia, $g$ is the acceleration of gravity, $r$ is the spar length (i.e., the distance between the center of mass and the center of each rotor), $f_{R}$ is the thrust applied by the right rotor, and $f_{L}$ is the thrust applied by the left rotor. Note that rotors cannot produce negative thrust, so $f_{R}$ and $f_{L}$ are bounded below by 0 and are bounded above by some $f_\text{max}$. All parameters can be accessed within your controller code (\lstinline|Controller.m|) in the structure \lstinline|parameters| (e.g., \lstinline|parameters.m| is the mass of the robot).
+
+
+\section{Tasks}
+
+\subsection{Do all of these things}
+
+\begin{itemize}
+
+\item Choose the position and orientation that you want to achieve.
+\item Linearize the model about your chosen position and orientation and express the result in state-space form.
+\item Consider the application of zero input (remembering that ``zero input'' is {\em not} necessarily the same as ``zero thrust in both rotors''). Determine if the resulting system is asymptotically stable. Implement a controller that applies zero input and plot the results as evidence to confirm (or deny) your prediction.
+\item Consider the application of state feedback. Determine if the resulting system is asymptotically stable. Implement a controller that applies state feedback and plot the results as evidence to confirm (or deny) your prediction.
+
+\end{itemize}
+
+\subsection{Do one of these things (your choice)}
+
+\begin{itemize}
+
+\item Carefully examine the differences between the results of your linear model and of the nonlinear simulation.
+\item Carefully examine how the initial conditions affect the resulting motion.
+\item Design, implement, and test a method of disturbance rejection that allows the robot to achieve hover at the desired position and orientation with zero steady-state error, despite an unknown added mass. You can simulate the motion of the robot with an unknown added mass (chosen at random) with the optional parameter \lstinline|'disturbance'|.
+
+\end{itemize}
+
+\subsection{Write a report}
+\label{report}
+
+The report must be a PDF document that was generated using \LaTeX\, that conforms to the guidelines for ``Preparation of Papers for AIAA Technical Conferences'' (\url{https://go.aerospace.illinois.edu/aiaa-latex-template}). The author must be listed as ``Anonymous'' (with no affiliations). The report must be exactly four pages. It must have an abstract (one short paragraph that summarizes key results) and five sections: Nomenclature (a list of all symbols used in your report), Goal, Model, Control Design, and Results. You may never have used \LaTeX\ before. That's fantastic! Help will be provided, and you will learn a lot.
+
+
+\section{Deliverables}
+
+\subsection{Submit a first draft by 11:59PM on Wednesday, February 5, 2020}
+
+This draft must be a PDF document that follows the guidelines provided in Section \ref{report} and that includes, at minimum, a rough version of your ``Goal'' and ``Model'' sections. It must be submitted at the following URL:
+\begin{quote}
+\url{https://forms.illinois.edu/sec/286241}
+\end{quote}
+You may submit as many times as you want---only the last submission will be recorded.
+
+\subsection{Submit a second draft by 11:59PM on Wednesday, February 12, 2020}
+
+This draft must be a PDF document that follows the guidelines provided in Section \ref{report} and that includes, at minimum, a rough version of your ``Control Design'' and ``Results'' sections. It must be submitted at the following URL:
+\begin{quote}
+\url{https://forms.illinois.edu/sec/7837038}
+\end{quote}
+You may submit as many times as you want---only the last submission will be recorded.
+
+\subsection{Submit a final report by 11:59PM on Friday, February 21, 2020}
+
+This report must be a PDF document that follows the guidelines provided in Section \ref{report}. You must submit three things in addition to the report:
+\begin{itemize}
+\item The \LaTeX\ source files that you used to produce the document (in a ZIP folder with all figures, references, etc., in addition to the \lstinline|.tex| file).
+\item The MATLAB code that you used to produce all of the figures, tables, and other results that are included in the document (in a ZIP folder). Your code must have a MATLAB script called \lstinline|GenerateResults.m|. It should be possible for any of your peers to reproduce {\em everything} in your report by executing this script.
+\item The implementation of your controller as a single file \lstinline|Controller.m|. If one of your peers runs the simulator with this controller, they should see behavior that is consistent with claims made in the report.
+\end{itemize}
+Your report must be submitted at the following URL:
+\begin{quote}
+\url{https://forms.illinois.edu/sec/1969565}
+\end{quote}
+You may submit as many times as you want---only the last submission will be recorded.
+
+
+\section{Evaluation}
+
+Your work will be evaluated based on meeting intermediate deadlines (10\%), on peer reviews both of your code (20\%) and of your report (50\%), and on your peer reviews of other reports (20\%). Reviews will focus entirely on content this time, as you learn how to use \LaTeX. Reviewers will be encouraged to ignore issues with style, grammar, or any other aspect of your presentation, as long as there is no barrier to understanding your work.
+
+Peer review will be ``double-blind.'' You won't know who reviewed your report, and your reviewers won't know whose report they reviewed. To enable a double-blind review process, it is \textbf{very important} that your final report be completely anonymous. To repeat, \textbf{DO NOT INCLUDE YOUR NAME} or anything else that would identify you in any of the materials you submit---not in your PDF, in your two ZIP folders, or in your MATLAB script. Other details of peer review will be posted to piazza and discussed in class.
+
+
+\section{On-Time Submission}
+
+Draft reports and final reports must be submitted on time or they will receive zero credit. I am so serious about this that I will even give you extra credit if you submit your final report early:
+\begin{quote}
+\textbf{If the last submission of your final report occurs by 11:59PM on Wednesday, February 19, 2020---so, 48 hours before the final deadline---then you will receive 5\% extra credit.}
+\end{quote}
+
+
+
+\end{document}

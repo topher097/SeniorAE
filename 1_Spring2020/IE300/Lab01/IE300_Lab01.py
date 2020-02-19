@@ -1,61 +1,89 @@
+import matplotlib.pyplot as plt
 import os
 import csv
 
-in_file = os.path.join(os.getcwd(), 'LabDemo2.csv')
+class LabOne():
+    def __init__(self):
+        self.in_file = 'FlightTime.csv'
+        self.out_file = 'Output.txt'
 
-out_file = os.path.join(os.getcwd(), 'CustomerSummary.txt')
+        self.data_dict = {}
+        self.data_parse = []
+        self.airlines = []
+        self.dates = []
+        self.num_good_data = 0
+        self.num_all_data = 0
+        self.d = 1741.16        # miles
+        self.l_ori = -87.90     # degrees
+        self.l_des = -118.41    # degrees
 
-read_file = []
-lines = []
-with open(in_file, 'r') as file:
-    reader = csv.reader(file)
-    lines = list(reader)
+        LabOne.parseData(self)
+        LabOne.sortData(self)
+        LabOne.analyzeData(self)
+        #LabOne.plotData(self)
 
-customer_dict = {}
-customers = []
-objects = []
+    def parseData(self):
+        with open(self.in_file, 'r') as file:
+            reader = csv.reader(file)
+            self.data_parse = list(reader)
+            self.num_all_data = len(self.data_parse)-1
 
-# Write dictionary of customers, objects, and costs
-for line in lines[1:]:
-    customer = line[0]
-    object = line[1]
-    quantity = int(line[2])
-    cost = float(line[3])*quantity
-    if customer not in customer_dict.keys():
-        customer_dict[customer] = {}
-        customers.append(customer)
-    
-    if object not in customer_dict[customer].keys():
-        customer_dict[customer][object] = {'quantity': 0, 'cost': 0}
+    # Go through the parsed data and sort into a dictionary to read later
+    def sortData(self):
+        for line in self.data_parse[1:]:
+            date = line[0]
+            airline = line[1]
+            flight_num = int(line[2])
+            origin = line[3]
+            destination = line[4]
+            depart_time = line[5]
+            depart_delay = line[6]
+            arrival_time = line[7]
+            arrival_delay = line[8]
+            flight_time = line[9]
 
-    if object not in objects:
-        objects.append(object)
+            # Check if there are any empty data in line:
+            check = [date, airline, flight_num, origin, destination, depart_time, depart_delay, arrival_time, arrival_delay, flight_time]
+            full_data = True
+            for i in check:
+                if i == '':
+                    full_data = False
+                    break
 
-    # Get the current info for customer, object, quantity, and cost
-    curr_quantity = customer_dict[customer][object]['quantity']
-    curr_cost = customer_dict[customer][object]['cost']
+            # If there is full data, calculate and write to the data dictionary
+            if full_data:
+                self.num_good_data += 1
+                if airline not in self.airlines:
+                    self.data_dict[airline] = {}
+                    self.airlines.append(airline)
+                if date not in self.dates:
+                    self.dates.append(date)
+                if date not in self.data_dict[airline].keys():
+                    self.data_dict[airline][date] = {}
+                if flight_num not in self.data_dict[airline][date].keys():
+                    self.data_dict[airline][date][flight_num] = {'origin': origin,
+                                                                 'destination': destination,
+                                                                 'depart_time': depart_time,
+                                                                 'depart_delay': depart_delay,
+                                                                 'arrival_time': arrival_time,
+                                                                 'arrival_delay': arrival_delay,
+                                                                 'flight_time': flight_time}
 
-    # Update the current info with
-    customer_dict[customer][object]['quantity'] = curr_quantity + quantity
-    customer_dict[customer][object]['cost'] = curr_cost + cost
+    # Analyze the date stored in data_dict for plotting
+    def analyzeData(self):
+        for airline in self.airlines:
+            for date in self.data_dict[airline].keys():
+                flight_nums = list(self.data_dict[airline][date])
+                print(airline, date, flight_nums)
+
+    # Plot the data
+    def plotData(self):
+        lab_plot = plt.figure(figsize=[10, 10])
+        p1 = lab_plot.add_subplot(1, 1, 1)
+        p1.bar(x, y)
 
 
-# Go through each customer and save info to a text file
-text = ''
-for customer in customers:
-    text += f'Customer: {customer}\n'
-    for object in objects:
-        if object not in customer_dict[customer].keys():
-            avg_price = 'No purchase history'
-            text += f'Average price for {object}: {avg_price}\n'
-        else:
-            cost = customer_dict[customer][object]['cost']
-            quantity = customer_dict[customer][object]['quantity']
-            avg_price = round(cost/quantity, 2)
-            text += f'Average price for {object}: ${avg_price}\n'
-    text += '\n'
 
-# Write the text string to a txt file
-with open(out_file, 'w+') as f:
-    f.write(text)
 
+if __name__ == '__main__':
+    lab1 = LabOne()
