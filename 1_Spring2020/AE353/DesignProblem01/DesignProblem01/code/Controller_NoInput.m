@@ -52,17 +52,11 @@ data.B = [0 0;
           0 0;
           1/m 0;
           0 1/J];
-data.K = [0 6 0 0 5 0;
-         -2.3 0 18 -3.25 0 7];
-disp(data.K);
 end
 
 function [actuators, data] = runControlSystem(sensors, references, parameters, data)
 % Get parameters and stuff
 mg = parameters.g*parameters.m;
-fMax = parameters.fmax;
-K = data.K;
-r = parameters.r;
 
 % Define states
 x = [sensors.q1;
@@ -71,28 +65,10 @@ x = [sensors.q1;
      sensors.q1dot; 
      sensors.q2dot; 
      sensors.q3dot];
-u = -K * x;
 
 % Calculate force of rotors
-thrust = u(1,1);
-torque = u(2,1);
-
-fR = (thrust - .5 * (thrust - torque/r)) + mg/2;
-fL = (thrust - .5 * (thrust + torque/r)) + mg/2;
-
-% Limit the force of rotors
-if fR > fMax
-    fR = fMax;
-end
-if fR < 0
-    fR = 0;
-end
-if fL > fMax
-    fL = fMax;
-end
-if fL < 0
-    fL = 0;
-end
+fR = mg/2;
+fL = mg/2;
 
 % Set thrust of rotors
 actuators.fR = fR;
