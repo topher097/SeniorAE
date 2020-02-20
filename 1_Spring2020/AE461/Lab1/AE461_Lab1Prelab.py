@@ -10,9 +10,9 @@ def probTwo():
 
     density_plot = plt.figure(figsize=[12, 8])
     rho_plot = density_plot.add_subplot(1, 1, 1)
-    rho_plot.set_title('Christopher Endres, AE461: Prelab 1.2')
-    rho_plot.set_xlabel('$V_{v}$ * 100%')
-    rho_plot.set_ylabel('Composite $\\rho$ (g/$cm^{3}$)')
+    rho_plot.set_title('Christopher Endres, AE461: Prelab 1.2', fontsize=16)
+    rho_plot.set_xlabel('$V_{v}$ * 100%', fontsize=14)
+    rho_plot.set_ylabel('Composite $\\rho$ (g/$cm^{3}$)', fontsize=14)
     rho_plot.grid(c='grey', ls='dashed', lw=0.5)
     vf = '$V_{f}$'
 

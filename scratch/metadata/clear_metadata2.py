@@ -145,7 +145,7 @@ class clearMetadata:
                     self.info_text += str(print_string + '\n')
             os.remove(self.file)
         except Exception as e:
-            print_string = f'Cound not clean "{self.file_basename + self.file_ext}", error: {str(e)}, removed file'
+            print_string = f'Could not clean "{self.file_basename + self.file_ext}", error: {str(e)}, removed file'
             os.remove(self.file)
             print(print_string)
             self.info_text += '*' + str(print_string) + '\n'

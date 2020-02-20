@@ -61,15 +61,15 @@ K = data.K;
 
 % Define states
 x = [sensors.q1;
-    sensors.q2; 
-    sensors.q3; 
-    sensors.q1dot; 
-    sensors.q2dot; 
-    sensors.q3dot];
+     sensors.q2; 
+     sensors.q3; 
+     sensors.q1dot; 
+     sensors.q2dot; 
+     sensors.q3dot];
 
 % Calculate force of rotors
-fR = mg - 0;
-fL = 0;
+fR = mg/2 - 0;
+fL = mg/2 - 0;
 
 % Limit the force of rotors
 if fR > fMax
