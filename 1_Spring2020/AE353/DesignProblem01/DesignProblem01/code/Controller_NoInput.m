@@ -1,4 +1,4 @@
-function func = Controller
+function func = Controller_NoInput
 % INTERFACE
 %
 %   sensors
@@ -55,16 +55,8 @@ data.B = [0 0;
 end
 
 function [actuators, data] = runControlSystem(sensors, references, parameters, data)
-% Get parameters and stuff
+% Get parameters
 mg = parameters.g*parameters.m;
-
-% Define states
-x = [sensors.q1;
-     sensors.q2; 
-     sensors.q3; 
-     sensors.q1dot; 
-     sensors.q2dot; 
-     sensors.q3dot];
 
 % Calculate force of rotors
 fR = mg/2;
