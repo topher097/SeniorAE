@@ -58,6 +58,7 @@ data.K = [0 6 0 0 5 0;
          -2.3 0 18 -3.25 0 7];
 %disp('K = ');
 %disp(data.K);
+disp(eig(data.A-data.B*data.K));
 end
 
 function [actuators, data] = runControlSystem(sensors, references, parameters, data)
