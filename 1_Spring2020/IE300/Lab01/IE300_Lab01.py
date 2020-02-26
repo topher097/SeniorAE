@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import os
 import csv
 
-class LabOne():
+class LabOnePartA():
     def __init__(self):
         self.in_file = 'FlightTime.csv'
         self.out_file = 'Output.txt'
@@ -16,10 +16,12 @@ class LabOne():
         self.d = 1741.16        # miles
         self.l_ori = -87.90     # degrees
         self.l_des = -118.41    # degrees
+        self.num_data = 0
+        self.target_flight_time = 0.117 * self.d + 0.517 * (self.l_ori - self.l_des) + 20   # minutes
 
-        LabOne.parseData(self)
-        LabOne.sortData(self)
-        LabOne.analyzeData(self)
+        LabOnePartA.parseData(self)
+        LabOnePartA.sortData(self)
+        LabOnePartA.analyzeData(self)
         #LabOne.plotData(self)
 
     def parseData(self):
@@ -50,8 +52,12 @@ class LabOne():
                     full_data = False
                     break
 
-            # If there is full data, calculate and write to the data dictionary
-            if full_data:
+            good_data = True
+            if int(flight_time) < 230:
+                good_data = False
+
+            # If there is full/good data, calculate and write to the data dictionary
+            if full_data and good_data:
                 self.num_good_data += 1
                 if airline not in self.airlines:
                     self.data_dict[airline] = {}
@@ -63,27 +69,62 @@ class LabOne():
                 if flight_num not in self.data_dict[airline][date].keys():
                     self.data_dict[airline][date][flight_num] = {'origin': origin,
                                                                  'destination': destination,
-                                                                 'depart_time': depart_time,
-                                                                 'depart_delay': depart_delay,
-                                                                 'arrival_time': arrival_time,
-                                                                 'arrival_delay': arrival_delay,
-                                                                 'flight_time': flight_time}
+                                                                 'depart_time': int(depart_time),
+                                                                 'depart_delay': int(depart_delay),
+                                                                 'arrival_time': int(arrival_time),
+                                                                 'arrival_delay': int(arrival_delay),
+                                                                 'flight_time': int(flight_time)}
 
     # Analyze the date stored in data_dict for plotting
+    # Calculate: Flight Time, Average Flight Time per airline, Target Flight Time by distance, and Typical Flight Time
     def analyzeData(self):
         for airline in self.airlines:
+            total_flight_time = 0
+            total_flights = 0
+            total_delay_time = 0
             for date in self.data_dict[airline].keys():
-                flight_nums = list(self.data_dict[airline][date])
-                print(airline, date, flight_nums)
+                for flight_num in self.data_dict[airline][date].keys():
+                    total_flights += 1
+
+                    arrival_time = self.data_dict[airline][date][flight_num]['arrival_time']
+                    arrival_delay = self.data_dict[airline][date][flight_num]['arrival_delay']
+                    depart_time = self.data_dict[airline][date][flight_num]['depart_time']
+                    depart_delay = self.data_dict[airline][date][flight_num]['depart_delay']
+                    flight_time = (arrival_time + arrival_delay) - (depart_time + depart_delay)
+
+                    total_flight_time += flight_time
+                    total_delay_time += arrival_delay - depart_delay
+
+            typical_flight_time = (total_delay_time/total_flights) + self.target_flight_time
+            time_added = typical_flight_time - (total_flight_time/total_flights)
+            self.data_dict[airline]['typical_time'] = typical_flight_time
+            self.data_dict[airline]['time_added'] = time_added
+
+        lowest_time_added_airline = ''
+        lowest_time_added = 0
+        for airline in self.airlines:
+            time_added = self.data_dict[airline]['time_added']
+            if lowest_time_added == 0 or time_added < lowest_time_added:
+                lowest_time_added = time_added
+                lowest_time_added_airline = airline
+
+        print(lowest_time_added_airline, lowest_time_added)
 
     # Plot the data
     def plotData(self):
         lab_plot = plt.figure(figsize=[10, 10])
         p1 = lab_plot.add_subplot(1, 1, 1)
-        p1.bar(x, y)
+        for airline in self.airlines:
+            time_added = self.data_dict[airline]['time_added']
+            p1.bar(airline, time_added)
+        lab_plot.save_fig('lab01_plot')
 
+class LabOnePartB():
+    def __init__(self):
+        pass
 
 
 
 if __name__ == '__main__':
-    lab1 = LabOne()
+    lab1A = LabOnePartA()
+    #lab1B = LabOnePartB()
