@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="" />
+    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -292,9 +294,9 @@
       <item itemvalue="Python.AE461_Lab1Prelab" />
       <item itemvalue="Python.AE535_HW3.1" />
       <item itemvalue="Python.IE300_Lab01" />
+      <item itemvalue="Python.pdf_merge" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
-      <item itemvalue="Python.pdf_merge" />
     </list>
     <recent_temporary>
       <list>
@@ -557,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582736241028</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="AE353 day15">
+      <created>1582836713489</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1582836713489</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -589,7 +598,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update" />
     <MESSAGE value="metadata" />
     <MESSAGE value="AE460 lab5" />
     <MESSAGE value="AE483 report 3" />
@@ -614,7 +622,8 @@
     <MESSAGE value="IE300 - Lab01" />
     <MESSAGE value="AE461 prelab 1" />
     <MESSAGE value="IE300 Lab1 Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="IE300 Lab1 Update" />
+    <MESSAGE value="AE353 day15" />
+    <option name="LAST_COMMIT_MESSAGE" value="AE353 day15" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582096954651">
@@ -634,10 +643,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752295884" />
-    <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1582736239653">
+    <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1582836712235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582736239653" />
+    <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582836712235" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
     <state x="4134" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995065124" />
     <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1582096952994">
@@ -702,16 +711,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1582736242957">
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1582836716183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582736242957" />
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582836716183" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
     <state x="4072" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995067887" />
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582729168286">
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582836727557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582729168286" />
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582836727557" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="4289" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576172371411" />
     <state x="2553" y="0" width="1294" height="1047" key="dock-window-1" timestamp="1576374370752">

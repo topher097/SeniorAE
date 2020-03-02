@@ -17,26 +17,27 @@ end
 
 % Find the coefficients of the char. poly. with roots at p
 r = poly([-2 -5]);
+r = r(2:end);
 
 % Find the coefficients of the char. poly. of A
 a = poly(A);
+a = a(2:end);
 
 % Find the equivalent system in controllable canonical form
-n = size(a(1:end));
-e = eye(n(1,2)-1);
-t = cat(1, a(2:end), e);
-Accf = t(1:n(1,2)-1,:);
-Bccf = cat(1,ones(1,1),zeros(n(1,2)-1,1));
+q = size(a);
+e(1:end,2:end) = eye(q(1,2))
+t = cat(1, -1.*a, e)
+Accf = t(1:q(1,2),:)
+Bccf = cat(1,ones(1,1),zeros(q(1,2)-1,1))
 
 % Find state feedback for the system in controllable canonical form
-Kccf = r - a
+Kccf = r - a;
 
 % Find the coordinate transformation between equivalent systems
-% W = ...
-% Wccf = ...
-% inverse_of_V = ...
+W = ctrb(A, B);
+Wccf = ctrb(Accf, Bccf);
+inverse_of_V = inv(W*inv(Wccf));
 
 % Find equivalent state feedback
-K = []
-
+K = Kccf*inverse_of_V;
 end
