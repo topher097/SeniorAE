@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from statistics import mean
 import os
 import csv
 
@@ -22,7 +23,8 @@ class LabOnePartA():
         LabOnePartA.parseData(self)
         LabOnePartA.sortData(self)
         LabOnePartA.analyzeData(self)
-        #LabOne.plotData(self)
+        LabOnePartA.plotData(self)
+        LabOnePartA.writeData(self)
 
     def parseData(self):
         with open(self.in_file, 'r') as file:
@@ -79,9 +81,10 @@ class LabOnePartA():
     # Calculate: Flight Time, Average Flight Time per airline, Target Flight Time by distance, and Typical Flight Time
     def analyzeData(self):
         for airline in self.airlines:
-            total_flight_time = 0
+            total_flight_time = []
             total_flights = 0
-            total_delay_time = 0
+            total_delay_time = []
+            typical_flight_time_total = []
             for date in self.data_dict[airline].keys():
                 for flight_num in self.data_dict[airline][date].keys():
                     total_flights += 1
@@ -90,15 +93,18 @@ class LabOnePartA():
                     arrival_delay = self.data_dict[airline][date][flight_num]['arrival_delay']
                     depart_time = self.data_dict[airline][date][flight_num]['depart_time']
                     depart_delay = self.data_dict[airline][date][flight_num]['depart_delay']
-                    flight_time = (arrival_time + arrival_delay) - (depart_time + depart_delay)
+                    flight_time = self.data_dict[airline][date][flight_num]['flight_time']
+                    total_time = (arrival_time + arrival_delay) - (depart_time + depart_delay)
+                    total_time = flight_time + arrival_delay + depart_delay
 
-                    total_flight_time += flight_time
-                    total_delay_time += arrival_delay - depart_delay
+                    total_flight_time.append(total_time)
+                    total_delay_time.append(arrival_delay + depart_delay)
 
-            typical_flight_time = (total_delay_time/total_flights) + self.target_flight_time
-            time_added = typical_flight_time - (total_flight_time/total_flights)
+            typical_flight_time = mean(total_delay_time) + self.target_flight_time
+            time_added = mean(total_flight_time) - typical_flight_time
             self.data_dict[airline]['typical_time'] = typical_flight_time
             self.data_dict[airline]['time_added'] = time_added
+            typical_flight_time_total.append(typical_flight_time)
 
         lowest_time_added_airline = ''
         lowest_time_added = 0
@@ -107,17 +113,39 @@ class LabOnePartA():
             if lowest_time_added == 0 or time_added < lowest_time_added:
                 lowest_time_added = time_added
                 lowest_time_added_airline = airline
-
-        print(lowest_time_added_airline, lowest_time_added)
+        self.data_dict['lowest_time_added'] = {'airline': lowest_time_added_airline, 'time_added': lowest_time_added}
+        self.data_dict['typical_flight_time_total'] = mean(typical_flight_time_total)
+        #print(lowest_time_added_airline, lowest_time_added)
 
     # Plot the data
     def plotData(self):
-        lab_plot = plt.figure(figsize=[10, 10])
+        lab_plot = plt.figure(figsize=[8, 8])
         p1 = lab_plot.add_subplot(1, 1, 1)
         for airline in self.airlines:
             time_added = self.data_dict[airline]['time_added']
-            p1.bar(airline, time_added)
-        lab_plot.save_fig('lab01_plot')
+            p1.bar(airline, time_added, color='b')
+        p1.set_xlabel('Airline')
+        p1.set_ylabel('Time Added (minutes)')
+        p1.set_title('Time Added to Route by Airlines')
+        lab_plot.savefig('lab01_plot')
+        plt.draw()
+
+    # Write the data to a text file
+    def writeData(self):
+        text = ''
+        text += f'Number of Valid Flights = {self.num_good_data}\n\n'
+        text += f'Target Flight Time = {round(self.target_flight_time, 2)} minutes\n\n'
+        text += f'Typical Time for Route = {round(self.data_dict["typical_flight_time_total"], 2)} minutes\n\n'
+        text += f'Time each Airline Adds to Route:\n'
+        for airline in self.airlines:
+            text += f'{airline}: {round(self.data_dict[airline]["time_added"], 2)} minutes\n'
+        text += '\n'
+        text += f'Lowest Flight Time Added: \n{self.data_dict["lowest_time_added"]["airline"]} added {round(self.data_dict["lowest_time_added"]["time_added"], 2)} minutes'
+        # Write the text string to a txt file
+        with open(self.out_file, 'w+') as f:
+            f.write(text)
+        print(text)
+
 
 class LabOnePartB():
     def __init__(self):
@@ -128,3 +156,4 @@ class LabOnePartB():
 if __name__ == '__main__':
     lab1A = LabOnePartA()
     #lab1B = LabOnePartB()
+    plt.show()

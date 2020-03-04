@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/DesignProblem02_Latex.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/CaseStudy1_Part1_Jake.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/Exercise1Calcs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_CASE1B_SP20.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/Output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/lab01_plot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/main.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/main.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/new-aiaa.bst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/new-aiaa.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_Lab01.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_Lab01.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +44,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/1_Spring2020/AE353" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/CaseStudy1_Part1_Jake.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -201,6 +212,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="CaseStudy1_Part1_Jake" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/IE300/Lab01" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/CaseStudy1_Part1_Jake.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="IE300_Lab01" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -294,6 +326,7 @@
       <item itemvalue="Python.AE461_Lab1Prelab" />
       <item itemvalue="Python.AE535_HW3.1" />
       <item itemvalue="Python.IE300_Lab01" />
+      <item itemvalue="Python.CaseStudy1_Part1_Jake" />
       <item itemvalue="Python.pdf_merge" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
@@ -626,10 +659,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="AE353 day15" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582096954651">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583335548917">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581963068314" />
+    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583335548917" />
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096954651" />
     <state x="1633" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576376118370">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -649,33 +682,33 @@
     <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582836712235" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
     <state x="4134" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995065124" />
-    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1582096952994">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581963067295" />
-    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="936" height="244" key="GridCell.Tab.0.bottom" timestamp="1582736255823">
+    <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1583335546074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
+    <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583335546074" />
+    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
+    <state width="1140" height="244" key="GridCell.Tab.0.bottom" timestamp="1583336861801">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1140" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583336861801" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="178" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="936" height="244" key="GridCell.Tab.0.center" timestamp="1582736255823">
+    <state width="1140" height="244" key="GridCell.Tab.0.center" timestamp="1583336861800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
+    <state width="1140" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583336861800" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="178" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="936" height="244" key="GridCell.Tab.0.left" timestamp="1582736255823">
+    <state width="1140" height="244" key="GridCell.Tab.0.left" timestamp="1583336861800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
+    <state width="1140" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583336861800" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="178" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852914" />
-    <state width="936" height="244" key="GridCell.Tab.0.right" timestamp="1582736255823">
+    <state width="1140" height="244" key="GridCell.Tab.0.right" timestamp="1583336861800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
+    <state width="1140" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583336861800" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="178" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
@@ -717,10 +750,10 @@
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582836716183" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
     <state x="4072" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995067887" />
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582836727557">
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583334039309">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582836727557" />
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583334039309" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="4289" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576172371411" />
     <state x="2553" y="0" width="1294" height="1047" key="dock-window-1" timestamp="1576374370752">
