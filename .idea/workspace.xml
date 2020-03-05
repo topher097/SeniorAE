@@ -2,6 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/EigenvalueSpectrum.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/EigenvectorSpectrum.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/ModifiedWavenumber.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/Nyquist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/SolutionOfPulse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/SolutionTime0to100a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/Sparsity.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/domain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3_V2.asv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3_V2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/picture2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/picture3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/picture4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/picture5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/picture6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/picture7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PDF_merge/Output/ae410 hw 3.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,13 +56,6 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
-      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
-      <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
-      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
-      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
       <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
@@ -52,8 +63,15 @@
       <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
       <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
+      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
+      <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
+      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
+      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.IE300_Lab01">
+  <component name="RunManager" selected="Python.pdf_merge">
     <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -654,29 +672,29 @@
     </state>
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581963067295" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="936" height="244" key="GridCell.Tab.0.bottom" timestamp="1582736255823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="182" key="GridCell.Tab.0.bottom" timestamp="1583388173376">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="936" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
-    <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
+    <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1583388173376" />
     <state width="1256" height="178" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="936" height="244" key="GridCell.Tab.0.center" timestamp="1582736255823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="182" key="GridCell.Tab.0.center" timestamp="1583388173376">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="936" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
-    <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
+    <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1583388173376" />
     <state width="1256" height="178" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="936" height="244" key="GridCell.Tab.0.left" timestamp="1582736255823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="182" key="GridCell.Tab.0.left" timestamp="1583388173375">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="936" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
-    <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
+    <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1583388173375" />
     <state width="1256" height="178" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852914" />
-    <state width="936" height="244" key="GridCell.Tab.0.right" timestamp="1582736255823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="182" key="GridCell.Tab.0.right" timestamp="1583388173376">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="936" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582736255823" />
-    <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
+    <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1583388173376" />
     <state width="1256" height="178" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
       <screen x="0" y="0" width="2560" height="1040" />
