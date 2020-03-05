@@ -1,0 +1,15 @@
+Number of Valid Flights = 729
+
+Target Flight Time = 239.49 minutes
+
+Typical Time for Route = 243.89 minutes
+
+Time each Airline Adds to Route:
+AA: 27.89 minutes
+F9: 35.82 minutes
+NK: 28.07 minutes
+UA: 29.69 minutes
+VX: 26.42 minutes
+
+Lowest Flight Time Added: 
+VX added 26.42 minutes
