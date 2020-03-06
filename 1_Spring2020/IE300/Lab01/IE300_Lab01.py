@@ -152,7 +152,6 @@ class LabOnePartB():
         pass
 
 
-
 if __name__ == '__main__':
     lab1A = LabOnePartA()
     #lab1B = LabOnePartB()
