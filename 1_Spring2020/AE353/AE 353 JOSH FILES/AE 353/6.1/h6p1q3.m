@@ -1,0 +1,5 @@
+eig(A - L1*C)
+eig(A - L2*C)
+eig(A - L3*C)
+eig(A - L4*C)
+eig(A - L5*C)

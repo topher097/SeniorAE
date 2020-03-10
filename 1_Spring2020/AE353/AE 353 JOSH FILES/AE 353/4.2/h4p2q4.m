@@ -1,0 +1,6 @@
+Wccf = ctrb(F,G)
+W = ctrb(A,B)
+Vinv = Wccf*inv(W)
+V = inv(Vinv)
+mat2str(V)
+Kccf = Wccf*inv(W)

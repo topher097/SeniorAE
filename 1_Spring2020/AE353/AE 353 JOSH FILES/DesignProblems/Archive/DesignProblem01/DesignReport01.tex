@@ -1,0 +1,90 @@
+% Specify the type of document
+\documentclass[12pt]{article}
+
+% Load a number of useful packages
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+ \usepackage[margin=1.0in]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+% Two more packages that make it easy to show MATLAB code
+\usepackage[T1]{fontenc}
+\usepackage[framed,numbered]{matlab-prettifier}
+\lstset{
+	style = Matlab-editor,
+	basicstyle=\mlttfamily\small,
+}
+
+% Say where pictures (if any) will be placed
+\graphicspath{{./pictures/}}
+
+% Define title, author, and date
+\title{AE353: Design Problem 01}
+\author{T. Bretl}
+
+% Start of document
+\begin{document}
+
+% Put the title, author, and date at top of first page
+\maketitle
+
+
+\section{Goal}
+
+The code provided in \lstinline!DesignProblem01! simulates the rotational motion of a spacecraft. This spacecraft has actuators---these could be reaction wheels, control-moment gyros, or paired thrusters, for example---that can apply torque about two different axes. This spacecraft also has sensors---an inertial measurement unit (IMU), for example---that can measure its angular velocity. The spacecraft starts with some random angular velocity. The goal is to achieve some particular angular velocity that you get to choose.
+
+\section{Model}
+
+The rotational motion of the spacecraft, if it is modeled as a single rigid body, is governed by the ordinary differential equations
+\begin{align*}
+\tau_{1} &= J_{1}\dot{w}_{1}-(J_{2}-J_{3})w_{2}w_{3} \\
+0 &= J_{2}\dot{w}_{2}-(J_{3}-J_{1})w_{3}w_{1} \\
+\tau_{3} &= J_{3}\dot{w}_{3}-(J_{1}-J_{2})w_{1}w_{2},
+\end{align*}
+where $w_{1},w_{2},w_{3}$ are the components of angular velocity, $J_{1},J_{2},J_{3}$ are the principle moments of inertia, and $\tau_{1},\tau_{3}$ are the two different torques that can be applied.
+
+\section{Requirements}
+
+You must do \emph{all} of the following things:
+\begin{itemize}
+
+\item Choose the angular velocity that you want to achieve. You may wish to motivate your choice by some real-world application.
+\item Linearize the model given above about your chosen angular velocity and express the result in state-space form.
+\item Consider the application of zero input. Determine if the resulting system is asymptotically stable. Implement a controller that applies zero input and plot the results as evidence to confirm (or deny) your prediction.
+\item Consider the application of state feedback. Determine if the resulting system is asymptotically stable. Implement a controller that applies state feedback and plot the results as evidence to confirm (or deny) your prediction.
+
+\end{itemize}
+You must also do \emph{at least one} of the following things, and are invited to do more:
+\begin{itemize}
+
+\item Examine the differences, if any, between predictions made by your linear model and by the nonlinear simulation.
+\item Examine how the initial conditions affect the resulting motion, if they do at all.
+\item Design and implement a method of reference tracking.
+\item Design and implement a method of disturbance rejection.
+\item Determine the extent to which the stated goal (``achieve some particular angular velocity'') is even possible.
+\item Consider the application of a nonlinear controller (i.e., a choice of input that cannot be expressed as an affine function of the state).
+
+\end{itemize}
+There are many possibilities. You are being given the opportunity to explore. Any additional claims you make must be supported by evidence.
+
+\section{Deliverables}
+
+You must submit two things by 11:59PM on Friday, February 8:
+\begin{itemize}
+
+\item Code. This code will be written in MATLAB, using the templates \lstinline!Controller.m! and \lstinline!Test.m!. The implementation of the controller you designed will be contained in \lstinline|Controller.m|. All the commands necessary to run your simulation will be in the script \lstinline|Test.m|.
+
+\item Report. This report will be written in \LaTeX. You may never have used \LaTeX\ before. That's fantastic! Help will be provided, and you will learn a lot. You will submit both your \LaTeX\ source files and the PDF document produced by them---only the PDF document will be reviewed. It must be exactly four pages, must include a method of approach and a description of results, and must be named \lstinline|DesignReport01.pdf|.
+
+\end{itemize}
+You must also meet intermediate deadlines, the details of which will be posted to Piazza.
+
+\section{Evaluation}
+
+Your work will be evaluated based on completion of the requirements (50\%), on submission of working code (20\%), meeting deadlines (20\%), and your report being formatted correctly (10\%). Extraordinary efforts may receive extra commendation. The focus of our evaluation of your report this time (as you learn how to use \LaTeX) will be on content---we will not look at style, grammar, or any other aspect of your presentation, as long as there is no barrier to understanding your work. Further detail about point allocation can be found in the rubric. You will also complete a peer review process---details will be posted to Piazza.
+
+
+% End of document (everything after this is ignored)
+\end{document}

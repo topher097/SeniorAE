@@ -1,0 +1,1 @@
+F = (-C*inv(A-B*K)*B*kRef-1)
