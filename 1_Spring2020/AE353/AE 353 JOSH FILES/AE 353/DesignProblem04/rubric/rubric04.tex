@@ -1,0 +1,135 @@
+% Specify the type of document
+\documentclass[12pt]{article}
+
+% Load a number of useful packages
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+ \usepackage[margin=1.0in]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{framed}
+
+% Say where pictures (if any) will be placed
+\graphicspath{{./pictures/}}
+
+% Define title, author, and date
+\title{AE353: Design Problem 04 Rubric}
+\author{A. Faustino \and T. Bretl}
+
+% Start of document
+\begin{document}
+
+% Put the title, author, and date at top of first page
+\maketitle
+
+\begin{framed}
+\noindent
+The \href{http://studentcode.illinois.edu/article1_part4_1-402.html}{student code} defines plagiarism as follows:
+	\begin{quote}
+		(b) Plagiarism. No student shall represent the words, work, or ideas of another as his or her own in any academic endeavor. A violation of this section includes but is not limited to:
+		
+		(1)	Copying: Submitting the work of another as one's own. 
+		
+		(2)	Direct Quotation: Every direct quotation must be identified by quotation marks or by appropriate indentation and must be promptly cited. Proper citation style for many academic departments is outlined in such manuals as the MLA Handbook or K.L. Turabian's A Manual for Writers of Term Papers, Theses and Dissertations. These and similar publications are available in the University bookstore or library. The actual source from which cited information was obtained should be acknowledged.
+		
+		(3)	Paraphrase: Prompt acknowledgment is required when material from another source is paraphrased or summarized in whole or in part. This is true even if the student's words differ substantially from those of the source. A citation acknowledging only a directly quoted statement does not suffice as an acknowledgment of any preceding or succeeding paraphrased material. 
+		
+		(4)	Borrowed Facts or Information: Information obtained in one's reading or research that is not common knowledge must be acknowledged. Examples of common knowledge might include the names of leaders of prominent nations, basic scientific laws, etc. Materials that contribute only to one's general understanding of the subject may be acknowledged in a bibliography and need not be immediately cited. One citation is usually sufficient to acknowledge indebtedness when a number of connected sentences in the paper draw their special information from one source.
+	\end{quote}
+	Design reports (or draft reports) that contain plagiarism will receive zero credit and will be reported as FAIR violations. Repeated infractions of academic integrity will result in an ``F'' in the course.
+\end{framed}
+\clearpage
+
+\noindent
+The final reports for Design Problem 04 will be assessed with the following rubric:
+
+\paragraph{(10\%) Draft Reports}
+\begin{itemize}
+
+\item (2.5\%) A draft of the requirements and verifications section was submitted by 11:59PM on November 30.
+
+\item (2.5\%) A draft of the model section was submitted by 11:59PM on December 3.
+
+\item (2.5\%) A draft of the design section was submitted by 11:59PM on December 5.
+
+\item (2.5\%) A draft of the testing section was submitted by 11:59PM on December 7.
+\end{itemize}
+
+
+
+\paragraph{(20\%) Code}
+\begin{itemize}
+
+\item (10\%) Your code does not disqualify you from the competition.
+\item (10\%) It runs without error and is consistent with what the report says was implemented.
+
+\end{itemize}
+
+
+
+\paragraph{(40\%) Requirements}
+\begin{itemize}
+
+\item (4\%) Define at least one requirement and one verification.
+
+\item (7\%) Your linearization process is clear and the resulting linear model is correct.
+
+\item (6\%) Observer Design
+\begin{itemize}
+\item (2\%) Determine if the open-loop linear system is observable.
+\item (2\%) Design an observer for the linear system.
+\item (2\%) Determine if the closed-loop observer is asymptotically stable.
+\end{itemize}
+
+\item (6\%) Controller Design
+\begin{itemize}
+\item (2\%) Determine if the open-loop linear system is controllable.
+\item (2\%) Design a state feedback controller.
+\item (2\%) Determine if the closed-loop linear system is asymptotically stable.
+\end{itemize}
+
+\item (17\%) Testing
+\begin{itemize}
+\item (5\%) Three control designs are considered (e.g., different controller and observer eigenvalues, or different $Q_c$, $R_c$, $Q_o$, and $R_o$ matrices).
+\item (9\%) The following steps are completed for each control design:
+\begin{itemize}
+  \item (3\%) Identify at least one road that causes failure.
+  \item (3\%) Say why the failure occurred, providing evidence to support your argument.
+  \item (3\%) Suggest a change to the control design that would eliminate the failure, and verify in simulation that it does.
+\end{itemize}
+\item (3\%) The following steps are completed for at least one of your control designs:
+\begin{itemize}
+  \item (1.5\%) All instructions from the verifications and requirements section are followed.
+  \item (1.5\%) Evidence is provided that shows the requirements have been satisfied.
+\end{itemize}
+
+
+\end{itemize}
+
+\end{itemize}
+
+\paragraph{(30\%) Final Report and Presentation}
+\begin{itemize}
+
+\item (5\%) It was submitted as instructed.
+\item (5\%) The latex document has the correct format.
+\begin{itemize}
+\item (1.25\%) It has the correct document type (article), the correct font (computer modern, the default) and font size (12pt), and the correct margin (1.0in).
+\item (1.25\%) It uses 8.5x11 paper.
+\item (1.25\%) It has a title, author, and date.
+\item (1.25\%) It is exactly four pages.
+\end{itemize}
+
+\item (20\%) The citations meet the following requirements
+\begin{itemize}
+\item (5\%) At least one citation (other than Astr\"{o}m and Murray) is included in your report.
+\item (5\%) The citation is referenced correctly in the text of your report.
+\item (5\%) The citation appears in a References section at the end of your report.
+\item (5\%) The citation at the end of the report is formatted correctly.
+\end{itemize}
+
+\end{itemize}
+
+% End of document (everything after this is ignored)
+\end{document}

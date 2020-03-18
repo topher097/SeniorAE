@@ -1,0 +1,201 @@
+% Specify the type of document
+\documentclass[12pt]{article}
+
+% Load a number of useful packages
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+ \usepackage[margin=1.0in]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+% Two more packages that make it easy to show MATLAB code
+\usepackage[T1]{fontenc}
+\usepackage[framed,numbered]{matlab-prettifier}
+\lstset{
+	style = Matlab-editor,
+	basicstyle=\mlttfamily\small,
+}
+
+% Say where pictures (if any) will be placed
+\graphicspath{{./pictures/}}
+
+% Define title, author, and date
+\title{AE353: Design Problem 03}
+\author{T. Bretl}
+\date{October 26, 2018}
+
+% Start of document
+\begin{document}
+
+% Put the title, author, and date at top of first page
+\maketitle
+
+
+\section{Goal}
+
+The code provided in \lstinline!DesignProblem03! simulates an unpowered glider that is similar to one used for experiments on fixed-wing perching \cite{Roberts2009,Moore2014}. This glider has one control surface, an elevator. An actuator allows you to specify the angular rate of this elevator. Sensors allow you to measure both the pitch angle of the glider and the relative angle of the elevator. The goal is to make the glider fly as long a distance as possible, if released at a height of about two meters with a forward speed of about six meters per second.
+
+\section{Model}
+
+The motion of the glider is governed by ordinary differential equations with the form
+\begin{equation}
+\label{eqEOM}
+\begin{bmatrix} \ddot{x} \\ \ddot{z} \\ \ddot{\theta} \end{bmatrix} = f(\theta,\phi,\dot{x},\dot{z},\dot{\theta},\dot{\phi})
+\end{equation}
+where $\theta$ is the pitch angle, $\phi$ is the elevator angle, $\dot{x}$ is the forward speed, $\dot{z}$ is the vertical speed, $\dot{\theta}$ is the pitch angular rate, and $\dot{\phi}$ is the elevator angular rate (which an actuator allows you to specify). You might be interested to know that these equations were derived by applying a flat-plate model of lift $c_{L}$ and drag $c_{D}$ as a function of angle of attack $\alpha$, for both the wing and elevator:
+\begin{equation*}
+c_{L} = 2\sin\alpha \cos\alpha
+\qquad\qquad
+c_{D} = 2\sin^{2}\alpha
+\end{equation*}
+Experimental results show that this flat-plate model is a good approximation for the glider and that it remains accurate at high angles of attack and even post-stall \cite{Moore2014}. The function $f$ in \eqref{eqEOM} depends on a number of parameters (e.g., mass, moment of inertia, surface area of the wing). You can access symbolic descriptions of this function either within your controller code (\lstinline|Controller.m|) as \lstinline|parameters.symEOM.f|, or in a separate piece of code that you write for the purpose of control design. In particular, the first time you run \lstinline|DesignProblem03|, it will create a file that you can load to access the equations of motion. Here is an example:
+\begin{quote}
+\begin{lstlisting}
+% Load the equations of motion.
+load('DesignProblem03_EOMs.mat');
+% Parse the equations of motion.
+f = symEOM.f;
+% Define symbolic variables that appear in the equations of motion.
+syms theta phi xdot zdot thetadot phidot
+% Proceed to linearize or do whatever else you like...
+%     (see: help sym/jacobian, help sym/diff, help sym/subs, etc.)
+\end{lstlisting}
+\end{quote}
+
+
+\section{Tasks}
+
+
+\subsection{Analysis}
+\label{secAnalysis}
+
+The focus of your analysis this time will be on data collection. The initial conditions in the simulation are random. So, for a given control design, the flight distance will vary (perhaps significantly). It is not enough to look at the results of one flight---you will have to look at the results of many flights. At minimum, for each design that you consider, you should do the following:
+\begin{itemize}
+\item Collect data from at least 1000 flights.
+\item Compute the minimum, maximum, median, mean, and standard deviation of the flight distance (e.g., \lstinline|min|, \lstinline|max|, \lstinline|median|, \lstinline|mean|, and \lstinline|std| in MATLAB).
+\item Plot a histogram of the flight distance (e.g., \lstinline|hist| in MATLAB).
+\end{itemize}
+Remember that \lstinline|DesignProblem03| provides options to save data and to turn the graphics off, both of which are very useful for data collection. Here is an example of how to use these options to collect and analyze data from a large number of flights.
+\begin{quote}
+\begin{lstlisting}
+% Number of flights
+nFlights = 1e3;
+% Loop over each flight
+for i=1:nFlights
+    % Run simulation without graphics and save data
+    DesignProblem03('Controller','datafile','data.mat','display',false);
+    % Load data
+    load('data.mat');
+    % Get t and x
+    t = processdata.t
+    x = processdata.x
+    % Do analysis...
+    %     (your code here)
+end
+\end{lstlisting}
+\end{quote}
+
+
+\subsection{Presentation}
+
+The focus of your presentation this time will be on equations. For example, you should be sure to do the following:
+\begin{itemize}
+\item Number any equation to which you will refer, and do the reference with \lstinline|\eqref|.
+\item Use standard notation for operations like multiplication (e.g., $Ax$ for ``$A$ times $x$'' and not $A\times x$ or $A*x$).
+\item Place square brackets around matrices. For example,
+\begin{quote}
+\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{bmatrix} \ddot{x} \\ \ddot{z} \\ \ddot{\theta} \end{bmatrix}
+\end{lstlisting}
+\end{quote}
+produces the standard notation
+\begin{equation*}
+\begin{bmatrix} \ddot{x} \\ \ddot{z} \\ \ddot{\theta} \end{bmatrix},
+\end{equation*}
+while
+\begin{quote}
+\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{matrix} \ddot{x} \\ \ddot{z} \\ \ddot{\theta} \end{matrix}
+\end{lstlisting}
+\end{quote}
+produces the non-standard and confusing notation
+\begin{equation*}
+\begin{matrix} \ddot{x} \\ \ddot{z} \\ \ddot{\theta} \end{matrix}.
+\end{equation*}
+\item Align equations properly. For example,
+\begin{quote}
+\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{align*}
+c_{L} &= 2\sin\alpha \cos\alpha \\ 
+c_{D} &= 2\sin^{2}\alpha
+\end{align*}
+\end{lstlisting}
+\end{quote}
+produces the nice-looking result
+\begin{align*}
+c_{L} &= 2\sin\alpha \cos\alpha \\ 
+c_{D} &= 2\sin^{2}\alpha
+\end{align*}
+while
+\begin{quote}
+\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{equation*}
+c_{L} = 2\sin\alpha \cos\alpha
+\end{equation*}
+\begin{equation*}
+c_{D} = 2\sin^{2}\alpha
+\end{equation*}
+\end{lstlisting}
+\end{quote}
+produces the messy-looking result
+\begin{equation*}
+c_{L} = 2\sin\alpha \cos\alpha
+\end{equation*}
+\begin{equation*}
+c_{D} = 2\sin^{2}\alpha.
+\end{equation*}
+\item Use the correct font for functions like cosine (\lstinline|$\cos\alpha$| produces a nice-looking $\cos\alpha$, while \lstinline|$cos\alpha$| produces a messy-looking $cos\alpha$).
+\end{itemize}
+Please be responsive to feedback on your draft reports---this feedback will focus on helping you improve your presentation of equations.
+
+
+\subsection{Process}
+
+Your report will include the following four parts:
+\begin{itemize}
+
+\item Define one requirement and one verification.
+
+\item Derive a model (i.e., linearize \eqref{eqEOM} and express your result in state-space form).
+
+\item Design a controller and an observer (remembering to check, first, that your linearized model is both controllable and observable).
+
+\item Implement and test your control design in simulation. Follow the instructions you wrote to verify that your requirement has been satisfied. Characterize the performance of your control design by looking at aggregate results, as described in Section \ref{secAnalysis}.
+
+\end{itemize}
+As usual, you are encouraged to go beyond these requirements. For example, it is likely that you will want to iterate on your design, in order to maximize flight distance. In this case, it would be helpful to describe the process that you used to improve your design.
+
+
+\section{Deliverables}
+
+You must submit two things by 11:59PM on Friday, November 9:
+\begin{itemize}
+
+\item Code. This code will be written in MATLAB, using the template \lstinline!Controller.m!. Please specify how to run your code (e.g., \lstinline!DesignProblem03('Controller')!).
+
+\item Report. This report will be written in \LaTeX. You will submit both a PDF document and the \LaTeX\ source files that you used to produce this document. The PDF document must be exactly four pages, and is expected to include a method of approach and a description of results. {\em Your report must conclude with a section titled ``Acknowledgements'' that lists the colleagues with whom you worked (if any) and describes the nature of your collaboration (discussion, sharing code, etc.).}
+
+\end{itemize}
+You must also meet intermediate deadlines, the details of which will be posted to reddit. {\em Late submissions of either draft reports or the final report will not be accepted.}
+
+\section{Evaluation}
+
+Your work will be evaluated based on on completion of the requirements (40\%), on correctness of your code (10\%), and on presentation of results in your report (50\%). Our evaluation of your technical approach will place special emphasis on data collection and analysis. Our evaluation of your report will place special emphasis on your presentation of equations---we will not look at style, grammar, or any other aspect of the text other than equations, as long as there is no barrier to understanding your work.
+
+% Display list of references in IEEE Transactions format.
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,references}
+
+% End of document (everything after this is ignored)
+\end{document}

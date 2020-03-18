@@ -1,0 +1,17 @@
+clear, clc
+
+A = [-0.10 0.40; 0.80 0.40];
+B = [-0.40; 0.10];
+C = [-0.60 0.80];
+K = [-5.40 -10.60];
+L = [22.00; 24.20];
+
+kRef = inv(-C*inv(A-B*K)*B);
+
+F = [A-B*K, -B*K; zeros(size(A)), A-L*C];
+G = [B*kRef; zeros(length(B*kRef), 1)];
+H = [C, zeros(1, length(C))];
+
+F = mat2str(F)
+G = mat2str(G)
+H = mat2str(H)

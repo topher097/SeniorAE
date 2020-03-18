@@ -1,0 +1,227 @@
+% Specify the type of document
+\documentclass[12pt]{article}
+
+% Load a number of useful packages
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+ \usepackage[margin=1.0in]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{framed}
+
+% Say where pictures (if any) will be placed
+\graphicspath{{./pictures/}}
+
+% Define title, author, and date
+\title{AE353: Design Problem 03 Rubric}
+\author{A. Faustino \and T. Bretl}
+
+% Start of document
+\begin{document}
+
+% Put the title, author, and date at top of first page
+\maketitle
+
+\begin{framed}
+	The \href{http://studentcode.illinois.edu/article1_part4_1-402.html}{student code} defines plagiarism as follows:
+	\begin{quote}
+		(b) Plagiarism. No student shall represent the words, work, or ideas of another as his or her own in any academic endeavor. A violation of this section includes but is not limited to:
+		
+		(1)	Copying: Submitting the work of another as one's own. 
+		
+		(2)	Direct Quotation: Every direct quotation must be identified by quotation marks or by appropriate indentation and must be promptly cited. Proper citation style for many academic departments is outlined in such manuals as the MLA Handbook or K.L. Turabian's A Manual for Writers of Term Papers, Theses and Dissertations. These and similar publications are available in the University bookstore or library. The actual source from which cited information was obtained should be acknowledged.
+		
+		(3)	Paraphrase: Prompt acknowledgment is required when material from another source is paraphrased or summarized in whole or in part. This is true even if the student's words differ substantially from those of the source. A citation acknowledging only a directly quoted statement does not suffice as an acknowledgment of any preceding or succeeding paraphrased material. 
+		
+		(4)	Borrowed Facts or Information: Information obtained in one's reading or research that is not common knowledge must be acknowledged. Examples of common knowledge might include the names of leaders of prominent nations, basic scientific laws, etc. Materials that contribute only to one's general understanding of the subject may be acknowledged in a bibliography and need not be immediately cited. One citation is usually sufficient to acknowledge indebtedness when a number of connected sentences in the paper draw their special information from one source.
+	\end{quote}
+	Design reports (or draft reports) that contain plagiarism will receive zero credit and will be reported as FAIR violations. Repeated infractions of academic integrity will result in an ``F'' in the course.
+\end{framed}
+
+\clearpage
+\noindent
+The final reports for Design Problem 03 will be assessed with the following rubric:
+
+\paragraph{(10\%) Draft Reports}
+\begin{itemize}
+
+\item (2.5\%) A draft of your requirements and verifications section was submitted by 11:59PM on October 31.
+
+\item (2.5\%) A draft of the model section was submitted by 11:59PM on November 2.
+
+\item (2.5\%) A draft of the design section was submitted by 11:59PM on November 5.
+
+\item (2.5\%) A draft of the testing section was submitted by 11:59PM on November 7.
+\end{itemize}
+
+
+
+\paragraph{(10\%) Code}
+\begin{itemize}
+
+\item (2\%) It has the correct name (\verb|Controller_YourNetID.m|).
+\item (4\%) How to run it (i.e., what optional parameters to define) is specified within the file \verb|README.txt|.
+\item (4\%) What it does is consistent with what the report says was implemented.
+
+\end{itemize}
+Your code {\em must} run without error (i.e., the simulation figure always says \verb|CONTROLLER: ON|). If it does not run without error, you will receive 0\% credit for this portion of your grade.
+
+
+
+\paragraph{(40\%) Requirements}
+\begin{itemize}
+
+\item (8\%) Define requirements and verifications
+\begin{itemize}
+\item (4\%) At least one requirement is defined that specifies the following:
+\begin{itemize}
+\item (2\%) A goal is defined, for example, I want the glider to fly at least 20 meters on average.
+\item (2\%) A requirement for achieving this goal is defined, for example, the average flight distance over 1,000 simulations should be greater than 20 meters with a standard deviation less than 3 meters.
+\end{itemize}
+\item (4\%) At least one verification is defined that specifies the following:
+\begin{itemize}
+\item (2\%) The verification must provide instructions (written within the document) for generating data to test the requirements.
+\item (2\%) The verification must provide instructions (written within the document) for analyzing the data to test the requirements.
+\end{itemize}
+\end{itemize}
+
+\item (8\%) Model
+\begin{itemize}
+\item (1.5\%) The nonlinear model is presented, and is correct.
+\item (5\%) All steps of linearization are presented, and are correct.
+\begin{itemize}
+\item (1.25\%) Rewrite the nonlinear system as first-order ODEs.
+\item (1.25\%) Find an equilibrium state and equilibrium input.
+\item (1.25\%) Define state, input, and---if necessary---output.
+\item (1.25\%) Compute $A$ and $B$, and---if necessary---$C$ and $D$.
+\end{itemize}
+\item (1.5\%) The resulting linear model is presented, and is correct.
+\end{itemize}
+
+\item (8\%) Controller Design
+\begin{itemize}
+\item (2\%) Determine if the open-loop linear system is controllable.
+\begin{itemize}
+\item (1\%) Find the controllability matrix of the linear system.
+\item (1\%) Find the rank of the controllability matrix and correctly predict if the linear system in controllable.
+\end{itemize}
+\item (2\%) Determine if the open-loop linear system is asymptotically stable.
+\begin{itemize}
+\item (1\%) The eigenvalues of the system are computed correctly.
+\item (1\%) The correct prediction about asymptotic stability is made based on the eigenvalues.
+\end{itemize}
+\item (2\%) Design a state feedback controller.
+\item (2\%) Determine if the closed-loop linear system is asymptotically stable.
+\begin{itemize}
+\item (1\%) The eigenvalues of the system are computed correctly.
+\item (1\%) The correct prediction about asymptotic stability is made based on the eigenvalues.
+\end{itemize}
+\end{itemize}
+
+\item (6\%) Observer Design
+\begin{itemize}
+\item (2\%) Determine if the open-loop linear system is observable.
+\begin{itemize}
+\item (1\%) Find the observability matrix of the linear system.
+\item (1\%) Find the rank of the observability matrix and correctly predict if the linear system in observable.
+\end{itemize}
+\item (2\%) Design a observer for the linear system.
+\item (2\%) Determine if the closed-loop observer is asymptotically stable.
+\begin{itemize}
+\item (1\%) The eigenvalues of the system are computed correctly.
+\item (1\%) The correct prediction about asymptotic stability is made based on the eigenvalues.
+\end{itemize}
+\end{itemize}
+
+\item (10\%) Testing
+\begin{itemize}
+\item (3\%) Data from at least 1,000 simulations is collected.
+\item (3\%) The minimum, maximum, median, mean, and standard deviation of the flight distance is calculated.
+\item (2\%) All instructions from the verifications and requirements section are followed.
+\item (2\%) Evidence is provided that shows the requirements have been satisfied.
+\end{itemize}
+
+\end{itemize}
+
+\paragraph{(40\%) Final Report and Presentation}
+\begin{itemize}
+
+\item (5\%) It was submitted by 11:59PM on November 9.
+\item (5\%) It was submitted as instructed.
+\begin{itemize}
+	\item (1\%) It is a zipped folder.
+	\item (2\%) It has the correct name.
+	\item (2\%) It has the correct directory structure.
+\end{itemize}
+\item (5\%) The latex document compiles without error (i.e., the ``.tex'' document can be used to reproduce the ``.pdf'' document).
+\item (5\%) The latex document has the correct format.
+\begin{itemize}
+\item (1.25\%) It has the correct document type (article), the correct font (computer modern, the default) and font size (12pt), and the correct margin (1.0in).
+\item (1.25\%) It uses 8.5x11 paper.
+\item (1.25\%) It has a title, author, and date.
+\item (1.25\%) It is exactly four pages.
+\end{itemize}
+
+\item (20\%) The equations meet the following requirements
+\begin{itemize}
+\item (2\%) The report contains at least 5 equations.
+\item (2\%) Equations to which you refer are numbered.
+\item (2\%) Multi-line equations are aligned properly.
+\item (2\%) Latex symbols are used in mathematical equations instead of spelling out the variable names, i.e., $\phi$ instead of $phi$.
+\item (2\%) Subscripts and superscripts are used correctly (i.e., $M^{-1}$ instead of $M-1$).
+\item (2\%) Derivatives with respect to time are denoted with dots (i.e., $\dot{x}$ instead of $dx$).
+\item (2\%) Matrices are enclosed in appropriately sized brackets, and the entries within the matrices are aligned properly.
+\item (2\%) Standard notation is used for multiplication and division (i.e., $Ax$ for ``$A$ times $x$'' and not $A \times x$ or $A*x$, $\frac{a}{b}$ for ``$a$ divided by $b$'' and not $a \div b$).
+\item (2\%) Matrices do not appear in the denominator of a fraction, but are instead inverted (i.e., if $M$ is a matrix, then $\frac{A}{M}$ doesn't make sense, but $M^{-1}A$ does).
+\item (2\%) Text appearing in equations is not italicized and is spaced appropriately (e.g., $2 \text{ radians}$ instead of $2 radians$, $\text{eig}(A)$ instead of $eig(A)$, and $k_{\text{Ref}}$ instead of $k_{Ref}$).
+\end{itemize}
+
+\end{itemize}
+
+%\noindent
+%See the following Piazza posts for additional information on fulfilling the requirements described above:
+%
+%\begin{itemize}
+%\item See \href{https://piazza.com/class/iy352lpu44t1zm?cid=38}{this Piazza post} for details on how to submit the final report file.
+%\item See \href{https://piazza.com/class/iy352lpu44t1zm?cid=65}{this Piazza post} regarding the Goals section for suggestions based on the draft reports.
+%\item See \href{https://piazza.com/class/iy352lpu44t1zm?cid=74}{this Piazza post} regarding the Model section for suggestions based on the draft reports.
+%\item See \href{https://piazza.com/class/iy352lpu44t1zm?cid=95}{this Piazza post} regarding the Zero Input section for suggestions based on the draft reports.
+%\item See \href{https://piazza.com/class/iy352lpu44t1zm?cid=113}{this Piazza post} regarding the State Feedback section for suggestions based on the draft reports.
+%\end{itemize}
+
+
+
+%\clearpage
+%
+%\begin{itemize}
+%\item 40\%: Submission of the final report (both the PDF file and the TEX file) by 11:00 AM on Fri., Feb 17.  See \href{https://piazza.com/class/iy352lpu44t1zm?cid=38}{this Piazza post} for details on how to submit this file.
+%
+%\item 10\%: Submission of your working Matlab code by 11:00 AM on Fri., Feb 17.  See \href{https://piazza.com/class/iy352lpu44t1zm?cid=38}{this Piazza post} for details on how to submit this file.
+%
+%\item 40\%: The remaining 40\% will be based on completion of the requirements listed in DesignProblem01.pdf as follows:
+%
+%\begin{itemize}
+%
+%\item 10\%: Statement of a complete goal.  A goal is complete if you specify a desired angular velocity $w$, and not just one component of $w$.  See the \href{https://piazza.com/class/iy352lpu44t1zm?cid=65}{feedback on Piazza} regarding the Goals section for suggestions based on the preliminary submissions.
+%
+%\item 10\%: A correct linearized model about your chosen angular velocity, put into state-space form.  Please include some description of how you arrived at the state-space model.  Do not simply write the end result.  See the \href{https://piazza.com/class/iy352lpu44t1zm?cid=74}{feedback on Piazza} regarding the Linearized Model section for suggestions based on the preliminary submissions.
+%
+%\item 10\%: A correct implementation of zero input in your state-space model.  Determine if the resulting system is asymptotically stable.  Provide plots that show the behavior of your system, and discuss if the plots confirm or contradict your prediction about asymptotic stability.  See the \href{https://piazza.com/class/iy352lpu44t1zm?cid=95}{feedback on Piazza} regarding the Zero Input section for suggestions based on the preliminary submissions.
+%
+%\item 10\%: A correct implementation of state feedback.  Determine if the resulting system is asymptotically stable.  Provide plots that show the behavior of your system, and discuss if the plots confirm or contradict your prediction about asymptotic stability.  Feedback will be posted on Piazza soon regarding the preliminary State Feedback submissions.
+%
+%\end{itemize}
+%
+%\item 10\%: An additional 10\% may be given for completion of one or more things that were not required.  See \href{https://piazza-resources.s3.amazonaws.com/iy352lpu44t1zm/iytk2koz42b12y/DesignProblem01.pdf?AWSAccessKeyId=AKIAIEDNRLJ4AZKBW6HA&Expires=1487183218&Signature=yV4%2B8jYHIZ%2FpG5fH%2FiRaVSIUzsg%3D}{DesignProblem01.pdf} for a list of suggestions.
+%
+%\end{itemize}
+
+
+
+
+
+
+
+% End of document (everything after this is ignored)
+\end{document}

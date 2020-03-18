@@ -58,6 +58,8 @@ R = diag([10]);
 [K, P] = lqr(data.A, data.B, Q, R);
 data.K = K;
 data.kRef = -1/(data.C*inv(data.A - data.B * data.K)*data.B);
+syms t_s real
+data.step_function = 3*sin(t_s/5);
 end
 
 %
@@ -68,7 +70,8 @@ end
 function [actuators, data] = runControlSystem(sensors, references, parameters, data)
 % Use the state-space model for control
 x = [sensors.zeta; sensors.zetadot; sensors.theta; sensors.thetadot];
-r = [.25*sensors.t; 0; 0; 0];
+r1 = 3*sin(sensors.t/5);
+r = [double(r1); 0; 0; 0];
 u = -data.K * x + data.kRef * r;
 % Set the torque applied to the wheel
 tau = u(1);

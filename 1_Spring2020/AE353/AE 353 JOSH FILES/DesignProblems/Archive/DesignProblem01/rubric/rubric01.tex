@@ -1,0 +1,97 @@
+% Specify the type of document
+\documentclass[12pt]{article}
+
+% Load a number of useful packages
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+% Say where pictures (if any) will be placed
+\graphicspath{{./pictures/}}
+
+% Define title, author, and date
+\title{AE353: Design Problem 01 Rubric}
+\author{A. Faustino \and T. Bretl}
+
+% Start of document
+\begin{document}
+
+% Put the title, author, and date at top of first page
+\maketitle
+
+\noindent
+The final reports for Design Problem 01 will be assessed with the following rubric:
+
+\paragraph{(10\%) Draft Reports}
+\begin{itemize}
+	\item (5\%) A draft that includes, at minimum, the goals and model sections was submitted by 11:59PM on January 30.
+	\item (5\%) A draft that includes, at minimum, the zero input and state feedback analysis sections was submitted by 11:59PM on February 6.
+\end{itemize}
+
+\paragraph{(20\%) Final Report}
+\begin{itemize}
+	\item (10\%) It was submitted by 11:59 PM on February 8.
+	\item (10\%) It is the correct format.
+	\begin{itemize}
+		\item It has the correct document type (article), the correct font (computer modern, the default) and font size (12pt), and the correct margin (1.0in).
+		\item It uses 8.5x11 paper.
+		\item It has a title, author, and date.
+		\item It is exactly four pages.
+	\end{itemize}
+\end{itemize}
+
+\paragraph{(20\%) Code}
+\begin{itemize}
+	\item The script \verb|Test.m| successfully runs your simulation and is consistent with what the report says was implemented.
+\end{itemize}
+Your code \textit{must} run without error (i.e., the simulation figure always says \verb|CONTROLLER: ON|). \textbf{No attempts will be made to debug your code.} If it does not run without error, you will receive 0\% for this portion of your grade.
+
+\paragraph{(50\%) Requirements}
+\begin{itemize}
+	\item (10\%) Goal
+	\begin{itemize}
+		\item (5\%) It reflects an understanding that angular velocity is a vector, not a scalar.
+		\item (5\%) It specifies all three components of angular velocity---or, if it specifies fewer than three components, it gives a reason.
+	\end{itemize}
+
+	\item (10\%) Model
+	\begin{itemize}	
+		\item (2.5\%) The nonlinear model is presented, and is correct.
+		\item (5\%) All steps of linearization are presented, and are correct.
+		\item (2.5\%) The resulting linear model is presented, and is correct.
+	\end{itemize}
+
+	\item (10\%) Zero input
+	\begin{itemize}
+		\item (2\%) Correctly define what zero input means for this system.
+		\item (3\%) Determine if the linearized system with zero input is asymptotically stable.
+		\item (3\%) Plot the results of applying zero input.
+		\item (2\%) Comment on whether the plotted results confirm or deny your prediction about asymptotic stability. 
+	\end{itemize}
+
+	\item (10\%) State feedback
+	\begin{itemize}
+		\item (2\%) Correctly define what state feedback means for this system.
+		\item (3\%) Determine if the linearized system with state feedback is asymptotically stable.
+		\item (3\%) Plot the results of applying a state feedback controller.
+		\item (2\%) Comment on whether the plotted results confirm or deny your prediction about asymptotic stability. 
+	\end{itemize}
+
+	\item (10\%) One of the following things
+	\begin{itemize}
+		\item Examine the differences, if any, between predictions made by your linear model and by the nonlinear simulation.
+		\item Examine how the initial conditions affect the resulting motion, if they do at all.
+		\item Design and implement a method of reference tracking.
+		\item Design and implement a method of disturbance rejection.
+		\item Determine the extent to which the stated goal (``achieve some particular angular velocity'') is even possible.
+	\end{itemize}
+\end{itemize}
+
+\paragraph{Peer Review} \hfill \break
+In addition to the above requirements, you will be asked to submit two peer reviews. Failure to submit one peer review will lower your report grade by 5\%. Failure to submit both will lower your report grade by 10\%. Further details will be posted to Piazza.
+
+% End of document (everything after this is ignored)
+\end{document}

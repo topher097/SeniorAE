@@ -1,0 +1,102 @@
+% Specify the type of document
+\documentclass[12pt]{article}
+
+% Load a number of useful packages
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+ \usepackage[margin=1.0in]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+% Two more packages that make it easy to show MATLAB code
+\usepackage[T1]{fontenc}
+\usepackage[framed,numbered]{matlab-prettifier}
+\lstset{
+	style = Matlab-editor,
+	basicstyle=\mlttfamily\small,
+}
+
+% Say where pictures (if any) will be placed
+\graphicspath{{./pictures/}}
+
+% Define title, author, and date
+\title{AE353: Design Problem 01}
+\author{J.Clements}
+
+% Start of document
+\begin{document}
+    
+% Put the title, author, and date at top of first page
+\maketitle
+
+
+\section{Goal}
+
+The code provided in \lstinline!DesignProblem01! simulates the rotational motion of a spacecraft. This spacecraft has actuators that can apply torque about two different axes. This spacecraft also has sensors---an inertial measurement unit (IMU)---to measure its angular velocity. The spacecraft starts with some random angular velocity. The goal is to achieve an angular velocity of $w = $
+$M =
+    \begin{bmatrix}
+    1 & 0 & 0
+    \end{bmatrix}$ rad/s.
+
+\section{Model}
+
+The rotational motion of the spacecraft, if it is modeled as a single rigid body, is governed by the ordinary differential equations
+\begin{equation}
+    \tau_{1} = J_{1}\dot{w}_{1}-(J_{2}-J_{3})w_{2}w_{3}
+\end{equation}
+\begin{equation}
+    0 = J_{2}\dot{w}_{2}-(J_{3}-J_{1})w_{3}w_{1} 
+\end{equation}
+\begin{equation}
+    \tau_{3} = J_{3}\dot{w}_{3}-(J_{1}-J_{2})w_{1}w_{2},
+\end{equation}
+where $w_{1},w_{2},w_{3}$ are the components of angular velocity, $J_{1},J_{2},J_{3}$ are the principle moments of inertia, and $\tau_{1},\tau_{3}$ are the two different torques that can be applied.
+
+\section{State Space Model Linearization}
+
+In order to determine the linear model, we first define the State, $x$, Input, $u$, and Output, $y$.  Our goal is to simplify our equations of motion to the following:
+\begin{align*}
+\dot{x} = Ax + Bu \\ y = Cx + Du
+\end{align*}
+
+To begin, we define the state, input, and output as the following:\\
+\begin{align*}
+x = 
+    \begin{bmatrix}
+    \omega _{1} \\ \omega _{2} \\ \omega _{3}
+    \end{bmatrix},\enspace
+u = 
+    \begin{bmatrix}
+    \tau _{1} \\ 0 \\ \tau _{3}
+    \end{bmatrix},\enspace
+y = 
+    \begin{bmatrix}
+    \omega _{1} \\ \omega _{2} \\ \omega _{3}
+    \end{bmatrix}
+\end{align*}    
+
+Gathering all this information, we move to MatLab to utilize Jacobian() in order to find A, B, C, and D for the state space model above.
+
+\begin{align*}
+A = 
+    \begin{bmatrix}
+    0 & (\omega _{3} \times \frac{J _{2} - J _{3}}{J _{1}}) & (\omega _{2} \times \frac{J _{2} - J _{3}}{J _{1}}) \\ -(\omega _{3} \times \frac{J _{1} - J _{3}}{J _{2}}) & 0 & -(\omega _{1} \times \frac{J _{1} - J _{3}}{J _{2}}) \\ (\omega _{2} \times \frac{J _{1} - J _{2}}{J _{3}}) & (\omega _{1} \times \frac{J _{1} - J _{2}}{J _{3}}) & 0
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+    B =
+    \begin{bmatrix}
+    \frac{1}{J _{1}} & 0 \\ 0 & 0 \\ 0 & \frac{1}{J _{3}}
+    \end{bmatrix} \enspace
+    C = 
+        \begin{bmatrix}
+            1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+        \end{bmatrix} \enspace
+    D =
+        \begin{bmatrix}
+            0 & 0 \\ 0 & 0 \\ 0 & 0
+        \end{bmatrix}
+\end{align*}
+\end{document}
