@@ -1,3 +1,7 @@
+clear all;
+close all;
+clc;
+
 % Run DesignProblem00 with paramters set
 tStop = 10;
 z_0 = 2;

@@ -3,10 +3,10 @@ clear, clc
 A = [0.00 1.00; 0.00 0.00];
 B = [0.00; 1.00];
 C = [1.00 0.00];
-x2Max = 0.21;
+x2Max = 0.28;
 
 %% Calculations -- do not modify:
-m = 15;
+m = 6.55;
 
 Q = [1 0; 0 m];
 R = [1];

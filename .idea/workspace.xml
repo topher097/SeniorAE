@@ -2,10 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE443/CG_blank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE443/plot-CG.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/MACSolver.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/GenerateResults_Iter.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/data.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/ss_error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/zeta_error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE443/MACSolver.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_4.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_5.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_4.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_7.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_7.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/Run.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/Run.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/data.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/Controller.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/Controller.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/DesignProblem02.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/DesignProblem02.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/GenerateResults.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/GenerateResults.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/data.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/Iteration_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/MACSolver.m" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -338,12 +363,12 @@
       <item itemvalue="Python.AE410_HW1" />
       <item itemvalue="Python.AE461_Lab1Prelab" />
       <item itemvalue="Python.AE535_HW3.1" />
-      <item itemvalue="Python.IE300_Lab01" />
-      <item itemvalue="Python.plot-CG" />
       <item itemvalue="Python.CaseStudy1_Part1_Jake" />
-      <item itemvalue="Python.pdf_merge" />
+      <item itemvalue="Python.IE300_Lab01" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
+      <item itemvalue="Python.pdf_merge" />
+      <item itemvalue="Python.plot-CG" />
     </list>
     <recent_temporary>
       <list>

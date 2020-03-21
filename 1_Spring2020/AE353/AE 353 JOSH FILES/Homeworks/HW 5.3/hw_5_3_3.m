@@ -1,12 +1,12 @@
 clear, clc
 %% Insert Provided data:
-A = -0.70;
-B = -0.90;
-Q = 9.20;
-R = 8.20;
-M = 1.00;
+A = -0.80;
+B = 0.20;
+Q = 0.10;
+R = 2.90;
+M = 0.60;
 t0 = 0.00;
-x0 = 0.92;
+x0 = 0.48;
 
 %% Calculations -- do not modify:
 t1 = t0 + input('Timestop: '); % Change the right value

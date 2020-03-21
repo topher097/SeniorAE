@@ -445,7 +445,7 @@ u = [actuators.tau];
 % Bound input
 for i=1:length(u)
     if (u(i) < -process.taumax)
-        u(i) = process.taumax;
+        u(i) = -process.taumax;
     elseif (u(i) > process.taumax)
         u(i) = process.taumax;
     end
@@ -461,6 +461,10 @@ process.q1 = x(1,1);
 process.q2 = x(2,1);
 process.q1d = x(3,1);
 process.q2d = x(4,1);
+process.zeta = [1 0] * process.trueNumEOM.p1(process.q1);
+process.theta = process.q1 + process.q2;
+process.zetadot = [1 0] * process.trueNumEOM.v1(process.q1, process.q1d);
+process.thetadot = process.q1d + process.q2d;
 end
 
 function xdot = GetXDot(t,x,u,process)
@@ -494,10 +498,10 @@ end
 function fig = UpdateFigure(process,controller,fig)
 if (isempty(fig))
     % CREATE FIGURE
-    
+
     % Clear the current figure.
     clf;
-    
+
     % Create an axis for text (it's important this is in the back,
     % so you can rotate the view and other stuff!)
     fig.text.axis = axes('position',[0 0 1 1]);
@@ -522,7 +526,7 @@ if (isempty(fig))
     fig.text.teamname=text(0.05,0.06,...
         sprintf('%s',process.team),...
         'fontsize',fs,'verticalalignment','top','fontweight','bold');
-    
+
     if process.diagnostics
         fig.x.axis = axes('position',[0.55,0.76,0.4,0.2],'fontsize',fs);
         axis([0,process.tStop,-10,10]);
@@ -531,7 +535,7 @@ if (isempty(fig))
         fig.x.ref = plot(nan,nan,':','linewidth',3);
         fig.x.legend = legend({'zeta','zeta (desired)'});
         xlabel('time');
-        
+
         fig.x.axis2 = axes('position',[0.55,0.43,0.4,0.2],'fontsize',fs);
         axis([0,process.tStop,-pi,pi]);
         hold on;
@@ -551,7 +555,7 @@ if (isempty(fig))
         fig.u.legend = legend({'tau'});
         xlabel('time');
     end
-    
+
     % Create an axis for the view from frame 0.
     if process.diagnostics
         fig.view0.axis = axes('position',[0 0.15 0.5 0.7]);
@@ -568,7 +572,7 @@ if (isempty(fig))
     hold on;
     axis off;
     box on;
-    
+
     ymin = -50;
     ymax = 50;
     fig.view0.zetades = line([controller.references.zeta, controller.references.zeta], ...
@@ -580,22 +584,22 @@ if (isempty(fig))
     end
     fig.geom.pGround_in0 = [p0 [p0(1, end); ymin; 0] [p0(1, 1); ymin; 0] p0(:, 1)];
     fig.view0.ground = fill(fig.geom.pGround_in0(1, :), fig.geom.pGround_in0(2, :), 'g');
-    
+
     o_1in0 = [process.trueNumEOM.p1(process.q1); 0];
     R_1in0 = RZ(process.q1);
     o_2in0 = [process.trueNumEOM.p2(process.q1, process.q2); 0];
     R_2in0 = RZ(process.q1 + process.q2);
-    
+
     theta = linspace(0, 2 * pi, 30);
     fig.geom.pWheel_in1 = process.l1 * [cos(theta); sin(theta); zeros(size(theta))];
     fig.geom.pWheel_in0 = Transform(o_1in0, R_1in0, fig.geom.pWheel_in1);
     fig.view0.wheel = fill(fig.geom.pWheel_in0(1, :), fig.geom.pWheel_in0(2, :), 'y');
-    
+
     theta = [0 pi/2 pi 0];
     fig.geom.pMark_in1 = process.l1 * [cos(theta); sin(theta); zeros(size(theta))];
     fig.geom.pMark_in0 = Transform(o_1in0, R_1in0, fig.geom.pMark_in1);
     fig.view0.mark = fill(fig.geom.pMark_in0(1, :), fig.geom.pMark_in0(2, :), 'k');
-    
+
     dx = 0.5 * process.w2;
     dy = process.l2 + process.e2;
     fig.geom.pBody_in2 = [dx dx -dx -dx dx;
@@ -603,12 +607,12 @@ if (isempty(fig))
                           0 0 0 0 0];
 	fig.geom.pBody_in0 = Transform(o_2in0, R_2in0, fig.geom.pBody_in2);
     fig.view0.body = fill(fig.geom.pBody_in0(1, :), fig.geom.pBody_in0(2, :), 'y');
-    
+
     theta = linspace(0, 2 * pi, 30);
     fig.geom.pAxle_in1 = 0.1 * process.l1 * [cos(theta); sin(theta); zeros(size(theta))];
     fig.geom.pAxle_in0 = Transform(o_1in0, R_1in0, fig.geom.pAxle_in1);
     fig.view0.axle = fill(fig.geom.pAxle_in0(1, :), fig.geom.pAxle_in0(2, :), 'k');
-    
+
     % Make the figure respond to key commands.
     set(gcf,'KeyPressFcn',@onkeypress);
 end
@@ -631,7 +635,7 @@ o_2in0 = [process.trueNumEOM.p2(process.q1, process.q2); 0];
 R_2in0 = RZ(process.q1 + process.q2);
 
 if process.diagnostics
-    
+
     t = get(fig.x.zeta,'xdata');
     x = get(fig.x.zeta,'ydata');
     set(fig.x.zeta,'xdata',[t process.t],'ydata',[x, o_1in0(1)]);
@@ -639,7 +643,7 @@ if process.diagnostics
     t = get(fig.x.theta,'xdata');
     x = get(fig.x.theta,'ydata');
     set(fig.x.theta,'xdata',[t process.t],'ydata',[x, angdiff(process.q1 + process.q2, 0)]);
-    
+
     t = get(fig.x.ref,'xdata');
     x = get(fig.x.ref,'ydata');
     set(fig.x.ref,'xdata',[t process.t],'ydata',[x controller.references.zeta]);
@@ -647,7 +651,7 @@ if process.diagnostics
     t = get(fig.u.tau,'xdata');
     x = get(fig.u.tau,'ydata');
     set(fig.u.tau,'xdata',[t process.t],'ydata',[x controller.actuators.tau]);
-    
+
 end
 
 set(fig.view0.zetades, 'xdata', [controller.references.zeta, controller.references.zeta]);
@@ -669,10 +673,10 @@ set(fig.view0.axle, 'xdata', fig.geom.pAxle_in0(1, :), 'ydata', fig.geom.pAxle_i
 % R_1in0 = [cos(process.q3) -sin(process.q3) 0; sin(process.q3) cos(process.q3) 0; 0 0 1];
 % fig.geom.pFrame1_in0 = Transform(o_1in0, R_1in0, fig.geom.pFrame1_in1);
 % fig.geom.pRobot_in0 = Transform(o_1in0, R_1in0 * R_Min1, fig.geom.pRobot_in1);
-% 
+%
 % fig.view0.frame1 = DrawFrame(fig.view0.frame1, fig.geom.pFrame1_in0);
 % fig.view0.robot = DrawMesh(fig.view0.robot, fig.geom.pRobot_in0);
-    
+
 drawnow;
 end
 
@@ -711,38 +715,38 @@ end
 % Loop until break.
 tStart = tic;
 while (1)
-    
+
     % Update figure (create one if fig is empty).
     if (process.display)
         fig = UpdateFigure(process,controller,fig);
     end
-    
+
     % Update data.
     if (~isempty(process.datafile))
         [process,controller] = UpdateDatalog(process,controller);
     end
-    
+
     % If making a movie, store the current figure as a frame.
     if (~isempty(process.moviefile))
         frame = getframe(gcf);
         writeVideo(myV,frame);
     end
-    
+
     % Stop if time has reached its maximum.
     if ((process.t + (process.tStep / 2) >= process.tStop)||done)
         break;
     end
-    
+
     % Update process (integrate equations of motion).
     [process,controller] = UpdateProcess(process,controller);
-    
+
     % Wait if necessary, to stay real-time.
     if (process.display)
         while (toc(tStart)<process.t-process.tStart)
             % Do nothing
         end
     end
-    
+
 end
 
 % SHUT-DOWN
@@ -907,5 +911,3 @@ end
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-

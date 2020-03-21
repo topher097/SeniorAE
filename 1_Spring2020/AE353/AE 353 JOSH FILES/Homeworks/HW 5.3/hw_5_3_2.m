@@ -1,13 +1,13 @@
 clear, clc
 %% Insert Provided data here:
-A = 0.10;
-B = -0.40;
-Q = 5.40;
-R = 6.40;
+A = -0.90;
+B = 0.60;
+Q = 6.40;
+R = 6.70;
 M = 1.00;
-t0 = 0.40;
-x0 = -0.68;
-t1 = 0.40;
+t0 = 0.70;
+x0 = -0.59;
+t1 = 1.40;
 
 %% Calculations -- do not modify
 syms P(t)
