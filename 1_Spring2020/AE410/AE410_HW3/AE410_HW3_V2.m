@@ -14,7 +14,7 @@ dx = L/Nx;
 x  = dx*linspace(0,Nx-1,Nx).';
 
 % Construct matrix operator
-D1 = First(Nx,dx); % Periodic domain
+D1 = First(Nx,dx);      % Periodic domain
 D2 = Second(Nx,dx);     % Periodic domain
 D3 = Third(Nx,dx);
 D1sparse = sparse(D1);

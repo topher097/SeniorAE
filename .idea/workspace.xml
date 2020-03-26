@@ -2,35 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/GenerateResults_Iter.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/data.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/ss_error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/zeta_error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE443/MACSolver.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/Quiz2_Retake.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/AE410_HW4.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P2_eigenvalues.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P2_solutions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P3_eigenvalues.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P3_solutions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P4_eigenvalues.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P4_solutions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P5_eigenvalues.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P5_solutions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/integrator.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461_Lab04.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461lab4.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461lab4_V2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/Q2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/S4.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/S6.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/S7.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/mat2np.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/P2_eigenvalues.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/P2_solutions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/P3_eigenvalues.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/P3_solutions.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_1.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_2.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_3.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_4.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.1/hw_5_1_5.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_1.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_2.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_3.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_4.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_6.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_7.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.2/hw_5_2_7.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_1.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_2.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_3.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 5.3/hw_5_3_6.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/Run.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/Run.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem00/data.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/Controller.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/Controller.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/DesignProblem02.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/DesignProblem02.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/GenerateResults.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/GenerateResults.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/data.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/DesignProblem02/code/plots/Iteration_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/MACSolver.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 4.2/hw_4_2_7.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 4.2/hw_4_2_7.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_4.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_5.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_4.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_5.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3_V2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3_V2.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +75,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/1_Spring2020/AE443/plot-CG.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461_Lab04.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -81,7 +95,7 @@
       <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.plot-CG">
+  <component name="RunManager" selected="Python.AE461_Lab04">
     <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,6 +193,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AE461_Lab04" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab4" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461_Lab04.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -365,10 +400,11 @@
       <item itemvalue="Python.AE535_HW3.1" />
       <item itemvalue="Python.CaseStudy1_Part1_Jake" />
       <item itemvalue="Python.IE300_Lab01" />
-      <item itemvalue="Python.clear_metadata2" />
-      <item itemvalue="Python.clear_metadata" />
       <item itemvalue="Python.pdf_merge" />
       <item itemvalue="Python.plot-CG" />
+      <item itemvalue="Python.AE461_Lab04" />
+      <item itemvalue="Python.clear_metadata2" />
+      <item itemvalue="Python.clear_metadata" />
     </list>
     <recent_temporary>
       <list>
@@ -705,58 +741,51 @@
     <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1A" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583977285529">
+    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585243725718">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585243725718" />
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583977285529" />
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096954651" />
-    <state x="1633" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576376118370">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1633" y="326" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576376118370" />
-    <state x="1669" y="359" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1575848434294">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1669" y="359" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575848434294" />
-    <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575752295884">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1600" y="251" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752295884" />
     <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1583337050743">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337050743" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
-    <state x="4134" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995065124" />
-    <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1583977284011">
+    <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1585243720965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585243720965" />
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583977284011" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="1140" height="244" key="GridCell.Tab.0.bottom" timestamp="1584033861786">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="956" height="246" key="GridCell.Tab.0.bottom" timestamp="1585264848100">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="956" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
+    <state width="936" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655301" />
     <state width="1140" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="1256" height="178" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="1140" height="244" key="GridCell.Tab.0.center" timestamp="1584033861786">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="956" height="246" key="GridCell.Tab.0.center" timestamp="1585264848100">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="956" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
+    <state width="936" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655300" />
     <state width="1140" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="1256" height="178" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
-    <state width="1140" height="244" key="GridCell.Tab.0.left" timestamp="1584033861786">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="956" height="246" key="GridCell.Tab.0.left" timestamp="1585264848100">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="956" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
+    <state width="936" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655300" />
     <state width="1140" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="1256" height="178" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852914" />
-    <state width="1140" height="244" key="GridCell.Tab.0.right" timestamp="1584033861786">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="956" height="246" key="GridCell.Tab.0.right" timestamp="1585264848100">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="956" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
+    <state width="936" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655300" />
     <state width="1140" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="1256" height="178" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576373852915" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -773,14 +802,6 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="1256" height="344" key="GridCell.Tab.1.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823484" />
-    <state x="1500" y="258" key="IDE.errors.dialog" timestamp="1575752342525">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1500" y="258" key="IDE.errors.dialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1575752342525" />
-    <state x="496" y="89" key="MergeDialog" timestamp="1576289699941">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="496" y="89" key="MergeDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576289699941" />
     <state x="1632" y="239" key="MultipleFileMergeDialog" timestamp="1582159315764">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -795,17 +816,11 @@
     </state>
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337055441" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
-    <state x="4072" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1575995067887" />
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583334039309">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583334039309" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
-    <state x="4289" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1576172371411" />
-    <state x="2553" y="0" width="1294" height="1047" key="dock-window-1" timestamp="1576374370752">
-      <screen x="2560" y="0" width="2560" height="1040" />
-    </state>
-    <state x="2553" y="0" width="1294" height="1047" key="dock-window-1/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1576374370752" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581964244004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
