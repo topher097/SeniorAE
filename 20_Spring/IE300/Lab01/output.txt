@@ -1,0 +1,9 @@
+Number of observations: 730
+target flight time: 239.48939000000001
+Typical time: 263.1217631138546
+Time added for AA: 4.253675482636595
+Time added for F9: 12.188581713731594
+Time added for NK: 4.437558920043671
+Time added for UA: 6.052733530440662
+Time added for VX: 2.7920299895936296
+Airline with lowest time added: VX

@@ -2,7 +2,7 @@ function C = Central2(Nx,dx,PeriodicFlag)
 %
 % [C] = Central2(Nx,dx,PeriodicFlag)
 %
-% Return the inv(A)*B matrix for the 3-4-6 Pade scheme on a grid
+% Return the matrix for the 1-2-1 Central second order FD scheme on a grid
 % of Nx points with equal spacing dx.
 %
 % INPUTS:
@@ -11,11 +11,7 @@ function C = Central2(Nx,dx,PeriodicFlag)
 % PeriodicFlag = 0 = FALSE;
 %
 % OUTPUTS:
-%
-% C     = inv(A)*B
-% kmax  = maximum wavenumber
-% kstar = maximum wavenumber for a given accuracy
-%
+% C = B
 
 fprintf(1,'Using 2nd-order central ');
 

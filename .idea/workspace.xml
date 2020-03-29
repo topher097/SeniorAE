@@ -2,49 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE353/Quiz2_Retake.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/AE410_HW4.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P2_eigenvalues.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P2_solutions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P3_eigenvalues.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P3_solutions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P4_eigenvalues.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P4_solutions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P5_eigenvalues.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/P5_solutions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW4/integrator.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461_Lab04.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461lab4.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461lab4_V2.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/Q2.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/S4.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/S6.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/S7.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/mat2np.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/plots/Question5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/P2_eigenvalues.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/P2_solutions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/P3_eigenvalues.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1_Spring2020/P3_solutions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Central2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/DownwindBiased3.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/EulerODE.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex0.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex1.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex2d.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex2u.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex3c.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex3u.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex4.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex5.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Ex6.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/Pade346.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/UpwindBiased3.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/advODE.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Examples/conservativeBurgers.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW1/AE410_HW1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW2/AE410_HW2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 4.2/hw_4_2_7.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 4.2/hw_4_2_7.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_1.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_2.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_3.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_4.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_5.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.1/hw_6_1_6.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_1.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_2.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_3.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_4.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_5.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.2/hw_6_2_6.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3_V2.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW3/AE410_HW3_V2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.3/HW6_3_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/AE353/AE 353 JOSH FILES/Homeworks/HW 6.3/HW6_3_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/Central2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/EigenvalueSpectrum.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/EigenvectorSpectrum.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/Ex2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/ModifiedWavenumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/Nyquist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/SolutionOfPulse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/SolutionTime0to100a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/Sparsity.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/advODE.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_02/domain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_03/DownwindBiased.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_03/Ex3.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_03/Ex3_Downwinding.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_03/Ex3_Upwinding.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_03/UpwindBiased.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_03/advODE.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_04/Ex4_Central.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_04/Ex4_Upwinding.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_04/conservativeBurgers_RHS.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_04/nonconservativeBurgers_RHS.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_05/Central2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_05/Ex5.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_05/Pade346.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_Example_05/UpwindBiased3.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_Lab01.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/IE300_Lab01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/Output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/Output_A.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/lab01_plot.png" beforeDir="false" afterPath="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/lab01_plot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/P2_eigenvalues.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/P2_solutions.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/P3_eigenvalues.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_Spring2020/P3_solutions.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +107,7 @@
       <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.AE461_Lab04">
+  <component name="RunManager" selected="Python.IE300_Lab01">
     <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -758,32 +770,32 @@
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585243720965" />
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583977284011" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="956" height="246" key="GridCell.Tab.0.bottom" timestamp="1585264848100">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="246" key="GridCell.Tab.0.bottom" timestamp="1585513130251">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
-    <state width="936" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655301" />
+    <state width="1899" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585513130251" />
     <state width="1140" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="956" height="246" key="GridCell.Tab.0.center" timestamp="1585264848100">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="246" key="GridCell.Tab.0.center" timestamp="1585513130250">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
-    <state width="936" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655300" />
+    <state width="1899" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585513130250" />
     <state width="1140" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="956" height="246" key="GridCell.Tab.0.left" timestamp="1585264848100">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="246" key="GridCell.Tab.0.left" timestamp="1585513130250">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
-    <state width="936" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655300" />
+    <state width="1899" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585513130250" />
     <state width="1140" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="956" height="246" key="GridCell.Tab.0.right" timestamp="1585264848100">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="246" key="GridCell.Tab.0.right" timestamp="1585513130251">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
-    <state width="936" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585252655300" />
+    <state width="1899" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585513130251" />
     <state width="1140" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584033861786" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
