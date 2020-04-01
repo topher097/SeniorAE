@@ -16,6 +16,7 @@ drhodt = -u .* (D1 * rho) - rho      .* (D1 * u);
 dudt   = -u .* (D1 * u)   - (D1 * p) ./  rho;
 dpdt   = -u .* (D1 * p)   - g * p    .* (D1 * u);
 
+
 % work on left boundary (constant total Temperature & pressure)
 c2 = g * p(1) / rho(1);
 M2 = u(1)*u(1)/c2;
@@ -66,5 +67,5 @@ dqdt       = X * dwdt;
 drhodt(Nx) = dqdt(1);
 dudt(Nx)   = dqdt(2);
 dpdt(Nx)   = dqdt(3);
-
+disp(size(dudt))
 qdot = [drhodt; dudt; dpdt];

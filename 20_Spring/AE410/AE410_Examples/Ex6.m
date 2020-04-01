@@ -1,6 +1,7 @@
                                        % Ex6.m ... 1-D Euler Equations
 
 % clean up
+clc
 clear all
 % close all
 
@@ -16,7 +17,7 @@ PeriodicFlag = 0;
 
 % construct operator
 D2c = sparse(Central2(Nx,dx,PeriodicFlag));
-D3u = sparse(UpwindBiased3(Nx,dx,PeriodicFlag));
+%D3u = sparse(UpwindBiased3(Nx,dx,PeriodicFlag));
 D4c = Pade346(Nx,dx,PeriodicFlag);
 
 % initial condition
@@ -59,6 +60,7 @@ plot(x,pt/pref);
 axis([-0.1 1.1 -0.5 1.5]);
 xlabel('x');
 ylabel('p_t/p_{ref}');
+pause(0.2)
     
 %    % 3rd order upwind
 %     rho = u3u(n,1:Nx);
@@ -106,5 +108,4 @@ ylabel('p_t/p_{ref}');
   %  if (n > 10)
   %    pause
   %  end 
-  pause(0.2)
 end
