@@ -1,0 +1,7 @@
+Flight #1:
+Origin: SEA
+Destination: ATL
+Prob. of Delay: 0.01312
+Prob. of No Delay: 0.01423
+Will it be Delayed? No
+

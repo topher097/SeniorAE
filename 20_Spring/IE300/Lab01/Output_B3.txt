@@ -1,0 +1,28 @@
+Flight #1:
+Origin: JFK
+Destination: LAS
+Prob. of Delay: 0.00286
+Prob. of No Delay: 0.01333
+Will it be Delayed? No
+
+Flight #2:
+Origin: JFK
+Destination: LAS
+Prob. of Delay: 0.00339
+Prob. of No Delay: 0.00934
+Will it be Delayed? No
+
+Flight #3:
+Origin: SFO
+Destination: ORD
+Prob. of Delay: 0.00834
+Prob. of No Delay: 0.0262
+Will it be Delayed? No
+
+Flight #4:
+Origin: SFO
+Destination: ORD
+Prob. of Delay: 0.00419
+Prob. of No Delay: 0.01543
+Will it be Delayed? No
+

@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 from statistics import mean
 import numpy as np
-import os
 import csv
 
 class LabOnePartA():
@@ -150,273 +149,350 @@ class LabOnePartA():
 
 class LabOnePartB():
     def __init__(self):
-        pass
+        LabOnePartB.lab1BRun(self)
 
+    def lab1BRun(self):
+        # Written by Jake Hawkins
+        #### Exercise 1 ####
+        Table2 = []
 
+        Table2.append({'Origin': 'SEA',
+                       'Destination': 'ATL',
+                       'Airline': 'Southwest',
+                       'Weather': 'Poor',
+                       'Delay': 'N'})
 
+        Table2.append({'Origin': 'SEA',
+                       'Destination': 'BOS',
+                       'Airline': 'American',
+                       'Weather': 'Good',
+                       'Delay': 'Y'})
 
+        Table2.append({'Origin': 'SEA',
+                       'Destination': 'ATL',
+                       'Airline': 'United',
+                       'Weather': 'Poor',
+                       'Delay': 'Y'})
 
+        Table2.append({'Origin': 'SFO',
+                       'Destination': 'BOS',
+                       'Airline': 'Southwest',
+                       'Weather': 'Poor',
+                       'Delay': 'Y'})
 
-class emily():
-    def __init__(self):
-        emily.run(self)
-        pass
+        Table2.append({'Origin': 'SFO',
+                       'Destination': 'ATL',
+                       'Airline': 'American',
+                       'Weather': 'Good',
+                       'Delay': 'N'})
 
-    def run(self):
-        import csv
+        Table2.append({'Origin': 'SFO',
+                       'Destination': 'BOS',
+                       'Airline': 'United',
+                       'Weather': 'Poor',
+                       'Delay': 'N'})
 
-        infile = open('flighttime.csv','r')
-        reader = csv.reader(infile,delimiter = ',')
-        data = list(reader)
+        Table2.append({'Origin': 'SFO',
+                       'Destination': 'BOS',
+                       'Airline': 'United',
+                       'Weather': 'Good',
+                       'Delay': 'N'})
 
-        import numpy as np
-        import matplotlib.pyplot as plt
+        Table2.append({'Origin': 'SEA',
+                       'Destination': 'BOS',
+                       'Airline': 'United',
+                       'Weather': 'Poor',
+                       'Delay': 'N'})
 
-        # Open output file
-        output = open('output.txt', 'w')
+        ### Exercise 1 ###
+        # SEA-ATL flight on Southwest with good weather. Will it be delayed?
 
-        # Read File
-        x = []
-        with open('flighttime.csv') as file:
+        # Want to maximize P(Ck|X) = P(Ck ∩ X)/P(X), but P(X) is a constant, so we can look
+        # for the maximum of P(Ck ∩ X) instead.
+
+        # P(Ck ∩ X) = P(Ck)*P(X|Ck) = P(Ck)*P(x1,...,xn|Ck) = P(Ck)*P(x1|Ck)*P(x2,...,xn|Ck,x1)
+        #           = P(Ck)*P(x1|Ck)*P(x2|Ck,x1)*...*P(xn|Ck,x1,x2,...,xn-1)
+
+        # Assume conditional independence between each attribute (hence the "naive")
+        # so P(xi|Ck,xj) = P(xi|Ck) where i not equal to j.
+
+        # Therefore, P(Ck|X) ∝ P(Ck)*multiplication(P(xi|Ck), i: 1 -> n)
+
+        # Define classifier: pick most probable class (maximum a posterior (MAP) rule)
+        #                       y_hat = argmax_k(P(Ck)*multiplication(P(xi|Ck), i: 1 -> n))
+
+        # To estimate P(xi|Ck), use M-estimates. Therefore,
+        # P(xi|Ck) = (n_hat + m*p)/(n + m) where n_hat is the number of observations where C = Ck
+        # and X = xi and n is the number of observations where C = Ck.
+        # m is the equivalent sample size (in this case it is assumed to be 4). p is the a priori
+        # estimate of P(xi|Ck) (a typical estimate is 1/(# of possible values for attribute i))
+
+        cases = []
+        out_text = ''
+
+        # Flight Type 1: SEA-ATL on Southwest with good weather
+        cases.append(['SEA', 'ATL', 'Southwest', 'Good'])
+
+        # Find P(Ck) = P(Y)
+        historical_delays = 0
+        for entry in Table2:
+            if entry['Delay'] == 'Y':
+                historical_delays += 1
+
+        P_Y = historical_delays / len(Table2)
+        P_N = 1 - P_Y
+        m = 4
+
+        for flight in cases:
+
+            # Estimate P_[origin]_given_Y
+
+            # Find number of possible origins, destinations, carriers, and weather types.
+            possible_origins = []
+            possible_destinations = []
+            possible_carriers = []
+            possible_weathers = []
+
+            n_hat_origin_Y = 0
+            n_hat_origin_N = 0
+
+            n_hat_destination_Y = 0
+            n_hat_destination_N = 0
+
+            n_hat_carrier_Y = 0
+            n_hat_carrier_N = 0
+
+            n_hat_weather_Y = 0
+            n_hat_weather_N = 0
+
+            n_Y = historical_delays
+            n_N = len(Table2) - historical_delays
+            for entry in Table2:
+                if entry['Origin'] not in possible_origins:
+                    possible_origins.append(entry['Origin'])
+                if entry['Destination'] not in possible_destinations:
+                    possible_destinations.append(entry['Destination'])
+                if entry['Airline'] not in possible_carriers:
+                    possible_carriers.append(entry['Airline'])
+                if entry['Weather'] not in possible_weathers:
+                    possible_weathers.append(entry['Weather'])
+
+                if entry['Origin'] == flight[0]:
+                    if entry['Delay'] == 'Y':
+                        n_hat_origin_Y += 1
+                    else:
+                        n_hat_origin_N += 1
+
+                if entry['Destination'] == flight[1]:
+                    if entry['Delay'] == 'Y':
+                        n_hat_destination_Y += 1
+                    else:
+                        n_hat_destination_N += 1
+
+                if entry['Airline'] == flight[2]:
+                    if entry['Delay'] == 'Y':
+                        n_hat_carrier_Y += 1
+                    else:
+                        n_hat_carrier_N += 1
+
+                if entry['Weather'] == flight[3]:
+                    if entry['Delay'] == 'Y':
+                        n_hat_weather_Y += 1
+                    else:
+                        n_hat_weather_N += 1
+
+            p_origin = 1 / len(possible_origins)
+            p_destination = 1 / len(possible_destinations)
+            p_carrier = 1 / len(possible_carriers)
+            p_weather = 1 / len(possible_weathers)
+
+            P_origin_given_Y = (n_hat_origin_Y + m * p_origin) / (n_Y + m)
+            P_origin_given_N = (n_hat_origin_N + m * p_origin) / (n_N + m)
+
+            P_destination_given_Y = (n_hat_destination_Y + m * p_destination) / (n_Y + m)
+            P_destination_given_N = (n_hat_destination_N + m * p_destination) / (n_N + m)
+
+            P_carrier_given_Y = (n_hat_carrier_Y + m * p_carrier) / (n_Y + m)
+            P_carrier_given_N = (n_hat_carrier_N + m * p_carrier) / (n_N + m)
+
+            P_weather_given_Y = (n_hat_weather_Y + m * p_weather) / (n_Y + m)
+            P_weather_given_N = (n_hat_weather_N + m * p_weather) / (n_N + m)
+
+            # Calculate final estimate
+            P_Y_X = P_Y * P_origin_given_Y * P_destination_given_Y * P_carrier_given_Y * P_weather_given_Y
+            P_N_X = P_N * P_origin_given_N * P_destination_given_N * P_carrier_given_N * P_weather_given_N
+
+            if P_Y_X > P_N_X:
+                will_be_delayed = 'Yes'
+            else:
+                will_be_delayed = 'No'
+            print(flight, P_Y_X, P_N_X, will_be_delayed)
+            out_text += f'Flight #{cases.index(flight) + 1}:\n'
+            out_text += f'Origin: {flight[0]}\n'
+            out_text += f'Destination: {flight[1]}\n'
+            out_text += f'Prob. of Delay: {round(P_Y_X, 5)}\n'
+            out_text += f'Prob. of No Delay: {round(P_N_X, 5)}\n'
+            out_text += f'Will it be Delayed? {will_be_delayed}\n\n'
+        print(out_text)
+
+        with open('Output_B1.txt', 'w+') as f:
+            f.write(out_text)
+
+        # Exercise 2
+
+        flight_data = []
+        with open('FlightDelay.csv') as file:
             reader = csv.reader(file, delimiter=',')
-            for line in reader:
-                x.append(line)
-        # print(len(x))
-
-        # First with information is to delete the incorrect entries
-        # After talking they recommended that I make a list of incorrect entries index numbers
-        n = len(x)
-        etd = []
-        for i in range(1, n):
-            flighttime = float(x[i][9])
-            if (flighttime < 230):
-                etd.append(i)
-
-        # Next we actually delete entries from list
-        m = len(etd)
-        # print(m)
-        for i in range(0, m):
-            del x[etd[i] - i]
-
-        # Calculating the number of observations in given data set
-        print('Number of observations:', len(x))
-        output.write('Number of observations: ')
-        output.write(str(len(x)))
-        output.write('\n')
-
-        # Calculating target flight time, remember that we have the formula given
-        d = 1741.16
-        lori = -87.90
-        ldes = -118.41
-        tft = 0.117 * d + .517 * (lori - ldes) + 20
-        print('target flight time:', tft)
-        output.write('target flight time: ')
-        output.write(str(tft))
-        output.write('\n')
-
-        # Calculating typical time of this route
-        n = len(x)
-        delay = []
-        for i in range(1, n):
-            totaldelay = float(x[i][6]) + float(x[i][8])
-            delay.append(totaldelay)
-
-        meandelay = sum(delay) / len(delay)
-        typicaltime = tft + meandelay
-        print('Typical time:', typicaltime)
-        output.write('Typical time: ')
-        output.write(str(typicaltime))
-        output.write('\n')
-
-        # To be able to actually look at the information by airline, we need to first organize airlines
-        n = len(x)
-        AA = []
-        F9 = []
-        NK = []
-        UA = []
-        VX = []
-        for i in range(1, n):
-            airline = x[i][1]
-            if (airline in ['AA']):
-                AA.append(x[i])
-            if (airline in ['F9']):
-                F9.append(x[i])
-            if (airline in ['NK']):
-                NK.append(x[i])
-            if (airline in ['UA']):
-                UA.append(x[i])
-            if (airline in ['VX']):
-                VX.append(x[i])
-            if (airline not in ['AA', 'F9', 'NK', 'UA', 'VX']):
-                print('Error: Extra Airlines')
-
-        listofairlines = ['AA', 'F9', 'NK', 'UA', 'VX']
-        listsbyairline = [AA, F9, NK, UA, VX]  # list of lists for each airline
-        averageflighttimebyairline = []  # list of average flight time in same order
-        numberofairlines = len(listsbyairline)
-
-        for j in range(0, numberofairlines):
-            airlinelist = listsbyairline[j]
-            n = len(airlinelist)
-            total = 0
-            for i in range(0, n):
-                total = total + float(airlinelist[i][9])
-            averageflighttime = total / n
-            averageflighttimebyairline.append(averageflighttime)
-        # print(averageflighttimebyairline)
-
-        # Finding time added for each airline
-        timeadded = []
-        for i in range(0, numberofairlines):
-            timeadded.append(averageflighttimebyairline[i] - typicaltime)
-        # print(timeadded)
-
-        # Finding name of airline with minimum time added
-        for i in range(0, numberofairlines):
-            print('Time added for', listofairlines[i], ':', timeadded[i])
-            output.write('Time added for ')
-            output.write(str(listofairlines[i]))
-            output.write(': ')
-            output.write(str(timeadded[i]))
-            output.write('\n')
-            if (timeadded[i] in [min(timeadded)]):
-                mintimeaddedairline = listofairlines[i]
-        print('Airline with lowest time added:', mintimeaddedairline)
-        output.write('Airline with lowest time added: ')
-        output.write(str(mintimeaddedairline))
-
-        # Closing output file
-        output.close()
-
-        # And then finally, we turn our findings into a bar graph
-        plt.bar(listofairlines, timeadded, align='center', alpha=1)
-        plt.ylabel('Average Time Added')
-        plt.title('Average Time Added By Airline')
-
-        #plt.show()
-
-
-class jake():
-    def __init__(self):
-        jake.run(self)
-
-    def run(self):
-        with open('FlightTime.csv') as file:
-            reader = csv.reader(file, delimiter=',')
-
-            cleaned_flights = []
 
             for line in reader:
-                if line[0] == 'Flight Time':
+
+                if line[0] == 'Carrier':
                     continue
 
-                Date = line[0]
-                Carrier = line[1]
-                Flight_Number = int(line[2])
-                Origin = line[3]
-                Destination = line[4]
-                Departure_Time = line[5]
-                Departure_Delay = line[6]
-                Arrival_Time = line[7]
-                Arrival_Delay = line[8]
-                Flight_Time = line[9]
+                Carrier = line[0]
+                Origin = line[1]
+                Destination = line[2]
+                Departure_Delay = int(line[3])
+                Arrival_Delay = int(line[4])
 
-                if Departure_Time == '':
-                    continue
+                Total_Delay = Departure_Delay + Arrival_Delay
 
-                if Arrival_Time == '':
-                    continue
+                if Total_Delay > 15:
+                    Delayed = 'Y'
+                else:
+                    Delayed = 'N'
 
-                if int(Flight_Time) < 230:
-                    continue
+                data = {'Carrier': Carrier,
+                        'Origin': Origin,
+                        'Destination': Destination,
+                        'Departure_Delay': Departure_Delay,
+                        'Arrival_Delay': Arrival_Delay,
+                        'Total_Delay': Total_Delay,
+                        'Delayed': Delayed}
 
-                flight_data = {'Date': Date,
-                               'Carrier': Carrier,
-                               'Flight_Number': Flight_Number,
-                               'Origin': Origin,
-                               'Destination': Destination,
-                               'Departure_Time': int(Departure_Time),
-                               'Departure_Delay': int(Departure_Delay),
-                               'Arrival_Time': int(Arrival_Time),
-                               'Arrival_Delay': int(Arrival_Delay),
-                               'Flight_Time': int(Flight_Time)}
-
-                cleaned_flights.append(flight_data)
+                flight_data.append(data)
 
             file.close()
 
-        ### Answer to 2
-        print(len(cleaned_flights))
+        ### Exercise 3 ###
 
-        d = 1741.16
-        l_ori = -87.90
-        l_des = -118.41
+        cases = []
+        case_dict = {}
+        out_text = ''
 
-        TFT = 0.117 * d + 0.517 * (l_ori - l_des) + 20
-        ### Answer to 3
-        print(TFT)
+        # Flight Type 1: JFK-LAS on American Airlines (AA)
+        cases.append(['JFK', 'LAS', 'AA'])
 
-        departure_delays = []
-        arrival_delays = []
+        # Flight Type 2: JFK-LAS on JetBlue (B6)
+        cases.append(['JFK', 'LAS', 'B6'])
 
-        for flight in cleaned_flights:
-            depart_delay = flight['Departure_Delay']
-            arrive_delay = flight['Arrival_Delay']
+        # Flight Type 3: SFO-ORD on Virgin Airlines (VX)
+        cases.append(['SFO', 'ORD', 'VX'])
 
-            departure_delays.append(depart_delay)
-            arrival_delays.append(arrive_delay)
+        # Flight Type 4: SFO-ORD on Southwest Airlines (WN)
+        cases.append(['SFO', 'ORD', 'WN'])
 
-        average_depart_delay = np.mean(departure_delays)
-        average_arrive_delay = np.mean(arrival_delays)
+        # Find P(Y) and P(N)
+        historical_delays = 0
+        for entry in flight_data:
+            if entry['Delayed'] == 'Y':
+                historical_delays += 1
 
-        typical_time = TFT + average_arrive_delay + average_depart_delay
-        ### Answer to number 4
-        print(typical_time)
+        P_Y = historical_delays / len(flight_data)
+        P_N = 1 - P_Y
+        m = 3
 
-        airline_dict = {}
-        for flight in cleaned_flights:
-            carrier = flight['Carrier']
+        # Iterate over each case.
+        for flight in cases:
 
-            arrive_delay = flight['Arrival_Delay']
-            depart_delay = flight['Departure_Delay']
+            # Define variables to hold unique characteristics
+            possible_origins = []
+            possible_destinations = []
+            possible_carriers = []
 
-            flight_time = flight['Flight_Time']
+            # Define counters
+            n_hat_origin_Y = 0
+            n_hat_origin_N = 0
+            n_hat_destination_Y = 0
+            n_hat_destination_N = 0
+            n_hat_carrier_Y = 0
+            n_hat_carrier_N = 0
 
-            total_time = flight_time + arrive_delay + depart_delay
+            # Total number of delays and non-delays
+            n_Y = historical_delays
+            n_N = len(flight_data) - historical_delays
 
-            if carrier not in airline_dict:
-                airline_dict[carrier] = {}
-                airline_dict[carrier]['Total_Times'] = []
-            airline_dict[carrier]['Total_Times'].append(total_time)
+            # Analyze the data for each flight.
+            for entry in flight_data:
+                # Add characteristic to the appropriate list if it has never been seen before.
+                if entry['Origin'] not in possible_origins:
+                    possible_origins.append(entry['Origin'])
+                if entry['Destination'] not in possible_destinations:
+                    possible_destinations.append(entry['Destination'])
+                if entry['Carrier'] not in possible_carriers:
+                    possible_carriers.append(entry['Carrier'])
 
-        ### Answer to number 5
-        for carrier in airline_dict:
-            print(carrier)
-            print(np.mean(airline_dict[carrier]['Total_Times']) - TFT)
+                # Check if the Origin matches the case and determine if it was delayed or not.
+                if entry['Origin'] == flight[0]:
+                    if entry['Delayed'] == 'Y':
+                        n_hat_origin_Y += 1
+                    else:
+                        n_hat_origin_N += 1
 
-        ### Work for Number 6
-        outputFile = open('Exercise1Calcs.txt', 'w')
+                # Check if the Destination matches the case and determine if it was delayed or not.
+                if entry['Destination'] == flight[1]:
+                    if entry['Delayed'] == 'Y':
+                        n_hat_destination_Y += 1
+                    else:
+                        n_hat_destination_N += 1
 
-        outputFile.write('Number 2: \n')
-        outputFile.write('Number of valid flights: ' + str(len(cleaned_flights)) + ' flights \n\n')
+                # Check if the Carrier matches the case and determine if it was delayed or not.
+                if entry['Carrier'] == flight[2]:
+                    if entry['Delayed'] == 'Y':
+                        n_hat_carrier_Y += 1
+                    else:
+                        n_hat_carrier_N += 1
 
-        outputFile.write('Number 3: \n')
-        outputFile.write('Target flight time: ' + str(TFT) + ' minutes \n\n')
+            # Determine the estimate for the probability of each characteristic
+            p_origin = 1 / len(possible_origins)
+            p_destination = 1 / len(possible_destinations)
+            p_carrier = 1 / len(possible_carriers)
 
-        outputFile.write('Number 4: \n')
-        outputFile.write('Typical time for the route: ' + str(typical_time) + ' minutes \n\n')
+            # Apply estimate to each type of variable given delay and not delayed
+            P_origin_given_Y = (n_hat_origin_Y + m * p_origin) / (n_Y + m)
+            P_origin_given_N = (n_hat_origin_N + m * p_origin) / (n_N + m)
 
-        outputFile.write('Number 5: \n')
-        for carrier in sorted(airline_dict):
-            added_time = np.mean(airline_dict[carrier]['Total_Times']) - TFT
-            outputFile.write('Airline ' + carrier + ' adds ' + str(added_time) + ' minutes to the route. \n')
+            P_destination_given_Y = (n_hat_destination_Y + m * p_destination) / (n_Y + m)
+            P_destination_given_N = (n_hat_destination_N + m * p_destination) / (n_N + m)
 
-        outputFile.close()
+            P_carrier_given_Y = (n_hat_carrier_Y + m * p_carrier) / (n_Y + m)
+            P_carrier_given_N = (n_hat_carrier_N + m * p_carrier) / (n_N + m)
+
+            # Calculate final estimate
+            P_Y_X = P_Y * P_origin_given_Y * P_destination_given_Y * P_carrier_given_Y
+            P_N_X = P_N * P_origin_given_N * P_destination_given_N * P_carrier_given_N
+
+            if P_Y_X > P_N_X:
+                will_be_delayed = 'Yes'
+            else:
+                will_be_delayed = 'No'
+            case_dict[f'case {cases.index(flight)+1}'] = {'Origin': flight[0], 'Destination': flight[1], 'Carrier': flight[2],
+                                                          'Probability of no delay': P_Y_X, 'Probability of delay': P_N_X,
+                                                          'Delay?': will_be_delayed}
+            print(flight, P_Y_X, P_N_X, will_be_delayed)
+            out_text += f'Flight #{cases.index(flight) + 1}:\n'
+            out_text += f'Origin: {flight[0]}\n'
+            out_text += f'Destination: {flight[1]}\n'
+            out_text += f'Prob. of Delay: {round(P_Y_X, 5)}\n'
+            out_text += f'Prob. of No Delay: {round(P_N_X, 5)}\n'
+            out_text += f'Will it be Delayed? {will_be_delayed}\n\n'
+        print(out_text)
+
+        with open('Output_B3.txt', 'w+') as f:
+            f.write(out_text)
 
 
 if __name__ == '__main__':
-    lab1A = LabOnePartA()
-    #lab1B = LabOnePartB()
-    #emily = emily()
-    #jake = jake()
+    #lab1A = LabOnePartA()
+    lab1B = LabOnePartB()
     plt.show()

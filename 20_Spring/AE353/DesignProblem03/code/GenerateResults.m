@@ -1,5 +1,8 @@
-clear all, close all, clc
-%% Initialize System
+%% AE353 DP3 SP20
+clc;
+clear all;
+close all;
+%% Run simulation
 choice = input('Visual system? (1/0): ');
 flights = input('Flights Count: ');
 xFlights = zeros(1, flights);
@@ -18,7 +21,7 @@ for i=1:flights
     t = processdata.t;
     xValue = [xValue x];
     tValue = [tValue t];
-    clc
+    %clc
     Flight = Flight+1;
     X = [num2str(Flight), ' out of ', num2str(flights), ' flights'];
     disp(X)
@@ -26,6 +29,7 @@ for i=1:flights
 end
 disp('Simulator Complete!')
 %%  Histogram and Statistics
+%clc;
 Mean = mean(xFlights)
 Median = median(xFlights)
 figure(2)
@@ -42,7 +46,7 @@ xlabel('x - Distance [m]');
 ylabel('Frequency');
 legend([h1, h2], {sprintf('Mean = %0.15g m', round(Mean,2)), sprintf('Median = %0.15g m', round(Median, 2))}, 'location', 'northwest')
 title(['Histogram of ', num2str(flights), ' simulated flights'])
-saveas(gcf, sprintf('histogram_%0.15g_flights.png', flights));
+saveas(gcf, sprintf('plots\\histogram_%0.15g_flights.png', flights));
 
 
 %% Verification Test
