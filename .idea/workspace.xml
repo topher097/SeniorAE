@@ -53,11 +53,18 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/20_Spring/IE300/Lab01/IE300_Lab01.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PDF_merge/Input" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
+      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
+      <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
+      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
+      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
       <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
@@ -65,15 +72,8 @@
       <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
       <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
-      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
-      <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
-      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
-      <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.IE300_Lab01">
+  <component name="RunManager" selected="Python.pdf_merge">
     <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -730,39 +730,44 @@
     </state>
     <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337050743" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
-    <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1585874191876">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1586398115451">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874191876" />
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583977284011" />
+    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398115451" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="942" height="245" key="GridCell.Tab.0.bottom" timestamp="1585886595817">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="183" key="GridCell.Tab.0.bottom" timestamp="1586398610321">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="942" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="183" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398610321" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.center" timestamp="1585886595817">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="183" key="GridCell.Tab.0.center" timestamp="1586398610321">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="942" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="183" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398610321" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.left" timestamp="1585886595817">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="183" key="GridCell.Tab.0.left" timestamp="1586398610321">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="942" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="183" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398610321" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.right" timestamp="1585886595817">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="183" key="GridCell.Tab.0.right" timestamp="1586398610321">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="942" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="183" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398610321" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -785,19 +790,21 @@
     </state>
     <state x="1224" y="239" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581961356138" />
     <state x="1632" y="239" key="MultipleFileMergeDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159315764" />
-    <state x="922" y="165" key="SettingsEditor" timestamp="1580916616147">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1229" y="165" key="SettingsEditor" timestamp="1586398119747">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
+    <state x="1229" y="165" key="SettingsEditor/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398119747" />
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1583337055441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337055441" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583334039309">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586398125047">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583334039309" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398125047" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581964244004">
       <screen x="0" y="0" width="1920" height="1040" />
