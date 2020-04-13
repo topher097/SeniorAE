@@ -6,10 +6,10 @@ close all;
 %% Problem 2
 % For T300/5208 graphite/epoxy composite, construct a plot of Q_11 versus
 % laminate orientation angle theta
-Ex = 132.38;    % GPa
-Ey = 10.76;     % GPa
-Gxy = 5.65;     % GPa
-vxy = 0.24;
+Ex = 181;    % GPa
+Ey = 10.3;     % GPa
+Gxy = 7.17;     % GPa
+vxy = 0.28;
 c = (1-vxy^2*(Ey/Ex))^-1;
 Qm11 = c*Ex;
 Qm22 = c*Ey;
@@ -36,9 +36,9 @@ saveas(1, 'Problem2.png')
 
 %a: For what theta will the composite longitudinal stiffness be at half the
 %theta = 0 degrees value? 1/3 the value?
-Q_11_0 = Q_11(1,1);
-Q_11_0_half = Q_11_0/2;
-Q_11_0_third = Q_11_0/3;
+Q_11_0 = Q_11(1,1)
+Q_11_0_half = Q_11_0/2
+Q_11_0_third = Q_11_0/3
 half = false; third = false;
 theta_half = 0; theta_third = 0;
 for i = 1:length(Q_11)
@@ -59,7 +59,7 @@ end
 
 %b: For what value of theta with the composite longitudinal stiffness drop
 %by 10%?
-Q_11_0_90 = Q_11_0 * .9;
+Q_11_0_90 = Q_11_0 * .9
 ninety = false; theta_ninety = 0;
 for i = 1:length(Q_11)
     Q = Q_11(1,i);
