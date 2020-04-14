@@ -352,15 +352,15 @@
       <item itemvalue="Python.AE353_HW2.2" />
       <item itemvalue="Python.AE353_HW2.3" />
       <item itemvalue="Python.AE410_HW1" />
+      <item itemvalue="Python.AE461_Lab04" />
       <item itemvalue="Python.AE461_Lab1Prelab" />
       <item itemvalue="Python.AE535_HW3.1" />
       <item itemvalue="Python.CaseStudy1_Part1_Jake" />
       <item itemvalue="Python.IE300_Lab01" />
-      <item itemvalue="Python.pdf_merge" />
-      <item itemvalue="Python.plot-CG" />
-      <item itemvalue="Python.AE461_Lab04" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
+      <item itemvalue="Python.pdf_merge" />
+      <item itemvalue="Python.plot-CG" />
     </list>
     <recent_temporary>
       <list>
@@ -774,15 +774,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
+    <state x="1096" y="236" key="VCS.ChangeListViewerDialog" timestamp="1586833308001">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1096" y="236" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586833308001" />
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1585886737666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585886737666" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583334039309">
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586833294913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583334039309" />
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586833294913" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581964244004">
       <screen x="0" y="0" width="1920" height="1040" />
