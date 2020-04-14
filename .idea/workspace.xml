@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/DesignProblems/Archive/DesignProblem03/code/histogram_1000_flights.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/DesignProblem03_EOMs.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/GenerateResults.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/data.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/linearization.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/plots/histogram_1000_flights.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/plots/histogram_1_flights.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Prelab/AE461_Lab8_prelab.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Prelab/Q1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Prelab/Q1.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/Lab01/FlightDelay.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/Lab01/Output_B1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/Lab01/Output_B3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/DesignProblems/Archive/DesignProblem03/code/FlightTest.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/DesignProblems/Archive/DesignProblem03/code/FlightTest.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/DesignProblems/Archive/DesignProblem03/code/data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/DesignProblems/Archive/DesignProblem03/code/data.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/Controller.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/Controller.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/Lab01/CaseStudy1_Part1_Jake.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/Lab01/Exercise1Calcs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/Lab01/IE300_Lab01.py" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/IE300/Lab01/IE300_Lab01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/Lab01/output.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -659,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583337053112</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="IE300 lab1">
+      <created>1585886735527</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1585886735527</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -691,7 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="AE460 lab5" />
     <MESSAGE value="AE483 report 3" />
     <MESSAGE value="AE416 hw3 - update" />
     <MESSAGE value="AE416 hw3 - finish" />
@@ -716,7 +700,8 @@
     <MESSAGE value="IE300 Lab1 Update" />
     <MESSAGE value="AE353 day15" />
     <MESSAGE value="IE300 lab1A" />
-    <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1A" />
+    <MESSAGE value="IE300 lab1" />
+    <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585874193709">
@@ -725,10 +710,10 @@
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874193709" />
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583977285529" />
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096954651" />
-    <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1583337050743">
+    <state x="1118" y="104" key="CommitChangelistDialog2" timestamp="1585886733533">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337050743" />
+    <state x="1118" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585886733533" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
     <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1585874191876">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -736,33 +721,33 @@
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874191876" />
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583977284011" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="942" height="245" key="GridCell.Tab.0.bottom" timestamp="1585886595817">
+    <state width="942" height="245" key="GridCell.Tab.0.bottom" timestamp="1585886763775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="942" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.center" timestamp="1585886595817">
+    <state width="942" height="245" key="GridCell.Tab.0.center" timestamp="1585886763775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="942" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.left" timestamp="1585886595817">
+    <state width="942" height="245" key="GridCell.Tab.0.left" timestamp="1585886763775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="942" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.right" timestamp="1585886595817">
+    <state width="942" height="245" key="GridCell.Tab.0.right" timestamp="1585886763775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="942" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -789,10 +774,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1583337055441">
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1585886737666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337055441" />
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585886737666" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583334039309">
       <screen x="0" y="0" width="1920" height="1040" />
