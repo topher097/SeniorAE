@@ -1,5 +1,5 @@
 clear, clc
-s = -6 - 2*i;
+s = 19 - 10*i;
 
 M = abs(s)
 Ph = angle(s)

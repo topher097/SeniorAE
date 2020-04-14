@@ -1,10 +1,10 @@
 clear, clc
 %% Insert provided data here:
-A = [-2 5; 0 1];
-B = [1; 5];
-C = [5 -1];
-K = [3 3];
-L = [2; 5];
+A = [-4 -1 3; -3 -2 -3; -3 -2 -5];
+B = [4; 0; -2];
+C = [1 -3 -4];
+K = [4 0 0];
+L = [1; -3; 0];
 
 %% Calculations -- do not modify:
 syms s

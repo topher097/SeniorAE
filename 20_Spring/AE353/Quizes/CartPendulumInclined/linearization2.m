@@ -1,22 +1,20 @@
 clc;
 clear all;
 
-load('DesignProblem03_EOMs.mat');
-f = symEOM.f;
+load('eom.mat');
 
-syms x y xdot ydot phi phidot theta thetadot
-input = [phidot];
-state = [theta; phi; xdot; ydot; thetadot];
 
-launch = 15; %degrees
-g = [thetadot; phidot; f];
-g_numeric = matlabFunction(g,'vars',{[theta; phi; xdot; ydot; thetadot; phidot]});
-xhat_guess = [deg2rad(launch); 0; cos(deg2rad(launch)); sin(deg2rad(launch)); 0; 0];
-equi = [0.05; 0.05; 5.95; -.05; 0; 0]; 
+syms q1 q2 q1d q2d q1dd q2dd f1
+g = [0; 0] == -inv(M)*C*[q1d; q2d] - inv(M)*N + [f1; 0]
+f = solve(g(1), f1)
+f_sol = double(subs(f, [q2, q1d, q2d], [0, 0, 0]))
+
+equi = [0.5; 0; 0; 0; 0; 0];
+
+g_numeric = matlabFunction(g,'vars',{[q1; q2; q1d; q2d; f1]});
+
 opts = optimoptions(@fsolve,'Algorithm','levenberg-marquardt','display','off');
-[g_sol, g_numeric_at_f_sol, exitflag] = fsolve(g_numeric,equi,opts);
-thetaE = g_sol(1); phiE = g_sol(2); xdotE = g_sol(3); ydotE = g_sol(4); thetadotE = g_sol(5); phidotE = g_sol(6);
-equiPoints = [thetaE; phiE; xdotE; ydotE; 0; 0];
+[g_sol, g_numeric_at_f_sol, exitflag] = fsolve(g_numeric,equi,opts)
 
 A = double(subs(jacobian(g, state), [theta; phi; xdot; ydot; thetadot; phidot], g_sol));
 B = double(subs(jacobian(g, input), [theta; phi; xdot; ydot; thetadot; phidot], g_sol));
