@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="" />
+    <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Lab/AE461Lab8_magda.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Lab/GroupP_magda.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Lab/Lab8ControlSystemDesignerSession_magda.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab8/Lab/rltool results and given data.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW6/HW6_DATA.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW6/IE300_HW6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/Controller.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/Controller.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/GenerateResults.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/GenerateResults.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/data.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/plots/histogram_1000_flights.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/plots/histogram_1000_flights.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/plots/histogram_1_flights.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem03/code/plots/histogram_1_flights.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE461/Lab6/AE461_Prelab6.asv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE461/Lab6/AE461_Prelab6.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab6/AE461_Prelab6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE461/Lab6/AE461_Prelab6_Code.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE461/Lab6/Problem2.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab6/Problem2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE461/Lab6/Problem3.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab6/Problem3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF_merge/Input/AE461 Prelab 6 Plots - Google Docs.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF_merge/Input/AE461_Prelab6_Code.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF_merge/Input/Scan Apr 8, 2020.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF_merge/Output/AE461 Prelab 6.pdf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,27 +53,27 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/20_Spring/IE300/Lab01/IE300_Lab01.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/20_Spring/IE300/HW6/IE300_HW6.py" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
-      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
-      <recent name="C:\Python\SeniorAE\Fall2019" />
-      <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
-      <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
       <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
+      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
       <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
       <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
       <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
+      <recent name="C:\Python\SeniorAE\20_Spring\IE300\HW6" />
+      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
+      <recent name="C:\Python\SeniorAE\Fall2019" />
+      <recent name="C:\Python\SeniorAE\PDF Merge\Input Files" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.IE300_Lab01">
+  <component name="RunManager" selected="Python.pdf_merge">
     <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -241,6 +263,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="IE300_HW6" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/20_Spring/IE300/HW6" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/20_Spring/IE300/HW6/IE300_HW6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="IE300_Lab01" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -352,15 +395,16 @@
       <item itemvalue="Python.AE353_HW2.2" />
       <item itemvalue="Python.AE353_HW2.3" />
       <item itemvalue="Python.AE410_HW1" />
+      <item itemvalue="Python.AE461_Lab04" />
       <item itemvalue="Python.AE461_Lab1Prelab" />
       <item itemvalue="Python.AE535_HW3.1" />
       <item itemvalue="Python.CaseStudy1_Part1_Jake" />
+      <item itemvalue="Python.IE300_HW6" />
       <item itemvalue="Python.IE300_Lab01" />
-      <item itemvalue="Python.pdf_merge" />
-      <item itemvalue="Python.plot-CG" />
-      <item itemvalue="Python.AE461_Lab04" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
+      <item itemvalue="Python.pdf_merge" />
+      <item itemvalue="Python.plot-CG" />
     </list>
     <recent_temporary>
       <list>
@@ -637,14 +681,7 @@
       <option name="project" value="LOCAL" />
       <updated>1583337053112</updated>
     </task>
-    <task id="LOCAL-00036" summary="IE300 lab1">
-      <created>1585886735527</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1585886735527</updated>
-    </task>
-    <option name="localTasksCounter" value="37" />
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -676,6 +713,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="AE460 lab5" />
     <MESSAGE value="AE483 report 3" />
     <MESSAGE value="AE416 hw3 - update" />
     <MESSAGE value="AE416 hw3 - finish" />
@@ -700,54 +738,59 @@
     <MESSAGE value="IE300 Lab1 Update" />
     <MESSAGE value="AE353 day15" />
     <MESSAGE value="IE300 lab1A" />
-    <MESSAGE value="IE300 lab1" />
-    <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1" />
+    <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1A" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585874193709">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1104" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586451326422">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874193709" />
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583977285529" />
+    <state x="1104" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586451326422" />
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096954651" />
-    <state x="1118" y="104" key="CommitChangelistDialog2" timestamp="1586833317705">
+    <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1583337050743">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1118" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586833317705" />
+    <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337050743" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
-    <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1585874191876">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1586451325338">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874191876" />
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583977284011" />
+    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586451325338" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="942" height="245" key="GridCell.Tab.0.bottom" timestamp="1585886763775">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="181" key="GridCell.Tab.0.bottom" timestamp="1586453154884">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
+    <state width="942" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="181" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.center" timestamp="1585886763775">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="181" key="GridCell.Tab.0.center" timestamp="1586453154884">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
+    <state width="942" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="181" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.left" timestamp="1585886763775">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="181" key="GridCell.Tab.0.left" timestamp="1586453154884">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
+    <state width="942" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="181" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="942" height="245" key="GridCell.Tab.0.right" timestamp="1585886763775">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="181" key="GridCell.Tab.0.right" timestamp="1586453154884">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
-    <state width="942" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585886763775" />
+    <state width="942" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585886595817" />
+    <state width="1256" height="181" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -770,23 +813,21 @@
     </state>
     <state x="1224" y="239" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581961356138" />
     <state x="1632" y="239" key="MultipleFileMergeDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159315764" />
-    <state x="922" y="165" key="SettingsEditor" timestamp="1580916616147">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1229" y="165" key="SettingsEditor" timestamp="1586398119747">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
-    <state x="1096" y="236" key="VCS.ChangeListViewerDialog" timestamp="1586833331476">
+    <state x="1229" y="165" key="SettingsEditor/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398119747" />
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1583337055441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1096" y="236" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586833331476" />
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1585886737666">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585886737666" />
+    <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337055441" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586833321572">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586398125047">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586833321572" />
+    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583334039309" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398125047" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581964244004">
       <screen x="0" y="0" width="1920" height="1040" />
