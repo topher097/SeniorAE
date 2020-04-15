@@ -30,10 +30,12 @@ end
 
 function [data] = initControlSystem(parameters, data)
 
-%
-% Here is a good place to initialize things...
-%
-
+data.A = [0 0 1 0;0 0 0 1;0 12.2587386997666 -0.256095881239535 -0.175384783925179;0 11.4596167485103 -0.131538587941162 -0.163951810706152];
+data.B = [0;0;0.853652937465116;0.438461959803875];
+data.C = [0.975897449330606 -1.9 0 0];
+data.K = [-1.73205080756887 81.3065120475402 -5.0807703295951 28.1885430839567];
+data.L = [-13.5741831806995;-11.2161791981673;-38.1070176313917;-36.2324763083857];
+data.xhat = [0.95;1.7907963267949;0;0];
 end
 
 %
@@ -42,5 +44,8 @@ end
 %
 
 function [actuators,data] = runControlSystem(sensors, references, parameters, data)
-actuators.f1 = 0;
+y = [sensors.p_hori - 0.487948731380586];
+u = -data.K*data.xhat;
+data.xhat = data.xhat + (data.A*data.xhat + data.B*u - data.L*(data.C*data.xhat - y))*parameters.tStep;
+actuators.f1 = u;
 end

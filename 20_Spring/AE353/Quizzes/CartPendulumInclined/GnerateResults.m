@@ -1,6 +1,6 @@
 clc;
 clear all;
 close all;
-tStop = 1;
+tStop = 3;
 
 Simulator('Controller', 'tStop', tStop, 'eomfile', 'eom.mat')
