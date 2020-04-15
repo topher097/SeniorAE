@@ -1,21 +1,22 @@
-function startercode150509
+function startercode145501
 [T,X,U,XFORDISPLAY] = RunSimulation;
 PlotResults(T,X,U);
-p = mat2str(XFORDISPLAY(1),8)
-pdot = mat2str(XFORDISPLAY(2),8)
+p = mat2str(XFORDISPLAY(1),4)
+pdot = mat2str(XFORDISPLAY(2),4)
 end
 
 function [actuators,data] = initControlSystem(sensors,references,parameters,data)
 %%%%%%%%%%%%%%%%%%
 % MODIFY
-data.A = [0, 1; -7/10, -2/5];
-data.B = [0; 1/10];
-data.C = [0, 1];
+% 8*pDD+4*pD+40*cos(p) == f
+data.A = [0, 1; -1.9471, -.5];
+data.B = [0; 1/8];
+data.C = [1, 0];
 data.xhat = [0; 0];
 data.u = 0;
 
-pcon = [-2, -1];
-pobs = [-8, -4];
+pcon = [-1, -.5];
+pobs = [-5, -2.5];
 
 data.K = acker(data.A, data.B, pcon);
 data.L = acker(data.A', data.C', pobs)';
@@ -29,12 +30,13 @@ end
 function [actuators,data] = runControlSystem(sensors,references,parameters,data)
 %%%%%%%%%%%%%%%%%%
 % MODIFY
+pE = -.4;
+fE = 40*cos(pE);
 u = -data.K*data.xhat;
-pe = -4;
-eq = -4*pe - 4;
-y = sensors.pdot - pe;
+%y = sensors.pdot;
+y = sensors.p-pE;
 data.xhat=data.xhat+(data.A*data.xhat+data.B*u-data.L*(data.C*data.xhat-y))*parameters.tStep;
-actuators.f = u + eq;
+actuators.f = u + fE;
 %
 %%%%%%%%%%%%%%%%%%
 end
@@ -77,8 +79,8 @@ end
 
 function [t,x,tStep,nSteps,nStepsForDisplay] = InitSimulation
 t = 0;
-x = [-6.60; 0.60];
-tStep = 0.002;
+x = [0.50; -0.60];
+tStep = 0.010;
 nStepsForDisplay = 25;
 nSteps = 250;
 end
@@ -89,11 +91,11 @@ end
 
 function sensors = GetSensors(t,x)
 sensors.t = t;
-sensors.pdot = x(2);
+sensors.p = x(1);
 end
 
 function xdot = GetXDot(t,x,u)
-xdot = [x(2); (1/10)*(-(4*x(2)+7*x(1)+8)+u(1))];
+xdot = [x(2); (1/8)*(-(4*x(2)+40*cos(x(1)))+u(1))];
 end
 
 function PlotResults(T,X,U)
