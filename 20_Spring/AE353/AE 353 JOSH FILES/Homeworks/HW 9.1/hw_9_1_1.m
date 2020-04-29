@@ -1,5 +1,6 @@
 clear, clc
 %% Insert pertinent data:
+% form y(t-Tau)
 tau = input('Tau: ');
 syms s
 %% Calculations

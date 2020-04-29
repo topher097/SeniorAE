@@ -1,0 +1,28 @@
+\begin{thebibliography}{3}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{\discretionary{}{}{}https://doi.org/#1}\else
+  \providecommand{\doi}[1]{\discretionary{}{}{}\urlstyle{rm}\url{https://doi.org/#1}}\fi
+
+\bibitem[{Mak(2015)}]{Mak2015}
+Mak, Y.~X., \enquote{Realization of mini segway robot using NI MyRIO,} Essay
+  (bachelor), University of Twente, 2015.
+\newblock \urlprefix\url{http://purl.utwente.nl/essays/67004}.
+
+\bibitem[{Tobias and Matthias(2014)}]{Tobias2014}
+Tobias, Z., and Matthias, F., \enquote{Tracking Control of A Balancing
+  Robot---A Model-Based Approach,} \emph{Archive of Mechanical Engineering},
+  Vol.~61, No.~2, 2014, pp. 331--346.
+\newblock \urlprefix\url{http://dx.doi.org/10.2478/meceng-2014-0019}.
+
+\bibitem[{Astr{\"o}m and Murray(2010)}]{Astrom2010}
+Astr{\"o}m, K.~J., and Murray, R.~M., \emph{Feedback Systems: An Introduction
+  for Scientists and Engineers}, 1\textsuperscript{st} ed., Princeton
+  University Press, 2010.
+\newblock
+  \urlprefix\url{http://www.cds.caltech.edu/~murray/amwiki/index.php/First_Edition}.
+
+\end{thebibliography}

@@ -2,13 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7 Box Plot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7 Histogram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7_DATA.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/IE300_HW7.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/IE300_HW7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/PeerReviewRubric04.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/Controller.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/DP04 eom.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/DesignProblem04.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/DesignProblem04Race.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/GenerateResults.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/MakeRoad.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/ShowResults.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/linearization.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/racers/DP04_eom.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/racers/netid_controller.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/code/road.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/main.bbl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/main.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/main.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/new-aiaa.bst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/new-aiaa.cls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/pictures/distances.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/pictures/robonaut.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/pictures/schematic-side.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/pictures/schematic-top.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/pictures/submission_times_DP03.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/DesignProblem04/references.bib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/Quiz3_RetakeRetake.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpinningSpacecraft/Controller.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpinningSpacecraft/GnerateResults.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpinningSpacecraft/Simulator.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpinningSpacecraft/linearization2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpringWheel/Controller.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpringWheel/Simulator.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/SpringWheel/linearization2.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE353/Quizzes/linear.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE443/Wing Load.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE443/wing_load.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab3/AE461_Prelab3.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PDF_merge/Input/461 prelab 3.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PDF_merge/Input/Scan Apr 22, 2020.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/IE300_HW2.py" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/IE300/HW2/IE300_HW2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.1/hw_8_1_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.1/hw_8_1_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.1/hw_8_1_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.1/hw_8_1_6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.2/AE353_HW8_2_6.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.2/AE353_HW8_2_6.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_2.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_3.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_3.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_4.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_4.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 8.3/hw_8_3_5.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 9.1/hw_9_1_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 9.1/hw_9_1_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 9.1/hw_9_1_5.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 9.1/hw_9_1_5.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 9.2/hw_9_2_1.m" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE353/AE 353 JOSH FILES/Homeworks/HW 9.2/hw_9_2_1.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/HW6/IE300_HW6.py" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/IE300/HW6/IE300_HW6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7 Box Plot.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7 Box Plot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7 Histogram.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/HW7 Histogram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20_Spring/IE300/HW7/IE300_HW7.py" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/IE300/HW7/IE300_HW7.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,18 +85,11 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/20_Spring/IE300/HW7/IE300_HW7.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/20_Spring/AE443/wing_load.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Python\SeniorAE\20_Spring\IE300\HW7" />
-      <recent name="D:\Python\SeniorAE\20_Spring\IE300\HW2" />
-      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
-      <recent name="C:\Python\SeniorAE\20_Spring\IE300\HW6" />
-      <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
       <recent name="C:\Python\SeniorAE\1_Spring2020\AE353" />
@@ -58,260 +97,15 @@
       <recent name="C:\Python\SeniorAE\AE460\Lab7\Lab7_Data" />
       <recent name="C:\Python\SeniorAE\AE442\HW_5\Data" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Python\SeniorAE\20_Spring\AE443" />
+      <recent name="C:\Python\SeniorAE\PDF_merge\Input" />
+      <recent name="D:\Python\SeniorAE\20_Spring\IE300\HW7" />
+      <recent name="D:\Python\SeniorAE\20_Spring\IE300\HW2" />
+      <recent name="C:\Python\SeniorAE\20_Spring\IE300\HW6" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.IE300_HW7">
-    <configuration name="AE353_HW1.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE353" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE353/AE353_HW1.2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE353_HW2.1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE353" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE353/AE353_HW2.1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE353_HW2.2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE353" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE353/AE353_HW2.2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE353_HW2.3" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE353" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE353/AE353_HW2.3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE410_HW1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE410" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE410/AE410_HW1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE461_Lab04" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab4" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab4/AE461_Lab04.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE461_Lab1Prelab" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab1" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE461/Lab1/AE461_Lab1Prelab.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AE535_HW3.1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/AE353" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/AE353/AE535_HW3.1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="CaseStudy1_Part1_Jake" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1_Spring2020/IE300/Lab01" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1_Spring2020/IE300/Lab01/CaseStudy1_Part1_Jake.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="IE300_HW6" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/20_Spring/IE300/HW6" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/20_Spring/IE300/HW6/IE300_HW6.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="IE300_HW7" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/20_Spring/IE300/HW7" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/20_Spring/IE300/HW7/IE300_HW7.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="IE300_Lab01" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="SeniorAE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/20_Spring/IE300/Lab01" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/20_Spring/IE300/Lab01/IE300_Lab01.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.wing_load">
     <configuration name="clear_metadata" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SeniorAE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -396,19 +190,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="wing_load" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="SeniorAE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/20_Spring/AE443" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/20_Spring/AE443/wing_load.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.AE353_HW1.2" />
-      <item itemvalue="Python.AE353_HW2.1" />
-      <item itemvalue="Python.AE353_HW2.2" />
-      <item itemvalue="Python.AE353_HW2.3" />
-      <item itemvalue="Python.AE410_HW1" />
-      <item itemvalue="Python.AE461_Lab04" />
-      <item itemvalue="Python.AE461_Lab1Prelab" />
-      <item itemvalue="Python.AE535_HW3.1" />
-      <item itemvalue="Python.CaseStudy1_Part1_Jake" />
-      <item itemvalue="Python.IE300_HW6" />
-      <item itemvalue="Python.IE300_Lab01" />
-      <item itemvalue="Python.IE300_HW7" />
+      <item itemvalue="Python.wing_load" />
       <item itemvalue="Python.pdf_merge" />
       <item itemvalue="Python.plot-CG" />
       <item itemvalue="Python.clear_metadata2" />
@@ -749,56 +553,64 @@
     <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1A" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586976241951">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1104" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588095511886">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874193709" />
     <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586976241951" />
-    <state x="1104" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586451326422" />
+    <state x="1104" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588095511886" />
     <state x="1374" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096954651" />
     <state x="1181" y="104" key="CommitChangelistDialog2" timestamp="1583337050743">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1181" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337050743" />
     <state x="1574" y="104" key="CommitChangelistDialog2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099814696" />
-    <state x="1275" y="278" key="FileChooserDialogImpl" timestamp="1586976239396">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1588095510849">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585874191876" />
     <state x="1275" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586976239396" />
-    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586451325338" />
+    <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588095510849" />
     <state x="1700" y="278" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582096952994" />
-    <state width="936" height="247" key="GridCell.Tab.0.bottom" timestamp="1586981582232">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.bottom" timestamp="1588124041920">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="936" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586981582232" />
-    <state width="1256" height="181" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
+    <state width="1256" height="179" key="GridCell.Tab.0.bottom/2560.0.2560.1040/-1920.0.1920.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1587609255106" />
+    <state width="1256" height="179" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588124041920" />
+    <state width="1256" height="181" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@2560.0.2560.1040" timestamp="1587057564536" />
     <state width="1256" height="182" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="936" height="247" key="GridCell.Tab.0.center" timestamp="1586981582232">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.center" timestamp="1588124041920">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="936" height="247" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586981582232" />
-    <state width="1256" height="181" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
+    <state width="1256" height="179" key="GridCell.Tab.0.center/2560.0.2560.1040/-1920.0.1920.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1587609255106" />
+    <state width="1256" height="179" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588124041920" />
+    <state width="1256" height="181" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@2560.0.2560.1040" timestamp="1587057564536" />
     <state width="1256" height="182" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="936" height="247" key="GridCell.Tab.0.left" timestamp="1586981582232">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.left" timestamp="1588124041920">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="936" height="247" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586981582232" />
-    <state width="1256" height="181" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
+    <state width="1256" height="179" key="GridCell.Tab.0.left/2560.0.2560.1040/-1920.0.1920.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1587609255106" />
+    <state width="1256" height="179" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588124041920" />
+    <state width="1256" height="181" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@2560.0.2560.1040" timestamp="1587057564536" />
     <state width="1256" height="182" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
-    <state width="936" height="247" key="GridCell.Tab.0.right" timestamp="1586981582232">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1256" height="179" key="GridCell.Tab.0.right" timestamp="1588124041920">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="956" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585264848100" />
     <state width="1899" height="246" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585880516194" />
     <state width="936" height="247" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586981582232" />
-    <state width="1256" height="181" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586453154884" />
+    <state width="1256" height="179" key="GridCell.Tab.0.right/2560.0.2560.1040/-1920.0.1920.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1587609255106" />
+    <state width="1256" height="179" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588124041920" />
+    <state width="1256" height="181" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@2560.0.2560.1040" timestamp="1587057564536" />
     <state width="1256" height="182" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099823487" />
     <state width="1256" height="344" key="GridCell.Tab.1.bottom" timestamp="1582099823484">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -831,11 +643,11 @@
     </state>
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337055441" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
-    <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586975862082">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587056588279">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586975862082" />
-    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398125047" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1587056588279" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581964244004">
       <screen x="0" y="0" width="1920" height="1040" />

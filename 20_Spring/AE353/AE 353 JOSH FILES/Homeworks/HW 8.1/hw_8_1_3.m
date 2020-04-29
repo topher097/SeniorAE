@@ -1,8 +1,8 @@
 clear, clc
 %% Insert provided data:
-A = [4 -1 2; -2 -1 4; 4 -1 3];
-B = [-4; -1; -4];
-C = [-2 -5 -2];
+A = [-3 0; -4 3];
+B = [1; 3];
+C = [0 4];
 D = [0];
 %% Calculations -- do not modify
 syms s

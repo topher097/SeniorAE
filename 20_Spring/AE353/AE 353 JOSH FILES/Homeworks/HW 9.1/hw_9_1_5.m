@@ -1,13 +1,13 @@
 clear, clc
 %% Insert provided data:
-A = [0 1; 3 -4];
-B = [0; 2];
+A = [0 1; -1 2];
+B = [0; 3];
 C = [1 0];
-K = [6 2];
-L = [0; 7];
+K = [2 2];
+L = [9; 29];
 syms s
 %% Transfer Functions
-kRef = kRef(A,B,C,K);
+kRef = -1/(C*inv(A-B*K)*B);
 F = simplify((K*inv(s*eye(size(A)) - (A-B*K - L*C)) * B*kRef - kRef) / (-K*inv(s*eye(size(A)) - (A-B*K - L*C)) * L));
 G = simplify(K*inv(s*eye(size(A)) - (A-B*K-L*C))*L);
 H = simplify(C*inv(s*eye(size(A)) - A)*B);
@@ -27,7 +27,7 @@ while stability == true
     
     for i=1 : length(stab)
         if stab(i) > 0
-            tau
+            tau
             stability = false;
             break
         else

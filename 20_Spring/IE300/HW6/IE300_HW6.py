@@ -6,6 +6,7 @@ data = []
 with open('HW6_DATA.csv', 'r') as f:
     for line in f:
         data.append(float(line))
+data = [4.1, 4.3, 4.8, 6.5, 6.7, 8.0, 8.4, 10.5]
 
 # Part A, find the mean
 data_mean = mean(data)

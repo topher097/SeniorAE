@@ -20,7 +20,7 @@ with open('HW7_DATA.csv', 'r') as f:
         battery.append(bat_count)
         data.append(float(line))
         bat_count += 1
-
+data = [4.1, 4.3, 4.8, 6.5, 6.7, 8.0, 8.4, 10.5]
 # Calculate the mean, variance, quartiles, IQR, and range of data (from HW6)
 data_mean = mean(data)
 data_variance = variance(data)
@@ -53,10 +53,13 @@ plt.draw()
 g = plt.figure()
 ax = g.add_subplot(111)
 ax.hist(data, bins=12, range=(78, 82), edgecolor='k')
+hist, bin_edges = np.histogram(data, bins=12)
 ax.set_title('Histogram of Hours Before Battery Depletion', fontsize=16)
 ax.set_xlabel('Hours', fontsize=14)
 ax.set_ylabel('Frequency', fontsize=14)
 g.savefig('HW7 Histogram.png')
 plt.draw()
+print(hist)
+print(bin_edges)
 
 plt.show()
