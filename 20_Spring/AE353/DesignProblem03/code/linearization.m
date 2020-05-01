@@ -18,10 +18,10 @@ opts = optimoptions(@fsolve,'Algorithm','levenberg-marquardt','display','off');
 thetaE = g_sol(1); phiE = g_sol(2); xdotE = g_sol(3); ydotE = g_sol(4); thetadotE = g_sol(5); phidotE = g_sol(6);
 equiPoints = [thetaE; phiE; xdotE; ydotE; 0];
 
-A = double(subs(jacobian(g, state), [theta; phi; xdot; ydot; thetadot; phidot], g_sol));
-B = double(subs(jacobian(g, input), [theta; phi; xdot; ydot; thetadot; phidot], g_sol));
+A = double(subs(jacobian(g, state), [theta; phi; xdot; ydot; thetadot; phidot], g_sol))
+B = double(subs(jacobian(g, input), [theta; phi; xdot; ydot; thetadot; phidot], g_sol))
 o = [phi; xdot*cos(theta)+ydot*sin(theta)];
-C = double(subs(jacobian(o, state),[theta; phi; xdot; ydot; thetadot; phidot], g_sol));
+C = double(subs(jacobian(o, state),[theta; phi; xdot; ydot; thetadot; phidot], g_sol))
 
 Qc = diag([200, 1, 1, 500, 1]);
 Rc = diag([1]);
