@@ -1,0 +1,27 @@
+Homework 8 Output
+
+Problem 1
+Sample 1: 24.9807 to 24.9923 feet
+Sample 2: 24.9792 to 24.9978 feet
+Sample 3: 24.9805 to 24.9961 feet
+Sample 4: 24.9741 to 24.987 feet
+Sample 5: 24.9722 to 24.9886 feet
+
+Problem 2
+Sample 1: 0.0101 to 0.2508
+Sample 2: 0.1399 to 0.4688
+Sample 3: 0.1039 to 0.4178
+Sample 3: 0.1039 to 0.4178
+Sample 2: 0.1399 to 0.4688
+
+Problem 3
+Sample 1: 0.0101 to 0.2508 ft^2
+Sample 2: 0.1399 to 0.4688 ft^2
+Sample 3: 0.1039 to 0.4178 ft^2
+Sample 3: 0.1039 to 0.4178 ft^2
+Sample 2: 0.1399 to 0.4688 ft^2
+
+Problem 4
+B) 5/5
+C) 4/5
+D) 5/5
