@@ -626,16 +626,20 @@
     </state>
     <state x="922" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580916616147" />
     <state x="1229" y="165" key="SettingsEditor/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1586398119747" />
+    <state x="1210" y="240" key="VCS.ChangeListViewerDialog" timestamp="1588349354575">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1210" y="240" key="VCS.ChangeListViewerDialog/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588349354575" />
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2" timestamp="1583337055441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1104" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583337055441" />
     <state x="1512" y="252" key="Vcs.Push.Dialog.v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582099816604" />
-    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587056588279">
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588349323383">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1297" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586975862082" />
-    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1587056588279" />
+    <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588349323382" />
     <state x="1729" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1582159292251" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581964244004">
       <screen x="0" y="0" width="1920" height="1040" />
