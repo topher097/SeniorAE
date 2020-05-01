@@ -4,7 +4,7 @@ clear all;
 close all;
 
 % Definitions
-tStop = 2;                  % Seconds
+tStop = 5;                  % Seconds
 initial = [0;0;0;0;0;0;0];  % [x z theta phi phidot v w]
 datafile = 'data.mat';  
 disp = true;                % Display boolean

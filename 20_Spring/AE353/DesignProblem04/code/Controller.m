@@ -54,6 +54,16 @@ function [data] = initControlSystem(parameters,data)
 %   data.v = 0;
 %
 
+z = load('control.mat');
+data.A = z.A; 
+data.B = z.B;
+data.C = z.C;
+data.K = z.K;
+data.L = z.L;
+data.xhat = z.xhat_guess;
+data.x_e = z.equiPoints;
+data.y_e = z.y_e;
+
 end
 
 %
@@ -62,7 +72,10 @@ end
 %
 
 function [actuators,data] = runControlSystem(sensors,references,parameters,data)
-disp(parameters.roadwidth)
-actuators.tauR = 0;
-actuators.tauL = 0;
+%y = [sensors.dL - 1.307934e+00; sensors.dR - 1.292066e+00; sensors.wL - 6.070032e-02; sensors.wR - 1.405778e-01];
+y = [sensors.dR; sensors.dL; sensors.wR; sensors.wL] - data.y_e;
+u = -data.K*data.xhat;
+data.xhat = data.xhat + (data.A*data.xhat + data.B*u - data.L*(data.C*data.xhat - y))*parameters.tStep;
+actuators.tauR = u(1);
+actuators.tauL = u(2);
 end
