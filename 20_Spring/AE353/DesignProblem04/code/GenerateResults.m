@@ -4,10 +4,15 @@ clear all;
 close all;
 
 % Definitions
-tStop = 5;                  % Seconds
-initial = [0;0;0;0;0;0;0];  % [x z theta phi phidot v w]
+tStop = 20;                  % Seconds
+initial = [0; 0; 0; 0; 0; 1.75; 0]; % [x z theta phi phidot v w]
 datafile = 'data.mat';  
-disp = true;                % Display boolean
+roadfile = 'road.mat';
+display = true;                % Display boolean
 
+disp('Running Controller');
 % Run Design Problem 4
-DesignProblem04('Controller', 'initial', initial, 'seed', 1, 'roadfile', 'road.mat', 'tStop', tStop, 'display', disp);
+%DesignProblem04('Controller', 'initial', initial, 'roadfile', roadfile, 'display', disp);
+DesignProblem04('Controller', 'roadfile', roadfile, 'display', display, 'snapshotfile', 'pic.pdf', 'seed', 1);
+%DesignProblem04Race('racers', 'road.mat', 'display', disp, 'savedata', true);
+%open('pic.pdf');

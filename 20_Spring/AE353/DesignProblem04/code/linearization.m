@@ -1,68 +1,72 @@
 clc;
 clear all;
-
 load('DP04 eom.mat');
-f = symEOM.f;
-b = 0.4;        % meters
-r = 0.2;        % meters
+Q = symEOM.f;
+bm = 0.4;        % meters
+rm = 0.2;        % meters
 roadwidth = 3;  % meters
-v_road = .25;   % guess
-r_road = 0;     % guess
-w_road = 0;   
+v_road = 1.75;   % guess
+r_road = inf;     % guess
+w_road = v_road/r_road;
 
 syms elateral eheading phi phidot v w tauR tauL
-input = [tauR; tauL];
 elateraldot = -v*sin(eheading);
-eheadingdot = w-((v*cos(eheading))/(v_road+w_road*elateral));
+eheadingdot = w-((v*cos(eheading))/(v_road+w_road*elateral))*w_road;
+input = [tauR; tauL];
 state = [elateral; eheading; phi; phidot; v; w];
 
-g = [elateraldot; eheadingdot; phidot; f];
-g_numeric = matlabFunction(g,'vars',{[elateral; eheading; phi; phidot; v; w; tauR; tauL]});
-xhat_guess = [0; 0; 0; 0; 0; 0];
+gdot = [elateraldot; eheadingdot; phidot; Q];
+g_numeric = matlabFunction(gdot,'vars',{[elateral; eheading; phi; phidot; v; w; tauR; tauL]});
 % elat ehead phi phidot v w tauR tauL
-equi = [0; 0; 0; 0; -v_road; 0; 0; 0]; 
+equi = [0; 0; 0; 0; v_road; w_road; 0; 0]; 
 
 opts = optimoptions(@fsolve,'Algorithm','levenberg-marquardt','display','off');
 [g_sol, g_numeric_at_f_sol, exitflag] = fsolve(g_numeric,equi,opts);
 equiPoints = g_sol;
+xhat_guess = -equiPoints(1:end-2);
+%xhat_guess = [0;0;0;0;0;0];
 
-r_road = v_road/w_road;
-dL = (roadwidth*.5+elateral)/(cos(eheading)) - b/2;
-dR = (roadwidth*.5-elateral)/(cos(eheading)) - b/2;
-wR = v/r + (b*w)/(2*r);
-wL = v/r - (b*w)/(2*r);
+dL = (roadwidth*0.5 + elateral)/(cos(eheading)) - bm/2;
+dR = (roadwidth*0.5 - elateral)/(cos(eheading)) - bm/2;
+wR = v/rm + (bm*w)/(2*rm);
+wL = v/rm - (bm*w)/(2*rm);
 
-A = double(subs(jacobian(g, state), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol))
-B = double(subs(jacobian(g, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol))
-o = [dR, dL, wR, wL];
-C = double(subs(jacobian(o, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol))
+% dL = (((roadwidth/2)+e_lateral)/(cos(e_heading)))-(b/2);
+% dR = (((roadwidth/2)-e_lateral)/(cos(e_heading)))-(b/2);
+% wR = (v/r) + ((wb)/(2r));
+% wL = (v/r) - ((wb)/(2r));
 
-Qc = diag([1, 100, 100, 10, 50, 1]);  % elat ehead phi phidot v w
-Rc = diag([1, 1]);              % tuaR tauL
-Qo = diag([200, 200, 1, 1]);        % dR dL wR wL
-Ro = diag([1, 10, 1, 1, 1, 1]);  % elat ehead phi phidot v w
+%y = [wr;dr;wl;dl];
+y = [dR; dL; wR; wL];
+y_e = double(subs(y, [state; input], g_sol));
 
-K = lqr(A, B, Qc, Rc)
-L = lqr(A', C', inv(Ro), inv(Qo))'
 
-dL_E = (roadwidth*.5+g_sol(1))/(cos(g_sol(2))) - b/2;
-dR_E = (roadwidth*.5-g_sol(1))/(cos(g_sol(2))) - b/2;
-wL_E = g_sol(5)/r - (b*g_sol(6))/(2*r);
-wR_E = g_sol(5)/r + (b*g_sol(6))/(2*r);
-r_road_E = 0;
-y_e = [dR_E; dL_E; wR_E; wL_E];
+A = double(subs(jacobian(gdot, state), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
+B = double(subs(jacobian(gdot, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
+C = double(subs(jacobian(y, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 
-disp(sprintf('data.A = %s;', mat2str(A)));
-disp(sprintf('data.B = %s;', mat2str(B)));
-disp(sprintf('data.C = %s;', mat2str(C)));
-disp(sprintf('data.K = %s;', mat2str(K)));
-disp(sprintf('data.L = %s;', mat2str(L)));
-disp(sprintf('data.xhat = %s;', mat2str(xhat_guess)));
-disp(sprintf('data.x_e = %s;\n', mat2str(equiPoints)));
+Qc = diag([500, 500, 7000, .1, 10, 1]);  % elat ehead phi phidot v w
+Rc = diag([.01, .01]);              % tuaR tauL
+Qo = diag([50, 50, 1, 1]);        % dR dL wR wL
+Ro = diag([100, 300, 1, 1, 10, 1]);  % elat ehead phi phidot v w
 
-disp(sprintf('y = [sensors.dL - %s; sensors.dR - %s; sensors.wL - %s; sensors.wR - %s];', y_e(1), y_e(2), y_e(3), y_e(4)));
+K = lqr(A, B, Qc, Rc);
+L = lqr(A', C', inv(Ro), inv(Qo))';
 
-disp(sprintf('equilibrium: %s;\n\n', mat2str(round(equiPoints,5))));
+kRef = -1./(C*inv(A-B*K)*B);
+
+
+% disp(sprintf('data.A = %s;', mat2str(A)));
+% disp(sprintf('data.B = %s;', mat2str(B)));
+% disp(sprintf('data.C = %s;', mat2str(C)));
+% disp(sprintf('data.K = %s;', mat2str(K)));
+% disp(sprintf('data.L = %s;', mat2str(L)));
+% disp(sprintf('data.xhat = %s;', mat2str(xhat_guess)));
+% disp(sprintf('data.x_e = %s;\n', mat2str(equiPoints)));
+% 
+% disp(sprintf('y = [sensors.dL - %s; sensors.dR - %s; sensors.wL - %s; sensors.wR - %s];', y_e(1), y_e(2), y_e(3), y_e(4)));
+% 
+% disp(sprintf('equilibrium: %s;\n\n', mat2str(round(equiPoints,5))));
 
 ControllabilityCondition = rank(ctrb(A,B));
 ObservabilityCondition = rank(obsv(A,C));
@@ -82,6 +86,6 @@ else
     disp('System is NOT stable!')
 end
 
-save('control.mat', 'A', 'B', 'C', 'K', 'L', 'xhat_guess', 'equiPoints', 'y_e')
-
+save('control.mat', 'A', 'B', 'C', 'K', 'L', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
+    
 

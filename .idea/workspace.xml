@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dd2751c-7108-45b3-99c3-df0e2d49d2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/20_Spring/AE461/Lab5/Prelab/AE461_Prelab5.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW8/HW8_DATA.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW8/HW8_ouput.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/20_Spring/IE300/HW8/IE300_HW8.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PDF_merge/Input/IE300 HW8 written - Google Docs.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PDF_merge/Input/IE300 hw8 code.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/AE443/CG_blank.png" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE443/CG_blank.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20_Spring/AE443/plot-CG.py" beforeDir="false" afterPath="$PROJECT_DIR$/20_Spring/AE443/plot-CG.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDF_merge/Input/461 prelab 3.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDF_merge/Input/Scan Apr 22, 2020.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,11 +182,11 @@
     </configuration>
     <list>
       <item itemvalue="Python.IE300_HW8" />
-      <item itemvalue="Python.wing_load" />
-      <item itemvalue="Python.pdf_merge" />
-      <item itemvalue="Python.plot-CG" />
       <item itemvalue="Python.clear_metadata2" />
       <item itemvalue="Python.clear_metadata" />
+      <item itemvalue="Python.pdf_merge" />
+      <item itemvalue="Python.plot-CG" />
+      <item itemvalue="Python.wing_load" />
     </list>
     <recent_temporary>
       <list>
@@ -473,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583337053112</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="update">
+      <created>1588349378135</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1588349378135</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -505,7 +502,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="AE460 lab5" />
     <MESSAGE value="AE483 report 3" />
     <MESSAGE value="AE416 hw3 - update" />
     <MESSAGE value="AE416 hw3 - finish" />
@@ -530,7 +526,8 @@
     <MESSAGE value="IE300 Lab1 Update" />
     <MESSAGE value="AE353 day15" />
     <MESSAGE value="IE300 lab1A" />
-    <option name="LAST_COMMIT_MESSAGE" value="IE300 lab1A" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1104" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588306718058">
