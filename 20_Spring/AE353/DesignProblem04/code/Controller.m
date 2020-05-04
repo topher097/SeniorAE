@@ -63,9 +63,22 @@ data.L = z.L;
 data.xhat = z.xhat_guess;
 data.x_e = z.equiPoints;
 data.y_e = z.y_e;   
-data.kRef = z.kRef
+data.kRef = z.kRef;
+data.kInt = .1*ones(2,4);
+data.v_road = z.v_road;
+data.b_wheel = z.bm;
+data.r_wheel = z.rm;
 
 data.t = 0;
+data.v = 0;
+data.w = 0;
+data.r = 0;
+data.tau_max = 2;
+data.r_error_interp = 0;
+data.curr_r_road = Inf;
+data.r_error = 0;
+data.r_lim = 10;
+data.d_max = 1.25;
 end
 
 %
@@ -75,11 +88,64 @@ end
 
 function [actuators,data] = runControlSystem(sensors,references,parameters,data)
 y = [sensors.dR; sensors.dL; sensors.wR; sensors.wL] - data.y_e;
-r = [0 0 5*log10(data.t+1) 5*log10(data.t+1)];
-u = -data.K*data.xhat + r*data.kRef;
+%disp(sensors.r_road)
+%disp(y);
+
+% Bound the sensor measurements
+if sensors.dL > data.d_max
+    sensors.dL = data.d_max
+end
+if sensors.dR > data.d_max
+    sensors.dR = data.d_max
+end
+
+% Define different controllers
+w = 10*log10(data.t+1);
+if w <= data.y_e(3)
+    data.r = [1.3 1.3 w w];
+else
+    % Check if new curvature, if so, create interpoalant list
+    if sensors.r_road ~= Inf
+        w_road = data.v_road/sensors.r_road;
+        wR = data.y_e(3) + w_road;
+        wL = data.y_e(4) - w_road;
+    else
+        wR = data.y_e(3);
+        wL = data.y_e(4);
+    end
+       
+    
+    %     disp(data.r_road_inter(1:50:end))
+    %w1 = sensors.wR - (data.b_wheel*sensors.wR)/(2*data.r_wheel);           % Left wheel ang vel
+    %w2 = sensors.wL - (data.b_wheel*sensors.wL)/(2*data.r_wheel);           % Right wheel ang vel
+    data.r = [1.3 1.3 wR wL]% - .5*[0 0 data.y_e(3) data.y_e(4)]
+end
+
+
+% Define reference tracking r with function of road radius
+% r_road > 0 is left, r_road < 0 is right, r_road = inf is straigt, r_road
+% = turn in place
+
+%u = -data.K*data.xhat + data.r*data.kRef - data.kInt*data.v;
+u = -data.K*data.xhat + (data.r*data.kRef)';
 data.xhat = data.xhat + (data.A*data.xhat + data.B*u - data.L*(data.C*data.xhat - y))*parameters.tStep;
-actuators.tauR = u(1);
-actuators.tauL = u(2);
+
+% Set the torque applied to the wheel
+tauR = u(1);
+tauL = u(2);
+if tauR < -data.tau_max
+    tauR = -data.tau_max;
+elseif tauR > data.tau_max
+    tauR = data.tau_max;
+end
+if tauL < -data.tau_max
+    tauL = -data.tau_max;
+elseif tauL > data.tau_max
+    tauL = data.tau_max;
+end
+
+actuators.tauR = tauR;
+actuators.tauL = tauL;
 
 data.t = data.t + parameters.tStep;
 end

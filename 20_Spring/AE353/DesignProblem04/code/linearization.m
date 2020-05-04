@@ -5,7 +5,7 @@ Q = symEOM.f;
 bm = 0.4;        % meters
 rm = 0.2;        % meters
 roadwidth = 3;  % meters
-v_road = 1.75;   % guess
+v_road = 1.5;   % guess
 r_road = inf;     % guess
 w_road = v_road/r_road;
 
@@ -31,24 +31,17 @@ dR = (roadwidth*0.5 - elateral)/(cos(eheading)) - bm/2;
 wR = v/rm + (bm*w)/(2*rm);
 wL = v/rm - (bm*w)/(2*rm);
 
-% dL = (((roadwidth/2)+e_lateral)/(cos(e_heading)))-(b/2);
-% dR = (((roadwidth/2)-e_lateral)/(cos(e_heading)))-(b/2);
-% wR = (v/r) + ((wb)/(2r));
-% wL = (v/r) - ((wb)/(2r));
-
-%y = [wr;dr;wl;dl];
 y = [dR; dL; wR; wL];
 y_e = double(subs(y, [state; input], g_sol));
-
 
 A = double(subs(jacobian(gdot, state), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 B = double(subs(jacobian(gdot, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 C = double(subs(jacobian(y, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 
-Qc = diag([500, 500, 7000, .1, 10, 1]);  % elat ehead phi phidot v w
-Rc = diag([.01, .01]);              % tuaR tauL
-Qo = diag([50, 50, 1, 1]);        % dR dL wR wL
-Ro = diag([100, 300, 1, 1, 10, 1]);  % elat ehead phi phidot v w
+Qc = diag([5, 50, 1000, 10, .1, 100]);  % elat ehead phi phidot v w
+Rc = diag([.1, .1]);              % tuaR tauL
+Qo = diag([100, 100, .1, .1]);        % dR dL wR wL
+Ro = diag([100, 500, 1, 1, .1, 10]);  % elat ehead phi phidot v w
 
 K = lqr(A, B, Qc, Rc);
 L = lqr(A', C', inv(Ro), inv(Qo))';
@@ -86,6 +79,6 @@ else
     disp('System is NOT stable!')
 end
 
-save('control.mat', 'A', 'B', 'C', 'K', 'L', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
+save('control.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
     
 
