@@ -4,7 +4,7 @@ clear all;
 close all;
 
 % Definitions
-tStop = 45;                  % Seconds
+tStop = 90;                  % Seconds
 initial = [0; 0; 0; 0; 0; 1.75; 0]; % [x z theta phi phidot v w]
 datafile = 'data.mat';  
 roadfile = 'road.mat';

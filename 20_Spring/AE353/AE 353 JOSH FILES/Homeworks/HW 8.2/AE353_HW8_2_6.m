@@ -4,7 +4,7 @@ clear all;
 syms t m y theta real
 
 % Define u(t)
-w = 7;
+w = .5;
 u = sin(w * t);
 
 % Define y(t)

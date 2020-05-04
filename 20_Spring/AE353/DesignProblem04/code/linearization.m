@@ -5,7 +5,7 @@ Q = symEOM.f;
 bm = 0.4;        % meters
 rm = 0.2;        % meters
 roadwidth = 3;  % meters
-v_road = 1.5;   % guess
+v_road = 1;   % guess
 r_road = inf;     % guess
 w_road = v_road/r_road;
 
@@ -38,10 +38,10 @@ A = double(subs(jacobian(gdot, state), [elateral; eheading; phi; phidot; v; w; t
 B = double(subs(jacobian(gdot, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 C = double(subs(jacobian(y, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 
-Qc = diag([5, 50, 1000, 10, .1, 100]);  % elat ehead phi phidot v w
+Qc = diag([5, 50, 10000, .1, .1, 1]);  % elat ehead phi phidot v w
 Rc = diag([.1, .1]);              % tuaR tauL
-Qo = diag([100, 100, .1, .1]);        % dR dL wR wL
-Ro = diag([100, 500, 1, 1, .1, 10]);  % elat ehead phi phidot v w
+Qo = diag([1000, 1000, .1, .1]);        % dR dL wR wL
+Ro = diag([100, 500, 1000, .1, .1, 1]);  % elat ehead phi phidot v w
 
 K = lqr(A, B, Qc, Rc);
 L = lqr(A', C', inv(Ro), inv(Qo))';
