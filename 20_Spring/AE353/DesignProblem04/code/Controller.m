@@ -54,7 +54,7 @@ function [data] = initControlSystem(parameters,data)
 %   data.v = 0;
 %
 
-z = load('control.mat');
+z = load('control3.mat');
 data.A = z.A; 
 data.B = z.B;
 data.C = z.C;
@@ -78,7 +78,8 @@ data.r_error_interp = 0;
 data.curr_r_road = Inf;
 data.r_error = 0;
 data.r_lim = 10;
-data.d_max = 2;
+data.d_max = 3;
+data.tStep = parameters.tStep;
 end
 
 %
@@ -99,24 +100,7 @@ if sensors.dR > data.d_max
     sensors.dR = data.d_max;
 end
 
-% Define ramping function
-w = 7.5*log10(data.t+1);
-if w <= data.y_e(3)
-    data.r = [1.3 1.3 w w];
-else
-    % Set wheel angular velocity to the road angular velocity
-    if sensors.r_road ~= Inf
-        w_road = data.v_road/sensors.r_road;
-        wR = data.y_e(3) + w_road;
-        wL = data.y_e(4) - w_road;
-    else
-        wR = data.y_e(3);
-        wL = data.y_e(4);
-    end
-    data.r = [1.3 1.3 wR wL];
-end
-
-u = -data.K*data.xhat + (data.r*data.kRef)';
+u = -data.K*data.xhat;
 data.xhat = data.xhat + (data.A*data.xhat + data.B*u - data.L*(data.C*data.xhat - y))*parameters.tStep;
 
 % Limit the torque applied to the wheel

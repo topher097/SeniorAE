@@ -6,6 +6,7 @@ bm = 0.4;        % meters
 rm = 0.2;        % meters
 roadwidth = 3;  % meters
 v_road = 1;   % guess
+v_road = 2.5;
 r_road = inf;     % guess
 w_road = v_road/r_road;
 
@@ -38,15 +39,35 @@ A = double(subs(jacobian(gdot, state), [elateral; eheading; phi; phidot; v; w; t
 B = double(subs(jacobian(gdot, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 C = double(subs(jacobian(y, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
 
-Qc = diag([5, 50, 10000, .1, .1, 1]);  % elat ehead phi phidot v w
+% Controller 1 - No reference tracking, failed (2.5 m/s)
+Qc = diag([1, .1, 10000, .1, 1, .1]);  % elat ehead phi phidot v w
 Rc = diag([.1, .1]);              % tuaR tauL
-Qo = diag([1000, 1000, .1, .1]);        % dR dL wR wL
-Ro = diag([100, 500, 1000, .1, .1, 1]);  % elat ehead phi phidot v w
-
+Qo = diag([10, 10, .1, .1]);        % dR dL wR wL
+Ro = diag([1, 1, 1000, .1, 1, .1]);  % elat ehead phi phidot v w
 K = lqr(A, B, Qc, Rc);
 L = lqr(A', C', inv(Ro), inv(Qo))';
-
 kRef = -1./(C*inv(A-B*K)*B);
+save('control1.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
+
+% Controller 2 - No reference tracking, works (2.5 m/s) 
+Qc = diag([1, 1, 10000, .1, 1, .1]);  % elat ehead phi phidot v w
+Rc = diag([.1, .1]);              % tuaR tauL
+Qo = diag([5, 5, 1, 1]);        % dR dL wR wL
+Ro = diag([1, 1, 1000, .1, 1, .1]);  % elat ehead phi phidot v w
+K = lqr(A, B, Qc, Rc);
+L = lqr(A', C', inv(Ro), inv(Qo))';
+kRef = -1./(C*inv(A-B*K)*B);
+save('control2.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
+
+% Controller 3 - No reference tracking, works (2.5 m/s)
+Qc = diag([1.25, 1, 7500, .075, 1.2, .1]);  % elat ehead phi phidot v w
+Rc = diag([.1, .1]);              % tuaR tauL
+Qo = diag([8, 8, 1, 1]);        % dR dL wR wL
+Ro = diag([1.25, 1, 750, .075, 1.2, .1]);  % elat ehead phi phidot v w
+K = lqr(A, B, Qc, Rc);
+L = lqr(A', C', inv(Ro), inv(Qo))';
+kRef = -1./(C*inv(A-B*K)*B);
+save('control3.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
 
 
 % disp(sprintf('data.A = %s;', mat2str(A)));
@@ -79,6 +100,6 @@ else
     disp('System is NOT stable!')
 end
 
-save('control.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
+save('control3.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
     
 
