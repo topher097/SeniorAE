@@ -15,11 +15,11 @@ Sample 3: 0.1039 to 0.4178
 Sample 2: 0.1399 to 0.4688
 
 Problem 3
-Sample 1: 0.0101 to 0.2508 ft^2
-Sample 2: 0.1399 to 0.4688 ft^2
-Sample 3: 0.1039 to 0.4178 ft^2
-Sample 3: 0.1039 to 0.4178 ft^2
-Sample 2: 0.1399 to 0.4688 ft^2
+Sample 1: 0.0001724 to 0.00047388
+Sample 2: 0.00043903 to 0.00120679
+Sample 3: 0.00030892 to 0.00084914
+Sample 4: 0.00021161 to 0.00058166
+Sample 5: 0.0003435 to 0.0009442
 
 Problem 4
 B) 5/5

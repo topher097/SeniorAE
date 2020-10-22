@@ -1,6 +1,6 @@
 clc;
 clear all;
-load('DP04 eom.mat');
+load('DP04_eom.mat');
 Q = symEOM.f;
 bm = 0.4;        % meters
 rm = 0.2;        % meters
@@ -35,9 +35,9 @@ wL = v/rm - (bm*w)/(2*rm);
 y = [dR; dL; wR; wL];
 y_e = double(subs(y, [state; input], g_sol));
 
-A = double(subs(jacobian(gdot, state), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
-B = double(subs(jacobian(gdot, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
-C = double(subs(jacobian(y, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol));
+A = double(subs(jacobian(gdot, state), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol))
+B = double(subs(jacobian(gdot, input), [elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol))
+C = double(subs(jacobian(y, state),[elateral; eheading; phi; phidot; v; w; tauR; tauL], g_sol))
 
 % Controller 1 - No reference tracking, failed (2.5 m/s)
 Qc = diag([1, .1, 10000, .1, 1, .1]);  % elat ehead phi phidot v w
@@ -70,17 +70,18 @@ kRef = -1./(C*inv(A-B*K)*B);
 save('control3.mat', 'A', 'B', 'C', 'K', 'L', 'rm', 'bm', 'v_road', 'kRef', 'xhat_guess', 'equiPoints', 'y_e')
 
 
-% disp(sprintf('data.A = %s;', mat2str(A)));
-% disp(sprintf('data.B = %s;', mat2str(B)));
-% disp(sprintf('data.C = %s;', mat2str(C)));
-% disp(sprintf('data.K = %s;', mat2str(K)));
-% disp(sprintf('data.L = %s;', mat2str(L)));
-% disp(sprintf('data.xhat = %s;', mat2str(xhat_guess)));
-% disp(sprintf('data.x_e = %s;\n', mat2str(equiPoints)));
-% 
-% disp(sprintf('y = [sensors.dL - %s; sensors.dR - %s; sensors.wL - %s; sensors.wR - %s];', y_e(1), y_e(2), y_e(3), y_e(4)));
-% 
-% disp(sprintf('equilibrium: %s;\n\n', mat2str(round(equiPoints,5))));
+disp(sprintf('data.A = %s;', mat2str(A)));
+disp(sprintf('data.B = %s;', mat2str(B)));
+disp(sprintf('data.C = %s;', mat2str(C)));
+disp(sprintf('data.K = %s;', mat2str(K)));
+disp(sprintf('data.L = %s;', mat2str(L)));
+disp(sprintf('data.xhat = %s;', mat2str(xhat_guess)));
+disp(sprintf('data.x_e = %s;', mat2str(equiPoints)));
+disp(sprintf('data.y_e = %s;\n', mat2str(y_e)));
+
+disp(sprintf('y = [sensors.dL - %s; sensors.dR - %s; sensors.wL - %s; sensors.wR - %s];', y_e(1), y_e(2), y_e(3), y_e(4)));
+
+disp(sprintf('equilibrium: %s;\n\n', mat2str(round(equiPoints,5))));
 
 ControllabilityCondition = rank(ctrb(A,B));
 ObservabilityCondition = rank(obsv(A,C));

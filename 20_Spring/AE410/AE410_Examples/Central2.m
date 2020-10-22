@@ -11,7 +11,7 @@ function C = Central2(Nx,dx,PeriodicFlag)
 % PeriodicFlag = 0 = FALSE;
 %
 % OUTPUTS:
-% C = B
+% C = inv(A)*B
 
 fprintf(1,'Using 2nd-order central ');
 

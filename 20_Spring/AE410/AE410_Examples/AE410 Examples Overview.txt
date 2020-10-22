@@ -1,0 +1,11 @@
+Ex0 - N/A
+Wx1 - N/A
+Ex2 - Downwinding and Upwinding
+Ex3 - Burger's Equation
+Ex4 - Injection Boundary Conditions
+Ex5 - Advection and Injection Boundary Conditions
+Ex6 - 1D Euler With BC's
+Ex7 - 1D Euler With BC's Artificial Dissipation
+Ex8 - Exact Q1D Solution
+Ex9 - FV on Quasi1D
+Ex10 - Godunov On Euler

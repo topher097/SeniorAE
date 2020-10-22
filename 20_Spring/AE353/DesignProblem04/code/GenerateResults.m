@@ -2,7 +2,7 @@
 clc;
 clear all;
 close all;
-num_runs = 499;     % Change for how many roads to run per controller
+num_runs = 500;     % Change for how many roads to run per controller
 
 %% Check if data for run exists
 run = false;

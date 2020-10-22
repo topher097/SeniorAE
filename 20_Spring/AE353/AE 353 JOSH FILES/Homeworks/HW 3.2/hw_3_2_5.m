@@ -1,9 +1,13 @@
 clear all, close all, clc
 %% Insert provided data here:
-
+A = [-0.04 0.92; 0.02 0.02];
+B = [0.02; 0.99];
+C = [0.98 0.05];
+D = [0.00];
+K = [5.47 1.48];
 
 %% Useful Relations
-kRef = kRef(A,B,C,K);
+kRef = -1/(C*inv(A-B*K)*B);
 r = 1;
 d0 = 0;
 d1 = 1;

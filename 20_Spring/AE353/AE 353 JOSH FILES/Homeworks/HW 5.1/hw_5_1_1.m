@@ -19,5 +19,6 @@ u = -K*x;
 x1 = subs(x, t, t1);
 firstCost = x1'*M*x1;
 secondCost = int((x'*Q*x + u'*R*u), t, t0, t1);
+disp('hi')
 
 cost = vpa(firstCost + secondCost, 5)

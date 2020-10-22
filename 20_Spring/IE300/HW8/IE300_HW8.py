@@ -106,8 +106,8 @@ CI3_4 = [(n-1)*sv4/chi_low, (n-1)*sv4/chi_up]
 CI3_5 = [(n-1)*sv5/chi_low, (n-1)*sv5/chi_up]
 CI3 = [CI3_1, CI3_2, CI3_3, CI3_4, CI3_5]
 output_text += 'Problem 3\n'
-for i in CI2:
-    output_text += f'Sample {1+CI2.index(i)}: {round(i[1], 4)} to {round(i[0], 4)} ft^2\n'
+for i in CI3:
+    output_text += f'Sample {1+CI3.index(i)}: {round(i[1], 8)} to {round(i[0], 8)}\n'
 output_text += '\n'
 
 # Question 4
