@@ -3,6 +3,8 @@ import shutil
 import os
 import sys
 
+# Changes the current directory to the script directory
+os.chdir(os.path.dirname(__file__))
 
 class pdfMerger():
     def __init__(self):
