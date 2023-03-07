@@ -1,5 +1,5 @@
 # SeniorAE
-SeniorAE python scripts
+UIUC SeniorAE python/matlab scripts
 
 Fall 2019:
 AE416 - Applied Aero
